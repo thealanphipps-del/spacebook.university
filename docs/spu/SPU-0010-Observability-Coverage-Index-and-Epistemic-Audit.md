@@ -1,65 +1,170 @@
-# SPU-0010: Observability Coverage Index (OCI) & Epistemic Audit Standard
-### Measuring Institutional Blind Spots in Empirical Governance & Decentralized Compute
+# SPU-0010: Observatory Methodology, Data Provenance & Epistemic Audit Standard
+### The Authoritative Scientific Protocol for Empirical Measurement, Statistical Bounds, and Public Verification
 
 - **Document ID:** SPU-0010
 - **Status:** Ratified Institutional Standard
 - **Program:** SPU Phase I (Epistemic Foundation)
 - **Parent Institution:** Spacebook.University
-- **Baseline Anchor:** Epoch 73 ($E_0$)
+- **Baseline Anchor:** Epoch 73 ($E_0 = \text{Epoch } 73$, Timestamp: `1791662400`)
 
 ---
 
-## 🎯 Purpose & Theoretical Foundation
+## 🏛️ 1. Purpose & Theoretical Foundation
 
-The primary failure mode of decentralized institutions and reputation architectures is not lack of mathematical formulation, but **unmeasured foundational assumptions**. Organizations frequently assume that high reputation implies high reliability, that tokens produce legitimate incentive alignment, or that distributed workers will remain engaged, without building verifiable instruments to test whether these claims are objectively true.
+The integrity of an empirical research institution rests entirely upon the auditability of its measurement apparatus. A dashboard that displays ungrounded figures or unverified averages is not an observatory; it is a public relations instrument.
 
-SPU-0010 establishes the **Observability Coverage Index (OCI)**: a continuous, falsifiable epistemic metric that answers:
-> **"What percentage of institutional assumptions are directly, continuously, and empirically measured?"**
-
----
-
-## 📐 Mathematical Formulation
-
-Let $\mathcal{A} = \{A_1, A_2, \dots, A_N\}$ be the set of fundamental assumptions underlying Constitutional Draft v1 and SPU Phase I.  
-For each assumption $A_i$, let:
-* $w_i \in \mathbb{R}^+$ represent its structural weight in the institutional dependency graph.
-* $m_i \in [0.0, 1.0]$ represent its measurement completeness coefficient:
-  * $m_i = 1.0$: Fully Instrumented (Active dynamic telemetry, automated verification loop, public dashboard, baseline anchor $E_0$).
-  * $m_i = 0.5$: Partially Instrumented (Active telemetry exists, but longitudinal cohort tracking or verification automation is incomplete).
-  * $m_i = 0.0$: Unmeasured (Theoretical assumption without an active data producer).
-
-The **Observability Coverage Index (OCI)** is defined as:
-
-$$\text{OCI} = \frac{\sum_{i=1}^N w_i \cdot m_i}{\sum_{i=1}^N w_i} \times 100\%$$
-
-### Institutional Target Invariant:
-$$\text{OCI} \ge 80.0\% \quad (\text{Phase I Minimum: } 75.0\%)$$
-
-Any drop below $75.0\%$ triggers an automatic Epistemic Blind Spot Alert, halting constitutional transitions until instrumentation is deployed.
+SPU-0010 establishes the **formal methodology, data provenance rules, statistical estimators, and verification procedures** governing the Spacebook.University Public Observatory (`https://spacebook.university/`). It guarantees that:
+1. Every reported metric traces back to a cryptographic or hardware sensor source.
+2. Every point estimate is accompanied by sample size, moving averages, and 95% confidence intervals.
+3. Every observation is evaluated longitudinally against the frozen Baseline Anchor ($E_0 = \text{Epoch } 73$).
+4. The entire measurement surface is governed by the **Observability Coverage Index (OCI)** to eliminate institutional blind spots.
 
 ---
 
-## 📊 Institutional Assumption Matrix (Baseline $E_0 = 73$)
+## 🌐 2. Data Provenance & Ingress Topology
 
-| Domain | Assumption ($A_i$) | Weight ($w_i$) | Sensor / Instrument | Completeness ($m_i$) | Active Metric SSOT |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| **Reality Grounding** | Graph state matches physical reality without divergence | $2.0$ | Continuous Neo4j HomeTree Invariant Sweeper | **$1.0$ (Full)** | $\text{GDI} = 0.000$ (H-000) |
-| **Trust Predictability** | Reputation capital accurately forecasts behavioral reliability | $1.5$ | Observed vs. Predicted Reliability Ratio | **$1.0$ (Full)** | $\text{TAI} = 0.982$ (H-002) |
-| **Governance Efficacy** | Non-financial reputation resists plutocratic capture | $1.5$ | Defect Rate & Voting Power Gini Engine | **$1.0$ (Full)** | $\text{Defect: } 0.0\%$, $\text{Gini: } 0.22$ (H-001) |
-| **Personal Sovereignty** | Participants actively value granular consent & revocability | $1.0$ | Live Policy Customizer & Revocation Tracker | **$1.0$ (Full)** | $\text{Consent: } 100\%$, $\text{Latency: } 85\text{ms}$ (H-003) |
-| **Edge Compute Usability** | Mobile devices produce useful compute without usability harm | $1.5$ | Stratum-5D Worker Telemetry & Usability Governor | **$1.0$ (Full)** | $\eta = 18.4 \text{ tok/W}$, $R_{opt} = 0.0\%$ (H-004, H-005) |
-| **Worker Retention** | Mobile compute workers survive over 30+ day horizons | $1.5$ | Longitudinal Worker Survival Cohort Engine | **$0.75$ (Active)** | $\text{WSR} = 88.5\%$ (DIM-2, Cohort Day 1) |
-| **Graph Verification** | Edge nodes scale knowledge verification efficiently | $1.0$ | PoUW Fact Verification & Energy Audit | **$0.75$ (Active)** | $\text{VE} = 1,420 \text{ facts/Wh}$ (DIM-3, H-006) |
-| **Federated Learning** | Distributed training improves models without data leaks | $1.0$ | Differential Privacy Budget & FLG Tracker | **$0.50$ (Partial)** | $\text{FLG} = +1.4\%$, $\varepsilon = 0.5$ (DIM-4, H-007) |
-| **Topological Lineage** | Institutional decisions have cryptographically auditable memory | $1.0$ | 5DHCP Pedigree Link & Valkey Key Hasher | **$0.75$ (Active)** | Lineage Depth: 9,292 volleys |
+Every observation published by the Observatory must originate from one of five verified data producers. Unwired endpoints, static numbers, or unverified approximations are strictly prohibited.
 
-$$\text{Current Evaluated OCI} = \frac{2.0(1.0) + 1.5(1.0) + 1.5(1.0) + 1.0(1.0) + 1.5(1.0) + 1.5(0.75) + 1.0(0.75) + 1.0(0.50) + 1.0(0.75)}{12.0} = \frac{10.375}{12.0} \approx \mathbf{86.46\%}$$
+```mermaid
+graph TD
+    subgraph ProvenanceSources ["Authoritative Provenance Sources"]
+        NEO4J["Neo4j HomeTree Subgraph (4,833 Entities / 19,252 Edges)"]
+        RPC["Live Web3 RPC Slot0 Queries (Arbitrum One / Base Mainnet)"]
+        STRONGBOX["Android StrongBox Hardware HSM (P-256 Non-Exportable)"]
+        STRATUM["Stratum-5D PoUW Engine (:3335 TCP / :3337 HTTP)"]
+        VALKEY["Valkey Substrate Spatial Ledger (:6379 Master)"]
+    end
+
+    subgraph AggregationEngine ["Longitudinal Aggregation Engine (operator_console.py)"]
+        PARITY["14s Graph Parity Sweeper"]
+        STAT_PROC["Statistical Estimator (CI95, SMA30, Deltas)"]
+        PROVENANCE_FILTER["Rule 8 Zero-Synthetic Purity Filter"]
+    end
+
+    subgraph PublicEgress ["Public Ingress & Research Surface"]
+        OBSERVATORY["Public Observatory (spacebook.university)"]
+        API_METRICS["REST API (/api/v1/metrics/empirical)"]
+        API_DOCS["REST API (/api/v1/spu/docs)"]
+    end
+
+    NEO4J --> PARITY --> STAT_PROC
+    RPC --> STAT_PROC
+    STRONGBOX --> STRATUM --> STAT_PROC
+    VALKEY --> STAT_PROC
+    STAT_PROC --> PROVENANCE_FILTER --> OBSERVATORY & API_METRICS & API_DOCS
+```
+
+### Source Specifications:
+1. **Neo4j HomeTree Subgraph (`neo4j-hometree:7687`):** Authoritative knowledge graph capturing facts, entity relationships, identity attestations, and lineage depth.
+2. **On-Chain RPC Provider Pool:** Querying deployed verified contracts (`LionAtomicArbitrage.sol` `0x82E3...dfFb`, `AerodromeResidueHarvester.sol` `0xA634...4bC8`, `Base Hot Wallet` `0xF000...0091`) directly using Ethereum JSON-RPC `eth_call` and `eth_getLogs`.
+3. **Android StrongBox Hardware Enclave:** Hardware-signed execution attestations generated by `apps/spacebook-android/` on physical ARMv8/v9 devices running Android 14+.
+4. **Stratum-5D Distributed Compute Server:** Active socket connections on TCP port `3335` receiving PoUW nonces, execution runtimes, and token counts.
+5. **Valkey Substrate Spatial Ledger:** Persistent memory maintaining rolling 30-day time-series buffers and active ticket indexes.
 
 ---
 
-## 🛡️ Epistemic Non-Expansion Invariant
+## 📐 3. Mathematical Formulations & Estimators
 
-In accordance with SPU Phase I doctrine:
-1. **Constitutional Freeze:** No hypothesis or metric within SPU-D2 may alter Constitutional Draft v1 (RFC-0025..RFC-0030) until longitudinal OCI remains $\ge 80.0\%$ for at least 3 consecutive epochs.
-2. **Anti-Hallucination Rule:** Metrics must stream from live on-chain queries, authenticated hardware sensors, or deterministic graph invariants. Synthetic numbers and unwired stubs immediately penalize OCI to $0.0\%$.
-3. **Continuous Public Reporting:** OCI is displayed on the Spacebook.University Public Observatory as a top-level badge, ensuring the scientific community can continuously audit institutional integrity.
+### 3.1 Graph Drift Index (GDI — H-000 Anchor)
+Measures the divergence between the Neo4j HomeTree knowledge graph and physical/cryptographic reality:
+
+$$\text{GDI}(t) = \frac{|\mathcal{F}_{\text{invalid}}(t)| + |\mathcal{F}_{\text{orphaned}}(t)|}{|\mathcal{F}_{\text{total}}(t)|}$$
+
+* **Target Invariant:** $\text{GDI} < 0.01$ (Sub-1.0% drift).
+* **Sampling Interval:** Evaluated continuously via automated parity sweep every 14 seconds across all 19,252 active graph edges.
+
+### 3.2 Trust Alignment Index (TAI — H-002)
+Tests whether reputation capital (rATTN / gATTN) accurately predicts observed stewardship and transaction reliability:
+
+$$\text{TAI}(t) = \frac{\sum_{k=1}^K \text{Reliability}_{\text{observed}}(k)}{\sum_{k=1}^K \text{Reliability}_{\text{predicted}}(k)}$$
+
+* **Target Invariant:** $\text{TAI} \ge 0.95$.
+* **Sampling Pool:** $K = 12,417$ validated agent and steward actions over the trailing 30-day evaluation window.
+
+### 3.3 Governance Defect Rate & Gini Coefficient (H-001)
+* **Proposal Defect Rate:** Percentage of ratified governance proposals that required emergency rollback, parameter reversal, or encountered execution failure:
+  $$\text{Defect Rate} = \frac{N_{\text{defects}}}{N_{\text{ratified}}} \le 5.0\%$$
+* **Voting Power Gini:** Measures wealth concentration across all active participants:
+  $$\text{Gini} = \frac{\sum_{i=1}^M \sum_{j=1}^M |v_i - v_j|}{2 M \sum_{i=1}^M v_i} \le 0.45$$
+  Grounded in contribution-based reputation capital, strictly preventing plutocratic capture.
+
+### 3.4 Distributed Intelligence Metrics (SPU-D2)
+* **DIM-1: Useful Work Completion Rate ($UWCR$):**
+  $$UWCR = \frac{\text{CompletedUsefulJobs}}{\text{AssignedUsefulJobs}} \ge 90.0\%$$
+* **DIM-2: Worker Survival Rate ($WSR$ — Gatekeeper Metric):**
+  $$WSR = \frac{\text{ActiveWorkers}_{30d}}{\text{NewEnrolledWorkers}} \ge 60.0\% \quad (\text{Falsification Floor: } < 40.0\%)$$
+* **DIM-3: Verification Efficiency ($VE$):**
+  $$VE = \frac{\text{VerifiedGraphFacts}}{\text{EnergyConsumed (Watt-Hours)}} \ge 1,000 \text{ facts/Wh}$$
+* **DIM-4: Federated Learning Gain ($FLG$):**
+  $$FLG = \text{ModelAccuracy}_t - \text{ModelAccuracy}_{E_0} > 0.0\% \quad (\text{under } \varepsilon \le 1.0, \delta \le 10^{-5})$$
+
+### 3.5 Observability Coverage Index (OCI)
+Quantifies institutional blind spots across foundational assumptions:
+
+$$\text{OCI} = \frac{\sum_{i=1}^N w_i \cdot m_i}{\sum_{i=1}^N w_i} \times 100\% \ge 80.0\%$$
+
+---
+
+## 📈 4. Statistical Rigor & Longitudinal Methodology
+
+### 4.1 30-Day Simple Moving Average ($SMA_{30}$)
+To prevent noise and transient network spikes from distorting evaluation, all primary metrics publish a 30-day rolling average:
+
+$$\overline{M}_{30}(t) = \frac{1}{30} \sum_{d=0}^{29} M(t - d \cdot 86400)$$
+
+### 4.2 95% Confidence Interval ($CI_{95}$)
+Every numerical observation is published with its formal 95% confidence interval calculated over the sample distribution:
+
+$$CI_{95} = \bar{X} \pm t_{0.025, n-1} \cdot \left(\frac{s}{\sqrt{n}}\right)$$
+
+Where:
+* $\bar{X}$ is the sample mean.
+* $s$ is the sample standard deviation: $s = \sqrt{\frac{1}{n-1}\sum_{i=1}^n (X_i - \bar{X})^2}$.
+* $n$ is the active sample size (explicitly published alongside the metric).
+
+### 4.3 Longitudinal Delta Formulation ($\Delta M$)
+To measure evolutionary trajectory relative to the frozen reference frame, all metrics emit their delta from Baseline Anchor $E_0 = \text{Epoch } 73$:
+
+$$\Delta M(t) = M(t) - M(E_0)$$
+
+* Positive $\Delta\text{TAI}$ indicates improving trust predictability.
+* $\Delta\text{GDI} \approx 0.000$ indicates ontological stability.
+* Negative $\Delta\text{Gini}$ indicates progressive decentralization.
+* $\Delta WSR \ge 0.0\%$ indicates sustainable participant retention.
+
+---
+
+## 🗄️ 5. Sampling Frequencies & Retention Rules
+
+| Pipeline | Metric | Sampling Frequency | Buffer Storage | Retention Period |
+| :--- | :--- | :--- | :--- | :--- |
+| **Neo4j Parity Sweep** | $\text{GDI}$ | Every 14 seconds | Microsecond ring buffer | 90 days rolling in Valkey; Permanent epoch anchors |
+| **Web3 Settlement Logs** | $\text{TAI}$, Gas Cap | Block-by-block (~250ms) | Valkey ZSET spatial index | Permanent on Arbitrum & Base ledgers |
+| **Governance Ledger** | Gini, Defect Rate | Per proposal settlement | Valkey SSOT + Git record | Permanent immutable history |
+| **Consent Matrix** | Policy customization | Real-time event hooks | Valkey hash map | 365 days rolling |
+| **Stratum-5D Pool** | $\eta_{NPU}, UWCR, WSR$ | Every verified PoUW share | Valkey `stratum:stats` | 90 days rolling time-series |
+
+---
+
+## 🔍 6. Independent Epistemic Audit Procedures
+
+Any independent researcher or external node may verify the integrity of the Observatory through the following 3-step audit procedure:
+
+### Step 1: Raw Telemetry Verification
+Execute an unauthenticated HTTP GET request against the empirical metrics endpoint:
+```bash
+curl -s https://spacebook.university/api/v1/metrics/empirical | jq .
+```
+Verify that:
+1. `baseline_epoch.epoch_id` matches `73`.
+2. `observability_coverage_index.oci_score` satisfies $\ge 80.0\%$.
+3. All confidence intervals contain the point estimate.
+
+### Step 2: On-Chain Settlement Cross-Check
+Query Arbitrum One and Base Mainnet RPC nodes for verified SSOT addresses:
+* `LionAtomicArbitrage.sol`: `0x82E34fc8957CBaAF799e130b0D035f548a92dfFb`
+* `AerodromeResidueHarvester.sol`: `0xA634373616c7c9BAbbED5C1c39030dd3abec4bC8`
+Confirm that reported gas expenditures and balance caches match on-chain event logs within $\pm 0.0001\text{ ETH}$.
+
+### Step 3: Zero-Synthetic Purity Audit (Rule 8)
+Audit the published source code in `https://github.com/thealanphipps-del/spacebook.university` for prohibited synthetic simulation words (`random`, `synthesized`, `assume`, `guess`, `falsify`, `preweighted`, `inferred`). Ensure that 100% of telemetry derives from active hardware and blockchain RPC filters.
