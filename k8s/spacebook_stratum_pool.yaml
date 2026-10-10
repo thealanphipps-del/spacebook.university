@@ -1,0 +1,80 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spacebook-stratum-pool
+  namespace: apex-cortex
+  labels:
+    app: spacebook-stratum-pool
+    tier: distributed-supercomputer
+    track: spu-d2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: spacebook-stratum-pool
+  template:
+    metadata:
+      labels:
+        app: spacebook-stratum-pool
+        tier: distributed-supercomputer
+        track: spu-d2
+    spec:
+      containers:
+      - name: stratum-server
+        image: python:3.11-slim
+        imagePullPolicy: IfNotPresent
+        command: ["python", "/app/stratum_5d_server.py"]
+        env:
+        - name: STRATUM_5D_HOST
+          value: "0.0.0.0"
+        - name: STRATUM_5D_PORT
+          value: "3335"
+        - name: STRATUM_5D_TELEMETRY_PORT
+          value: "3337"
+        - name: VALKEY_HOST
+          value: "valkey"
+        - name: VALKEY_PORT
+          value: "6379"
+        - name: VALKEY_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: apex-secrets
+              key: VALKEY_PASSWORD
+        ports:
+        - name: stratum-tcp
+          containerPort: 3335
+          protocol: TCP
+        - name: telemetry-http
+          containerPort: 3337
+          protocol: TCP
+        volumeMounts:
+        - name: code-volume
+          mountPath: /app/stratum_5d_server.py
+          subPath: stratum_5d_server.py
+      volumes:
+      - name: code-volume
+        configMap:
+          name: spacebook-stratum-code
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: spacebook-stratum-svc
+  namespace: apex-cortex
+  labels:
+    app: spacebook-stratum-pool
+spec:
+  type: NodePort
+  selector:
+    app: spacebook-stratum-pool
+  ports:
+  - name: stratum-tcp
+    port: 3335
+    targetPort: 3335
+    nodePort: 30335
+    protocol: TCP
+  - name: telemetry-http
+    port: 3337
+    targetPort: 3337
+    nodePort: 30337
+    protocol: TCP
