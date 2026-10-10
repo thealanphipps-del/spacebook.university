@@ -1,12 +1,12 @@
-# 🎓 Spacebook.University (SPU)
+# 🎓 Space.University (SPU)
 ### Sovereign Research Institution for Empirical Attention Governance, Personal Sovereignty & Distributed Edge Supercomputing
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Status: Phase I Empirical](https://img.shields.io/badge/Status-Phase%20I%20Empirical-success.svg)]()
 [![Baseline Anchor: Epoch 73](https://img.shields.io/badge/Baseline%20Anchor-Epoch%2073-orange.svg)]()
-[![Public Observatory](https://img.shields.io/badge/Public%20Observatory-spacebook.university-purple.svg)](https://spacebook.university/)
+[![Public Observatory](https://img.shields.io/badge/Public%20Observatory-space.university-purple.svg)](https://space.university/)
 
-**Spacebook.University** is an open scientific research institution dedicated to the empirical measurement of decentralized attention sovereignty, contribution-based governance, and mobile edge supercomputing.
+**Space.University** is an open scientific research institution dedicated to the empirical measurement of decentralized attention sovereignty, contribution-based governance, and mobile edge supercomputing.
 
 ---
 
@@ -39,7 +39,7 @@ graph TD
     end
 
     subgraph Layer4 ["Layer 4: Public Observatory & Implementation"]
-        OBS["Public Observatory (spacebook.university)"]
+        OBS["Public Observatory (space.university)"]
         ANDROID["Spacebook Android Edge Node (StrongBox HSM)"]
         STRATUM["Stratum-5D PoUW Engine (:3335 / :3337)"]
     end
@@ -139,4 +139,4 @@ cd android
 ## ⚖️ Governance & License
 
 All scientific research and specifications are released under the **MIT License**.  
-Governed under the sovereign constitutional protocol of Spacebook.University.
+Governed under the sovereign constitutional protocol of Space.University.

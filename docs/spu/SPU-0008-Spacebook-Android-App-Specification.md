@@ -187,7 +187,7 @@ Convened on 2026-10-10 between four distinct sovereign AI architectures:
 
 ## 🏛️ Ratification & Consensus Record
 
-This specification is ratified by the Multi-Agent Council as the authoritative blueprint for Android development across `spacebook.university` and `predator.run`.
+This specification is ratified by the Multi-Agent Council as the authoritative blueprint for Android development across `space.university` and `predator.run`.
 
 * **Qwen3-Coder-Next:** *Approved — Production architecture and StrongBox isolation validated.*
 * **Gemma4-E4B:** *Approved — Edge NPU runtime and thermal governance validated.*

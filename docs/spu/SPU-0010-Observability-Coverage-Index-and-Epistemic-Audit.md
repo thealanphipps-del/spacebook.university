@@ -13,7 +13,7 @@
 
 The integrity of an empirical research institution rests entirely upon the auditability of its measurement apparatus. A dashboard that displays ungrounded figures or unverified averages is not an observatory; it is a public relations instrument.
 
-SPU-0010 establishes the **formal methodology, data provenance rules, statistical estimators, and verification procedures** governing the Spacebook.University Public Observatory (`https://spacebook.university/`). It guarantees that:
+SPU-0010 establishes the **formal methodology, data provenance rules, statistical estimators, and verification procedures** governing the Space.University Public Observatory (`https://space.university/`). It guarantees that:
 1. Every reported metric traces back to a cryptographic or hardware sensor source.
 2. Every point estimate is accompanied by sample size, moving averages, and 95% confidence intervals.
 3. Every observation is evaluated longitudinally against the frozen Baseline Anchor ($E_0 = \text{Epoch } 73$).
@@ -42,7 +42,7 @@ graph TD
     end
 
     subgraph PublicEgress ["Public Ingress & Research Surface"]
-        OBSERVATORY["Public Observatory (spacebook.university)"]
+        OBSERVATORY["Public Observatory (space.university)"]
         API_METRICS["REST API (/api/v1/metrics/empirical)"]
         API_DOCS["REST API (/api/v1/spu/docs)"]
     end
@@ -153,7 +153,7 @@ Any independent researcher or external node may verify the integrity of the Obse
 ### Step 1: Raw Telemetry Verification
 Execute an unauthenticated HTTP GET request against the empirical metrics endpoint:
 ```bash
-curl -s https://spacebook.university/api/v1/metrics/empirical | jq .
+curl -s https://space.university/api/v1/metrics/empirical | jq .
 ```
 Verify that:
 1. `baseline_epoch.epoch_id` matches `73`.
