@@ -74,6 +74,7 @@ graph TD
 * **[SPU-0007: Empirical Metrics and Validation Framework](docs/spu/SPU-0007-Experimental-Metrics-Validation-Framework.md)**
 * **[SPU-0008: Spacebook Mobile Edge Node Android Specification](docs/spu/SPU-0008-Spacebook-Android-App-Specification.md)**
 * **[SPU-0009: Stratum-5D Distributed Supercomputer Research Track](docs/spu/SPU-0009-Distributed-Supercomputer-Stratum-5D-Research-Track.md)**
+* **[SPU-D2: Division of Distributed Intelligence Charter & Hypotheses](docs/spu/SPU-D2-Division-of-Distributed-Intelligence.md)**
 * **[Master Autodoc: Distributed Supercomputer & Android App Specification](docs/AUTODOC_SPACEBOOK_5D_DISTRIBUTED_SUPERCOMPUTER.md)**
 
 ---
