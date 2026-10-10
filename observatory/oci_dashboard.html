@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SPU Observatory - OCI Dashboard & Swipe Navigator</title>
+
+<style>
+:root{
+    --bg:#0b1220;
+    --panel:#111a2e;
+    --panel-alt:#17233f;
+    --border:#28406f;
+    --text:#e8edf7;
+    --muted:#9fb0d1;
+    --green:#22c55e;
+    --blue:#3b82f6;
+    --amber:#f59e0b;
+    --red:#ef4444;
+    --cyan:#06b6d4;
+}
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:Inter,Segoe UI,system-ui,sans-serif;
+    padding:24px;
+}
+
+.container{
+    max-width:1400px;
+    margin:auto;
+}
+
+.header{
+    margin-bottom:24px;
+}
+
+.header h1{
+    font-size:2rem;
+    margin-bottom:8px;
+}
+
+.subtitle{
+    color:var(--muted);
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:20px;
+}
+
+.card{
+    background:var(--panel);
+    border:1px solid var(--border);
+    border-radius:16px;
+    padding:20px;
+}
+
+.card h2{
+    font-size:1rem;
+    margin-bottom:16px;
+}
+
+.metric{
+    display:flex;
+    justify-content:space-between;
+    padding:8px 0;
+    border-bottom:1px solid rgba(255,255,255,.05);
+}
+
+.metric:last-child{
+    border-bottom:none;
+}
+
+.big{
+    font-size:2.8rem;
+    font-weight:700;
+    color:var(--green);
+}
+
+.delta{
+    color:var(--green);
+    font-weight:600;
+}
+
+.badge{
+    display:inline-block;
+    padding:6px 12px;
+    border-radius:999px;
+    font-size:.75rem;
+    font-weight:700;
+    margin-top:8px;
+}
+
+.badge-green{
+    background:rgba(34,197,94,.15);
+    color:var(--green);
+}
+
+.sparkline-container{
+    margin-top:18px;
+}
+
+.sparkline{
+    display:flex;
+    gap:8px;
+    font-size:2.2rem;
+    color:var(--cyan);
+    line-height:1;
+    font-family:monospace;
+    align-items:flex-end;
+}
+
+.spark-point{
+    position:relative;
+    cursor:pointer;
+    user-select:none;
+    -webkit-tap-highlight-color:transparent;
+    padding:4px;
+    border-radius:6px;
+    transition:all .15s ease;
+    outline:none;
+}
+
+.spark-point:hover, .spark-point:focus{
+    transform:translateY(-4px) scale(1.2);
+    color:#7dd3fc;
+    text-shadow:0 0 12px rgba(56,189,248,.8);
+    background:rgba(56,189,248,.1);
+}
+
+.spark-point.active{
+    color:#38bdf8;
+    transform:translateY(-4px) scale(1.25);
+    text-shadow:0 0 15px rgba(56,189,248,.9);
+    border-bottom:2px solid #38bdf8;
+}
+
+.epoch-card{
+    margin-top:14px;
+    padding:14px;
+    background:#17233f;
+    border-radius:12px;
+    border:1px solid #28406f;
+    touch-action:pan-x;
+    position:relative;
+}
+
+.epoch-card::after{
+    content:"◀ Swipe or Click Epoch Nodes ▶";
+    display:block;
+    color:#9fb0d1;
+    font-size:.72rem;
+    margin-top:10px;
+    text-align:center;
+    letter-spacing:0.05em;
+}
+
+.spark-tooltip{
+    min-width:220px;
+    max-width:290px;
+    position:fixed;
+    z-index:9999;
+    background:#0f172a;
+    border:1px solid #334155;
+    border-radius:12px;
+    padding:12px 14px;
+    box-shadow:0 10px 30px rgba(0,0,0,.55);
+    transform:translateY(4px);
+    opacity:0;
+    transition:opacity .15s ease, transform .15s ease;
+    pointer-events:none;
+    color:#e5e7eb;
+    font-size:.85rem;
+    line-height:1.5;
+    backdrop-filter:blur(14px);
+}
+
+.spark-tooltip.visible{
+    opacity:1;
+    transform:translateY(0);
+}
+
+.longitudinal{
+    margin-top:24px;
+}
+
+.table{
+    width:100%;
+    overflow-x:auto;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+th{
+    text-align:left;
+    background:var(--panel-alt);
+}
+
+th,td{
+    padding:12px;
+    border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.status-good{
+    color:var(--green);
+    font-weight:600;
+}
+
+.status-neutral{
+    color:var(--blue);
+    font-weight:600;
+}
+
+.oci-breakdown{
+    margin-top:24px;
+}
+
+.progress{
+    width:100%;
+    height:10px;
+    border-radius:999px;
+    background:#1c2d4f;
+    overflow:hidden;
+}
+
+.progress > span{
+    display:block;
+    height:100%;
+    background:linear-gradient(
+        90deg,
+        var(--blue),
+        var(--green)
+    );
+}
+
+.epistemic-stack{
+    margin-top:24px;
+    padding:16px;
+    border:1px solid rgba(59,130,246,.3);
+    border-radius:12px;
+    text-align:center;
+    line-height:1.9;
+    background:rgba(23,35,63,.6);
+}
+
+@media(max-width:768px){
+    body{ padding:12px; }
+    .big{ font-size:2rem; }
+    table{ font-size:.85rem; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="header">
+        <h1>📈 SPU Observatory</h1>
+        <div class="subtitle">
+            Epoch 73 Baseline • Longitudinal Research Dashboard
+        </div>
+    </div>
+
+    <div class="grid">
+
+        <!-- OCI CARD WITH SWIPE NAVIGATOR -->
+
+        <div class="card">
+
+            <h2>Observability Coverage Index (OCI)</h2>
+
+            <div class="big">91.2%</div>
+
+            <div class="delta">
+                ΔOCI +4.7%
+            </div>
+
+            <span class="badge badge-green">
+                HEALTHY COVERAGE
+            </span>
+
+            <div class="metric">
+                <span>Baseline Epoch</span>
+                <strong>E₀ = 73</strong>
+            </div>
+
+            <div class="metric">
+                <span>Baseline OCI</span>
+                <strong>86.5%</strong>
+            </div>
+
+            <div class="metric">
+                <span>Blind Spots</span>
+                <strong>0</strong>
+            </div>
+
+            <div class="metric">
+                <span>Instrumented Assumptions</span>
+                <strong>11 / 12</strong>
+            </div>
+
+            <div class="sparkline-container">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+                    <span style="font-size:0.75rem; color:var(--muted); text-transform:uppercase;">OCI Trend (E73 → E78)</span>
+                    <span style="font-size:0.7rem; color:var(--cyan); font-family:monospace;">◀ Swipe Epochs ▶</span>
+                </div>
+                <div class="sparkline">
+                    <span class="spark-point" data-index="0" data-epoch="73" data-value="86.5" data-delta="+0.0" data-status="BASELINE (E₀)" data-assumptions="11 / 12" data-blindspots="0"> </span>
+                    <span class="spark-point" data-index="1" data-epoch="74" data-value="87.2" data-delta="+0.7" data-status="IMPROVING" data-assumptions="11 / 12" data-blindspots="0">▂</span>
+                    <span class="spark-point" data-index="2" data-epoch="75" data-value="88.1" data-delta="+1.6" data-status="IMPROVING" data-assumptions="11 / 12" data-blindspots="0">▃</span>
+                    <span class="spark-point" data-index="3" data-epoch="76" data-value="89.4" data-delta="+2.9" data-status="IMPROVING" data-assumptions="11 / 12" data-blindspots="0">▄</span>
+                    <span class="spark-point" data-index="4" data-epoch="77" data-value="90.5" data-delta="+4.0" data-status="IMPROVING" data-assumptions="11 / 12" data-blindspots="0">▆</span>
+                    <span class="spark-point active" data-index="5" data-epoch="78" data-value="91.2" data-delta="+4.7" data-status="HEALTHY_COVERAGE" data-assumptions="11 / 12" data-blindspots="0">█</span>
+                </div>
+
+                <div class="epoch-card" id="epochCard">
+                    <!-- Populated by JavaScript -->
+                </div>
+            </div>
+
+        </div>
+
+        <!-- META PANEL -->
+
+        <div class="card">
+
+            <h2>Epistemic Health Stack</h2>
+
+            <div class="epistemic-stack">
+
+                Reality Quality<br>
+                <strong>GDI (Δ +0.000)</strong>
+
+                <br>↓<br>
+
+                Trust Quality<br>
+                <strong>TAI (Δ +0.004)</strong>
+
+                <br>↓<br>
+
+                Measurement Quality<br>
+                <strong>OCI (Δ +4.7%)</strong>
+
+            </div>
+
+            <div style="margin-top:16px; font-size:.78rem; color:var(--muted); line-height:1.6;">
+                <strong>SPU-0010 Audit Triggers:</strong><br>
+                • OCI &ge; 80%: <code>HEALTHY_COVERAGE</code><br>
+                • OCI 60-80%: <code>CAUTION</code><br>
+                • OCI &lt; 60%: <code>EPISTEMIC_RISK</code><br>
+                • ΔOCI &lt; 0 for 3 epochs: <code>Mandatory Epistemic Audit</code><br>
+                • ΔOCI &le; -10%: <code>Constitutional Review Trigger</code>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- DELTA TABLE -->
+
+    <div class="card longitudinal">
+
+        <h2>Longitudinal Delta Tracking</h2>
+
+        <div class="table">
+
+            <table>
+
+                <thead>
+                <tr>
+                    <th>Metric</th>
+                    <th>Baseline</th>
+                    <th>Current</th>
+                    <th>Δ</th>
+                    <th>Trend</th>
+                    <th>Status</th>
+                </tr>
+                </thead>
+
+                <tbody>
+
+                <tr>
+                    <td>GDI</td>
+                    <td>0.000</td>
+                    <td>0.000</td>
+                    <td>+0.000</td>
+                    <td>▄▄▄▄▄▄</td>
+                    <td class="status-neutral">STABLE</td>
+                </tr>
+
+                <tr>
+                    <td>TAI</td>
+                    <td>0.982</td>
+                    <td>0.986</td>
+                    <td>+0.004</td>
+                    <td>▅▅▆▆▇█</td>
+                    <td class="status-good">IMPROVING</td>
+                </tr>
+
+                <tr>
+                    <td>Gini</td>
+                    <td>0.220</td>
+                    <td>0.210</td>
+                    <td>-0.010</td>
+                    <td>█▇▆▅▄▃</td>
+                    <td class="status-good">ANTI-CAPTURE</td>
+                </tr>
+
+                <tr>
+                    <td>Policy</td>
+                    <td>100%</td>
+                    <td>100%</td>
+                    <td>+0.0%</td>
+                    <td>██████</td>
+                    <td class="status-neutral">STABLE</td>
+                </tr>
+
+                <tr>
+                    <td>ηNPU</td>
+                    <td>18.4</td>
+                    <td>20.2</td>
+                    <td>+1.8</td>
+                    <td>▂▃▄▅▇█</td>
+                    <td class="status-good">IMPROVING</td>
+                </tr>
+
+                <tr>
+                    <td><strong>OCI</strong></td>
+                    <td><strong>86.5%</strong></td>
+                    <td><strong>91.2%</strong></td>
+                    <td class="delta"><strong>+4.7%</strong></td>
+                    <td><strong>▂▃▄▆▇█</strong></td>
+                    <td class="status-good"><strong>IMPROVING</strong></td>
+                </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+    <!-- BREAKDOWN -->
+
+    <div class="card oci-breakdown">
+
+        <h2>OCI Domain Coverage Breakdown</h2>
+
+        <br>
+
+        <p>Reality Alignment (100%)</p>
+        <div class="progress"><span style="width:100%"></span></div>
+
+        <br>
+
+        <p>Trust Predictability (100%)</p>
+        <div class="progress"><span style="width:100%"></span></div>
+
+        <br>
+
+        <p>Governance Efficacy (100%)</p>
+        <div class="progress"><span style="width:100%"></span></div>
+
+        <br>
+
+        <p>Consent & Sovereignty (100%)</p>
+        <div class="progress"><span style="width:100%"></span></div>
+
+        <br>
+
+        <p>Edge Compute (100%)</p>
+        <div class="progress"><span style="width:100%"></span></div>
+
+        <br>
+
+        <p>Worker Survival (85%)</p>
+        <div class="progress"><span style="width:85%"></span></div>
+
+        <br>
+
+        <p>Federated Learning (75%)</p>
+        <div class="progress"><span style="width:75%"></span></div>
+
+        <br>
+
+        <p>Research Quality (60%)</p>
+        <div class="progress"><span style="width:60%"></span></div>
+
+        <br>
+
+        <p>Institutional Memory (40%)</p>
+        <div class="progress"><span style="width:40%"></span></div>
+
+    </div>
+
+</div>
+
+<div id="spark-tooltip" class="spark-tooltip"></div>
+
+<script>
+// OCI Epochs Dataset & Swipe Navigator
+const ociEpochs = [
+    { epoch: 73, oci: 86.5, delta: "0.0", tier: "HEALTHY", blind: 0, assumptions: "11 / 12", gdi: "0.000", tai: "0.982", gini: "0.220", npu: "18.4", wsr: "88.5%" },
+    { epoch: 74, oci: 87.2, delta: "0.7", tier: "HEALTHY", blind: 0, assumptions: "11 / 12", gdi: "0.000", tai: "0.983", gini: "0.218", npu: "18.7", wsr: "88.5%" },
+    { epoch: 75, oci: 88.1, delta: "1.6", tier: "HEALTHY", blind: 0, assumptions: "11 / 12", gdi: "0.000", tai: "0.984", gini: "0.215", npu: "19.1", wsr: "88.5%" },
+    { epoch: 76, oci: 89.4, delta: "2.9", tier: "HEALTHY", blind: 0, assumptions: "11 / 12", gdi: "0.000", tai: "0.985", gini: "0.213", npu: "19.6", wsr: "88.5%" },
+    { epoch: 77, oci: 90.5, delta: "4.0", tier: "HEALTHY", blind: 0, assumptions: "11 / 12", gdi: "0.000", tai: "0.985", gini: "0.211", npu: "19.9", wsr: "88.5%" },
+    { epoch: 78, oci: 91.2, delta: "4.7", tier: "HEALTHY", blind: 0, assumptions: "11 / 12", gdi: "0.000", tai: "0.986", gini: "0.210", npu: "20.2", wsr: "88.5%" }
+];
+
+let currentEpochIndex = ociEpochs.length - 1;
+const epochCard = document.getElementById("epochCard");
+
+function renderEpoch(index) {
+    if (!epochCard) return;
+    currentEpochIndex = index;
+    const e = ociEpochs[index];
+
+    // Update active highlight on spark points
+    document.querySelectorAll(".spark-point").forEach((pt, i) => {
+        if (i === index) pt.classList.add("active");
+        else pt.classList.remove("active");
+    });
+
+    epochCard.innerHTML = `
+        <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:6px; margin-bottom:8px;">
+            <strong style="color:#38bdf8; font-size:1rem; font-family:monospace;">Epoch ${e.epoch}</strong>
+            <span style="background:rgba(34,197,94,0.15); color:#22c55e; border:1px solid #22c55e; font-size:0.65rem; padding:2px 8px; border-radius:999px; font-weight:700;">${e.tier}</span>
+        </div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:6px; font-size:0.8rem;">
+            <div><span style="color:#9fb0d1;">OCI:</span> <strong style="color:#f1f5f9; font-family:monospace;">${e.oci}%</strong></div>
+            <div><span style="color:#9fb0d1;">ΔOCI:</span> <strong style="color:#22c55e; font-family:monospace;">+${e.delta}%</strong></div>
+            <div><span style="color:#9fb0d1;">Instrumented:</span> <strong style="color:#38bdf8; font-family:monospace;">${e.assumptions}</strong></div>
+            <div><span style="color:#9fb0d1;">Blind Spots:</span> <strong style="color:#22c55e; font-family:monospace;">${e.blind}</strong></div>
+            <div><span style="color:#9fb0d1;">GDI:</span> <strong style="color:#22c55e; font-family:monospace;">${e.gdi}</strong></div>
+            <div><span style="color:#9fb0d1;">TAI:</span> <strong style="color:#a855f7; font-family: monospace;">${e.tai}</strong></div>
+        </div>
+    `;
+}
+
+renderEpoch(currentEpochIndex);
+
+// Tap/Click Selection on Points
+document.querySelectorAll(".spark-point").forEach(point => {
+    point.addEventListener("click", () => {
+        const idx = parseInt(point.dataset.index);
+        if (!isNaN(idx)) renderEpoch(idx);
+    });
+});
+
+// Touch Swipe Support on epochCard
+let touchStartX = 0;
+let touchEndX = 0;
+
+if (epochCard) {
+    epochCard.addEventListener("touchstart", e => {
+        touchStartX = e.changedTouches[0].clientX;
+    }, { passive: true });
+
+    epochCard.addEventListener("touchend", e => {
+        touchEndX = e.changedTouches[0].clientX;
+        const delta = touchEndX - touchStartX;
+        if (delta < -40) {
+            // Swipe left -> advance epoch
+            if (currentEpochIndex < ociEpochs.length - 1) {
+                renderEpoch(currentEpochIndex + 1);
+            }
+        } else if (delta > 40) {
+            // Swipe right -> rewind epoch
+            if (currentEpochIndex > 0) {
+                renderEpoch(currentEpochIndex - 1);
+            }
+        }
+    }, { passive: true });
+}
+
+// Hover Tooltip Handler for Desktop
+const tooltip = document.getElementById("spark-tooltip");
+let activePoint = null;
+
+function showTooltip(point, x, y) {
+    const epoch = point.dataset.epoch || "73";
+    const value = point.dataset.value || "86.5";
+    const delta = point.dataset.delta || "+0.0";
+    const status = point.dataset.status || "IMPROVING";
+    const assumptions = point.dataset.assumptions || "11 / 12";
+    const blindspots = point.dataset.blindspots || "0";
+
+    tooltip.innerHTML = `
+        <div style="font-weight:700; color:#38bdf8; margin-bottom:6px; font-size:0.9rem; border-bottom:1px solid rgba(255,255,255,0.1); padding-bottom:4px;">
+            📈 Epoch ${epoch}
+        </div>
+        <div style="display:flex; justify-content:space-between; margin-bottom:3px;"><span style="color:#94a3b8;">OCI:</span> <strong>${value}%</strong></div>
+        <div style="display:flex; justify-content:space-between; margin-bottom:3px;"><span style="color:#94a3b8;">ΔOCI:</span> <strong style="color:#22c55e;">${delta}%</strong></div>
+        <div style="display:flex; justify-content:space-between; margin-bottom:3px;"><span style="color:#94a3b8;">Coverage Tier:</span> <strong style="color:#22c55e;">HEALTHY</strong></div>
+        <div style="display:flex; justify-content:space-between; margin-bottom:3px;"><span style="color:#94a3b8;">Instrumented:</span> <strong style="color:#38bdf8;">${assumptions}</strong></div>
+        <div style="display:flex; justify-content:space-between; margin-bottom:3px;"><span style="color:#94a3b8;">Blind Spots:</span> <strong style="color:#22c55e;">${blindspots}</strong></div>
+        <div style="display:flex; justify-content:space-between; margin-top:6px; padding-top:4px; border-top:1px solid rgba(255,255,255,0.08);"><span style="color:#94a3b8;">Status:</span> <strong style="color:#38bdf8;">${status}</strong></div>
+    `;
+
+    const tipWidth = 240;
+    let left = x + 16;
+    let top = y - 24;
+    if (left + tipWidth > window.innerWidth) left = window.innerWidth - tipWidth - 16;
+    if (top < 10) top = y + 24;
+
+    tooltip.style.left = `${Math.max(10, left)}px`;
+    tooltip.style.top = `${Math.max(10, top)}px`;
+    tooltip.classList.add("visible");
+    activePoint = point;
+}
+
+function hideTooltip() {
+    tooltip.classList.remove("visible");
+    activePoint = null;
+}
+
+document.querySelectorAll(".spark-point").forEach(point => {
+    /* Desktop Hover */
+    point.addEventListener("mousemove", e => {
+        showTooltip(point, e.clientX, e.clientY);
+    });
+
+    point.addEventListener("mouseleave", () => {
+        if (!('ontouchstart' in window)) {
+            hideTooltip();
+        }
+    });
+
+    /* Keyboard Accessibility */
+    point.setAttribute("tabindex", "0");
+    point.addEventListener("focus", () => {
+        const rect = point.getBoundingClientRect();
+        showTooltip(point, rect.left + rect.width / 2, rect.top);
+        const idx = parseInt(point.dataset.index);
+        if (!isNaN(idx)) renderEpoch(idx);
+    });
+    point.addEventListener("blur", hideTooltip);
+});
+
+/* Tap anywhere else */
+document.addEventListener("click", e => {
+    if (!e.target.closest(".spark-point") && !e.target.closest(".spark-tooltip")) {
+        hideTooltip();
+    }
+});
+
+/* Escape key */
+document.addEventListener("keydown", e => {
+    if (e.key === "Escape") {
+        hideTooltip();
+    }
+});
+</script>
+
+</body>
+</html>
