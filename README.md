@@ -75,6 +75,7 @@ graph TD
 * **[SPU-0008: Spacebook Mobile Edge Node Android Specification](docs/spu/SPU-0008-Spacebook-Android-App-Specification.md)**
 * **[SPU-0009: Stratum-5D Distributed Supercomputer Research Track](docs/spu/SPU-0009-Distributed-Supercomputer-Stratum-5D-Research-Track.md)**
 * **[SPU-D2: Division of Distributed Intelligence Charter & Hypotheses](docs/spu/SPU-D2-Division-of-Distributed-Intelligence.md)**
+* **[SPU-0010: Observability Coverage Index (OCI) & Epistemic Audit Standard](docs/spu/SPU-0010-Observability-Coverage-Index-and-Epistemic-Audit.md)**
 * **[Master Autodoc: Distributed Supercomputer & Android App Specification](docs/AUTODOC_SPACEBOOK_5D_DISTRIBUTED_SUPERCOMPUTER.md)**
 
 ---
