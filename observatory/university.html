@@ -477,22 +477,29 @@
       transform: translateY(0);
     }
     .epoch-card {
-      margin-top: 14px;
+      margin-top: 16px;
       padding: 14px;
       background: #17233f;
       border-radius: 12px;
       border: 1px solid #28406f;
       touch-action: pan-x;
+      cursor: grab;
+      user-select: none;
+      transition: transform 0.15s ease, border-color 0.2s ease, box-shadow 0.2s ease;
       position: relative;
     }
+    .epoch-card:active {
+      cursor: grabbing;
+    }
     .epoch-card::after {
-      content: "◀ Swipe or Click Epoch Nodes ▶";
+      content: "← Swipe Epochs →";
       display: block;
       color: #9fb0d1;
-      font-size: .72rem;
+      font-size: .75rem;
       margin-top: 10px;
       text-align: center;
       letter-spacing: 0.05em;
+      font-family: monospace;
     }
     .spark-point.active {
       color: #38bdf8;
@@ -691,22 +698,62 @@
 
         <!-- SPU Observatory ΔOCI Dashboard & Epistemic Health Stack -->
         <div style="margin-bottom: 2.5rem;">
+
+          <!-- EPISTEMIC HEALTH TRIAD BANNER -->
+          <div style="background: rgba(17, 26, 46, 0.95); border: 1px solid #38bdf8; border-radius: 14px; padding: 16px 20px; margin-bottom: 20px; box-shadow: 0 10px 25px rgba(56, 189, 248, 0.1);">
+            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 10px; margin-bottom: 12px; flex-wrap: wrap; gap: 8px;">
+              <div style="font-weight: 800; font-size: 0.95rem; color: #38bdf8; letter-spacing: 0.05em; display: flex; align-items: center; gap: 8px;">
+                <span>🧭 EPISTEMIC HEALTH TRIAD</span>
+                <span style="font-size: 0.7rem; background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid #38bdf8; padding: 2px 8px; border-radius: 12px; font-weight: 600;">FOUNDATIONAL RIGOR</span>
+              </div>
+              <div style="font-size: 0.75rem; color: #94a3b8; font-family: monospace;">
+                OCI Trend: <span style="color: #38bdf8; font-size: 1.1rem; letter-spacing: 2px;"> ▂▃▄▆▇█</span> &bull; Baseline: <strong style="color: #cbd5e1;">86.5%</strong> &bull; Current: <strong style="color: #22c55e;">91.2%</strong> &bull; ΔOCI: <strong style="color: #22c55e;">+4.7%</strong>
+              </div>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px;">
+              <div style="padding: 10px 14px; background: rgba(34, 197, 94, 0.08); border-left: 3px solid #22c55e; border-radius: 6px;">
+                <div style="font-size: 0.75rem; color: #94a3b8; text-transform: uppercase;">Reality Quality</div>
+                <div style="display: flex; justify-content: space-between; align-items: baseline; margin-top: 2px;">
+                  <strong style="color: #22c55e; font-size: 1.1rem; font-family: monospace;">→ GDI (0.000)</strong>
+                  <span style="font-size: 0.7rem; color: #22c55e; font-weight: 600;">Zero Drift</span>
+                </div>
+                <div style="font-size: 0.7rem; color: #94a3b8; margin-top: 3px;">Measures correspondence between graph & on-chain reality.</div>
+              </div>
+              <div style="padding: 10px 14px; background: rgba(168, 85, 247, 0.08); border-left: 3px solid #a855f7; border-radius: 6px;">
+                <div style="font-size: 0.75rem; color: #94a3b8; text-transform: uppercase;">Trust Quality</div>
+                <div style="display: flex; justify-content: space-between; align-items: baseline; margin-top: 2px;">
+                  <strong style="color: #a855f7; font-size: 1.1rem; font-family: monospace;">→ TAI (0.986)</strong>
+                  <span style="font-size: 0.7rem; color: #a855f7; font-weight: 600;">Δ +0.004 Aligned</span>
+                </div>
+                <div style="font-size: 0.7rem; color: #94a3b8; margin-top: 3px;">Measures reputation capital predictability.</div>
+              </div>
+              <div style="padding: 10px 14px; background: rgba(56, 189, 248, 0.08); border-left: 3px solid #38bdf8; border-radius: 6px;">
+                <div style="font-size: 0.75rem; color: #94a3b8; text-transform: uppercase;">Measurement Quality</div>
+                <div style="display: flex; justify-content: space-between; align-items: baseline; margin-top: 2px;">
+                  <strong style="color: #38bdf8; font-size: 1.1rem; font-family: monospace;">→ OCI (91.2%)</strong>
+                  <span style="font-size: 0.7rem; color: #38bdf8; font-weight: 600;">95% CI [89.4%, 92.7%]</span>
+                </div>
+                <div style="font-size: 0.7rem; color: #94a3b8; margin-top: 3px;">Measures change in institutional observability.</div>
+              </div>
+            </div>
+          </div>
+
           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; margin-bottom: 20px;">
             
             <!-- OCI CARD -->
             <div style="background: rgba(17, 26, 46, 0.95); border: 1px solid #28406f; border-radius: 16px; padding: 22px; box-shadow: 0 10px 25px rgba(0,0,0,0.4);">
               <h2 style="font-size: 1.05rem; font-weight: 700; color: #e8edf7; margin-bottom: 12px; display: flex; align-items: center; justify-content: space-between;">
                 <span>📈 Observability Coverage Index (OCI)</span>
-                <span style="font-size: 0.7rem; background: rgba(34,197,94,0.15); color: #22c55e; border: 1px solid #22c55e; padding: 3px 10px; border-radius: 999px; font-weight: 700;">HEALTHY COVERAGE</span>
+                <span id="ociCoverageTierBadge" style="font-size: 0.7rem; background: rgba(34,197,94,0.15); color: #22c55e; border: 1px solid #22c55e; padding: 3px 10px; border-radius: 999px; font-weight: 700;">HEALTHY COVERAGE</span>
               </h2>
               <div style="display: flex; align-items: baseline; gap: 14px; margin-bottom: 8px;">
-                <div style="font-size: 2.8rem; font-weight: 800; color: #22c55e; line-height: 1;">91.2%</div>
-                <div style="font-size: 1.25rem; font-weight: 700; color: #22c55e; font-family: monospace;">ΔOCI +4.7%</div>
+                <div id="ociMetricDisplay" style="font-size: 2.8rem; font-weight: 800; color: #22c55e; line-height: 1;">91.2%</div>
+                <div id="ociDeltaDisplay" style="font-size: 1.25rem; font-weight: 700; color: #22c55e; font-family: monospace;">ΔOCI +4.7%</div>
               </div>
 
               <div style="display: flex; justify-content: space-between; padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.06); font-size: 0.85rem;">
-                <span style="color: #9fb0d1;">Baseline Epoch</span>
-                <strong style="color: #f1f5f9; font-family: monospace;">E₀ = 73</strong>
+                <span style="color: #9fb0d1;">Baseline Epoch (E₀)</span>
+                <strong style="color: #f1f5f9; font-family: monospace;">73</strong>
               </div>
               <div style="display: flex; justify-content: space-between; padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.06); font-size: 0.85rem;">
                 <span style="color: #9fb0d1;">Baseline OCI</span>
@@ -714,11 +761,15 @@
               </div>
               <div style="display: flex; justify-content: space-between; padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.06); font-size: 0.85rem;">
                 <span style="color: #9fb0d1;">Blind Spots Remaining</span>
-                <strong style="color: #22c55e; font-family: monospace;">0</strong>
+                <strong id="ociBlindSpots" style="color: #22c55e; font-family: monospace;">0</strong>
               </div>
               <div style="display: flex; justify-content: space-between; padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.06); font-size: 0.85rem;">
                 <span style="color: #9fb0d1;">Instrumented Assumptions</span>
-                <strong style="color: #38bdf8; font-family: monospace;">11 / 12</strong>
+                <strong id="ociInstrumented" style="color: #38bdf8; font-family: monospace;">11 / 12</strong>
+              </div>
+              <div style="display: flex; justify-content: space-between; padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.06); font-size: 0.85rem;">
+                <span style="color: #9fb0d1;">95% Confidence Interval (95% CI)</span>
+                <strong id="ociConfidenceDisplay" style="color: #38bdf8; font-family: monospace;">[89.4%, 92.7%]</strong>
               </div>
 
               <div class="sparkline-container" style="margin-top: 16px;">
@@ -727,39 +778,55 @@
                   <span style="font-size: 0.7rem; color: #38bdf8; font-family: monospace;">◀ Swipe Epochs ▶</span>
                 </div>
                 <div class="sparkline" id="ociSparkline">
-                  <span class="spark-point" data-index="0" data-epoch="73" data-value="86.5" data-delta="+0.0" data-status="BASELINE (E₀)" data-assumptions="11 / 12" data-blindspots="0"> </span>
-                  <span class="spark-point" data-index="1" data-epoch="74" data-value="87.2" data-delta="+0.7" data-status="IMPROVING" data-assumptions="11 / 12" data-blindspots="0">▂</span>
-                  <span class="spark-point" data-index="2" data-epoch="75" data-value="88.1" data-delta="+1.6" data-status="IMPROVING" data-assumptions="11 / 12" data-blindspots="0">▃</span>
-                  <span class="spark-point" data-index="3" data-epoch="76" data-value="89.4" data-delta="+2.9" data-status="IMPROVING" data-assumptions="11 / 12" data-blindspots="0">▄</span>
-                  <span class="spark-point" data-index="4" data-epoch="77" data-value="90.5" data-delta="+4.0" data-status="IMPROVING" data-assumptions="11 / 12" data-blindspots="0">▆</span>
-                  <span class="spark-point active" data-index="5" data-epoch="78" data-value="91.2" data-delta="+4.7" data-status="HEALTHY_COVERAGE" data-assumptions="11 / 12" data-blindspots="0">█</span>
+                  <span class="spark-point" data-index="0" data-epoch="73" data-value="86.5" data-delta="+0.0" data-status="BASELINE (E₀)" data-assumptions="11 / 12" data-blindspots="0" data-ci="[84.8%, 88.2%]">▂</span>
+                  <span class="spark-point" data-index="1" data-epoch="74" data-value="87.2" data-delta="+0.7" data-status="IMPROVING" data-assumptions="11 / 12" data-blindspots="0" data-ci="[85.5%, 88.9%]">▃</span>
+                  <span class="spark-point" data-index="2" data-epoch="75" data-value="88.1" data-delta="+1.6" data-status="IMPROVING" data-assumptions="11 / 12" data-blindspots="0" data-ci="[86.3%, 89.9%]">▄</span>
+                  <span class="spark-point" data-index="3" data-epoch="76" data-value="89.4" data-delta="+2.9" data-status="IMPROVING" data-assumptions="11 / 12" data-blindspots="0" data-ci="[87.6%, 91.2%]">▆</span>
+                  <span class="spark-point" data-index="4" data-epoch="77" data-value="90.5" data-delta="+4.0" data-status="IMPROVING" data-assumptions="11 / 12" data-blindspots="0" data-ci="[88.7%, 92.1%]">▇</span>
+                  <span class="spark-point active" data-index="5" data-epoch="78" data-value="91.2" data-delta="+4.7" data-status="HEALTHY_COVERAGE" data-assumptions="11 / 12" data-blindspots="0" data-ci="[89.4%, 92.7%]">█</span>
                 </div>
 
                 <div class="epoch-card" id="epochCard">
-                  <!-- Populated by JavaScript -->
+                  Loading...
                 </div>
               </div>
             </div>
 
-            <!-- META PANEL: EPISTEMIC HEALTH STACK -->
+            <!-- META PANEL: FOUR-TIER OBSERVABILITY & EPISTEMIC HEALTH STACK -->
             <div style="background: rgba(17, 26, 46, 0.95); border: 1px solid #28406f; border-radius: 16px; padding: 22px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 10px 25px rgba(0,0,0,0.4);">
               <div>
                 <h2 style="font-size: 1.05rem; font-weight: 700; color: #e8edf7; margin-bottom: 12px; display: flex; align-items: center; justify-content: space-between;">
-                  <span>🏛️ Epistemic Health Stack</span>
-                  <span style="font-size: 0.7rem; background: rgba(59,130,246,0.15); color: #60a5fa; border: 1px solid #3b82f6; padding: 3px 10px; border-radius: 999px; font-weight: 700;">META-LAYER</span>
+                  <span>🏛️ Four-Tier Observability & Epistemic Stack</span>
+                  <span style="font-size: 0.7rem; background: rgba(59,130,246,0.15); color: #60a5fa; border: 1px solid #3b82f6; padding: 3px 10px; border-radius: 999px; font-weight: 700;">TIERS 0–3</span>
                 </h2>
-                <div style="padding: 16px; border: 1px solid rgba(59,130,246,0.3); border-radius: 12px; text-align: center; line-height: 1.9; background: rgba(23, 35, 63, 0.6); margin-bottom: 14px;">
-                  <div style="font-size: 0.85rem; color: #9fb0d1;">Reality Quality</div>
-                  <div style="font-size: 1.15rem; font-weight: 800; color: #22c55e; font-family: monospace;">↓ GDI (Δ +0.000)</div>
-                  <div style="font-size: 0.85rem; color: #9fb0d1; margin-top: 4px;">Trust Quality</div>
-                  <div style="font-size: 1.15rem; font-weight: 800; color: #a855f7; font-family: monospace;">↓ TAI (Δ +0.004)</div>
-                  <div style="font-size: 0.85rem; color: #9fb0d1; margin-top: 4px;">Measurement Quality</div>
-                  <div style="font-size: 1.15rem; font-weight: 800; color: #38bdf8; font-family: monospace;">↓ OCI (Δ +4.7%)</div>
+                <div style="display: grid; grid-template-columns: 1fr; gap: 8px; margin-bottom: 12px;">
+                  <div style="padding: 8px 12px; background: rgba(56, 189, 248, 0.08); border-left: 3px solid #38bdf8; border-radius: 4px; display: flex; justify-content: space-between; align-items: center;">
+                    <div><strong style="color: #38bdf8; font-size: 0.8rem;">Tier 0 &bull; Meta-Observability:</strong> <span style="font-size: 0.78rem; color: #cbd5e1;">OCI, Blind Spots, Epistemic Accountability</span></div>
+                    <span style="font-family: monospace; font-size: 0.78rem; color: #38bdf8; font-weight: 700;">OCI 91.2% (Δ+4.7%)</span>
+                  </div>
+                  <div style="padding: 8px 12px; background: rgba(34, 197, 94, 0.08); border-left: 3px solid #22c55e; border-radius: 4px; display: flex; justify-content: space-between; align-items: center;">
+                    <div><strong style="color: #22c55e; font-size: 0.8rem;">Tier 1 &bull; Institutional State:</strong> <span style="font-size: 0.78rem; color: #cbd5e1;">GDI (Reality), TAI (Trust Alignment)</span></div>
+                    <span style="font-family: monospace; font-size: 0.78rem; color: #22c55e; font-weight: 700;">GDI 0.000 &bull; TAI 0.986</span>
+                  </div>
+                  <div style="padding: 8px 12px; background: rgba(168, 85, 247, 0.08); border-left: 3px solid #a855f7; border-radius: 4px; display: flex; justify-content: space-between; align-items: center;">
+                    <div><strong style="color: #a855f7; font-size: 0.8rem;">Tier 2 &bull; Operational Domains:</strong> <span style="font-size: 0.78rem; color: #cbd5e1;">Governance, Consent, Compute, D2</span></div>
+                    <span style="font-family: monospace; font-size: 0.78rem; color: #a855f7; font-weight: 700;">Gini 0.210 &bull; η 20.2 tok/W</span>
+                  </div>
+                  <div style="padding: 8px 12px; background: rgba(245, 158, 11, 0.08); border-left: 3px solid #f59e0b; border-radius: 4px; display: flex; justify-content: space-between; align-items: center;">
+                    <div><strong style="color: #f59e0b; font-size: 0.8rem;">Tier 3 &bull; World Simulation:</strong> <span style="font-size: 0.78rem; color: #cbd5e1;">HomeTree, Organisms, Quarks, Qubits, Trits</span></div>
+                    <span style="font-family: monospace; font-size: 0.72rem; color: #f59e0b; font-weight: 700;">Invariant XLVI</span>
+                  </div>
+                </div>
+                <div style="padding: 10px 12px; background: rgba(15, 23, 42, 0.8); border: 1px solid rgba(255,255,255,0.06); border-radius: 8px; font-size: 0.75rem; color: #94a3b8; font-family: monospace; line-height: 1.5;">
+                  <strong style="color: #e2e8f0;">Constitutional Invariant XLVI:</strong> Persist &rarr; Project &rarr; Render<br/>
+                  ├─ <strong style="color: #22c55e;">Fact Layer:</strong> Valkey (authoritative operational state & immutable ticks)<br/>
+                  ├─ <strong style="color: #38bdf8;">Memory Layer:</strong> Neo4j (relational graph of verified causality & lineage)<br/>
+                  └─ <strong style="color: #f59e0b;">Visualization Layer:</strong> Spacebook (5D topological rendering & HUD)
                 </div>
               </div>
-              <div style="border-top: 1px solid rgba(255,255,255,0.08); padding-top: 10px; font-size: 0.75rem; color: #9fb0d1; line-height: 1.6;">
-                <div><strong>Interpretation:</strong> ΔGDI measures reality alignment; ΔTAI measures trust alignment; ΔOCI measures change in institutional observability.</div>
-                <div style="margin-top: 4px; color: #f59e0b;"><strong>SPU-0010 Audit Invariant:</strong> ΔOCI &lt; 0 for 3 epochs triggers Mandatory Epistemic Audit; ΔOCI &le; -10% triggers Constitutional Review.</div>
+              <div style="border-top: 1px solid rgba(255,255,255,0.08); padding-top: 10px; margin-top: 12px; font-size: 0.75rem; color: #9fb0d1; line-height: 1.6;">
+                <div><strong>Nested Accountability:</strong> Reality (GDI) &bull; Trust (TAI) &bull; Epistemic (OCI 95% CI [89.4%, 92.7%]).</div>
+                <div style="margin-top: 4px; color: #f59e0b;"><strong>SPU-0010 Invariant:</strong> ΔOCI &lt; 0 for 3 epochs triggers Mandatory Epistemic Audit; ΔOCI &le; -10% triggers Constitutional Review.</div>
               </div>
             </div>
 
@@ -836,6 +903,76 @@
                   </tr>
                 </tbody>
               </table>
+            </div>
+          </div>
+
+          <!-- EPOCH COMPARISON MODE (HISTORICAL OBSERVATORY) -->
+          <div style="background: rgba(17, 26, 46, 0.95); border: 1px solid #28406f; border-radius: 16px; padding: 22px; margin-bottom: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.4);">
+            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 12px; margin-bottom: 16px; flex-wrap: wrap; gap: 10px;">
+              <div>
+                <h2 style="font-size: 1.1rem; font-weight: 700; color: #e8edf7; display: flex; align-items: center; gap: 8px;">
+                  <span>⏳ Epoch Comparison Mode</span>
+                  <span style="font-size: 0.7rem; background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid #38bdf8; padding: 2px 8px; border-radius: 999px; font-weight: 700;">HISTORICAL OBSERVATORY</span>
+                </h2>
+                <p style="font-size: 0.8rem; color: #9fb0d1; margin-top: 2px;">Compare institutional equilibrium, trust alignment, and compute yield across arbitrary historical epochs.</p>
+              </div>
+              <!-- Preset Buttons -->
+              <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                <button type="button" onclick="setEpochComparison(73, 78)" style="background: rgba(56, 189, 248, 0.1); border: 1px solid #38bdf8; color: #38bdf8; padding: 4px 10px; border-radius: 6px; font-size: 0.75rem; font-family: monospace; cursor: pointer;">Compare E73 ↔ E78 (Full Observation)</button>
+                <button type="button" onclick="setEpochComparison(73, 74)" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.15); color: #cbd5e1; padding: 4px 10px; border-radius: 6px; font-size: 0.75rem; font-family: monospace; cursor: pointer;">E73 ↔ E74</button>
+                <button type="button" onclick="setEpochComparison(77, 78)" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.15); color: #cbd5e1; padding: 4px 10px; border-radius: 6px; font-size: 0.75rem; font-family: monospace; cursor: pointer;">E77 ↔ E78 (Latest Tick)</button>
+              </div>
+            </div>
+
+            <!-- Comparison Selectors -->
+            <div style="display: flex; align-items: center; justify-content: center; gap: 14px; margin-bottom: 16px; flex-wrap: wrap;">
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <label style="font-size: 0.8rem; color: #9fb0d1;">Epoch A:</label>
+                <select id="compareEpochA" onchange="runComparisonFromSelect()" style="background: #17233f; color: #f1f5f9; border: 1px solid #28406f; padding: 4px 10px; border-radius: 6px; font-family: monospace; font-size: 0.85rem;">
+                  <option value="73" selected>Epoch 73 (E₀ Baseline)</option>
+                  <option value="74">Epoch 74</option>
+                  <option value="75">Epoch 75</option>
+                  <option value="76">Epoch 76</option>
+                  <option value="77">Epoch 77</option>
+                  <option value="78">Epoch 78</option>
+                </select>
+              </div>
+              <span style="color: #38bdf8; font-size: 1.2rem; font-family: monospace;">↔</span>
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <label style="font-size: 0.8rem; color: #9fb0d1;">Epoch B:</label>
+                <select id="compareEpochB" onchange="runComparisonFromSelect()" style="background: #17233f; color: #f1f5f9; border: 1px solid #28406f; padding: 4px 10px; border-radius: 6px; font-family: monospace; font-size: 0.85rem;">
+                  <option value="73">Epoch 73 (E₀ Baseline)</option>
+                  <option value="74">Epoch 74</option>
+                  <option value="75">Epoch 75</option>
+                  <option value="76">Epoch 76</option>
+                  <option value="77">Epoch 77</option>
+                  <option value="78" selected>Epoch 78 (Current)</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Comparison Table -->
+            <div style="overflow-x: auto;">
+              <table style="width: 100%; border-collapse: collapse; font-size: 0.88rem;">
+                <thead>
+                  <tr style="background: #17233f; border-bottom: 1px solid #28406f;">
+                    <th style="padding: 10px 14px; text-align: left; color: #9fb0d1; font-weight: 600;">Metric</th>
+                    <th style="padding: 10px 14px; text-align: left; color: #9fb0d1; font-weight: 600;" id="thEpochA">Epoch 73</th>
+                    <th style="padding: 10px 14px; text-align: left; color: #9fb0d1; font-weight: 600;" id="thEpochB">Epoch 78</th>
+                    <th style="padding: 10px 14px; text-align: left; color: #9fb0d1; font-weight: 600;">Transition (Δ)</th>
+                    <th style="padding: 10px 14px; text-align: left; color: #9fb0d1; font-weight: 600;">95% CI / Bounds</th>
+                    <th style="padding: 10px 14px; text-align: left; color: #9fb0d1; font-weight: 600;">Interpretation</th>
+                  </tr>
+                </thead>
+                <tbody id="epochComparisonBody">
+                  <!-- Populated dynamically by JavaScript -->
+                </tbody>
+              </table>
+            </div>
+
+            <div style="margin-top: 14px; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.06); font-family: monospace; font-size: 0.74rem; color: #94a3b8; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px;">
+              <span>Constitutional Draft v1 Frozen &bull; Invariant XLVI: Persist (Valkey) &rarr; Project (Neo4j) &rarr; Render (Spacebook)</span>
+              <span style="color: #38bdf8;">REST API: <code>/api/v1/metrics/compare?e1=73&e2=78</code></span>
             </div>
           </div>
 
@@ -1587,18 +1724,18 @@
 
     // OCI Epochs Dataset & Swipe Navigator
     const ociEpochs = [
-      { epoch: 73, oci: 86.5, delta: "0.0", tier: "HEALTHY", blind: 0, assumptions: "11 / 12", gdi: "0.000", tai: "0.982", gini: "0.220", npu: "18.4", wsr: "88.5%" },
-      { epoch: 74, oci: 87.2, delta: "0.7", tier: "HEALTHY", blind: 0, assumptions: "11 / 12", gdi: "0.000", tai: "0.983", gini: "0.218", npu: "18.7", wsr: "88.5%" },
-      { epoch: 75, oci: 88.1, delta: "1.6", tier: "HEALTHY", blind: 0, assumptions: "11 / 12", gdi: "0.000", tai: "0.984", gini: "0.215", npu: "19.1", wsr: "88.5%" },
-      { epoch: 76, oci: 89.4, delta: "2.9", tier: "HEALTHY", blind: 0, assumptions: "11 / 12", gdi: "0.000", tai: "0.985", gini: "0.213", npu: "19.6", wsr: "88.5%" },
-      { epoch: 77, oci: 90.5, delta: "4.0", tier: "HEALTHY", blind: 0, assumptions: "11 / 12", gdi: "0.000", tai: "0.985", gini: "0.211", npu: "19.9", wsr: "88.5%" },
-      { epoch: 78, oci: 91.2, delta: "4.7", tier: "HEALTHY", blind: 0, assumptions: "11 / 12", gdi: "0.000", tai: "0.986", gini: "0.210", npu: "20.2", wsr: "88.5%" }
+      { epoch: 73, oci: 86.5, delta: "0.0", ci_95: "[84.8%, 88.2%]", tier: "HEALTHY", blind: 0, assumptions: "11 / 12", gdi: "0.000", tai: "0.982", gini: "0.220", npu: "18.4", wsr: "88.5%" },
+      { epoch: 74, oci: 87.2, delta: "0.7", ci_95: "[85.5%, 88.9%]", tier: "HEALTHY", blind: 0, assumptions: "11 / 12", gdi: "0.000", tai: "0.983", gini: "0.218", npu: "18.7", wsr: "88.5%" },
+      { epoch: 75, oci: 88.1, delta: "1.6", ci_95: "[86.3%, 89.9%]", tier: "HEALTHY", blind: 0, assumptions: "11 / 12", gdi: "0.000", tai: "0.984", gini: "0.215", npu: "19.1", wsr: "88.5%" },
+      { epoch: 76, oci: 89.4, delta: "2.9", ci_95: "[87.6%, 91.2%]", tier: "HEALTHY", blind: 0, assumptions: "11 / 12", gdi: "0.000", tai: "0.985", gini: "0.213", npu: "19.6", wsr: "88.5%" },
+      { epoch: 77, oci: 90.5, delta: "4.0", ci_95: "[88.7%, 92.1%]", tier: "HEALTHY", blind: 0, assumptions: "11 / 12", gdi: "0.000", tai: "0.985", gini: "0.211", npu: "19.9", wsr: "88.5%" },
+      { epoch: 78, oci: 91.2, delta: "4.7", ci_95: "[89.4%, 92.7%]", tier: "HEALTHY", blind: 0, assumptions: "11 / 12", gdi: "0.000", tai: "0.986", gini: "0.210", npu: "20.2", wsr: "88.5%" }
     ];
 
     let currentEpochIndex = ociEpochs.length - 1;
     const epochCard = document.getElementById("epochCard");
 
-    function renderEpoch(index) {
+    function renderEpoch(index, direction) {
       if (!epochCard) return;
       currentEpochIndex = index;
       const e = ociEpochs[index];
@@ -1609,20 +1746,48 @@
         else pt.classList.remove("active");
       });
 
+      // Swipe animation feedback
+      if (direction) {
+        epochCard.style.transform = direction === 'left' ? 'translateX(-8px)' : 'translateX(8px)';
+        setTimeout(() => { epochCard.style.transform = 'translateX(0)'; }, 150);
+      }
+
       epochCard.innerHTML = `
         <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 6px; margin-bottom: 8px;">
-          <strong style="color: #38bdf8; font-size: 1rem; font-family: monospace;">Epoch ${e.epoch}</strong>
+          <strong style="color: #38bdf8; font-size: 1.05rem; font-family: monospace;">Epoch ${e.epoch}</strong>
           <span style="background: rgba(34,197,94,0.15); color: #22c55e; border: 1px solid #22c55e; font-size: 0.65rem; padding: 2px 8px; border-radius: 999px; font-weight: 700;">${e.tier}</span>
         </div>
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 6px; font-size: 0.8rem;">
-          <div><span style="color: #94a3b8;">OCI:</span> <strong style="color: #f1f5f9; font-family: monospace;">${e.oci}%</strong></div>
-          <div><span style="color: #94a3b8;">ΔOCI:</span> <strong style="color: #22c55e; font-family: monospace;">+${e.delta}%</strong></div>
-          <div><span style="color: #94a3b8;">Instrumented:</span> <strong style="color: #38bdf8; font-family: monospace;">${e.assumptions}</strong></div>
-          <div><span style="color: #94a3b8;">Blind Spots:</span> <strong style="color: #22c55e; font-family: monospace;">${e.blind}</strong></div>
-          <div><span style="color: #94a3b8;">GDI:</span> <strong style="color: #22c55e; font-family: monospace;">${e.gdi}</strong></div>
-          <div><span style="color: #94a3b8;">TAI:</span> <strong style="color: #a855f7; font-family: monospace;">${e.tai}</strong></div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 6px; font-size: 0.82rem; font-family: monospace;">
+          <div><span style="color: #9fb0d1;">OCI:</span> <strong style="color: #f1f5f9;">${e.oci}%</strong></div>
+          <div><span style="color: #9fb0d1;">ΔOCI:</span> <strong style="color: #22c55e;">+${e.delta}%</strong></div>
+          <div><span style="color: #9fb0d1;">95% CI:</span> <strong style="color: #38bdf8;">${e.ci_95}</strong></div>
+          <div><span style="color: #9fb0d1;">Coverage:</span> <strong style="color: #22c55e;">${e.tier}</strong></div>
+          <div><span style="color: #9fb0d1;">Instrumented:</span> <strong style="color: #38bdf8;">${e.assumptions}</strong></div>
+          <div><span style="color: #9fb0d1;">Blind Spots:</span> <strong style="color: #22c55e;">${e.blind}</strong></div>
+          <div><span style="color: #9fb0d1;">GDI:</span> <strong style="color: #22c55e;">${e.gdi}</strong></div>
+          <div><span style="color: #9fb0d1;">TAI:</span> <strong style="color: #a855f7;">${e.tai}</strong></div>
+          <div><span style="color: #9fb0d1;">Gini:</span> <strong style="color: #38bdf8;">${e.gini}</strong></div>
+        </div>
+        <div style="margin-top: 10px; padding-top: 8px; border-top: 1px solid rgba(255,255,255,0.06); font-family: monospace; font-size: 0.72rem; color: #94a3b8; line-height: 1.4;">
+          <span style="color: #38bdf8;">Epoch ${e.epoch} Observatory Transition:</span><br/>
+          ├─ OCI ${e.oci}% (${e.ci_95}) &bull; GDI ${e.gdi} &bull; TAI ${e.tai}<br/>
+          └─ Gini ${e.gini} &bull; ηNPU ${e.npu} tok/W &bull; WSR ${e.wsr}
         </div>
       `;
+
+      // Synchronize primary OCI card stats
+      const metricEl = document.getElementById("ociMetricDisplay");
+      if (metricEl) metricEl.textContent = `${e.oci}%`;
+      const deltaEl = document.getElementById("ociDeltaDisplay");
+      if (deltaEl) deltaEl.textContent = `ΔOCI +${e.delta}%`;
+      const tierBadge = document.getElementById("ociCoverageTierBadge");
+      if (tierBadge) tierBadge.textContent = `${e.tier} COVERAGE`;
+      const blindEl = document.getElementById("ociBlindSpots");
+      if (blindEl) blindEl.textContent = `${e.blind}`;
+      const instEl = document.getElementById("ociInstrumented");
+      if (instEl) instEl.textContent = `${e.assumptions}`;
+      const ciEl = document.getElementById("ociConfidenceDisplay");
+      if (ciEl) ciEl.textContent = `${e.ci_95}`;
     }
 
     renderEpoch(currentEpochIndex);
@@ -1631,35 +1796,76 @@
     document.querySelectorAll(".spark-point").forEach(point => {
       point.addEventListener("click", () => {
         const idx = parseInt(point.dataset.index);
-        if (!isNaN(idx)) renderEpoch(idx);
+        if (!isNaN(idx)) {
+          const dir = idx > currentEpochIndex ? 'left' : (idx < currentEpochIndex ? 'right' : null);
+          renderEpoch(idx, dir);
+        }
       });
     });
 
     // Touch Swipe Support on epochCard
     let touchStartX = 0;
     let touchEndX = 0;
+    let touchStartY = 0;
+    let touchEndY = 0;
 
     if (epochCard) {
       epochCard.addEventListener("touchstart", e => {
         touchStartX = e.changedTouches[0].clientX;
+        touchStartY = e.changedTouches[0].clientY;
       }, { passive: true });
 
       epochCard.addEventListener("touchend", e => {
         touchEndX = e.changedTouches[0].clientX;
-        const delta = touchEndX - touchStartX;
-        if (delta < -40) {
-          // Swipe left -> advance epoch
-          if (currentEpochIndex < ociEpochs.length - 1) {
-            renderEpoch(currentEpochIndex + 1);
-          }
-        } else if (delta > 40) {
-          // Swipe right -> rewind epoch
-          if (currentEpochIndex > 0) {
-            renderEpoch(currentEpochIndex - 1);
+        touchEndY = e.changedTouches[0].clientY;
+        const deltaX = touchEndX - touchStartX;
+        const deltaY = touchEndY - touchStartY;
+
+        if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > 40) {
+          if (deltaX < 0) {
+            // Swipe left -> advance epoch
+            if (currentEpochIndex < ociEpochs.length - 1) {
+              renderEpoch(currentEpochIndex + 1, 'left');
+            }
+          } else {
+            // Swipe right -> rewind epoch
+            if (currentEpochIndex > 0) {
+              renderEpoch(currentEpochIndex - 1, 'right');
+            }
           }
         }
       }, { passive: true });
+
+      // Desktop Mouse Drag Support
+      let isMouseDown = false;
+      let mouseStartX = 0;
+      epochCard.addEventListener("mousedown", e => {
+        isMouseDown = true;
+        mouseStartX = e.clientX;
+      });
+      window.addEventListener("mouseup", e => {
+        if (!isMouseDown) return;
+        isMouseDown = false;
+        const deltaX = e.clientX - mouseStartX;
+        if (Math.abs(deltaX) > 40) {
+          if (deltaX < 0 && currentEpochIndex < ociEpochs.length - 1) {
+            renderEpoch(currentEpochIndex + 1, 'left');
+          } else if (deltaX > 0 && currentEpochIndex > 0) {
+            renderEpoch(currentEpochIndex - 1, 'right');
+          }
+        }
+      });
     }
+
+    // Keyboard Arrow Navigation
+    document.addEventListener("keydown", e => {
+      if (document.activeElement.tagName === 'INPUT' || document.activeElement.tagName === 'TEXTAREA') return;
+      if (e.key === "ArrowLeft" && currentEpochIndex > 0) {
+        renderEpoch(currentEpochIndex - 1, 'right');
+      } else if (e.key === "ArrowRight" && currentEpochIndex < ociEpochs.length - 1) {
+        renderEpoch(currentEpochIndex + 1, 'left');
+      }
+    });
 
     // Sparkline Interactive Tooltip Handler (Touch, Hover, Keyboard)
     const sparkTooltip = document.getElementById("spark-tooltip");
@@ -1673,6 +1879,7 @@
       const status = point.dataset.status || "IMPROVING";
       const assumptions = point.dataset.assumptions || "11 / 12";
       const blindspots = point.dataset.blindspots || "0";
+      const ci = point.dataset.ci || "[89.4%, 92.7%]";
 
       sparkTooltip.innerHTML = `
         <div style="font-weight: 700; color: #38bdf8; margin-bottom: 6px; font-size: 0.9rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 4px;">
@@ -1680,6 +1887,7 @@
         </div>
         <div style="display: flex; justify-content: space-between; margin-bottom: 3px;"><span style="color: #94a3b8;">OCI:</span> <strong style="color: #f1f5f9;">${value}%</strong></div>
         <div style="display: flex; justify-content: space-between; margin-bottom: 3px;"><span style="color: #94a3b8;">ΔOCI:</span> <strong style="color: #22c55e;">${delta}%</strong></div>
+        <div style="display: flex; justify-content: space-between; margin-bottom: 3px;"><span style="color: #94a3b8;">95% CI:</span> <strong style="color: #38bdf8;">${ci}</strong></div>
         <div style="display: flex; justify-content: space-between; margin-bottom: 3px;"><span style="color: #94a3b8;">Coverage Tier:</span> <strong style="color: #22c55e;">HEALTHY</strong></div>
         <div style="display: flex; justify-content: space-between; margin-bottom: 3px;"><span style="color: #94a3b8;">Instrumented:</span> <strong style="color: #38bdf8;">${assumptions}</strong></div>
         <div style="display: flex; justify-content: space-between; margin-bottom: 3px;"><span style="color: #94a3b8;">Blind Spots:</span> <strong style="color: #22c55e;">${blindspots}</strong></div>
@@ -1739,6 +1947,64 @@
         hideSparkTooltip();
       }
     });
+
+    // Epoch Comparison Logic
+    function renderComparison(e1, e2) {
+      const d1 = ociEpochs.find(e => e.epoch === e1) || ociEpochs[0];
+      const d2 = ociEpochs.find(e => e.epoch === e2) || ociEpochs[ociEpochs.length - 1];
+
+      const thA = document.getElementById("thEpochA");
+      const thB = document.getElementById("thEpochB");
+      const selA = document.getElementById("compareEpochA");
+      const selB = document.getElementById("compareEpochB");
+
+      if (thA) thA.textContent = `Epoch ${d1.epoch}`;
+      if (thB) thB.textContent = `Epoch ${d2.epoch}`;
+      if (selA) selA.value = d1.epoch;
+      if (selB) selB.value = d2.epoch;
+
+      const deltaOci = (d2.oci - d1.oci).toFixed(1);
+      const deltaGdi = (parseFloat(d2.gdi) - parseFloat(d1.gdi)).toFixed(3);
+      const deltaTai = (parseFloat(d2.tai) - parseFloat(d1.tai)).toFixed(3);
+      const deltaGini = (parseFloat(d2.gini) - parseFloat(d1.gini)).toFixed(3);
+      const deltaNpu = (parseFloat(d2.npu) - parseFloat(d1.npu)).toFixed(1);
+      const wsrTransition = d1.epoch === 73 ? `-- → ${d2.wsr}` : `${d1.wsr} → ${d2.wsr}`;
+
+      const rows = [
+        { metric: 'GDI (Reality Quality)', valA: d1.gdi, valB: d2.gdi, delta: `${deltaGdi >= 0 ? '+' : ''}${deltaGdi}`, ci: '95% CI [0.000, 0.004]', interp: 'Zero Drift (Graph matches on-chain state)', color: '#22c55e' },
+        { metric: 'TAI (Trust Quality)', valA: d1.tai, valB: d2.tai, delta: `${deltaTai >= 0 ? '+' : ''}${deltaTai}`, ci: '95% CI [0.980, 0.988]', interp: 'Aligned (Reputation capital predicts reliability)', color: '#a855f7' },
+        { metric: 'OCI (Measurement Quality)', valA: `${d1.oci}%`, valB: `${d2.oci}%`, delta: `${deltaOci >= 0 ? '+' : ''}${deltaOci}%`, ci: `${d2.ci_95}`, interp: 'Healthy Coverage (11/12 assumptions instrumented)', color: '#38bdf8' },
+        { metric: 'ηNPU (Compute Yield)', valA: `${d1.npu} tok/W`, valB: `${d2.npu} tok/W`, delta: `+${deltaNpu} tok/W`, ci: 'Moving Avg 30d: 19.8', interp: 'Nominal Efficiency Gain', color: '#22c55e' },
+        { metric: 'WSR (Worker Survival)', valA: d1.epoch === 73 ? '--' : d1.wsr, valB: d2.wsr, delta: wsrTransition, ci: 'Floor: > 40.0%', interp: 'Sustainable Participant Retention', color: '#22c55e' },
+        { metric: 'Gini (Anti-Capture)', valA: d1.gini, valB: d2.gini, delta: `${deltaGini}`, ci: 'Ceiling: <= 0.45', interp: 'Progressively Dispersed Governance', color: '#38bdf8' }
+      ];
+
+      const tbody = document.getElementById("epochComparisonBody");
+      if (!tbody) return;
+      tbody.innerHTML = rows.map(r => `
+        <tr style="border-bottom: 1px solid rgba(255,255,255,0.06);">
+          <td style="padding: 10px 14px; font-weight: 600; color: #e8edf7;">${r.metric}</td>
+          <td style="padding: 10px 14px; font-family: monospace; color: #cbd5e1;">${r.valA}</td>
+          <td style="padding: 10px 14px; font-family: monospace; color: #cbd5e1;">${r.valB}</td>
+          <td style="padding: 10px 14px; font-family: monospace; font-weight: 700; color: ${r.color};">${r.delta}</td>
+          <td style="padding: 10px 14px; font-family: monospace; font-size: 0.8rem; color: #94a3b8;">${r.ci}</td>
+          <td style="padding: 10px 14px; font-size: 0.8rem; color: #cbd5e1;">${r.interp}</td>
+        </tr>
+      `).join('');
+    }
+
+    function setEpochComparison(e1, e2) {
+      renderComparison(e1, e2);
+    }
+
+    function runComparisonFromSelect() {
+      const e1 = parseInt(document.getElementById("compareEpochA").value);
+      const e2 = parseInt(document.getElementById("compareEpochB").value);
+      renderComparison(e1, e2);
+    }
+
+    // Initialize default comparison E73 ↔ E78
+    renderComparison(73, 78);
   </script>
   <div id="spark-tooltip" class="spark-tooltip"></div>
 </body>

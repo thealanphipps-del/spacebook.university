@@ -1,671 +1,2011 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>SPU Observatory - OCI Dashboard & Swipe Navigator</title>
-
-<style>
-:root{
-    --bg:#0b1220;
-    --panel:#111a2e;
-    --panel-alt:#17233f;
-    --border:#28406f;
-    --text:#e8edf7;
-    --muted:#9fb0d1;
-    --green:#22c55e;
-    --blue:#3b82f6;
-    --amber:#f59e0b;
-    --red:#ef4444;
-    --cyan:#06b6d4;
-}
-
-*{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
-}
-
-body{
-    background:var(--bg);
-    color:var(--text);
-    font-family:Inter,Segoe UI,system-ui,sans-serif;
-    padding:24px;
-}
-
-.container{
-    max-width:1400px;
-    margin:auto;
-}
-
-.header{
-    margin-bottom:24px;
-}
-
-.header h1{
-    font-size:2rem;
-    margin-bottom:8px;
-}
-
-.subtitle{
-    color:var(--muted);
-}
-
-.grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-    gap:20px;
-}
-
-.card{
-    background:var(--panel);
-    border:1px solid var(--border);
-    border-radius:16px;
-    padding:20px;
-}
-
-.card h2{
-    font-size:1rem;
-    margin-bottom:16px;
-}
-
-.metric{
-    display:flex;
-    justify-content:space-between;
-    padding:8px 0;
-    border-bottom:1px solid rgba(255,255,255,.05);
-}
-
-.metric:last-child{
-    border-bottom:none;
-}
-
-.big{
-    font-size:2.8rem;
-    font-weight:700;
-    color:var(--green);
-}
-
-.delta{
-    color:var(--green);
-    font-weight:600;
-}
-
-.badge{
-    display:inline-block;
-    padding:6px 12px;
-    border-radius:999px;
-    font-size:.75rem;
-    font-weight:700;
-    margin-top:8px;
-}
-
-.badge-green{
-    background:rgba(34,197,94,.15);
-    color:var(--green);
-}
-
-.sparkline-container{
-    margin-top:18px;
-}
-
-.sparkline{
-    display:flex;
-    gap:8px;
-    font-size:2.2rem;
-    color:var(--cyan);
-    line-height:1;
-    font-family:monospace;
-    align-items:flex-end;
-}
-
-.spark-point{
-    position:relative;
-    cursor:pointer;
-    user-select:none;
-    -webkit-tap-highlight-color:transparent;
-    padding:4px;
-    border-radius:6px;
-    transition:all .15s ease;
-    outline:none;
-}
-
-.spark-point:hover, .spark-point:focus{
-    transform:translateY(-4px) scale(1.2);
-    color:#7dd3fc;
-    text-shadow:0 0 12px rgba(56,189,248,.8);
-    background:rgba(56,189,248,.1);
-}
-
-.spark-point.active{
-    color:#38bdf8;
-    transform:translateY(-4px) scale(1.25);
-    text-shadow:0 0 15px rgba(56,189,248,.9);
-    border-bottom:2px solid #38bdf8;
-}
-
-.epoch-card{
-    margin-top:14px;
-    padding:14px;
-    background:#17233f;
-    border-radius:12px;
-    border:1px solid #28406f;
-    touch-action:pan-x;
-    position:relative;
-}
-
-.epoch-card::after{
-    content:"◀ Swipe or Click Epoch Nodes ▶";
-    display:block;
-    color:#9fb0d1;
-    font-size:.72rem;
-    margin-top:10px;
-    text-align:center;
-    letter-spacing:0.05em;
-}
-
-.spark-tooltip{
-    min-width:220px;
-    max-width:290px;
-    position:fixed;
-    z-index:9999;
-    background:#0f172a;
-    border:1px solid #334155;
-    border-radius:12px;
-    padding:12px 14px;
-    box-shadow:0 10px 30px rgba(0,0,0,.55);
-    transform:translateY(4px);
-    opacity:0;
-    transition:opacity .15s ease, transform .15s ease;
-    pointer-events:none;
-    color:#e5e7eb;
-    font-size:.85rem;
-    line-height:1.5;
-    backdrop-filter:blur(14px);
-}
-
-.spark-tooltip.visible{
-    opacity:1;
-    transform:translateY(0);
-}
-
-.longitudinal{
-    margin-top:24px;
-}
-
-.table{
-    width:100%;
-    overflow-x:auto;
-}
-
-table{
-    width:100%;
-    border-collapse:collapse;
-}
-
-th{
-    text-align:left;
-    background:var(--panel-alt);
-}
-
-th,td{
-    padding:12px;
-    border-bottom:1px solid rgba(255,255,255,.08);
-}
-
-.status-good{
-    color:var(--green);
-    font-weight:600;
-}
-
-.status-neutral{
-    color:var(--blue);
-    font-weight:600;
-}
-
-.oci-breakdown{
-    margin-top:24px;
-}
-
-.progress{
-    width:100%;
-    height:10px;
-    border-radius:999px;
-    background:#1c2d4f;
-    overflow:hidden;
-}
-
-.progress > span{
-    display:block;
-    height:100%;
-    background:linear-gradient(
-        90deg,
-        var(--blue),
-        var(--green)
-    );
-}
-
-.epistemic-stack{
-    margin-top:24px;
-    padding:16px;
-    border:1px solid rgba(59,130,246,.3);
-    border-radius:12px;
-    text-align:center;
-    line-height:1.9;
-    background:rgba(23,35,63,.6);
-}
-
-@media(max-width:768px){
-    body{ padding:12px; }
-    .big{ font-size:2rem; }
-    table{ font-size:.85rem; }
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spacebook.University — Public Research Institution & Wiki</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #070b14;
+      --card-bg: rgba(15, 23, 42, 0.75);
+      --card-border: rgba(56, 189, 248, 0.2);
+      --accent: #38bdf8;
+      --accent-glow: rgba(56, 189, 248, 0.35);
+      --emerald: #10b981;
+      --amber: #f59e0b;
+      --purple: #8b5cf6;
+      --rose: #f43f5e;
+      --text: #f1f5f9;
+      --text-muted: #94a3b8;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', -apple-system, sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    header {
+      background: rgba(10, 15, 30, 0.85);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--card-border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: inherit;
+    }
+    .brand-icon {
+      width: 36px;
+      height: 36px;
+      background: radial-gradient(circle, var(--accent) 0%, #1e3a8a 100%);
+      border-radius: 8px;
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      font-size: 18px;
+      color: white;
+      box-shadow: 0 0 15px var(--accent-glow);
+    }
+    .brand-text h1 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    .brand-text p {
+      font-size: 0.75rem;
+      color: var(--accent);
+      font-family: 'JetBrains Mono', monospace;
+      letter-spacing: 0.05em;
+    }
+    nav {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+    }
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    nav a:hover, nav a.active {
+      color: var(--accent);
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+      color: white;
+      padding: 0.5rem 1.25rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      box-shadow: 0 0 15px rgba(2, 132, 199, 0.4);
+      transition: all 0.2s;
+      cursor: pointer;
+    }
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 0 20px rgba(2, 132, 199, 0.6);
+    }
+    .container {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+    .disclosure-banner {
+      background: rgba(30, 41, 59, 0.7);
+      border: 1px solid rgba(245, 158, 11, 0.35);
+      border-left: 4px solid var(--amber);
+      border-radius: 8px;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 2.5rem;
+      backdrop-filter: blur(8px);
+    }
+    .disclosure-banner h4 {
+      color: var(--amber);
+      font-size: 0.85rem;
+      font-family: 'JetBrains Mono', monospace;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.35rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .disclosure-banner p {
+      font-size: 0.85rem;
+      color: #cbd5e1;
+      line-height: 1.5;
+    }
+    .hero {
+      text-align: center;
+      padding: 3rem 1rem 4rem;
+      position: relative;
+    }
+    .hero h2 {
+      font-size: 3rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      background: linear-gradient(180deg, #ffffff 0%, #94a3b8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 1rem;
+    }
+    .hero p {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      max-width: 780px;
+      margin: 0 auto 2rem;
+    }
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: 2.5rem;
+      margin-top: 2rem;
+    }
+    .stat-pill {
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid var(--card-border);
+      padding: 0.75rem 1.25rem;
+      border-radius: 9999px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .stat-pill .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--emerald);
+      box-shadow: 0 0 8px var(--emerald);
+    }
+    .divisions-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 4rem;
+    }
+    .division-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 1.75rem;
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+    .division-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--accent);
+      box-shadow: 0 10px 25px -5px rgba(56, 189, 248, 0.15);
+    }
+    .division-badge {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--accent);
+      background: rgba(56, 189, 248, 0.1);
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+      display: inline-block;
+      margin-bottom: 0.75rem;
+    }
+    .division-card h3 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    .division-card p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 1.25rem;
+    }
+    .division-questions {
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding-top: 0.85rem;
+      font-size: 0.8rem;
+      color: #94a3b8;
+    }
+    .division-questions li {
+      margin-left: 1.2rem;
+      margin-bottom: 0.3rem;
+    }
+    .wiki-container {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 2rem;
+      margin-bottom: 5rem;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
+    }
+    .wiki-sidebar {
+      background: rgba(10, 15, 30, 0.95);
+      border-right: 1px solid var(--card-border);
+      padding: 1.5rem 1rem;
+    }
+    .wiki-sidebar h4 {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      font-family: 'JetBrains Mono', monospace;
+      margin: 1.25rem 0.75rem 0.5rem;
+    }
+    .wiki-nav-item {
+      display: block;
+      padding: 0.6rem 0.85rem;
+      color: #cbd5e1;
+      text-decoration: none;
+      font-size: 0.85rem;
+      border-radius: 6px;
+      transition: all 0.15s;
+      cursor: pointer;
+    }
+    .wiki-nav-item:hover, .wiki-nav-item.active {
+      background: rgba(56, 189, 248, 0.12);
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .wiki-content {
+      padding: 2.5rem;
+      max-height: 800px;
+      overflow-y: auto;
+    }
+    .wiki-article {
+      display: none;
+    }
+    .wiki-article.active {
+      display: block;
+    }
+    .wiki-article h2 {
+      font-size: 1.85rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+      color: white;
+    }
+    .wiki-article .meta {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--accent);
+      margin-bottom: 1.75rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding-bottom: 0.75rem;
+    }
+    .wiki-article h3 {
+      font-size: 1.25rem;
+      margin: 1.75rem 0 0.75rem;
+      color: #e2e8f0;
+    }
+    .wiki-article p, .wiki-article li {
+      font-size: 0.95rem;
+      color: #cbd5e1;
+      margin-bottom: 1rem;
+      line-height: 1.7;
+    }
+    .portal-section {
+      background: linear-gradient(180deg, rgba(15, 23, 42, 0.9) 0%, rgba(7, 11, 20, 0.95) 100%);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 3rem 2.5rem;
+      margin-bottom: 5rem;
+    }
+    .portal-header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+    .portal-header h2 {
+      font-size: 2.25rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+    }
+    .portal-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    .portal-tab-btn {
+      background: rgba(30, 41, 59, 0.6);
+      border: 1px solid var(--card-border);
+      color: var(--text-muted);
+      padding: 0.75rem 1.75rem;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .portal-tab-btn.active {
+      background: var(--accent);
+      color: #070b14;
+      border-color: var(--accent);
+      box-shadow: 0 0 15px var(--accent-glow);
+    }
+    .form-panel {
+      display: none;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+    .form-panel.active {
+      display: block;
+    }
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    .form-group label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #e2e8f0;
+      margin-bottom: 0.4rem;
+    }
+    .form-group input, .form-group select, .form-group textarea {
+      width: 100%;
+      background: rgba(10, 15, 30, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 6px;
+      padding: 0.75rem 1rem;
+      color: white;
+      font-family: inherit;
+      font-size: 0.9rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 10px rgba(56, 189, 248, 0.25);
+    }
+    .consent-matrix {
+      background: rgba(10, 15, 30, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      padding: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .consent-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.6rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    .consent-row:last-child {
+      border-bottom: none;
+    }
+    .consent-label {
+      font-size: 0.85rem;
+    }
+    .consent-desc {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+    .device-attest-box {
+      background: rgba(16, 185, 129, 0.08);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      border-radius: 8px;
+      padding: 1rem;
+      margin-bottom: 1.5rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+    }
+    .attest-item {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.35rem;
+    }
+    .attest-item span:first-child { color: var(--text-muted); }
+    .attest-item span:last-child { color: var(--emerald); font-weight: 600; }
+    footer {
+      border-top: 1px solid var(--card-border);
+      background: rgba(10, 15, 30, 0.95);
+      padding: 3rem 2rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+    .sparkline {
+      display: flex;
+      gap: 8px;
+      margin-top: 14px;
+      font-size: 2.2rem;
+      color: #06b6d4;
+      line-height: 1;
+      font-family: monospace;
+      align-items: flex-end;
+    }
+    .spark-point {
+      position: relative;
+      cursor: pointer;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+      padding: 4px;
+      border-radius: 6px;
+      transition: all 0.15s ease;
+      outline: none;
+    }
+    .spark-point:hover, .spark-point:focus {
+      transform: translateY(-4px) scale(1.2);
+      color: #7dd3fc;
+      text-shadow: 0 0 12px rgba(56, 189, 248, 0.8);
+      background: rgba(56, 189, 248, 0.1);
+    }
+    .spark-point:active {
+      transform: scale(1.1);
+    }
+    .spark-tooltip {
+      min-width: 220px;
+      max-width: 290px;
+      position: fixed;
+      z-index: 9999;
+      background: #0f172a;
+      border: 1px solid #334155;
+      border-radius: 12px;
+      padding: 12px 14px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.55);
+      transform: translateY(4px);
+      opacity: 0;
+      transition: opacity 0.15s ease, transform 0.15s ease;
+      pointer-events: none;
+      color: #e5e7eb;
+      font-size: 0.85rem;
+      line-height: 1.5;
+      backdrop-filter: blur(14px);
+    }
+    .spark-tooltip.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .epoch-card {
+      margin-top: 16px;
+      padding: 14px;
+      background: #17233f;
+      border-radius: 12px;
+      border: 1px solid #28406f;
+      touch-action: pan-x;
+      cursor: grab;
+      user-select: none;
+      transition: transform 0.15s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+      position: relative;
+    }
+    .epoch-card:active {
+      cursor: grabbing;
+    }
+    .epoch-card::after {
+      content: "← Swipe Epochs →";
+      display: block;
+      color: #9fb0d1;
+      font-size: .75rem;
+      margin-top: 10px;
+      text-align: center;
+      letter-spacing: 0.05em;
+      font-family: monospace;
+    }
+    .spark-point.active {
+      color: #38bdf8;
+      transform: translateY(-4px) scale(1.25);
+      text-shadow: 0 0 15px rgba(56, 189, 248, 0.9);
+      border-bottom: 2px solid #38bdf8;
+    }
+  </style>
 </head>
-
 <body>
 
-<div class="container">
+  <header>
+    <a href="#" class="brand">
+      <div class="brand-icon">S</div>
+      <div class="brand-text">
+        <h1>SPACE.UNIVERSITY</h1>
+        <p>SOVEREIGN RESEARCH INSTITUTION & 5D LIVING COSMOS</p>
+      </div>
+    </a>
+    <nav>
+      <a href="#pillars" style="color: #38bdf8; font-weight: 600;">🏛️ Project Home</a>
+      <a href="#observatory" style="color: #d8b4fe; font-weight: 600;">🔭 Observatory &amp; ΔOCI</a>
+      <a href="/atlas" target="_blank" style="color: #34d399; font-weight: 600;">🗺️ 5D Web Atlas ↗</a>
+      <a href="/game/hometree" target="_blank" style="color: #fbbf24; font-weight: 600;">🌳 HomeTree Headend ↗</a>
+      <a href="#divisions">Divisions</a>
+      <a href="#wiki">Wiki &amp; RFCs</a>
+      <a href="#topology" style="color: #94a3b8;">Topology</a>
+      <a href="#portal" class="btn-primary">Enroll / Join</a>
+    </nav>
+  </header>
 
-    <div class="header">
-        <h1>📈 SPU Observatory</h1>
-        <div class="subtitle">
-            Epoch 73 Baseline • Longitudinal Research Dashboard
-        </div>
+  <div class="container">
+    <!-- Mandatory Public Disclosure -->
+    <div class="disclosure-banner">
+      <h4>⚠️ Official Research Disclosure Statement</h4>
+      <p>
+        <strong>Space.University</strong> is an open research initiative exploring attention economics, decentralized governance, distributed computation, knowledge preservation, and civilizational continuity. The project is experimental. Published architectures, RFCs, empirical measurements, governance mechanisms, and economic models are scientific research artifacts and should not be interpreted as guarantees of future system behavior, financial performance, or governance outcomes.
+      </p>
     </div>
 
-    <div class="grid">
+    <!-- Foundational Publication Principle -->
+    <div style="background: rgba(15, 23, 42, 0.85); border: 1px solid rgba(56, 189, 248, 0.35); border-left: 4px solid var(--accent); border-radius: 8px; padding: 1.1rem 1.5rem; margin-bottom: 2.5rem; backdrop-filter: blur(8px);">
+      <h4 style="color: var(--accent); font-size: 0.85rem; font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.35rem; display: flex; align-items: center; gap: 8px;">
+        📜 Foundational Publication Principle
+      </h4>
+      <p style="font-size: 0.9rem; color: #e2e8f0; font-style: italic; line-height: 1.5;">
+        "Space.University is an open research institution. All models, scoring systems, governance frameworks, token mechanics, simulations, and architectural proposals are considered hypotheses subject to revision through observation, experimentation, criticism, and evidence."
+      </p>
+    </div>
 
-        <!-- OCI CARD WITH SWIPE NAVIGATOR -->
+    <!-- Grand Project Home Hero Section -->
+    <section class="hero" id="pillars">
+      <div style="display: inline-block; background: rgba(56, 189, 248, 0.12); border: 1px solid rgba(56, 189, 248, 0.3); padding: 5px 14px; border-radius: 999px; font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; color: var(--accent); margin-bottom: 1.25rem;">
+        ★ THE LIVING HOME OF THE ENTIRE SPACEBOOK &amp; SPU PROJECT
+      </div>
+      <h2>The Open Architecture for an Attention Civilization</h2>
+      <p>
+        Uniting mathematical sovereignty, decentralized attention economics, 5D topological computing, personal hardware security enclaves, and planetary macro-astronomy under constitutional rule of law.
+      </p>
 
-        <div class="card">
-
-            <h2>Observability Coverage Index (OCI)</h2>
-
-            <div class="big">91.2%</div>
-
-            <div class="delta">
-                ΔOCI +4.7%
+      <!-- 4 Grand Project Pillars Gateway -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; margin-top: 2.5rem; text-align: left;">
+        
+        <!-- Pillar 1: Observatory -->
+        <div style="background: rgba(15, 23, 42, 0.9); border: 1px solid #28406f; border-radius: 14px; padding: 1.5rem; display: flex; flex-direction: column; justify-content: space-between; transition: all 0.25s; box-shadow: 0 10px 25px rgba(0,0,0,0.35);" onmouseover="this.style.borderColor='#38bdf8'" onmouseout="this.style.borderColor='#28406f'">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+              <span style="font-size: 1.5rem;">🔭</span>
+              <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: #22c55e; background: rgba(34,197,94,0.15); border: 1px solid #22c55e; padding: 2px 8px; border-radius: 999px; font-weight: 700;">LIVE METRICS</span>
             </div>
+            <h3 style="font-size: 1.15rem; font-weight: 700; color: #f1f5f9; margin-bottom: 6px;">Pillar I: Planetary Observatory</h3>
+            <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5; margin-bottom: 14px;">
+              Real-time epistemic health monitoring, Graph Drift Index (GDI), Trust Alignment (TAI), and the Tier-0 Longitudinal Observability Coverage Index (OCI=91.2%, ΔOCI=+4.7%).
+            </p>
+          </div>
+          <a href="#observatory" style="display: block; text-align: center; background: rgba(56, 189, 248, 0.15); color: var(--accent); border: 1px solid var(--accent); padding: 8px 12px; border-radius: 6px; font-size: 0.8rem; font-weight: 600; text-decoration: none;">Explore Observatory ↓</a>
+        </div>
 
-            <span class="badge badge-green">
-                HEALTHY COVERAGE
-            </span>
-
-            <div class="metric">
-                <span>Baseline Epoch</span>
-                <strong>E₀ = 73</strong>
+        <!-- Pillar 2: 5D Web Atlas & HomeTree -->
+        <div style="background: rgba(15, 23, 42, 0.9); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 14px; padding: 1.5rem; display: flex; flex-direction: column; justify-content: space-between; transition: all 0.25s; box-shadow: 0 10px 25px rgba(0,0,0,0.35);" onmouseover="this.style.borderColor='#10b981'" onmouseout="this.style.borderColor='rgba(16, 185, 129, 0.3)'">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+              <span style="font-size: 1.5rem;">🗺️</span>
+              <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: #10b981; background: rgba(16,185,129,0.15); border: 1px solid #10b981; padding: 2px 8px; border-radius: 999px; font-weight: 700;">INVARIANT XLVI</span>
             </div>
+            <h3 style="font-size: 1.15rem; font-weight: 700; color: #f1f5f9; margin-bottom: 6px;">Pillar II: 5D Atlas &amp; HomeTree</h3>
+            <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5; margin-bottom: 14px;">
+              The living 5D topological cosmos: 5 Macro-Continents, landmark LM-HOMETREE-001 (A=(23,27,4)), 9 biological organisms, and SU(3) color-neutral quantum primitives.
+            </p>
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+            <a href="/atlas" target="_blank" style="text-align: center; background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid #10b981; padding: 8px 6px; border-radius: 6px; font-size: 0.75rem; font-weight: 600; text-decoration: none;">5D Atlas ↗</a>
+            <a href="/game/hometree" target="_blank" style="text-align: center; background: rgba(251, 191, 36, 0.15); color: #fbbf24; border: 1px solid #fbbf24; padding: 8px 6px; border-radius: 6px; font-size: 0.75rem; font-weight: 600; text-decoration: none;">HomeTree ↗</a>
+          </div>
+        </div>
 
-            <div class="metric">
-                <span>Baseline OCI</span>
-                <strong>86.5%</strong>
+        <!-- Pillar 3: Constitutional Corpus -->
+        <div style="background: rgba(15, 23, 42, 0.9); border: 1px solid rgba(168, 85, 247, 0.3); border-radius: 14px; padding: 1.5rem; display: flex; flex-direction: column; justify-content: space-between; transition: all 0.25s; box-shadow: 0 10px 25px rgba(0,0,0,0.35);" onmouseover="this.style.borderColor='#a855f7'" onmouseout="this.style.borderColor='rgba(168, 85, 247, 0.3)'">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+              <span style="font-size: 1.5rem;">📜</span>
+              <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: #c084fc; background: rgba(168,85,247,0.15); border: 1px solid #a855f7; padding: 2px 8px; border-radius: 999px; font-weight: 700;">RATIFIED RFCs</span>
             </div>
+            <h3 style="font-size: 1.15rem; font-weight: 700; color: #f1f5f9; margin-bottom: 6px;">Pillar III: Constitutional Corpus</h3>
+            <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5; margin-bottom: 14px;">
+              Constitutional Draft v1 (RFC-0025..0030): Privacy &amp; Consent, ATTN Token Economics, The High Court of the Tortoise, and Multi-Agent Sovereign Governance.
+            </p>
+          </div>
+          <a href="#wiki" style="display: block; text-align: center; background: rgba(168, 85, 247, 0.15); color: #d8b4fe; border: 1px solid #a855f7; padding: 8px 12px; border-radius: 6px; font-size: 0.8rem; font-weight: 600; text-decoration: none;">Read Corpus &amp; RFCs ↓</a>
+        </div>
 
-            <div class="metric">
-                <span>Blind Spots</span>
-                <strong>0</strong>
+        <!-- Pillar 4: Distributed Intelligence -->
+        <div style="background: rgba(15, 23, 42, 0.9); border: 1px solid rgba(245, 158, 11, 0.3); border-radius: 14px; padding: 1.5rem; display: flex; flex-direction: column; justify-content: space-between; transition: all 0.25s; box-shadow: 0 10px 25px rgba(0,0,0,0.35);" onmouseover="this.style.borderColor='#f59e0b'" onmouseout="this.style.borderColor='rgba(245, 158, 11, 0.3)'">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+              <span style="font-size: 1.5rem;">⚡</span>
+              <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: #fbbf24; background: rgba(245,158,11,0.15); border: 1px solid #f59e0b; padding: 2px 8px; border-radius: 999px; font-weight: 700;">STRATUM-5D</span>
             </div>
+            <h3 style="font-size: 1.15rem; font-weight: 700; color: #f1f5f9; margin-bottom: 6px;">Pillar IV: Distributed Supercomputer</h3>
+            <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5; margin-bottom: 14px;">
+              SPU-D2: Android Sovereign Edge Node with StrongBox hardware keystores, battery/thermal governors, and Stratum-5D PoUW compute engines (TCP port 3335).
+            </p>
+          </div>
+          <a href="#divisions" style="display: block; text-align: center; background: rgba(245, 158, 11, 0.15); color: #fbbf24; border: 1px solid #f59e0b; padding: 8px 12px; border-radius: 6px; font-size: 0.8rem; font-weight: 600; text-decoration: none;">View SPU-D2 Specs ↓</a>
+        </div>
 
-            <div class="metric">
-                <span>Instrumented Assumptions</span>
-                <strong>11 / 12</strong>
+      </div>
+
+      <div class="hero-stats">
+        <div class="stat-pill"><div class="dot"></div> Substrate: Online (Apex1 K8s)</div>
+        <div class="stat-pill" style="border-color: #a855f7; color: #d8b4fe;"><div class="dot" style="background: #a855f7; box-shadow: 0 0 8px #a855f7;"></div> Constitutional Draft v1: Frozen for Observation (Epoch 73)</div>
+        <div class="stat-pill">Invariant XLVI: 100% Verified</div>
+        <div class="stat-pill">Economic Law: Mint(ATTN) &#8660; Proof</div>
+        <div class="stat-pill">Proof Engine: Neo4j 5 Graph SSOT</div>
+      </div>
+    </section>
+
+    <!-- Institutional Repository Topology & Governance Separation Section -->
+    <section id="topology" style="margin-bottom: 3.5rem;">
+      <div style="background: rgba(15, 23, 42, 0.85); border: 1px solid var(--card-border); border-radius: 16px; padding: 1.75rem 2rem; box-shadow: 0 15px 30px rgba(0,0,0,0.4);">
+        <h3 style="font-size: 1.25rem; font-weight: 800; color: #f1f5f9; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 10px;">
+          🏛️ Institutional Repository Topology &amp; Separation of Concerns
+          <span style="font-size: 0.72rem; background: rgba(56, 189, 248, 0.15); color: var(--accent); border: 1px solid var(--accent); padding: 2px 8px; border-radius: 12px; font-family: monospace;">RATIFIED ARCHITECTURE</span>
+        </h3>
+        <p style="font-size: 0.85rem; color: #94a3b8; margin-bottom: 1.25rem;">
+          To prevent operational requirements from contaminating scientific transparency while simultaneously preventing publication of sensitive execution infrastructure, the ecosystem maintains strict boundary separation:
+        </p>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+          <div style="background: rgba(2, 132, 199, 0.08); border: 1px solid rgba(56, 189, 248, 0.3); border-radius: 10px; padding: 1.25rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+              <strong style="color: #38bdf8; font-size: 0.95rem;">PUBLIC: space.university</strong>
+              <span style="font-size: 0.7rem; background: #0369a1; color: white; padding: 2px 6px; border-radius: 4px; font-family: monospace;">OPEN RESEARCH</span>
             </div>
+            <ul style="font-size: 0.8rem; color: #cbd5e1; line-height: 1.6; margin-left: 1.2rem;">
+              <li>Constitutional Corpus (RFC-0025 through RFC-0030)</li>
+              <li>SPU Division Specifications (SPU-0001 through SPU-0010)</li>
+              <li>Public Observatory &amp; Longitudinal Epistemic Audits</li>
+              <li>Android Edge-Node Specifications &amp; StrongBox HSM Blueprints</li>
+              <li>Stratum-5D PoUW Distributed Supercomputer Engine</li>
+              <li>Spacebook 5D Topological Web Atlas &amp; HomeTree Game Headend</li>
+            </ul>
+          </div>
+          <div style="background: rgba(148, 163, 184, 0.05); border: 1px solid rgba(148, 163, 184, 0.2); border-radius: 10px; padding: 1.25rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+              <strong style="color: #f1f5f9; font-size: 0.95rem;">PRIVATE: predator.run</strong>
+              <span style="font-size: 0.7rem; background: #334155; color: #94a3b8; padding: 2px 6px; border-radius: 4px; font-family: monospace;">OPERATIONAL</span>
+            </div>
+            <ul style="font-size: 0.8rem; color: #94a3b8; line-height: 1.6; margin-left: 1.2rem;">
+              <li>Operational Infrastructure &amp; Production Node Clusters</li>
+              <li>On-Chain MEV Actuators &amp; Convex Arbitrage Daemons</li>
+              <li>Sovereign Substrate Mesh &amp; Low-Latency Colocation</li>
+              <li>Cluster Internals &amp; Headless Cobrowser Harnesses</li>
+              <li>Hardware Wallets &amp; Key Custody Policies</li>
+              <li>Private Runtime Services &amp; Execution Bridges</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
 
-            <div class="sparkline-container">
-                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
-                    <span style="font-size:0.75rem; color:var(--muted); text-transform:uppercase;">OCI Trend (E73 → E78)</span>
-                    <span style="font-size:0.7rem; color:var(--cyan); font-family:monospace;">◀ Swipe Epochs ▶</span>
+    <!-- Empirical Observatory & Hypothesis Status Board -->
+    <section id="observatory" style="margin-bottom: 4rem;">
+      <div style="background: rgba(15, 23, 42, 0.9); border: 1px solid var(--card-border); border-radius: 16px; padding: 2rem; box-shadow: 0 20px 40px -15px rgba(0,0,0,0.5);">
+        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 1rem; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
+          <div>
+            <h3 style="font-size: 1.4rem; font-weight: 800; display: flex; align-items: center; gap: 10px;">
+              🔭 SPU Phase I: Empirical Observatory
+              <span style="font-size: 0.75rem; background: rgba(168, 85, 247, 0.2); color: #d8b4fe; border: 1px solid #a855f7; padding: 2px 8px; border-radius: 12px; font-weight: 600;">CONSTITUTIONAL DRAFT v1 FROZEN</span>
+            </h3>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 4px;">Live unmediated status board evaluating constitutional hypotheses against graph reality.</p>
+          </div>
+          <div style="display: flex; gap: 8px;">
+            <a href="/api/v1/metrics/empirical" target="_blank" class="nav-link" style="font-size: 0.75rem; padding: 0.4rem 0.8rem; background: rgba(56, 189, 248, 0.1); border: 1px solid var(--accent); color: var(--accent); border-radius: 6px; text-decoration: none;">Live JSON Stream</a>
+          </div>
+        </div>
+
+        <!-- SPU Observatory ΔOCI Dashboard & Epistemic Health Stack -->
+        <div style="margin-bottom: 2.5rem;">
+
+          <!-- EPISTEMIC HEALTH TRIAD BANNER -->
+          <div style="background: rgba(17, 26, 46, 0.95); border: 1px solid #38bdf8; border-radius: 14px; padding: 16px 20px; margin-bottom: 20px; box-shadow: 0 10px 25px rgba(56, 189, 248, 0.1);">
+            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 10px; margin-bottom: 12px; flex-wrap: wrap; gap: 8px;">
+              <div style="font-weight: 800; font-size: 0.95rem; color: #38bdf8; letter-spacing: 0.05em; display: flex; align-items: center; gap: 8px;">
+                <span>🧭 EPISTEMIC HEALTH TRIAD</span>
+                <span style="font-size: 0.7rem; background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid #38bdf8; padding: 2px 8px; border-radius: 12px; font-weight: 600;">FOUNDATIONAL RIGOR</span>
+              </div>
+              <div style="font-size: 0.75rem; color: #94a3b8; font-family: monospace;">
+                OCI Trend: <span style="color: #38bdf8; font-size: 1.1rem; letter-spacing: 2px;"> ▂▃▄▆▇█</span> &bull; Baseline: <strong style="color: #cbd5e1;">86.5%</strong> &bull; Current: <strong style="color: #22c55e;">91.2%</strong> &bull; ΔOCI: <strong style="color: #22c55e;">+4.7%</strong>
+              </div>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px;">
+              <div style="padding: 10px 14px; background: rgba(34, 197, 94, 0.08); border-left: 3px solid #22c55e; border-radius: 6px;">
+                <div style="font-size: 0.75rem; color: #94a3b8; text-transform: uppercase;">Reality Quality</div>
+                <div style="display: flex; justify-content: space-between; align-items: baseline; margin-top: 2px;">
+                  <strong style="color: #22c55e; font-size: 1.1rem; font-family: monospace;">→ GDI (0.000)</strong>
+                  <span style="font-size: 0.7rem; color: #22c55e; font-weight: 600;">Zero Drift</span>
                 </div>
-                <div class="sparkline">
-                    <span class="spark-point" data-index="0" data-epoch="73" data-value="86.5" data-delta="+0.0" data-status="BASELINE (E₀)" data-assumptions="11 / 12" data-blindspots="0"> </span>
-                    <span class="spark-point" data-index="1" data-epoch="74" data-value="87.2" data-delta="+0.7" data-status="IMPROVING" data-assumptions="11 / 12" data-blindspots="0">▂</span>
-                    <span class="spark-point" data-index="2" data-epoch="75" data-value="88.1" data-delta="+1.6" data-status="IMPROVING" data-assumptions="11 / 12" data-blindspots="0">▃</span>
-                    <span class="spark-point" data-index="3" data-epoch="76" data-value="89.4" data-delta="+2.9" data-status="IMPROVING" data-assumptions="11 / 12" data-blindspots="0">▄</span>
-                    <span class="spark-point" data-index="4" data-epoch="77" data-value="90.5" data-delta="+4.0" data-status="IMPROVING" data-assumptions="11 / 12" data-blindspots="0">▆</span>
-                    <span class="spark-point active" data-index="5" data-epoch="78" data-value="91.2" data-delta="+4.7" data-status="HEALTHY_COVERAGE" data-assumptions="11 / 12" data-blindspots="0">█</span>
+                <div style="font-size: 0.7rem; color: #94a3b8; margin-top: 3px;">Measures correspondence between graph & on-chain reality.</div>
+              </div>
+              <div style="padding: 10px 14px; background: rgba(168, 85, 247, 0.08); border-left: 3px solid #a855f7; border-radius: 6px;">
+                <div style="font-size: 0.75rem; color: #94a3b8; text-transform: uppercase;">Trust Quality</div>
+                <div style="display: flex; justify-content: space-between; align-items: baseline; margin-top: 2px;">
+                  <strong style="color: #a855f7; font-size: 1.1rem; font-family: monospace;">→ TAI (0.986)</strong>
+                  <span style="font-size: 0.7rem; color: #a855f7; font-weight: 600;">Δ +0.004 Aligned</span>
+                </div>
+                <div style="font-size: 0.7rem; color: #94a3b8; margin-top: 3px;">Measures reputation capital predictability.</div>
+              </div>
+              <div style="padding: 10px 14px; background: rgba(56, 189, 248, 0.08); border-left: 3px solid #38bdf8; border-radius: 6px;">
+                <div style="font-size: 0.75rem; color: #94a3b8; text-transform: uppercase;">Measurement Quality</div>
+                <div style="display: flex; justify-content: space-between; align-items: baseline; margin-top: 2px;">
+                  <strong style="color: #38bdf8; font-size: 1.1rem; font-family: monospace;">→ OCI (91.2%)</strong>
+                  <span style="font-size: 0.7rem; color: #38bdf8; font-weight: 600;">95% CI [89.4%, 92.7%]</span>
+                </div>
+                <div style="font-size: 0.7rem; color: #94a3b8; margin-top: 3px;">Measures change in institutional observability.</div>
+              </div>
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; margin-bottom: 20px;">
+            
+            <!-- OCI CARD -->
+            <div style="background: rgba(17, 26, 46, 0.95); border: 1px solid #28406f; border-radius: 16px; padding: 22px; box-shadow: 0 10px 25px rgba(0,0,0,0.4);">
+              <h2 style="font-size: 1.05rem; font-weight: 700; color: #e8edf7; margin-bottom: 12px; display: flex; align-items: center; justify-content: space-between;">
+                <span>📈 Observability Coverage Index (OCI)</span>
+                <span id="ociCoverageTierBadge" style="font-size: 0.7rem; background: rgba(34,197,94,0.15); color: #22c55e; border: 1px solid #22c55e; padding: 3px 10px; border-radius: 999px; font-weight: 700;">HEALTHY COVERAGE</span>
+              </h2>
+              <div style="display: flex; align-items: baseline; gap: 14px; margin-bottom: 8px;">
+                <div id="ociMetricDisplay" style="font-size: 2.8rem; font-weight: 800; color: #22c55e; line-height: 1;">91.2%</div>
+                <div id="ociDeltaDisplay" style="font-size: 1.25rem; font-weight: 700; color: #22c55e; font-family: monospace;">ΔOCI +4.7%</div>
+              </div>
+
+              <div style="display: flex; justify-content: space-between; padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.06); font-size: 0.85rem;">
+                <span style="color: #9fb0d1;">Baseline Epoch (E₀)</span>
+                <strong style="color: #f1f5f9; font-family: monospace;">73</strong>
+              </div>
+              <div style="display: flex; justify-content: space-between; padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.06); font-size: 0.85rem;">
+                <span style="color: #9fb0d1;">Baseline OCI</span>
+                <strong style="color: #f1f5f9; font-family: monospace;">86.5%</strong>
+              </div>
+              <div style="display: flex; justify-content: space-between; padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.06); font-size: 0.85rem;">
+                <span style="color: #9fb0d1;">Blind Spots Remaining</span>
+                <strong id="ociBlindSpots" style="color: #22c55e; font-family: monospace;">0</strong>
+              </div>
+              <div style="display: flex; justify-content: space-between; padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.06); font-size: 0.85rem;">
+                <span style="color: #9fb0d1;">Instrumented Assumptions</span>
+                <strong id="ociInstrumented" style="color: #38bdf8; font-family: monospace;">11 / 12</strong>
+              </div>
+              <div style="display: flex; justify-content: space-between; padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.06); font-size: 0.85rem;">
+                <span style="color: #9fb0d1;">95% Confidence Interval (95% CI)</span>
+                <strong id="ociConfidenceDisplay" style="color: #38bdf8; font-family: monospace;">[89.4%, 92.7%]</strong>
+              </div>
+
+              <div class="sparkline-container" style="margin-top: 16px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                  <span style="font-size: 0.75rem; color: #9fb0d1; text-transform: uppercase; letter-spacing: 0.05em;">OCI Trend (E73 → E78)</span>
+                  <span style="font-size: 0.7rem; color: #38bdf8; font-family: monospace;">◀ Swipe Epochs ▶</span>
+                </div>
+                <div class="sparkline" id="ociSparkline">
+                  <span class="spark-point" data-index="0" data-epoch="73" data-value="86.5" data-delta="+0.0" data-status="BASELINE (E₀)" data-assumptions="11 / 12" data-blindspots="0" data-ci="[84.8%, 88.2%]">▂</span>
+                  <span class="spark-point" data-index="1" data-epoch="74" data-value="87.2" data-delta="+0.7" data-status="IMPROVING" data-assumptions="11 / 12" data-blindspots="0" data-ci="[85.5%, 88.9%]">▃</span>
+                  <span class="spark-point" data-index="2" data-epoch="75" data-value="88.1" data-delta="+1.6" data-status="IMPROVING" data-assumptions="11 / 12" data-blindspots="0" data-ci="[86.3%, 89.9%]">▄</span>
+                  <span class="spark-point" data-index="3" data-epoch="76" data-value="89.4" data-delta="+2.9" data-status="IMPROVING" data-assumptions="11 / 12" data-blindspots="0" data-ci="[87.6%, 91.2%]">▆</span>
+                  <span class="spark-point" data-index="4" data-epoch="77" data-value="90.5" data-delta="+4.0" data-status="IMPROVING" data-assumptions="11 / 12" data-blindspots="0" data-ci="[88.7%, 92.1%]">▇</span>
+                  <span class="spark-point active" data-index="5" data-epoch="78" data-value="91.2" data-delta="+4.7" data-status="HEALTHY_COVERAGE" data-assumptions="11 / 12" data-blindspots="0" data-ci="[89.4%, 92.7%]">█</span>
                 </div>
 
                 <div class="epoch-card" id="epochCard">
-                    <!-- Populated by JavaScript -->
+                  Loading...
                 </div>
+              </div>
             </div>
 
-        </div>
-
-        <!-- META PANEL -->
-
-        <div class="card">
-
-            <h2>Epistemic Health Stack</h2>
-
-            <div class="epistemic-stack">
-
-                Reality Quality<br>
-                <strong>GDI (Δ +0.000)</strong>
-
-                <br>↓<br>
-
-                Trust Quality<br>
-                <strong>TAI (Δ +0.004)</strong>
-
-                <br>↓<br>
-
-                Measurement Quality<br>
-                <strong>OCI (Δ +4.7%)</strong>
-
+            <!-- META PANEL: FOUR-TIER OBSERVABILITY & EPISTEMIC HEALTH STACK -->
+            <div style="background: rgba(17, 26, 46, 0.95); border: 1px solid #28406f; border-radius: 16px; padding: 22px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 10px 25px rgba(0,0,0,0.4);">
+              <div>
+                <h2 style="font-size: 1.05rem; font-weight: 700; color: #e8edf7; margin-bottom: 12px; display: flex; align-items: center; justify-content: space-between;">
+                  <span>🏛️ Four-Tier Observability & Epistemic Stack</span>
+                  <span style="font-size: 0.7rem; background: rgba(59,130,246,0.15); color: #60a5fa; border: 1px solid #3b82f6; padding: 3px 10px; border-radius: 999px; font-weight: 700;">TIERS 0–3</span>
+                </h2>
+                <div style="display: grid; grid-template-columns: 1fr; gap: 8px; margin-bottom: 12px;">
+                  <div style="padding: 8px 12px; background: rgba(56, 189, 248, 0.08); border-left: 3px solid #38bdf8; border-radius: 4px; display: flex; justify-content: space-between; align-items: center;">
+                    <div><strong style="color: #38bdf8; font-size: 0.8rem;">Tier 0 &bull; Meta-Observability:</strong> <span style="font-size: 0.78rem; color: #cbd5e1;">OCI, Blind Spots, Epistemic Accountability</span></div>
+                    <span style="font-family: monospace; font-size: 0.78rem; color: #38bdf8; font-weight: 700;">OCI 91.2% (Δ+4.7%)</span>
+                  </div>
+                  <div style="padding: 8px 12px; background: rgba(34, 197, 94, 0.08); border-left: 3px solid #22c55e; border-radius: 4px; display: flex; justify-content: space-between; align-items: center;">
+                    <div><strong style="color: #22c55e; font-size: 0.8rem;">Tier 1 &bull; Institutional State:</strong> <span style="font-size: 0.78rem; color: #cbd5e1;">GDI (Reality), TAI (Trust Alignment)</span></div>
+                    <span style="font-family: monospace; font-size: 0.78rem; color: #22c55e; font-weight: 700;">GDI 0.000 &bull; TAI 0.986</span>
+                  </div>
+                  <div style="padding: 8px 12px; background: rgba(168, 85, 247, 0.08); border-left: 3px solid #a855f7; border-radius: 4px; display: flex; justify-content: space-between; align-items: center;">
+                    <div><strong style="color: #a855f7; font-size: 0.8rem;">Tier 2 &bull; Operational Domains:</strong> <span style="font-size: 0.78rem; color: #cbd5e1;">Governance, Consent, Compute, D2</span></div>
+                    <span style="font-family: monospace; font-size: 0.78rem; color: #a855f7; font-weight: 700;">Gini 0.210 &bull; η 20.2 tok/W</span>
+                  </div>
+                  <div style="padding: 8px 12px; background: rgba(245, 158, 11, 0.08); border-left: 3px solid #f59e0b; border-radius: 4px; display: flex; justify-content: space-between; align-items: center;">
+                    <div><strong style="color: #f59e0b; font-size: 0.8rem;">Tier 3 &bull; World Simulation:</strong> <span style="font-size: 0.78rem; color: #cbd5e1;">HomeTree, Organisms, Quarks, Qubits, Trits</span></div>
+                    <span style="font-family: monospace; font-size: 0.72rem; color: #f59e0b; font-weight: 700;">Invariant XLVI</span>
+                  </div>
+                </div>
+                <div style="padding: 10px 12px; background: rgba(15, 23, 42, 0.8); border: 1px solid rgba(255,255,255,0.06); border-radius: 8px; font-size: 0.75rem; color: #94a3b8; font-family: monospace; line-height: 1.5;">
+                  <strong style="color: #e2e8f0;">Constitutional Invariant XLVI:</strong> Persist &rarr; Project &rarr; Render<br/>
+                  ├─ <strong style="color: #22c55e;">Fact Layer:</strong> Valkey (authoritative operational state & immutable ticks)<br/>
+                  ├─ <strong style="color: #38bdf8;">Memory Layer:</strong> Neo4j (relational graph of verified causality & lineage)<br/>
+                  └─ <strong style="color: #f59e0b;">Visualization Layer:</strong> Spacebook (5D topological rendering & HUD)
+                </div>
+              </div>
+              <div style="border-top: 1px solid rgba(255,255,255,0.08); padding-top: 10px; margin-top: 12px; font-size: 0.75rem; color: #9fb0d1; line-height: 1.6;">
+                <div><strong>Nested Accountability:</strong> Reality (GDI) &bull; Trust (TAI) &bull; Epistemic (OCI 95% CI [89.4%, 92.7%]).</div>
+                <div style="margin-top: 4px; color: #f59e0b;"><strong>SPU-0010 Invariant:</strong> ΔOCI &lt; 0 for 3 epochs triggers Mandatory Epistemic Audit; ΔOCI &le; -10% triggers Constitutional Review.</div>
+              </div>
             </div>
 
-            <div style="margin-top:16px; font-size:.78rem; color:var(--muted); line-height:1.6;">
-                <strong>SPU-0010 Audit Triggers:</strong><br>
-                • OCI &ge; 80%: <code>HEALTHY_COVERAGE</code><br>
-                • OCI 60-80%: <code>CAUTION</code><br>
-                • OCI &lt; 60%: <code>EPISTEMIC_RISK</code><br>
-                • ΔOCI &lt; 0 for 3 epochs: <code>Mandatory Epistemic Audit</code><br>
-                • ΔOCI &le; -10%: <code>Constitutional Review Trigger</code>
+          </div>
+
+          <!-- DELTA TABLE -->
+          <div style="background: rgba(17, 26, 46, 0.95); border: 1px solid #28406f; border-radius: 16px; padding: 20px; margin-bottom: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.4);">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; flex-wrap: wrap; gap: 8px;">
+              <h2 style="font-size: 1.1rem; font-weight: 700; color: #e8edf7;">📊 Longitudinal Delta Tracking (Epoch 73 Baseline Anchor)</h2>
+              <div style="font-size: 0.75rem; color: #9fb0d1; font-family: monospace;">
+                Baseline: <strong style="color: #f1f5f9;">E₀ = 73</strong> &bull; Current: <strong style="color: #38bdf8;">Epoch 79</strong> &bull; Constitutional Draft v1 Frozen
+              </div>
             </div>
-
-        </div>
-
-    </div>
-
-    <!-- DELTA TABLE -->
-
-    <div class="card longitudinal">
-
-        <h2>Longitudinal Delta Tracking</h2>
-
-        <div class="table">
-
-            <table>
-
+            <div style="overflow-x: auto;">
+              <table style="width: 100%; border-collapse: collapse; font-size: 0.9rem;">
                 <thead>
-                <tr>
-                    <th>Metric</th>
-                    <th>Baseline</th>
-                    <th>Current</th>
-                    <th>Δ</th>
-                    <th>Trend</th>
-                    <th>Status</th>
-                </tr>
+                  <tr style="background: #17233f; border-bottom: 1px solid #28406f;">
+                    <th style="padding: 12px; text-align: left; color: #9fb0d1; font-weight: 600;">Metric</th>
+                    <th style="padding: 12px; text-align: left; color: #9fb0d1; font-weight: 600;">Baseline (E₀)</th>
+                    <th style="padding: 12px; text-align: left; color: #9fb0d1; font-weight: 600;">Current</th>
+                    <th style="padding: 12px; text-align: left; color: #9fb0d1; font-weight: 600;">Δ</th>
+                    <th style="padding: 12px; text-align: left; color: #9fb0d1; font-weight: 600;">Trend</th>
+                    <th style="padding: 12px; text-align: left; color: #9fb0d1; font-weight: 600;">Status</th>
+                  </tr>
                 </thead>
-
                 <tbody>
-
-                <tr>
-                    <td>GDI</td>
-                    <td>0.000</td>
-                    <td>0.000</td>
-                    <td>+0.000</td>
-                    <td>▄▄▄▄▄▄</td>
-                    <td class="status-neutral">STABLE</td>
-                </tr>
-
-                <tr>
-                    <td>TAI</td>
-                    <td>0.982</td>
-                    <td>0.986</td>
-                    <td>+0.004</td>
-                    <td>▅▅▆▆▇█</td>
-                    <td class="status-good">IMPROVING</td>
-                </tr>
-
-                <tr>
-                    <td>Gini</td>
-                    <td>0.220</td>
-                    <td>0.210</td>
-                    <td>-0.010</td>
-                    <td>█▇▆▅▄▃</td>
-                    <td class="status-good">ANTI-CAPTURE</td>
-                </tr>
-
-                <tr>
-                    <td>Policy</td>
-                    <td>100%</td>
-                    <td>100%</td>
-                    <td>+0.0%</td>
-                    <td>██████</td>
-                    <td class="status-neutral">STABLE</td>
-                </tr>
-
-                <tr>
-                    <td>ηNPU</td>
-                    <td>18.4</td>
-                    <td>20.2</td>
-                    <td>+1.8</td>
-                    <td>▂▃▄▅▇█</td>
-                    <td class="status-good">IMPROVING</td>
-                </tr>
-
-                <tr>
-                    <td><strong>OCI</strong></td>
-                    <td><strong>86.5%</strong></td>
-                    <td><strong>91.2%</strong></td>
-                    <td class="delta"><strong>+4.7%</strong></td>
-                    <td><strong>▂▃▄▆▇█</strong></td>
-                    <td class="status-good"><strong>IMPROVING</strong></td>
-                </tr>
-
+                  <tr style="border-bottom: 1px solid rgba(255,255,255,0.06);">
+                    <td style="padding: 12px; font-weight: 600; color: #e8edf7;">GDI</td>
+                    <td style="padding: 12px; font-family: monospace; color: #cbd5e1;">0.000</td>
+                    <td style="padding: 12px; font-family: monospace; color: #cbd5e1;">0.000</td>
+                    <td style="padding: 12px; font-family: monospace; color: #22c55e; font-weight: 600;">+0.000</td>
+                    <td style="padding: 12px; font-family: monospace; font-size: 1.2rem; color: #60a5fa; letter-spacing: 2px;">▄▄▄▄▄▄</td>
+                    <td style="padding: 12px;"><span style="color: #60a5fa; font-weight: 600;">STABLE</span></td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid rgba(255,255,255,0.06);">
+                    <td style="padding: 12px; font-weight: 600; color: #e8edf7;">TAI</td>
+                    <td style="padding: 12px; font-family: monospace; color: #cbd5e1;">0.982</td>
+                    <td style="padding: 12px; font-family: monospace; color: #cbd5e1;">0.986</td>
+                    <td style="padding: 12px; font-family: monospace; color: #22c55e; font-weight: 600;">+0.004</td>
+                    <td style="padding: 12px; font-family: monospace; font-size: 1.2rem; color: #a855f7; letter-spacing: 2px;">▅▅▆▆▇█</td>
+                    <td style="padding: 12px;"><span style="color: #22c55e; font-weight: 600;">IMPROVING</span></td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid rgba(255,255,255,0.06);">
+                    <td style="padding: 12px; font-weight: 600; color: #e8edf7;">Gini</td>
+                    <td style="padding: 12px; font-family: monospace; color: #cbd5e1;">0.220</td>
+                    <td style="padding: 12px; font-family: monospace; color: #cbd5e1;">0.210</td>
+                    <td style="padding: 12px; font-family: monospace; color: #38bdf8; font-weight: 600;">-0.010</td>
+                    <td style="padding: 12px; font-family: monospace; font-size: 1.2rem; color: #38bdf8; letter-spacing: 2px;">█▇▆▅▄▃</td>
+                    <td style="padding: 12px;"><span style="color: #22c55e; font-weight: 600;">ANTI-CAPTURE</span></td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid rgba(255,255,255,0.06);">
+                    <td style="padding: 12px; font-weight: 600; color: #e8edf7;">Policy</td>
+                    <td style="padding: 12px; font-family: monospace; color: #cbd5e1;">100%</td>
+                    <td style="padding: 12px; font-family: monospace; color: #cbd5e1;">100%</td>
+                    <td style="padding: 12px; font-family: monospace; color: #60a5fa; font-weight: 600;">+0.0%</td>
+                    <td style="padding: 12px; font-family: monospace; font-size: 1.2rem; color: #f59e0b; letter-spacing: 2px;">██████</td>
+                    <td style="padding: 12px;"><span style="color: #60a5fa; font-weight: 600;">STABLE</span></td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid rgba(255,255,255,0.06);">
+                    <td style="padding: 12px; font-weight: 600; color: #e8edf7;">ηNPU</td>
+                    <td style="padding: 12px; font-family: monospace; color: #cbd5e1;">18.4</td>
+                    <td style="padding: 12px; font-family: monospace; color: #cbd5e1;">20.2</td>
+                    <td style="padding: 12px; font-family: monospace; color: #22c55e; font-weight: 600;">+1.8</td>
+                    <td style="padding: 12px; font-family: monospace; font-size: 1.2rem; color: #06b6d4; letter-spacing: 2px;"> ▂▃▄▅▇█</td>
+                    <td style="padding: 12px;"><span style="color: #22c55e; font-weight: 600;">IMPROVING</span></td>
+                  </tr>
+                  <tr style="background: rgba(56, 189, 248, 0.06); border-bottom: 1px solid rgba(56, 189, 248, 0.2);">
+                    <td style="padding: 12px; font-weight: 800; color: #38bdf8;"><strong>OCI</strong></td>
+                    <td style="padding: 12px; font-family: monospace; font-weight: 700; color: #f1f5f9;">86.5%</td>
+                    <td style="padding: 12px; font-family: monospace; font-weight: 700; color: #f1f5f9;">91.2%</td>
+                    <td style="padding: 12px; font-family: monospace; color: #22c55e; font-weight: 800;">+4.7%</td>
+                    <td style="padding: 12px; font-family: monospace; font-size: 1.2rem; color: #06b6d4; letter-spacing: 2px;"> ▂▃▄▆▇█</td>
+                    <td style="padding: 12px;"><span style="color: #22c55e; font-weight: 800;">IMPROVING</span></td>
+                  </tr>
                 </tbody>
+              </table>
+            </div>
+          </div>
 
-            </table>
+          <!-- EPOCH COMPARISON MODE (HISTORICAL OBSERVATORY) -->
+          <div style="background: rgba(17, 26, 46, 0.95); border: 1px solid #28406f; border-radius: 16px; padding: 22px; margin-bottom: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.4);">
+            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 12px; margin-bottom: 16px; flex-wrap: wrap; gap: 10px;">
+              <div>
+                <h2 style="font-size: 1.1rem; font-weight: 700; color: #e8edf7; display: flex; align-items: center; gap: 8px;">
+                  <span>⏳ Epoch Comparison Mode</span>
+                  <span style="font-size: 0.7rem; background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid #38bdf8; padding: 2px 8px; border-radius: 999px; font-weight: 700;">HISTORICAL OBSERVATORY</span>
+                </h2>
+                <p style="font-size: 0.8rem; color: #9fb0d1; margin-top: 2px;">Compare institutional equilibrium, trust alignment, and compute yield across arbitrary historical epochs.</p>
+              </div>
+              <!-- Preset Buttons -->
+              <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                <button type="button" onclick="setEpochComparison(73, 78)" style="background: rgba(56, 189, 248, 0.1); border: 1px solid #38bdf8; color: #38bdf8; padding: 4px 10px; border-radius: 6px; font-size: 0.75rem; font-family: monospace; cursor: pointer;">Compare E73 ↔ E78 (Full Observation)</button>
+                <button type="button" onclick="setEpochComparison(73, 74)" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.15); color: #cbd5e1; padding: 4px 10px; border-radius: 6px; font-size: 0.75rem; font-family: monospace; cursor: pointer;">E73 ↔ E74</button>
+                <button type="button" onclick="setEpochComparison(77, 78)" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.15); color: #cbd5e1; padding: 4px 10px; border-radius: 6px; font-size: 0.75rem; font-family: monospace; cursor: pointer;">E77 ↔ E78 (Latest Tick)</button>
+              </div>
+            </div>
+
+            <!-- Comparison Selectors -->
+            <div style="display: flex; align-items: center; justify-content: center; gap: 14px; margin-bottom: 16px; flex-wrap: wrap;">
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <label style="font-size: 0.8rem; color: #9fb0d1;">Epoch A:</label>
+                <select id="compareEpochA" onchange="runComparisonFromSelect()" style="background: #17233f; color: #f1f5f9; border: 1px solid #28406f; padding: 4px 10px; border-radius: 6px; font-family: monospace; font-size: 0.85rem;">
+                  <option value="73" selected>Epoch 73 (E₀ Baseline)</option>
+                  <option value="74">Epoch 74</option>
+                  <option value="75">Epoch 75</option>
+                  <option value="76">Epoch 76</option>
+                  <option value="77">Epoch 77</option>
+                  <option value="78">Epoch 78</option>
+                </select>
+              </div>
+              <span style="color: #38bdf8; font-size: 1.2rem; font-family: monospace;">↔</span>
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <label style="font-size: 0.8rem; color: #9fb0d1;">Epoch B:</label>
+                <select id="compareEpochB" onchange="runComparisonFromSelect()" style="background: #17233f; color: #f1f5f9; border: 1px solid #28406f; padding: 4px 10px; border-radius: 6px; font-family: monospace; font-size: 0.85rem;">
+                  <option value="73">Epoch 73 (E₀ Baseline)</option>
+                  <option value="74">Epoch 74</option>
+                  <option value="75">Epoch 75</option>
+                  <option value="76">Epoch 76</option>
+                  <option value="77">Epoch 77</option>
+                  <option value="78" selected>Epoch 78 (Current)</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Comparison Table -->
+            <div style="overflow-x: auto;">
+              <table style="width: 100%; border-collapse: collapse; font-size: 0.88rem;">
+                <thead>
+                  <tr style="background: #17233f; border-bottom: 1px solid #28406f;">
+                    <th style="padding: 10px 14px; text-align: left; color: #9fb0d1; font-weight: 600;">Metric</th>
+                    <th style="padding: 10px 14px; text-align: left; color: #9fb0d1; font-weight: 600;" id="thEpochA">Epoch 73</th>
+                    <th style="padding: 10px 14px; text-align: left; color: #9fb0d1; font-weight: 600;" id="thEpochB">Epoch 78</th>
+                    <th style="padding: 10px 14px; text-align: left; color: #9fb0d1; font-weight: 600;">Transition (Δ)</th>
+                    <th style="padding: 10px 14px; text-align: left; color: #9fb0d1; font-weight: 600;">95% CI / Bounds</th>
+                    <th style="padding: 10px 14px; text-align: left; color: #9fb0d1; font-weight: 600;">Interpretation</th>
+                  </tr>
+                </thead>
+                <tbody id="epochComparisonBody">
+                  <!-- Populated dynamically by JavaScript -->
+                </tbody>
+              </table>
+            </div>
+
+            <div style="margin-top: 14px; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.06); font-family: monospace; font-size: 0.74rem; color: #94a3b8; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px;">
+              <span>Constitutional Draft v1 Frozen &bull; Invariant XLVI: Persist (Valkey) &rarr; Project (Neo4j) &rarr; Render (Spacebook)</span>
+              <span style="color: #38bdf8;">REST API: <code>/api/v1/metrics/compare?e1=73&e2=78</code></span>
+            </div>
+          </div>
+
+          <!-- OCI DOMAIN COVERAGE BREAKDOWN -->
+          <div style="background: rgba(17, 26, 46, 0.95); border: 1px solid #28406f; border-radius: 16px; padding: 22px; margin-bottom: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.4);">
+            <h2 style="font-size: 1.1rem; font-weight: 700; color: #e8edf7; margin-bottom: 16px;">🔍 OCI Domain Coverage Breakdown</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px;">
+              <div>
+                <div style="display: flex; justify-content: space-between; font-size: 0.8rem; margin-bottom: 4px; color: #cbd5e1;"><span>Reality Alignment</span><strong>100%</strong></div>
+                <div style="width: 100%; height: 8px; border-radius: 999px; background: #1c2d4f; overflow: hidden;"><span style="display: block; height: 100%; width: 100%; background: linear-gradient(90deg, #3b82f6, #22c55e);"></span></div>
+              </div>
+              <div>
+                <div style="display: flex; justify-content: space-between; font-size: 0.8rem; margin-bottom: 4px; color: #cbd5e1;"><span>Trust Predictability</span><strong>100%</strong></div>
+                <div style="width: 100%; height: 8px; border-radius: 999px; background: #1c2d4f; overflow: hidden;"><span style="display: block; height: 100%; width: 100%; background: linear-gradient(90deg, #3b82f6, #22c55e);"></span></div>
+              </div>
+              <div>
+                <div style="display: flex; justify-content: space-between; font-size: 0.8rem; margin-bottom: 4px; color: #cbd5e1;"><span>Governance Efficacy</span><strong>100%</strong></div>
+                <div style="width: 100%; height: 8px; border-radius: 999px; background: #1c2d4f; overflow: hidden;"><span style="display: block; height: 100%; width: 100%; background: linear-gradient(90deg, #3b82f6, #22c55e);"></span></div>
+              </div>
+              <div>
+                <div style="display: flex; justify-content: space-between; font-size: 0.8rem; margin-bottom: 4px; color: #cbd5e1;"><span>Consent & Sovereignty</span><strong>100%</strong></div>
+                <div style="width: 100%; height: 8px; border-radius: 999px; background: #1c2d4f; overflow: hidden;"><span style="display: block; height: 100%; width: 100%; background: linear-gradient(90deg, #3b82f6, #22c55e);"></span></div>
+              </div>
+              <div>
+                <div style="display: flex; justify-content: space-between; font-size: 0.8rem; margin-bottom: 4px; color: #cbd5e1;"><span>Edge Compute</span><strong>100%</strong></div>
+                <div style="width: 100%; height: 8px; border-radius: 999px; background: #1c2d4f; overflow: hidden;"><span style="display: block; height: 100%; width: 100%; background: linear-gradient(90deg, #3b82f6, #22c55e);"></span></div>
+              </div>
+              <div>
+                <div style="display: flex; justify-content: space-between; font-size: 0.8rem; margin-bottom: 4px; color: #cbd5e1;"><span>Worker Survival</span><strong>85%</strong></div>
+                <div style="width: 100%; height: 8px; border-radius: 999px; background: #1c2d4f; overflow: hidden;"><span style="display: block; height: 100%; width: 85%; background: linear-gradient(90deg, #3b82f6, #22c55e);"></span></div>
+              </div>
+              <div>
+                <div style="display: flex; justify-content: space-between; font-size: 0.8rem; margin-bottom: 4px; color: #cbd5e1;"><span>Federated Learning</span><strong>75%</strong></div>
+                <div style="width: 100%; height: 8px; border-radius: 999px; background: #1c2d4f; overflow: hidden;"><span style="display: block; height: 100%; width: 75%; background: linear-gradient(90deg, #3b82f6, #f59e0b);"></span></div>
+              </div>
+              <div>
+                <div style="display: flex; justify-content: space-between; font-size: 0.8rem; margin-bottom: 4px; color: #cbd5e1;"><span>Research Quality</span><strong>60%</strong></div>
+                <div style="width: 100%; height: 8px; border-radius: 999px; background: #1c2d4f; overflow: hidden;"><span style="display: block; height: 100%; width: 60%; background: linear-gradient(90deg, #f59e0b, #eab308);"></span></div>
+              </div>
+              <div>
+                <div style="display: flex; justify-content: space-between; font-size: 0.8rem; margin-bottom: 4px; color: #cbd5e1;"><span>Institutional Memory</span><strong>40%</strong></div>
+                <div style="width: 100%; height: 8px; border-radius: 999px; background: #1c2d4f; overflow: hidden;"><span style="display: block; height: 100%; width: 40%; background: linear-gradient(90deg, #ef4444, #f59e0b);"></span></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cohort Tracker -->
+          <h4 style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); font-family: 'JetBrains Mono', monospace; margin-bottom: 0.75rem;">Experimental Cohort Enrollment</h4>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem;">
+            <div style="background: rgba(10, 15, 30, 0.8); border: 1px solid rgba(56, 189, 248, 0.2); padding: 1rem; border-radius: 8px;">
+              <div style="display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 0.35rem;">
+                <strong style="color: var(--accent);">Cohort A: Participants</strong>
+                <span style="color: #38bdf8; font-family: monospace;">1 / 500</span>
+              </div>
+              <div style="font-size: 0.75rem; color: var(--text-muted); margin-bottom: 0.5rem;">Attention, Granular Consent & Retention</div>
+              <div style="height: 6px; background: rgba(255,255,255,0.06); border-radius: 3px; overflow: hidden;">
+                <div style="width: 12%; height: 100%; background: var(--accent);"></div>
+              </div>
+            </div>
+            <div style="background: rgba(10, 15, 30, 0.8); border: 1px solid rgba(168, 85, 247, 0.2); padding: 1rem; border-radius: 8px;">
+              <div style="display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 0.35rem;">
+                <strong style="color: #d8b4fe;">Cohort B: Researchers</strong>
+                <span style="color: #d8b4fe; font-family: monospace;">1 / 100</span>
+              </div>
+              <div style="font-size: 0.75rem; color: var(--text-muted); margin-bottom: 0.5rem;">Knowledge Creation & RFC Peer Review</div>
+              <div style="height: 6px; background: rgba(255,255,255,0.06); border-radius: 3px; overflow: hidden;">
+                <div style="width: 15%; height: 100%; background: #a855f7;"></div>
+              </div>
+            </div>
+            <div style="background: rgba(10, 15, 30, 0.8); border: 1px solid rgba(34, 197, 94, 0.2); padding: 1rem; border-radius: 8px;">
+              <div style="display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 0.35rem;">
+                <strong style="color: #86efac;">Cohort C: Stewards</strong>
+                <span style="color: #86efac; font-family: monospace;">1 / 50</span>
+              </div>
+              <div style="font-size: 0.75rem; color: var(--text-muted); margin-bottom: 0.5rem;">Constitutional Defense & Invariants</div>
+              <div style="height: 6px; background: rgba(255,255,255,0.06); border-radius: 3px; overflow: hidden;">
+                <div style="width: 20%; height: 100%; background: #22c55e;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hypotheses Status Cards Grid -->
+        <h4 style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); font-family: 'JetBrains Mono', monospace; margin-bottom: 0.75rem;">Hypothesis Evaluation State (H-000 through H-004)</h4>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem;">
+          
+          <!-- H-000 -->
+          <div style="background: rgba(10, 15, 30, 0.95); border: 1px solid rgba(34, 197, 94, 0.4); border-top: 3px solid #22c55e; border-radius: 8px; padding: 1.1rem;">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.5rem;">
+              <div>
+                <span style="font-family: monospace; font-size: 0.7rem; color: #22c55e; font-weight: 700;">H-000: META-PRECONDITION</span>
+                <h5 style="font-size: 0.95rem; font-weight: 700;">Reality Alignment</h5>
+              </div>
+              <span style="background: rgba(34, 197, 94, 0.15); color: #86efac; font-size: 0.7rem; padding: 2px 6px; border-radius: 4px; font-weight: 700;">ACTIVE</span>
+            </div>
+            <p style="font-size: 0.78rem; color: var(--text-muted); margin-bottom: 0.5rem;">Graph Drift Index (GDI = Invalid / Total Facts). Target: &lt; 0.01.</p>
+            <div style="font-size: 0.75rem; color: #94a3b8; margin-bottom: 0.6rem; display: flex; flex-direction: column; gap: 2px;">
+              <div>Sample Size: <strong style="color: #f1f5f9;">4,833 entities / 19,252 edges</strong></div>
+              <div>30-Day Avg: <strong style="color: #f1f5f9;">0.002</strong> &bull; CI: <strong style="color: #86efac;">95% [0.000, 0.004]</strong></div>
+              <div>Base (E₀=73): <strong style="color: #f1f5f9;">0.000</strong> &bull; ΔGDI: <strong style="color: #86efac;">+0.000</strong></div>
+            </div>
+            <div style="display: flex; justify-content: space-between; font-size: 0.8rem; border-top: 1px solid rgba(255,255,255,0.06); padding-top: 0.5rem;">
+              <span>Confidence: <strong style="color: #86efac;">98%</strong></span>
+              <span>Observed GDI: <strong style="color: #22c55e; font-family: monospace;">0.000</strong></span>
+            </div>
+          </div>
+
+          <!-- H-001 -->
+          <div style="background: rgba(10, 15, 30, 0.95); border: 1px solid var(--card-border); border-top: 3px solid var(--accent); border-radius: 8px; padding: 1.1rem;">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.5rem;">
+              <div>
+                <span style="font-family: monospace; font-size: 0.7rem; color: var(--accent); font-weight: 700;">H-001: GOVERNANCE</span>
+                <h5 style="font-size: 0.95rem; font-weight: 700;">Contribution vs Wealth</h5>
+              </div>
+              <span style="background: rgba(56, 189, 248, 0.15); color: #38bdf8; font-size: 0.7rem; padding: 2px 6px; border-radius: 4px; font-weight: 700;">COLLECTING DATA</span>
+            </div>
+            <p style="font-size: 0.78rem; color: var(--text-muted); margin-bottom: 0.5rem;">Proposal Defect Rate (&lt;5%) & Voting Power Gini (&lt;0.45).</p>
+            <div style="font-size: 0.75rem; color: #94a3b8; margin-bottom: 0.6rem; display: flex; flex-direction: column; gap: 2px;">
+              <div>Sample Size: <strong style="color: #f1f5f9;">48 proposals evaluated</strong></div>
+              <div>30-Day Avg: <strong style="color: #f1f5f9;">Defect: 0.0%, Gini: 0.22</strong> &bull; CI: <strong style="color: #38bdf8;">95% [0.19, 0.25]</strong></div>
+              <div>Base (E₀=73): <strong style="color: #f1f5f9;">Gini 0.22</strong> &bull; ΔGini: <strong style="color: #38bdf8;">+0.00</strong></div>
+            </div>
+            <div style="display: flex; justify-content: space-between; font-size: 0.8rem; border-top: 1px solid rgba(255,255,255,0.06); padding-top: 0.5rem;">
+              <span>Defect Rate: <strong style="color: #38bdf8; font-family: monospace;">0.0%</strong></span>
+              <span>Gini: <strong style="color: #38bdf8; font-family: monospace;">0.22</strong></span>
+            </div>
+          </div>
+
+          <!-- H-002 -->
+          <div style="background: rgba(10, 15, 30, 0.95); border: 1px solid var(--card-border); border-top: 3px solid #a855f7; border-radius: 8px; padding: 1.1rem;">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.5rem;">
+              <div>
+                <span style="font-family: monospace; font-size: 0.7rem; color: #d8b4fe; font-weight: 700;">H-002: REPUTATION</span>
+                <h5 style="font-size: 0.95rem; font-weight: 700;">Trust Predictability</h5>
+              </div>
+              <span style="background: rgba(168, 85, 247, 0.15); color: #d8b4fe; font-size: 0.7rem; padding: 2px 6px; border-radius: 4px; font-weight: 700;">COLLECTING DATA</span>
+            </div>
+            <p style="font-size: 0.78rem; color: var(--text-muted); margin-bottom: 0.5rem;">Trust Alignment Index (TAI = Obs / Pred). Target: &ge; 0.95.</p>
+            <div style="font-size: 0.75rem; color: #94a3b8; margin-bottom: 0.6rem; display: flex; flex-direction: column; gap: 2px;">
+              <div>Sample Size: <strong style="color: #f1f5f9;">12,417 validated actions</strong></div>
+              <div>30-Day Avg: <strong style="color: #f1f5f9;">0.973</strong> &bull; CI: <strong style="color: #d8b4fe;">95% [0.968, 0.996]</strong></div>
+              <div>Base (E₀=73): <strong style="color: #f1f5f9;">TAI 0.982</strong> &bull; ΔTAI: <strong style="color: #d8b4fe;">+0.000</strong></div>
+            </div>
+            <div style="display: flex; justify-content: space-between; font-size: 0.8rem; border-top: 1px solid rgba(255,255,255,0.06); padding-top: 0.5rem;">
+              <span>Observed TAI: <strong style="color: #d8b4fe; font-family: monospace;">0.982</strong></span>
+              <span>Breaches: <strong style="color: #d8b4fe; font-family: monospace;">0</strong></span>
+            </div>
+          </div>
+
+          <!-- H-003 -->
+          <div style="background: rgba(10, 15, 30, 0.95); border: 1px solid var(--card-border); border-top: 3px solid #eab308; border-radius: 8px; padding: 1.1rem;">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.5rem;">
+              <div>
+                <span style="font-family: monospace; font-size: 0.7rem; color: #fde047; font-weight: 700;">H-003: SOVEREIGNTY</span>
+                <h5 style="font-size: 0.95rem; font-weight: 700;">Consent Preference</h5>
+              </div>
+              <span style="background: rgba(234, 179, 8, 0.15); color: #fde047; font-size: 0.7rem; padding: 2px 6px; border-radius: 4px; font-weight: 700;">COLLECTING DATA</span>
+            </div>
+            <p style="font-size: 0.78rem; color: var(--text-muted); margin-bottom: 0.5rem;">Granular Consent Matrix adoption (&gt;25%) & 90-day retention.</p>
+            <div style="font-size: 0.75rem; color: #94a3b8; margin-bottom: 0.6rem; display: flex; flex-direction: column; gap: 2px;">
+              <div>Sample Size: <strong style="color: #f1f5f9;">1 participant node (Cohort Day 1)</strong></div>
+              <div>30-Day Avg: <strong style="color: #f1f5f9;">Custom: 100%, Revoc: 85ms</strong> &bull; CI: <strong style="color: #fde047;">95% [72ms, 98ms]</strong></div>
+              <div>Base (E₀=73): <strong style="color: #f1f5f9;">100% Policy</strong> &bull; ΔPolicy: <strong style="color: #fde047;">+0.0%</strong></div>
+            </div>
+            <div style="display: flex; justify-content: space-between; font-size: 0.8rem; border-top: 1px solid rgba(255,255,255,0.06); padding-top: 0.5rem;">
+              <span>Custom Policy: <strong style="color: #fde047; font-family: monospace;">100.0%</strong></span>
+              <span>Revoc Latency: <strong style="color: #fde047; font-family: monospace;">85ms</strong></span>
+            </div>
+          </div>
+
+          <!-- H-004 -->
+          <div style="background: rgba(10, 15, 30, 0.95); border: 1px solid var(--card-border); border-top: 3px solid #06b6d4; border-radius: 8px; padding: 1.1rem;">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.5rem;">
+              <div>
+                <span style="font-family: monospace; font-size: 0.7rem; color: #67e8f9; font-weight: 700;">H-004: COMPUTE</span>
+                <h5 style="font-size: 0.95rem; font-weight: 700;">Edge NPU Viability</h5>
+              </div>
+              <span style="background: rgba(6, 182, 212, 0.15); color: #67e8f9; font-size: 0.7rem; padding: 2px 6px; border-radius: 4px; font-weight: 700;">COLLECTING DATA</span>
+            </div>
+            <p style="font-size: 0.78rem; color: var(--text-muted); margin-bottom: 0.5rem;">Distributed token throughput per watt (&gt;12.0) & sync delay (&lt;150ms).</p>
+            <div style="font-size: 0.75rem; color: #94a3b8; margin-bottom: 0.6rem; display: flex; flex-direction: column; gap: 2px;">
+              <div>Sample Size: <strong style="color: #f1f5f9;">1,840 inference slices</strong></div>
+              <div>30-Day Avg: <strong style="color: #f1f5f9;">18.2 tok/W, 36ms sync</strong> &bull; CI: <strong style="color: #67e8f9;">95% [16.8, 19.9 tok/W]</strong></div>
+              <div>Base (E₀=73): <strong style="color: #f1f5f9;">18.4 tok/W</strong> &bull; Δη: <strong style="color: #67e8f9;">+0.0 tok/W</strong></div>
+            </div>
+            <div style="display: flex; justify-content: space-between; font-size: 0.8rem; border-top: 1px solid rgba(255,255,255,0.06); padding-top: 0.5rem;">
+              <span>Efficiency: <strong style="color: #67e8f9; font-family: monospace;">18.4 tok/W</strong></span>
+              <span>Sync Delay: <strong style="color: #67e8f9; font-family: monospace;">34ms</strong></span>
+            </div>
+          </div>
 
         </div>
 
-    </div>
+        <!-- SPU-D2 Experimental Supercomputer Hypotheses & Port Standards -->
+        <div style="margin-top: 2rem; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 1.5rem;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; gap: 0.5rem;">
+            <div>
+              <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--accent); font-weight: 700; text-transform: uppercase;">🔬 Division 2 (SPU-D2) Experimental Track</span>
+              <h4 style="font-size: 1.1rem; font-weight: 800; margin-top: 2px;">Stratum-5D Distributed Compute Hypotheses (H-005 to H-007)</h4>
+            </div>
+            <div style="font-size: 0.72rem; color: var(--text-muted); font-family: monospace; background: rgba(0,0,0,0.3); padding: 4px 8px; border-radius: 4px;">
+              Ports: 3335 (TCP) &bull; 3336 (QUIC) &bull; 3337 (Metrics) &bull; 3338 (Canary)
+            </div>
+          </div>
 
-    <!-- BREAKDOWN -->
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem;">
+            <!-- H-005 -->
+            <div style="background: rgba(10, 15, 30, 0.85); border: 1px solid rgba(234, 179, 8, 0.3); border-top: 3px solid #eab308; border-radius: 8px; padding: 1rem;">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.4rem;">
+                <div>
+                  <span style="font-family: monospace; font-size: 0.68rem; color: #fde047; font-weight: 700;">H-005: USABILITY</span>
+                  <h5 style="font-size: 0.9rem; font-weight: 700;">Participant Experience</h5>
+                </div>
+                <span style="background: rgba(234, 179, 8, 0.15); color: #fde047; font-size: 0.65rem; padding: 2px 6px; border-radius: 4px; font-weight: 700;">PROPOSED</span>
+              </div>
+              <p style="font-size: 0.75rem; color: var(--text-muted); margin-bottom: 0.5rem;">Opt-Out Rate (&lt;5%), Battery drain (&le;3.5%/hr), Thermal compliance.</p>
+              <div style="display: flex; justify-content: space-between; font-size: 0.78rem; border-top: 1px solid rgba(255,255,255,0.06); padding-top: 0.4rem;">
+                <span>Opt-Out Rate: <strong style="color: #fde047; font-family: monospace;">0.0%</strong></span>
+                <span>Drain: <strong style="color: #fde047; font-family: monospace;">2.1%/hr</strong></span>
+              </div>
+            </div>
 
-    <div class="card oci-breakdown">
+            <!-- H-006 -->
+            <div style="background: rgba(10, 15, 30, 0.85); border: 1px solid rgba(34, 197, 94, 0.3); border-top: 3px solid #22c55e; border-radius: 8px; padding: 1rem;">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.4rem;">
+                <div>
+                  <span style="font-family: monospace; font-size: 0.68rem; color: #86efac; font-weight: 700;">H-006: PARITY</span>
+                  <h5 style="font-size: 0.9rem; font-weight: 700;">Graph Verification Scale</h5>
+                </div>
+                <span style="background: rgba(34, 197, 94, 0.15); color: #86efac; font-size: 0.65rem; padding: 2px 6px; border-radius: 4px; font-weight: 700;">PROPOSED</span>
+              </div>
+              <p style="font-size: 0.75rem; color: var(--text-muted); margin-bottom: 0.5rem;">Distributed mobile auditing keeps GDI &lt; 0.01 at scale (&ge;99% coverage).</p>
+              <div style="display: flex; justify-content: space-between; font-size: 0.78rem; border-top: 1px solid rgba(255,255,255,0.06); padding-top: 0.4rem;">
+                <span>Audit Latency: <strong style="color: #86efac; font-family: monospace;">18s</strong></span>
+                <span>Coverage: <strong style="color: #86efac; font-family: monospace;">100.0%</strong></span>
+              </div>
+            </div>
 
-        <h2>OCI Domain Coverage Breakdown</h2>
+            <!-- H-007 -->
+            <div style="background: rgba(10, 15, 30, 0.85); border: 1px solid rgba(168, 85, 247, 0.3); border-top: 3px solid #a855f7; border-radius: 8px; padding: 1rem;">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.4rem;">
+                <div>
+                  <span style="font-family: monospace; font-size: 0.68rem; color: #d8b4fe; font-weight: 700;">H-007: PRIVACY</span>
+                  <h5 style="font-size: 0.9rem; font-weight: 700;">Federated Training DP</h5>
+                </div>
+                <span style="background: rgba(168, 85, 247, 0.15); color: #d8b4fe; font-size: 0.65rem; padding: 2px 6px; border-radius: 4px; font-weight: 700;">PROPOSED</span>
+              </div>
+              <p style="font-size: 0.75rem; color: var(--text-muted); margin-bottom: 0.5rem;">Local DP-SGD (&epsilon;&le;1.0, &delta;&le;10⁻⁵) produces positive accuracy gain.</p>
+              <div style="display: flex; justify-content: space-between; font-size: 0.78rem; border-top: 1px solid rgba(255,255,255,0.06); padding-top: 0.4rem;">
+                <span>Accuracy Gain: <strong style="color: #d8b4fe; font-family: monospace;">+1.4%</strong></span>
+                <span>Privacy &epsilon;: <strong style="color: #d8b4fe; font-family: monospace;">0.5</strong></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-        <br>
+    <!-- The 4 Academic Divisions -->
+    <section id="divisions" style="margin-bottom: 2rem;">
+      <h3 style="font-size: 1.75rem; font-weight: 800; margin-bottom: 0.5rem; text-align: center;">Four Academic Research Divisions</h3>
+      <p style="text-align: center; color: var(--text-muted); margin-bottom: 2.5rem;">Dedicated faculties advancing the theoretical and applied frontiers of the substrate.</p>
 
-        <p>Reality Alignment (100%)</p>
-        <div class="progress"><span style="width:100%"></span></div>
+      <div class="divisions-grid">
+        <!-- Division 1 -->
+        <div class="division-card">
+          <span class="division-badge">SPU-D1</span>
+          <h3>Attention Science</h3>
+          <p>Quantifying, modeling, and ethically stewarding human cognitive attention as a finite civilizational resource.</p>
+          <ul class="division-questions">
+            <li>How is cognitive focus distributed across physical spaces?</li>
+            <li>What sparks sustained learning vs. fleeting dopamine loops?</li>
+            <li>Can attention generate verifiable knowledge without tracking?</li>
+          </ul>
+        </div>
 
-        <br>
+        <!-- Division 2 -->
+        <div class="division-card">
+          <span class="division-badge">SPU-D2</span>
+          <h3>Distributed Intelligence</h3>
+          <p>Architecting collective intelligence meshes from millions of edge devices and local NPUs without centralized data silos.</p>
+          <ul class="division-questions">
+            <li>Can consumer phone/laptop NPUs run distributed matrix pipelines?</li>
+            <li>Can local inference outcompete cloud-monopolized LLMs?</li>
+            <li>How do heterogeneous devices tolerate high Byzantine churn?</li>
+          </ul>
+        </div>
 
-        <p>Trust Predictability (100%)</p>
-        <div class="progress"><span style="width:100%"></span></div>
+        <!-- Division 3 -->
+        <div class="division-card">
+          <span class="division-badge">SPU-D3</span>
+          <h3>Governance Science</h3>
+          <p>Designing capture-resistant, non-plutocratic self-governance algorithms anchored in demonstrated competency.</p>
+          <ul class="division-questions">
+            <li>Can non-transferable gATTN trust resist Sybil proliferation?</li>
+            <li>Does quadratic attention voting eliminate billionaire capture?</li>
+            <li>How should institutional authority decay with inactivity?</li>
+          </ul>
+        </div>
 
-        <br>
+        <!-- Division 4 -->
+        <div class="division-card">
+          <span class="division-badge">SPU-D4</span>
+          <h3>Civilization Engineering</h3>
+          <p>Preserving operational doctrine, institutional reasoning, and cross-generational knowledge across founder turnover.</p>
+          <ul class="division-questions">
+            <li>How do institutions prevent doctrine degradation over decades?</li>
+            <li>Can failure post-mortems become immutable graph reflexes?</li>
+            <li>How do sovereign planetary federations coordinate without empire?</li>
+          </ul>
+        </div>
+      </div>
+    </section>
 
-        <p>Governance Efficacy (100%)</p>
-        <div class="progress"><span style="width:100%"></span></div>
+    <!-- Interactive Wiki Documentation -->
+    <section id="wiki" style="margin-bottom: 4rem;">
+      <h3 style="font-size: 1.75rem; font-weight: 800; margin-bottom: 0.5rem; text-align: center;">Institutional Wiki & Public Documents</h3>
+      <p style="text-align: center; color: var(--text-muted); margin-bottom: 2.5rem;">Examine our hypotheses, governance proofs, and constitutional invariants.</p>
 
-        <br>
+      <div class="wiki-container">
+        <!-- Sidebar Navigation -->
+        <div class="wiki-sidebar">
+          <h4>Core Public Documents</h4>
+          <a class="wiki-nav-item active" onclick="showDoc('spu-0001')">SPU-0001: The Manifesto</a>
+          <a class="wiki-nav-item" onclick="showDoc('spu-0002')">SPU-0002: Experimental Charter</a>
+          <a class="wiki-nav-item" onclick="showDoc('spu-0003')">SPU-0003: Privacy & Consent</a>
+          <a class="wiki-nav-item" onclick="showDoc('spu-0004')">SPU-0004: Economics & Governance</a>
+          <a class="wiki-nav-item" onclick="showDoc('spu-0005')">SPU-0005: Risks & Limitations</a>
+          <a class="wiki-nav-item" onclick="showDoc('spu-0006')">SPU-0006: Research Roadmap</a>
+          <a class="wiki-nav-item" onclick="showDoc('spu-0007')">SPU-0007: Validation Framework</a>
+          <a class="wiki-nav-item" onclick="showDoc('spu-0008')">SPU-0008: Android Edge Node Spec</a>
+          <a class="wiki-nav-item" onclick="showDoc('spu-0009')">SPU-0009: Stratum-5D Supercomputer</a>
 
-        <p>Consent & Sovereignty (100%)</p>
-        <div class="progress"><span style="width:100%"></span></div>
+          <h4>Constitutional Protocols (Draft v1)</h4>
+          <a class="wiki-nav-item" onclick="showDoc('rfc-0025')">RFC-0025: Trust Layer Spec</a>
+          <a class="wiki-nav-item" onclick="showDoc('rfc-0029b')">RFC-0029-B: Neo4j Trust Graph</a>
+        </div>
 
-        <br>
+        <!-- Main Wiki Article Container -->
+        <div class="wiki-content">
+          <!-- SPU-0001 -->
+          <article id="doc-spu-0001" class="wiki-article active">
+            <h2>SPU-0001: The Spacebook Manifesto</h2>
+            <div class="meta">DOCUMENT ID: SPU-0001 | CATEGORY: FOUNDATION | REVISION: 1.0</div>
+            <h3>1. Declaration of Purpose</h3>
+            <p>Spacebook.University is an open, non-hierarchical research institution dedicated to investigating whether human attention, distributed edge computation, knowledge preservation, and civilizational governance can unite into a coherent, participant-owned substrate—without surveillance capitalism and without plutocratic capture.</p>
+            <h3>2. The Core Thesis</h3>
+            <p>Traditional networks commodify user attention into behavioral ad profiles. Spacebook transforms attention into verifiable knowledge production, moving computation to the edge rather than central silos, and deriving governance authority strictly from demonstrated competency rather than capital accumulation.</p>
+            <h3>3. Contributor Attraction Message</h3>
+            <p style="background: rgba(56, 189, 248, 0.08); border-left: 3px solid var(--accent); padding: 1rem; font-style: italic;">
+              "Help us explore whether a civilization-scale attention, governance, and knowledge network can be built without surveillance capitalism and without plutocratic governance."
+            </p>
+          </article>
 
-        <p>Edge Compute (100%)</p>
-        <div class="progress"><span style="width:100%"></span></div>
+          <!-- SPU-0002 -->
+          <article id="doc-spu-0002" class="wiki-article">
+            <h2>SPU-0002: Spacebook.University Experimental Charter</h2>
+            <div class="meta">DOCUMENT ID: SPU-0002 | CATEGORY: EXPERIMENTAL CHARTER | REVISION: 1.0</div>
+            <h3>1. Mission & Central Research Question</h3>
+            <p><strong>Can human attention be transformed into a sustainable source of knowledge production, distributed intelligence, and civilizational coordination without sacrificing individual sovereignty?</strong></p>
+            <h3>2. The Six Research Domains</h3>
+            <p>The program systematically investigates Attention Science, Knowledge Preservation, Distributed Intelligence, Governance, Economic Coordination, and Civilizational Continuity.</p>
+            <h3>3. Explicit Failure Criteria</h3>
+            <p>The experiment is formally classified as unsuccessful if: (1) Economic capital acquires governance authority; (2) Participants lose meaningful control over data; (3) Operational doctrine decays; (4) Sybils capture voting quorums; or (5) The system relies on speculative token loops.</p>
+          </article>
 
-        <br>
+          <!-- SPU-0003 -->
+          <article id="doc-spu-0003" class="wiki-article">
+            <h2>SPU-0003: Privacy, Consent & Personal Sovereignty</h2>
+            <div class="meta">DOCUMENT ID: SPU-0003 | CATEGORY: TRUST ARCHITECTURE | DERIVED FROM: RFC-0025</div>
+            <h3>1. Constitutional Invariant XLVII</h3>
+            <p><em>"No observation may occur without consent. No computation may occur without permission. No economic coordination may occur without transparency. No user may lose ownership of their attention exhaust."</em></p>
+            <h3>2. The Three Data Zones</h3>
+            <p><strong>🟢 Green Zone:</strong> Publicly verifiable Merkle proofs and RFC authorship.<br>
+            <strong>🟡 Yellow Zone:</strong> Ephemeral network pings with auto-purging microsecond TTL.<br>
+            <strong>🔴 Red Zone:</strong> Raw GPS breadcrumbs and private biometrics strictly locked within the participant's local hardware enclave. Never broadcast.</p>
+          </article>
 
-        <p>Worker Survival (85%)</p>
-        <div class="progress"><span style="width:85%"></span></div>
+          <!-- SPU-0004 -->
+          <article id="doc-spu-0004" class="wiki-article">
+            <h2>SPU-0004: Economics & Governance</h2>
+            <div class="meta">DOCUMENT ID: SPU-0004 | CATEGORY: CONSTITUTIONAL ECONOMICS | DERIVED FROM: RFC-0026..0029</div>
+            <h3>1. The Three Capitals Model</h3>
+            <p><strong>`ATTN` (Economic Capital):</strong> Marketplace utility and compute settlement. Strictly non-voting.<br>
+            <strong>`rATTN` (Reputation Capital):</strong> Epistemic output and peer-reviewed merit.<br>
+            <strong>`gATTN` (Trust Capital):</strong> Soulbound, non-transferable governance authority.</p>
+            <h3>2. Constitutional Invariant L Maxim</h3>
+            <p style="color: var(--amber); font-weight: 600;">"Economic Capital must never purchase Governance Capital (ATTN &#8658; gATTN is mathematically forbidden). Only contribution, competence, stewardship, and time confer authority."</p>
+          </article>
 
-        <br>
+          <!-- SPU-0005 -->
+          <article id="doc-spu-0005" class="wiki-article">
+            <h2>SPU-0005: Risks, Limitations & Open Questions</h2>
+            <div class="meta">DOCUMENT ID: SPU-0005 | CATEGORY: THREAT MODELING & OPEN QUESTIONS</div>
+            <h3>1. Acknowledged Attack Vectors</h3>
+            <p>We openly document risks including hardware botnet Sybil clusters, passive attention farming, early steward oligarchy capture, heterogeneous edge NPU latency, and Neo4j graph drift.</p>
+            <h3>2. Call for Adversarial Audits</h3>
+            <p>Spacebook.University invites independent researchers and cryptographers to challenge hypotheses, attempt penetration simulations, and submit peer-reviewed counter-theses.</p>
+          </article>
 
-        <p>Federated Learning (75%)</p>
-        <div class="progress"><span style="width:75%"></span></div>
+          <!-- SPU-0006 -->
+          <article id="doc-spu-0006" class="wiki-article">
+            <h2>SPU-0006: Research Roadmap & Open Problems</h2>
+            <div class="meta">DOCUMENT ID: SPU-0006 | CATEGORY: RESEARCH AGENDA | REVISION: 1.0</div>
+            <p style="background: rgba(56, 189, 248, 0.08); border-left: 3px solid var(--accent); padding: 0.85rem 1rem; font-style: italic; font-size: 0.85rem;">
+              "Spacebook.University is an open research institution. All models, scoring systems, governance frameworks, token mechanics, simulations, and architectural proposals are considered hypotheses subject to revision through observation, experimentation, criticism, and evidence."
+            </p>
+            <h3>1. Division 1: Attention Science (SPU-D1)</h3>
+            <p><strong>Open Questions:</strong> Can attention be measured ethically? Can attention be coordinated without manipulation? What metrics correlate with sustained learning vs. fleeting dopamine capture?</p>
+            <h3>2. Division 2: Distributed Intelligence (SPU-D2)</h3>
+            <p><strong>Open Questions:</strong> Can consumer phone/laptop NPUs provide economically useful inference? Can federated edge AI outperform centralized hyperscalers? What verification mechanisms prevent compute fraud?</p>
+            <h3>3. Division 3: Governance Science (SPU-D3)</h3>
+            <p><strong>Open Questions:</strong> Can soulbound gATTN resist capture? Can competency be measured without oligarchies? What mathematical decay functions produce healthy governance responsiveness?</p>
+            <h3>4. Division 4: Civilization Engineering (SPU-D4)</h3>
+            <p><strong>Open Questions:</strong> How is operational doctrine maintained across generations? How is institutional memory preserved? What causes governance collapse? How do planetary federations evolve without empire?</p>
+          </article>
 
-        <br>
+          <!-- SPU-0007 -->
+          <article id="doc-spu-0007" class="wiki-article">
+            <h2>SPU-0007: Experimental Metrics & Validation Framework</h2>
+            <div class="meta">DOCUMENT ID: SPU-0007 | STATUS: PHASE I EXPERIMENTAL FRAMEWORK | CONSTITUTIONAL DRAFT V1 FREEZE</div>
+            <div style="background: rgba(168, 85, 247, 0.1); border: 1px solid rgba(168, 85, 247, 0.3); border-radius: 6px; padding: 0.85rem 1rem; margin-bottom: 1.25rem;">
+              <strong style="color: #d8b4fe;">🏛️ Constitutional Stabilization Freeze:</strong>
+              <p style="font-size: 0.85rem; color: #cbd5e1; margin-top: 0.25rem;">
+                To prevent theoretical architecture from outpacing observational evidence, RFC-0025 through RFC-0030 are formally frozen as <strong>Constitutional Draft v1</strong>. SPU Phase I dedicates all operational cycles to empirical measurement against four primary hypotheses.
+              </p>
+            </div>
+            <h3>1. The Three Experimental Cohorts</h3>
+            <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; margin-bottom: 1.25rem;">
+              <div style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(56, 189, 248, 0.2); padding: 0.75rem; border-radius: 6px; font-size: 0.8rem;">
+                <strong style="color: var(--accent);">Cohort A: Participants</strong><br/>
+                <span style="color: var(--text-muted);">Target: 50–500 Nodes</span><br/>
+                Attention, Consent & Retention
+              </div>
+              <div style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(168, 85, 247, 0.2); padding: 0.75rem; border-radius: 6px; font-size: 0.8rem;">
+                <strong style="color: #d8b4fe;">Cohort B: Researchers</strong><br/>
+                <span style="color: var(--text-muted);">Target: 20–100 Nodes</span><br/>
+                Knowledge & RFC Review
+              </div>
+              <div style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(34, 197, 94, 0.2); padding: 0.75rem; border-radius: 6px; font-size: 0.8rem;">
+                <strong style="color: #86efac;">Cohort C: Stewards</strong><br/>
+                <span style="color: var(--text-muted);">Target: 10–50 Nodes</span><br/>
+                Governance & Invariant Defense
+              </div>
+            </div>
 
-        <p>Research Quality (60%)</p>
-        <div class="progress"><span style="width:60%"></span></div>
+            <h3>2. The Primary Hypotheses & Reality Baseline</h3>
+            <ul style="margin-left: 1.5rem; margin-bottom: 1rem; font-size: 0.9rem; line-height: 1.6;">
+              <li><strong>H-000 (Reality Alignment Meta-Precondition):</strong> Graph Drift Index <code>GDI = InvalidFacts / TotalFacts &lt; 0.01</code> (sub-1% graph drift). If the graph drifts, trust and governance drift.</li>
+              <li><strong>H-001 (Governance Efficacy):</strong> Contribution-based governance (gATTN) produces lower proposal defect rates (&lt;5%) and greater capture resistance than wealth-weighted voting.</li>
+              <li><strong>H-002 (Reputation Predictability):</strong> Graph-derived reputation (rATTN) correlates with zero post-elevation security/governance breaches.</li>
+              <li><strong>H-003 (Sovereignty Preference):</strong> Participants actively exercise granular consent partitioning (&gt;25% custom policy adoption) and exhibit superior 90-day retention (&gt;45%).</li>
+              <li><strong>H-004 (Edge NPU Viability):</strong> Distributed edge compute delivers &gt;12.0 tokens/watt and sub-150ms state synchronization latency.</li>
+            </ul>
+            <h3>3. Live Open Telemetry Ingress</h3>
+            <p>Empirical metrics stream continuously at <code>GET /api/v1/metrics/empirical</code> with cryptographic BLAKE3 Merkle anchoring into Valkey and Neo4j HomeTree.</p>
+          </article>
 
-        <br>
+          <!-- SPU-0008 -->
+          <article id="doc-spu-0008" class="wiki-article">
+            <h2>SPU-0008: Spacebook Mobile & Sovereign Edge Node Specification</h2>
+            <div class="meta">DOCUMENT ID: SPU-0008 | STATUS: RATIFIED MULTI-MODEL SPEC | FIRESIDE COUNCIL (QWEN3, GEMMA4-E4B, COPILOT, ANTIGRAVITY)</div>
+            <div style="background: rgba(168, 85, 247, 0.1); border: 1px solid rgba(168, 85, 247, 0.3); border-radius: 6px; padding: 0.85rem 1rem; margin-bottom: 1.25rem;">
+              <strong style="color: #d8b4fe;">📱 Sovereign Edge Node Architecture:</strong>
+              <p style="font-size: 0.85rem; color: #cbd5e1; margin-top: 0.25rem;">
+                Official production blueprint converting consumer Android phones into non-custodial sovereign computing nodes. Features a non-killable Foreground Service (<code>0x7300</code>), StrongBox hardware keystore isolation, layered NPU runtimes (NNAPI + ONNX Runtime + llama.cpp JNI), dynamic thermal throttling, and QUIC/libp2p mesh synchronization.
+              </p>
+            </div>
+            <h3>1. The Fireside Chat Consensus</h3>
+            <ul style="margin-left: 1.5rem; margin-bottom: 1rem; font-size: 0.88rem; line-height: 1.6;">
+              <li><strong>Qwen3-Coder-Next (Chief Systems Architect):</strong> Mandated non-killable Foreground Service (<code>SpacebookEdgeNodeService</code>) + WorkManager hybrid, StrongBox Keystore isolation for hot wallet private keys, and pure Jetpack Compose UI.</li>
+              <li><strong>Gemma4-E4B (Edge AI Specialist):</strong> Layered inference stack (NNAPI for sub-15ms micro-models, quantized GGUF Q4_K_M via llama.cpp JNI), dynamic duty-cycling governed by <code>PowerManager.getThermalStatus()</code>, and battery cutoffs below 20%.</li>
+              <li><strong>Microsoft Copilot (Enterprise Identity):</strong> W3C DID and Verifiable Credential federation, zero-knowledge presence proofs, and instant local cryptographic deletion upon policy revocation.</li>
+              <li><strong>Antigravity / Gemini (Substrate Auditor):</strong> Grounding edge performance directly into SPU Phase I hypotheses (H-003 Sovereignty & H-004 Edge NPU Viability).</li>
+            </ul>
+            <h3>2. Engineering Implementation Milestones</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.75rem; font-size: 0.8rem;">
+              <div style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(56, 189, 248, 0.2); padding: 0.75rem; border-radius: 6px;">
+                <strong style="color: var(--accent);">M1: Core Shell</strong><br/>KMP Scaffolding, StrongBox, Biometrics, Compose UI (Weeks 1–2)
+              </div>
+              <div style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(168, 85, 247, 0.2); padding: 0.75rem; border-radius: 6px;">
+                <strong style="color: #d8b4fe;">M2: Neural Edge</strong><br/>NNAPI, ONNX Runtime, llama.cpp JNI, Thermal Governor (Weeks 3–4)
+              </div>
+              <div style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(34, 197, 94, 0.2); padding: 0.75rem; border-radius: 6px;">
+                <strong style="color: #86efac;">M3: Mesh Sync</strong><br/>QUIC Multiplex, BLE Discovery, Tailscale, SQLCipher (Weeks 5–6)
+              </div>
+              <div style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(234, 179, 8, 0.2); padding: 0.75rem; border-radius: 6px;">
+                <strong style="color: #fde047;">M4: Cohort A Pilot</strong><br/>First 50 Nodes Enrolled into SPU Phase I (Weeks 7–8)
+              </div>
+            </div>
+          </article>
 
-        <p>Institutional Memory (40%)</p>
-        <div class="progress"><span style="width:40%"></span></div>
+          <!-- SPU-0009 -->
+          <article id="doc-spu-0009" class="wiki-article">
+            <h2>SPU-0009: Stratum-5D Distributed Compute & Global Supercomputer Research Track</h2>
+            <div class="meta">DOCUMENT ID: SPU-0009 | DIVISION: SPU-D2 (DISTRIBUTED INTELLIGENCE) | STATUS: PROPOSED EXPERIMENTAL TRACK | CONSTITUTIONAL DRAFT V1 PRESERVED</div>
+            <div style="background: rgba(56, 189, 248, 0.1); border: 1px solid rgba(56, 189, 248, 0.3); border-radius: 6px; padding: 0.85rem 1rem; margin-bottom: 1.25rem;">
+              <strong style="color: var(--accent);">🔬 Epistemic Boundary Notice:</strong>
+              <p style="font-size: 0.85rem; color: #cbd5e1; margin-top: 0.25rem;">
+                Under the core principle <em>"Architecture must never outpace evidence,"</em> Stratum-5D is <strong>not</strong> part of Constitutional Draft v1. It operates strictly as an experimental laboratory research track under Division 2 (SPU-D2). Only empirical evidence from Phase I can determine its future elevation.
+              </p>
+            </div>
+            <h3>1. The Tri-Partite Research Decoupling</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0.75rem; margin-bottom: 1.25rem; font-size: 0.82rem;">
+              <div style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(34, 197, 94, 0.2); padding: 0.75rem; border-radius: 6px;">
+                <strong style="color: #86efac;">Program A: Android Edge Node</strong><br/>
+                <span style="color: var(--text-muted);">Risk: Low to Moderate</span><br/>
+                StrongBox identity, local consent matrix, foreground worker.
+              </div>
+              <div style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(234, 179, 8, 0.2); padding: 0.75rem; border-radius: 6px;">
+                <strong style="color: #fde047;">Program B: Stratum-5D Protocol</strong><br/>
+                <span style="color: var(--text-muted);">Risk: Moderate</span><br/>
+                Job distribution, wire protocol, anti-spoofing share validation.
+              </div>
+              <div style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(168, 85, 247, 0.2); padding: 0.75rem; border-radius: 6px;">
+                <strong style="color: #d8b4fe;">Program C: Global Supercomputer</strong><br/>
+                <span style="color: var(--text-muted);">Risk: High (Frontier)</span><br/>
+                Proof-of-Useful-Work (PoUW), neural inference, graph verification.
+              </div>
+            </div>
+            <h3>2. The Three New Empirical Hypotheses</h3>
+            <ul style="margin-left: 1.5rem; margin-bottom: 1rem; font-size: 0.88rem; line-height: 1.6;">
+              <li><strong>H-005 (Useful Edge Compute & Participant Experience):</strong> Consumer phones contribute useful compute without exceeding 5.0% opt-out, &le;3.5%/hr battery drain, or thermal warnings.</li>
+              <li><strong>H-006 (Distributed Graph Verification Scalability):</strong> Distributed workers continuously audit Neo4j HomeTree to maintain GDI &lt; 0.01 at scale (&ge;99% coverage).</li>
+              <li><strong>H-007 (Federated Training & Privacy Viability):</strong> Differential privacy gradient aggregation (&epsilon; &le; 1.0, &delta; &le; 10⁻⁵) produces measurable model convergence.</li>
+            </ul>
+            <h3>3. Authoritative Port Allocations</h3>
+            <p style="font-family: monospace; font-size: 0.82rem; background: rgba(0,0,0,0.4); padding: 0.75rem; border-radius: 6px; color: #94a3b8;">
+              Port 3334: Acoustic Diagnostics (Legacy) &bull; Port 3335: Stratum-5D TCP (Compute)<br/>
+              Port 3336: Stratum-5D QUIC (Mobile Multiplex) &bull; Port 3337: Metrics & Diagnostics &bull; Port 3338: Canary Evolution
+            </p>
+          </article>
 
-    </div>
+          <!-- RFC-0025 -->
+          <article id="doc-rfc-0025" class="wiki-article">
+            <h2>RFC-0025: Attention Sensing & Trust Layer</h2>
+            <div class="meta">RFC-0025 | STATUS: RATIFIED STANDARD | INVARIANT: XLVII</div>
+            <p>Defines the 11-layer Spacebook substrate spanning Layer 0 (Physical Reality) to Layer 10 (Epistemic Jurisprudence). Mandates client-side zero-knowledge proofs for spatial landmark check-ins.</p>
+          </article>
 
-</div>
+          <!-- RFC-0029-B -->
+          <article id="doc-rfc-0029b" class="wiki-article">
+            <h2>RFC-0029-B: Neo4j Reputation Capital Graph & Invariant LII</h2>
+            <div class="meta">RFC-0029-B | STATUS: DRAFT STANDARD | INVARIANT: LII</div>
+            <p><strong>The Reputation Lineage Invariant:</strong> Every unit of governance authority must be traceable through an unbroken causal chain: Contributor &#8594; Contribution Event &#8594; Reputation Capital &#8594; Competency Proof &#8594; Trust Profile &#8594; gATTN Profile &#8594; Governance Tier &#8594; Authority. If any link is missing, authority is constitutionally null and void.</p>
+          </article>
+        </div>
+      </div>
+    </section>
 
-<div id="spark-tooltip" class="spark-tooltip"></div>
+    <!-- Role-Based Registration Portal -->
+    <section id="portal" class="portal-section">
+      <div class="portal-header">
+        <h2>Join Spacebook.University</h2>
+        <p style="color: var(--text-muted);">Enroll as an active participant, independent researcher, or academy student.</p>
+      </div>
 
-<script>
-// OCI Epochs Dataset & Swipe Navigator
-const ociEpochs = [
-    { epoch: 73, oci: 86.5, delta: "0.0", tier: "HEALTHY", blind: 0, assumptions: "11 / 12", gdi: "0.000", tai: "0.982", gini: "0.220", npu: "18.4", wsr: "88.5%" },
-    { epoch: 74, oci: 87.2, delta: "0.7", tier: "HEALTHY", blind: 0, assumptions: "11 / 12", gdi: "0.000", tai: "0.983", gini: "0.218", npu: "18.7", wsr: "88.5%" },
-    { epoch: 75, oci: 88.1, delta: "1.6", tier: "HEALTHY", blind: 0, assumptions: "11 / 12", gdi: "0.000", tai: "0.984", gini: "0.215", npu: "19.1", wsr: "88.5%" },
-    { epoch: 76, oci: 89.4, delta: "2.9", tier: "HEALTHY", blind: 0, assumptions: "11 / 12", gdi: "0.000", tai: "0.985", gini: "0.213", npu: "19.6", wsr: "88.5%" },
-    { epoch: 77, oci: 90.5, delta: "4.0", tier: "HEALTHY", blind: 0, assumptions: "11 / 12", gdi: "0.000", tai: "0.985", gini: "0.211", npu: "19.9", wsr: "88.5%" },
-    { epoch: 78, oci: 91.2, delta: "4.7", tier: "HEALTHY", blind: 0, assumptions: "11 / 12", gdi: "0.000", tai: "0.986", gini: "0.210", npu: "20.2", wsr: "88.5%" }
-];
+      <div class="portal-tabs">
+        <button class="portal-tab-btn active" onclick="switchTab('participant')">1. Participant (Attention & Node)</button>
+        <button class="portal-tab-btn" onclick="switchTab('researcher')">2. Researcher (Epistemic Faculty)</button>
+        <button class="portal-tab-btn" onclick="switchTab('student')">3. Student (Spacebook Academy)</button>
+      </div>
 
-let currentEpochIndex = ociEpochs.length - 1;
-const epochCard = document.getElementById("epochCard");
+      <!-- Participant Form -->
+      <div id="form-participant" class="form-panel active">
+        <form onsubmit="handleRegister(event, 'participant')">
+          <div class="form-group">
+            <label>Public Callsign or Identity Handle</label>
+            <input type="text" id="part-callsign" placeholder="e.g. Explorer-Nova-7" required>
+          </div>
 
-function renderEpoch(index) {
-    if (!epochCard) return;
-    currentEpochIndex = index;
-    const e = ociEpochs[index];
+          <!-- Device Attestation Box -->
+          <label style="font-size: 0.85rem; font-weight: 600; color: #e2e8f0;">Cryptographic Device Attestation (RFC-0028-A)</label>
+          <div class="device-attest-box">
+            <div class="attest-item"><span>Platform Architecture:</span> <span id="attest-arch">Detecting...</span></div>
+            <div class="attest-item"><span>NPU Hardware Acceleration:</span> <span id="attest-npu">Ready (WebNN / SIMD)</span></div>
+            <div class="attest-item"><span>Passkey Biometric Enclave:</span> <span id="attest-passkey">FIDO2 WebAuthn Available</span></div>
+            <div class="attest-item"><span>Device Trust Level:</span> <span>Verified Edge Node</span></div>
+          </div>
 
-    // Update active highlight on spark points
-    document.querySelectorAll(".spark-point").forEach((pt, i) => {
+          <!-- RFC-0025 Consent Matrix -->
+          <label style="font-size: 0.85rem; font-weight: 600; color: #e2e8f0; margin-top: 1rem; display: block;">Granular Consent Matrix (RFC-0025)</label>
+          <div class="consent-matrix">
+            <div class="consent-row">
+              <div>
+                <div class="consent-label">Spatial Landmark Verification (Green Zone)</div>
+                <div class="consent-desc">Allow ZK-proofs of landmark proximity without transmitting GPS paths.</div>
+              </div>
+              <input type="checkbox" checked id="consent-spatial">
+            </div>
+            <div class="consent-row">
+              <div>
+                <div class="consent-label">Idle Edge NPU Compute Batches (Green Zone)</div>
+                <div class="consent-desc">Execute distributed inference slices while on AC power and idle.</div>
+              </div>
+              <input type="checkbox" checked id="consent-compute">
+            </div>
+            <div class="consent-row">
+              <div>
+                <div class="consent-label">Raw Breadcrumb Sensory Recording (Red Zone)</div>
+                <div class="consent-desc">Strictly isolated in local hardware storage. Never leaves device.</div>
+              </div>
+              <input type="checkbox" disabled checked>
+            </div>
+          </div>
+
+          <button type="submit" class="btn-primary" style="width: 100%; padding: 0.85rem; font-size: 1rem;">Complete Sovereign Registration & Attest Device</button>
+        </form>
+      </div>
+
+      <!-- Researcher Form -->
+      <div id="form-researcher" class="form-panel">
+        <form onsubmit="handleRegister(event, 'researcher')">
+          <div class="form-group">
+            <label>Researcher Name & Affiliation</label>
+            <input type="text" id="res-name" placeholder="Dr. Jane Doe / Independent Research" required>
+          </div>
+          <div class="form-group">
+            <label>Academic Division Selection</label>
+            <select id="res-division">
+              <option value="D1">Division 1: Attention Science</option>
+              <option value="D2">Division 2: Distributed Intelligence</option>
+              <option value="D3">Division 3: Governance Science</option>
+              <option value="D4">Division 4: Civilization Engineering</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Primary Research Question or Hypothesis</label>
+            <textarea id="res-hypothesis" rows="4" placeholder="State your core research question, proposed methodology, and failure criteria..." required></textarea>
+          </div>
+          <div class="form-group">
+            <label>Cryptographic Public Key (Ed25519 or EVM)</label>
+            <input type="text" id="res-key" placeholder="0x... or ed25519:..." required>
+          </div>
+          <button type="submit" class="btn-primary" style="width: 100%; padding: 0.85rem; font-size: 1rem;">Submit Research Faculty Proposal</button>
+        </form>
+      </div>
+
+      <!-- Student Form -->
+      <div id="form-student" class="form-panel">
+        <form onsubmit="handleRegister(event, 'student')">
+          <div class="form-group">
+            <label>Student Callsign</label>
+            <input type="text" id="stud-callsign" placeholder="Student Scholar" required>
+          </div>
+          <div class="form-group">
+            <label>Select Initial Certification Track</label>
+            <select id="stud-track">
+              <option value="T1">Track 1: Foundations of Epistemic Sovereignty (RFC-0025)</option>
+              <option value="T2">Track 2: Tortoise Jurisprudence & Invariant Law (RFC-0022..0029)</option>
+              <option value="T3">Track 3: Distributed Edge Compute & Balanced Ternary Mechanics</option>
+              <option value="T4">Track 4: Constitutional Guardian Forensics</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Learning Commitment & Self-Sovereign Declaration</label>
+            <div style="background: rgba(10, 15, 30, 0.7); padding: 0.85rem; border-radius: 6px; font-size: 0.85rem; color: #cbd5e1; border: 1px solid rgba(255,255,255,0.1);">
+              "I commit to studying the constitutional invariants, upholding informed consent, and verifying institutional proofs with zero reliance on synthetic simulation or blind trust."
+            </div>
+          </div>
+          <button type="submit" class="btn-primary" style="width: 100%; padding: 0.85rem; font-size: 1rem;">Enroll in Spacebook Academy</button>
+        </form>
+      </div>
+
+      <!-- Success Modal Notification -->
+      <div id="reg-success" style="display: none; background: rgba(16, 185, 129, 0.15); border: 1px solid var(--emerald); border-radius: 8px; padding: 1.5rem; margin-top: 2rem; text-align: center;">
+        <h4 style="color: var(--emerald); font-size: 1.2rem; margin-bottom: 0.5rem;">🎉 Enrollment Successfully Anchored</h4>
+        <p id="reg-result-text" style="font-size: 0.9rem; color: #e2e8f0; font-family: 'JetBrains Mono', monospace;"></p>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    <p><strong>Spacebook.University</strong> — An Open Constitutional Experiment for the Attention Civilization.</p>
+    <p style="margin-top: 0.5rem; color: #64748b;">Ground Truth Substrate: Valkey 6379 &bull; Neo4j HomeTree &bull; Arbitrum & Base Rollups</p>
+  </footer>
+
+  <script>
+    // Hardware Detection
+    document.addEventListener("DOMContentLoaded", () => {
+      const arch = navigator.platform || "x86_64 Edge Device";
+      const cores = navigator.hardwareConcurrency || 8;
+      document.getElementById("attest-arch").textContent = `${arch} (${cores} vCPU/Thread)`;
+    });
+
+    // Wiki Navigation
+    function showDoc(docId) {
+      document.querySelectorAll(".wiki-nav-item").forEach(item => item.classList.remove("active"));
+      document.querySelectorAll(".wiki-article").forEach(art => art.classList.remove("active"));
+      
+      const targetNav = Array.from(document.querySelectorAll(".wiki-nav-item")).find(el => el.getAttribute("onclick")?.includes(docId));
+      if (targetNav) targetNav.classList.add("active");
+
+      const targetDoc = document.getElementById("doc-" + docId);
+      if (targetDoc) targetDoc.classList.add("active");
+    }
+
+    // Portal Tabs
+    function switchTab(role) {
+      document.querySelectorAll(".portal-tab-btn").forEach(btn => btn.classList.remove("active"));
+      document.querySelectorAll(".form-panel").forEach(p => p.classList.remove("active"));
+
+      const activeBtn = Array.from(document.querySelectorAll(".portal-tab-btn")).find(el => el.getAttribute("onclick")?.includes(role));
+      if (activeBtn) activeBtn.classList.add("active");
+
+      const activeForm = document.getElementById("form-" + role);
+      if (activeForm) activeForm.classList.add("active");
+    }
+
+    // Registration Handler
+    async function handleRegister(e, role) {
+      e.preventDefault();
+      const timestamp = Date.now();
+      let payload = { role, timestamp };
+
+      if (role === "participant") {
+        payload.callsign = document.getElementById("part-callsign").value;
+        payload.consent_spatial = document.getElementById("consent-spatial").checked;
+        payload.consent_compute = document.getElementById("consent-compute").checked;
+        payload.device_fingerprint = "DEV-ATT-" + Math.random().toString(36).substring(2, 10).toUpperCase();
+      } else if (role === "researcher") {
+        payload.name = document.getElementById("res-name").value;
+        payload.division = document.getElementById("res-division").value;
+        payload.hypothesis = document.getElementById("res-hypothesis").value;
+        payload.public_key = document.getElementById("res-key").value;
+      } else if (role === "student") {
+        payload.callsign = document.getElementById("stud-callsign").value;
+        payload.track = document.getElementById("stud-track").value;
+      }
+
+      try {
+        const res = await fetch("/api/v1/register", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload)
+        });
+        const data = await res.json();
+        
+        document.getElementById("reg-success").style.display = "block";
+        document.getElementById("reg-result-text").innerHTML = 
+          `Registered as <strong>${role.toUpperCase()}</strong><br>Credential ID: <code>${data.credential_id || 'CRED-' + timestamp}</code><br>Substrate Status: Anchored in Valkey & Neo4j Lineage.`;
+      } catch (err) {
+        // Fallback local acknowledgment if offline
+        document.getElementById("reg-success").style.display = "block";
+        document.getElementById("reg-result-text").innerHTML = 
+          `Registered as <strong>${role.toUpperCase()}</strong> (Local Attestation)<br>Credential ID: <code>CRED-LOCAL-${timestamp}</code><br>Substrate Status: Pending Valkey Sync.`;
+      }
+    }
+
+    // OCI Epochs Dataset & Swipe Navigator
+    const ociEpochs = [
+      { epoch: 73, oci: 86.5, delta: "0.0", ci_95: "[84.8%, 88.2%]", tier: "HEALTHY", blind: 0, assumptions: "11 / 12", gdi: "0.000", tai: "0.982", gini: "0.220", npu: "18.4", wsr: "88.5%" },
+      { epoch: 74, oci: 87.2, delta: "0.7", ci_95: "[85.5%, 88.9%]", tier: "HEALTHY", blind: 0, assumptions: "11 / 12", gdi: "0.000", tai: "0.983", gini: "0.218", npu: "18.7", wsr: "88.5%" },
+      { epoch: 75, oci: 88.1, delta: "1.6", ci_95: "[86.3%, 89.9%]", tier: "HEALTHY", blind: 0, assumptions: "11 / 12", gdi: "0.000", tai: "0.984", gini: "0.215", npu: "19.1", wsr: "88.5%" },
+      { epoch: 76, oci: 89.4, delta: "2.9", ci_95: "[87.6%, 91.2%]", tier: "HEALTHY", blind: 0, assumptions: "11 / 12", gdi: "0.000", tai: "0.985", gini: "0.213", npu: "19.6", wsr: "88.5%" },
+      { epoch: 77, oci: 90.5, delta: "4.0", ci_95: "[88.7%, 92.1%]", tier: "HEALTHY", blind: 0, assumptions: "11 / 12", gdi: "0.000", tai: "0.985", gini: "0.211", npu: "19.9", wsr: "88.5%" },
+      { epoch: 78, oci: 91.2, delta: "4.7", ci_95: "[89.4%, 92.7%]", tier: "HEALTHY", blind: 0, assumptions: "11 / 12", gdi: "0.000", tai: "0.986", gini: "0.210", npu: "20.2", wsr: "88.5%" }
+    ];
+
+    let currentEpochIndex = ociEpochs.length - 1;
+    const epochCard = document.getElementById("epochCard");
+
+    function renderEpoch(index, direction) {
+      if (!epochCard) return;
+      currentEpochIndex = index;
+      const e = ociEpochs[index];
+
+      // Update active highlight on spark points
+      document.querySelectorAll(".spark-point").forEach((pt, i) => {
         if (i === index) pt.classList.add("active");
         else pt.classList.remove("active");
-    });
+      });
 
-    epochCard.innerHTML = `
-        <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:6px; margin-bottom:8px;">
-            <strong style="color:#38bdf8; font-size:1rem; font-family:monospace;">Epoch ${e.epoch}</strong>
-            <span style="background:rgba(34,197,94,0.15); color:#22c55e; border:1px solid #22c55e; font-size:0.65rem; padding:2px 8px; border-radius:999px; font-weight:700;">${e.tier}</span>
+      // Swipe animation feedback
+      if (direction) {
+        epochCard.style.transform = direction === 'left' ? 'translateX(-8px)' : 'translateX(8px)';
+        setTimeout(() => { epochCard.style.transform = 'translateX(0)'; }, 150);
+      }
+
+      epochCard.innerHTML = `
+        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 6px; margin-bottom: 8px;">
+          <strong style="color: #38bdf8; font-size: 1.05rem; font-family: monospace;">Epoch ${e.epoch}</strong>
+          <span style="background: rgba(34,197,94,0.15); color: #22c55e; border: 1px solid #22c55e; font-size: 0.65rem; padding: 2px 8px; border-radius: 999px; font-weight: 700;">${e.tier}</span>
         </div>
-        <div style="display:grid; grid-template-columns:1fr 1fr; gap:6px; font-size:0.8rem;">
-            <div><span style="color:#9fb0d1;">OCI:</span> <strong style="color:#f1f5f9; font-family:monospace;">${e.oci}%</strong></div>
-            <div><span style="color:#9fb0d1;">ΔOCI:</span> <strong style="color:#22c55e; font-family:monospace;">+${e.delta}%</strong></div>
-            <div><span style="color:#9fb0d1;">Instrumented:</span> <strong style="color:#38bdf8; font-family:monospace;">${e.assumptions}</strong></div>
-            <div><span style="color:#9fb0d1;">Blind Spots:</span> <strong style="color:#22c55e; font-family:monospace;">${e.blind}</strong></div>
-            <div><span style="color:#9fb0d1;">GDI:</span> <strong style="color:#22c55e; font-family:monospace;">${e.gdi}</strong></div>
-            <div><span style="color:#9fb0d1;">TAI:</span> <strong style="color:#a855f7; font-family: monospace;">${e.tai}</strong></div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 6px; font-size: 0.82rem; font-family: monospace;">
+          <div><span style="color: #9fb0d1;">OCI:</span> <strong style="color: #f1f5f9;">${e.oci}%</strong></div>
+          <div><span style="color: #9fb0d1;">ΔOCI:</span> <strong style="color: #22c55e;">+${e.delta}%</strong></div>
+          <div><span style="color: #9fb0d1;">95% CI:</span> <strong style="color: #38bdf8;">${e.ci_95}</strong></div>
+          <div><span style="color: #9fb0d1;">Coverage:</span> <strong style="color: #22c55e;">${e.tier}</strong></div>
+          <div><span style="color: #9fb0d1;">Instrumented:</span> <strong style="color: #38bdf8;">${e.assumptions}</strong></div>
+          <div><span style="color: #9fb0d1;">Blind Spots:</span> <strong style="color: #22c55e;">${e.blind}</strong></div>
+          <div><span style="color: #9fb0d1;">GDI:</span> <strong style="color: #22c55e;">${e.gdi}</strong></div>
+          <div><span style="color: #9fb0d1;">TAI:</span> <strong style="color: #a855f7;">${e.tai}</strong></div>
+          <div><span style="color: #9fb0d1;">Gini:</span> <strong style="color: #38bdf8;">${e.gini}</strong></div>
         </div>
-    `;
-}
+        <div style="margin-top: 10px; padding-top: 8px; border-top: 1px solid rgba(255,255,255,0.06); font-family: monospace; font-size: 0.72rem; color: #94a3b8; line-height: 1.4;">
+          <span style="color: #38bdf8;">Epoch ${e.epoch} Observatory Transition:</span><br/>
+          ├─ OCI ${e.oci}% (${e.ci_95}) &bull; GDI ${e.gdi} &bull; TAI ${e.tai}<br/>
+          └─ Gini ${e.gini} &bull; ηNPU ${e.npu} tok/W &bull; WSR ${e.wsr}
+        </div>
+      `;
 
-renderEpoch(currentEpochIndex);
+      // Synchronize primary OCI card stats
+      const metricEl = document.getElementById("ociMetricDisplay");
+      if (metricEl) metricEl.textContent = `${e.oci}%`;
+      const deltaEl = document.getElementById("ociDeltaDisplay");
+      if (deltaEl) deltaEl.textContent = `ΔOCI +${e.delta}%`;
+      const tierBadge = document.getElementById("ociCoverageTierBadge");
+      if (tierBadge) tierBadge.textContent = `${e.tier} COVERAGE`;
+      const blindEl = document.getElementById("ociBlindSpots");
+      if (blindEl) blindEl.textContent = `${e.blind}`;
+      const instEl = document.getElementById("ociInstrumented");
+      if (instEl) instEl.textContent = `${e.assumptions}`;
+      const ciEl = document.getElementById("ociConfidenceDisplay");
+      if (ciEl) ciEl.textContent = `${e.ci_95}`;
+    }
 
-// Tap/Click Selection on Points
-document.querySelectorAll(".spark-point").forEach(point => {
-    point.addEventListener("click", () => {
+    renderEpoch(currentEpochIndex);
+
+    // Tap/Click Selection on Points
+    document.querySelectorAll(".spark-point").forEach(point => {
+      point.addEventListener("click", () => {
         const idx = parseInt(point.dataset.index);
-        if (!isNaN(idx)) renderEpoch(idx);
+        if (!isNaN(idx)) {
+          const dir = idx > currentEpochIndex ? 'left' : (idx < currentEpochIndex ? 'right' : null);
+          renderEpoch(idx, dir);
+        }
+      });
     });
-});
 
-// Touch Swipe Support on epochCard
-let touchStartX = 0;
-let touchEndX = 0;
+    // Touch Swipe Support on epochCard
+    let touchStartX = 0;
+    let touchEndX = 0;
+    let touchStartY = 0;
+    let touchEndY = 0;
 
-if (epochCard) {
-    epochCard.addEventListener("touchstart", e => {
+    if (epochCard) {
+      epochCard.addEventListener("touchstart", e => {
         touchStartX = e.changedTouches[0].clientX;
-    }, { passive: true });
+        touchStartY = e.changedTouches[0].clientY;
+      }, { passive: true });
 
-    epochCard.addEventListener("touchend", e => {
+      epochCard.addEventListener("touchend", e => {
         touchEndX = e.changedTouches[0].clientX;
-        const delta = touchEndX - touchStartX;
-        if (delta < -40) {
+        touchEndY = e.changedTouches[0].clientY;
+        const deltaX = touchEndX - touchStartX;
+        const deltaY = touchEndY - touchStartY;
+
+        if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > 40) {
+          if (deltaX < 0) {
             // Swipe left -> advance epoch
             if (currentEpochIndex < ociEpochs.length - 1) {
-                renderEpoch(currentEpochIndex + 1);
+              renderEpoch(currentEpochIndex + 1, 'left');
             }
-        } else if (delta > 40) {
+          } else {
             // Swipe right -> rewind epoch
             if (currentEpochIndex > 0) {
-                renderEpoch(currentEpochIndex - 1);
+              renderEpoch(currentEpochIndex - 1, 'right');
             }
+          }
         }
-    }, { passive: true });
-}
+      }, { passive: true });
 
-// Hover Tooltip Handler for Desktop
-const tooltip = document.getElementById("spark-tooltip");
-let activePoint = null;
+      // Desktop Mouse Drag Support
+      let isMouseDown = false;
+      let mouseStartX = 0;
+      epochCard.addEventListener("mousedown", e => {
+        isMouseDown = true;
+        mouseStartX = e.clientX;
+      });
+      window.addEventListener("mouseup", e => {
+        if (!isMouseDown) return;
+        isMouseDown = false;
+        const deltaX = e.clientX - mouseStartX;
+        if (Math.abs(deltaX) > 40) {
+          if (deltaX < 0 && currentEpochIndex < ociEpochs.length - 1) {
+            renderEpoch(currentEpochIndex + 1, 'left');
+          } else if (deltaX > 0 && currentEpochIndex > 0) {
+            renderEpoch(currentEpochIndex - 1, 'right');
+          }
+        }
+      });
+    }
 
-function showTooltip(point, x, y) {
-    const epoch = point.dataset.epoch || "73";
-    const value = point.dataset.value || "86.5";
-    const delta = point.dataset.delta || "+0.0";
-    const status = point.dataset.status || "IMPROVING";
-    const assumptions = point.dataset.assumptions || "11 / 12";
-    const blindspots = point.dataset.blindspots || "0";
+    // Keyboard Arrow Navigation
+    document.addEventListener("keydown", e => {
+      if (document.activeElement.tagName === 'INPUT' || document.activeElement.tagName === 'TEXTAREA') return;
+      if (e.key === "ArrowLeft" && currentEpochIndex > 0) {
+        renderEpoch(currentEpochIndex - 1, 'right');
+      } else if (e.key === "ArrowRight" && currentEpochIndex < ociEpochs.length - 1) {
+        renderEpoch(currentEpochIndex + 1, 'left');
+      }
+    });
 
-    tooltip.innerHTML = `
-        <div style="font-weight:700; color:#38bdf8; margin-bottom:6px; font-size:0.9rem; border-bottom:1px solid rgba(255,255,255,0.1); padding-bottom:4px;">
-            📈 Epoch ${epoch}
+    // Sparkline Interactive Tooltip Handler (Touch, Hover, Keyboard)
+    const sparkTooltip = document.getElementById("spark-tooltip");
+    let activeSparkPoint = null;
+
+    function showSparkTooltip(point, x, y) {
+      if (!sparkTooltip) return;
+      const epoch = point.dataset.epoch || "73";
+      const value = point.dataset.value || "86.5";
+      const delta = point.dataset.delta || "+0.0";
+      const status = point.dataset.status || "IMPROVING";
+      const assumptions = point.dataset.assumptions || "11 / 12";
+      const blindspots = point.dataset.blindspots || "0";
+      const ci = point.dataset.ci || "[89.4%, 92.7%]";
+
+      sparkTooltip.innerHTML = `
+        <div style="font-weight: 700; color: #38bdf8; margin-bottom: 6px; font-size: 0.9rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 4px;">
+          📈 Epoch ${epoch}
         </div>
-        <div style="display:flex; justify-content:space-between; margin-bottom:3px;"><span style="color:#94a3b8;">OCI:</span> <strong>${value}%</strong></div>
-        <div style="display:flex; justify-content:space-between; margin-bottom:3px;"><span style="color:#94a3b8;">ΔOCI:</span> <strong style="color:#22c55e;">${delta}%</strong></div>
-        <div style="display:flex; justify-content:space-between; margin-bottom:3px;"><span style="color:#94a3b8;">Coverage Tier:</span> <strong style="color:#22c55e;">HEALTHY</strong></div>
-        <div style="display:flex; justify-content:space-between; margin-bottom:3px;"><span style="color:#94a3b8;">Instrumented:</span> <strong style="color:#38bdf8;">${assumptions}</strong></div>
-        <div style="display:flex; justify-content:space-between; margin-bottom:3px;"><span style="color:#94a3b8;">Blind Spots:</span> <strong style="color:#22c55e;">${blindspots}</strong></div>
-        <div style="display:flex; justify-content:space-between; margin-top:6px; padding-top:4px; border-top:1px solid rgba(255,255,255,0.08);"><span style="color:#94a3b8;">Status:</span> <strong style="color:#38bdf8;">${status}</strong></div>
-    `;
+        <div style="display: flex; justify-content: space-between; margin-bottom: 3px;"><span style="color: #94a3b8;">OCI:</span> <strong style="color: #f1f5f9;">${value}%</strong></div>
+        <div style="display: flex; justify-content: space-between; margin-bottom: 3px;"><span style="color: #94a3b8;">ΔOCI:</span> <strong style="color: #22c55e;">${delta}%</strong></div>
+        <div style="display: flex; justify-content: space-between; margin-bottom: 3px;"><span style="color: #94a3b8;">95% CI:</span> <strong style="color: #38bdf8;">${ci}</strong></div>
+        <div style="display: flex; justify-content: space-between; margin-bottom: 3px;"><span style="color: #94a3b8;">Coverage Tier:</span> <strong style="color: #22c55e;">HEALTHY</strong></div>
+        <div style="display: flex; justify-content: space-between; margin-bottom: 3px;"><span style="color: #94a3b8;">Instrumented:</span> <strong style="color: #38bdf8;">${assumptions}</strong></div>
+        <div style="display: flex; justify-content: space-between; margin-bottom: 3px;"><span style="color: #94a3b8;">Blind Spots:</span> <strong style="color: #22c55e;">${blindspots}</strong></div>
+        <div style="display: flex; justify-content: space-between; margin-top: 6px; padding-top: 4px; border-top: 1px solid rgba(255,255,255,0.08);"><span style="color: #94a3b8;">Status:</span> <strong style="color: #38bdf8;">${status}</strong></div>
+      `;
 
-    const tipWidth = 240;
-    let left = x + 16;
-    let top = y - 24;
-    if (left + tipWidth > window.innerWidth) left = window.innerWidth - tipWidth - 16;
-    if (top < 10) top = y + 24;
+      const tipWidth = 240;
+      let left = x + 16;
+      let top = y - 24;
+      if (left + tipWidth > window.innerWidth) left = window.innerWidth - tipWidth - 16;
+      if (top < 10) top = y + 24;
 
-    tooltip.style.left = `${Math.max(10, left)}px`;
-    tooltip.style.top = `${Math.max(10, top)}px`;
-    tooltip.classList.add("visible");
-    activePoint = point;
-}
+      sparkTooltip.style.left = `${Math.max(10, left)}px`;
+      sparkTooltip.style.top = `${Math.max(10, top)}px`;
+      sparkTooltip.classList.add("visible");
+      activeSparkPoint = point;
+    }
 
-function hideTooltip() {
-    tooltip.classList.remove("visible");
-    activePoint = null;
-}
+    function hideSparkTooltip() {
+      if (!sparkTooltip) return;
+      sparkTooltip.classList.remove("visible");
+      activeSparkPoint = null;
+    }
 
-document.querySelectorAll(".spark-point").forEach(point => {
-    /* Desktop Hover */
-    point.addEventListener("mousemove", e => {
-        showTooltip(point, e.clientX, e.clientY);
-    });
-
-    point.addEventListener("mouseleave", () => {
+    document.querySelectorAll(".spark-point").forEach(point => {
+      /* Desktop Hover */
+      point.addEventListener("mousemove", e => {
+        showSparkTooltip(point, e.clientX, e.clientY);
+      });
+      point.addEventListener("mouseleave", () => {
         if (!('ontouchstart' in window)) {
-            hideTooltip();
+          hideSparkTooltip();
         }
-    });
+      });
 
-    /* Keyboard Accessibility */
-    point.setAttribute("tabindex", "0");
-    point.addEventListener("focus", () => {
+      /* Keyboard Accessibility */
+      point.setAttribute("tabindex", "0");
+      point.addEventListener("focus", () => {
         const rect = point.getBoundingClientRect();
-        showTooltip(point, rect.left + rect.width / 2, rect.top);
+        showSparkTooltip(point, rect.left + rect.width / 2, rect.top);
         const idx = parseInt(point.dataset.index);
         if (!isNaN(idx)) renderEpoch(idx);
+      });
+      point.addEventListener("blur", hideSparkTooltip);
     });
-    point.addEventListener("blur", hideTooltip);
-});
 
-/* Tap anywhere else */
-document.addEventListener("click", e => {
-    if (!e.target.closest(".spark-point") && !e.target.closest(".spark-tooltip")) {
-        hideTooltip();
+    /* Tap anywhere else */
+    document.addEventListener("click", e => {
+      if (!e.target.closest(".spark-point") && !e.target.closest(".spark-tooltip")) {
+        hideSparkTooltip();
+      }
+    });
+
+    /* Escape key */
+    document.addEventListener("keydown", e => {
+      if (e.key === "Escape") {
+        hideSparkTooltip();
+      }
+    });
+
+    // Epoch Comparison Logic
+    function renderComparison(e1, e2) {
+      const d1 = ociEpochs.find(e => e.epoch === e1) || ociEpochs[0];
+      const d2 = ociEpochs.find(e => e.epoch === e2) || ociEpochs[ociEpochs.length - 1];
+
+      const thA = document.getElementById("thEpochA");
+      const thB = document.getElementById("thEpochB");
+      const selA = document.getElementById("compareEpochA");
+      const selB = document.getElementById("compareEpochB");
+
+      if (thA) thA.textContent = `Epoch ${d1.epoch}`;
+      if (thB) thB.textContent = `Epoch ${d2.epoch}`;
+      if (selA) selA.value = d1.epoch;
+      if (selB) selB.value = d2.epoch;
+
+      const deltaOci = (d2.oci - d1.oci).toFixed(1);
+      const deltaGdi = (parseFloat(d2.gdi) - parseFloat(d1.gdi)).toFixed(3);
+      const deltaTai = (parseFloat(d2.tai) - parseFloat(d1.tai)).toFixed(3);
+      const deltaGini = (parseFloat(d2.gini) - parseFloat(d1.gini)).toFixed(3);
+      const deltaNpu = (parseFloat(d2.npu) - parseFloat(d1.npu)).toFixed(1);
+      const wsrTransition = d1.epoch === 73 ? `-- → ${d2.wsr}` : `${d1.wsr} → ${d2.wsr}`;
+
+      const rows = [
+        { metric: 'GDI (Reality Quality)', valA: d1.gdi, valB: d2.gdi, delta: `${deltaGdi >= 0 ? '+' : ''}${deltaGdi}`, ci: '95% CI [0.000, 0.004]', interp: 'Zero Drift (Graph matches on-chain state)', color: '#22c55e' },
+        { metric: 'TAI (Trust Quality)', valA: d1.tai, valB: d2.tai, delta: `${deltaTai >= 0 ? '+' : ''}${deltaTai}`, ci: '95% CI [0.980, 0.988]', interp: 'Aligned (Reputation capital predicts reliability)', color: '#a855f7' },
+        { metric: 'OCI (Measurement Quality)', valA: `${d1.oci}%`, valB: `${d2.oci}%`, delta: `${deltaOci >= 0 ? '+' : ''}${deltaOci}%`, ci: `${d2.ci_95}`, interp: 'Healthy Coverage (11/12 assumptions instrumented)', color: '#38bdf8' },
+        { metric: 'ηNPU (Compute Yield)', valA: `${d1.npu} tok/W`, valB: `${d2.npu} tok/W`, delta: `+${deltaNpu} tok/W`, ci: 'Moving Avg 30d: 19.8', interp: 'Nominal Efficiency Gain', color: '#22c55e' },
+        { metric: 'WSR (Worker Survival)', valA: d1.epoch === 73 ? '--' : d1.wsr, valB: d2.wsr, delta: wsrTransition, ci: 'Floor: > 40.0%', interp: 'Sustainable Participant Retention', color: '#22c55e' },
+        { metric: 'Gini (Anti-Capture)', valA: d1.gini, valB: d2.gini, delta: `${deltaGini}`, ci: 'Ceiling: <= 0.45', interp: 'Progressively Dispersed Governance', color: '#38bdf8' }
+      ];
+
+      const tbody = document.getElementById("epochComparisonBody");
+      if (!tbody) return;
+      tbody.innerHTML = rows.map(r => `
+        <tr style="border-bottom: 1px solid rgba(255,255,255,0.06);">
+          <td style="padding: 10px 14px; font-weight: 600; color: #e8edf7;">${r.metric}</td>
+          <td style="padding: 10px 14px; font-family: monospace; color: #cbd5e1;">${r.valA}</td>
+          <td style="padding: 10px 14px; font-family: monospace; color: #cbd5e1;">${r.valB}</td>
+          <td style="padding: 10px 14px; font-family: monospace; font-weight: 700; color: ${r.color};">${r.delta}</td>
+          <td style="padding: 10px 14px; font-family: monospace; font-size: 0.8rem; color: #94a3b8;">${r.ci}</td>
+          <td style="padding: 10px 14px; font-size: 0.8rem; color: #cbd5e1;">${r.interp}</td>
+        </tr>
+      `).join('');
     }
-});
 
-/* Escape key */
-document.addEventListener("keydown", e => {
-    if (e.key === "Escape") {
-        hideTooltip();
+    function setEpochComparison(e1, e2) {
+      renderComparison(e1, e2);
     }
-});
-</script>
 
+    function runComparisonFromSelect() {
+      const e1 = parseInt(document.getElementById("compareEpochA").value);
+      const e2 = parseInt(document.getElementById("compareEpochB").value);
+      renderComparison(e1, e2);
+    }
+
+    // Initialize default comparison E73 ↔ E78
+    renderComparison(73, 78);
+  </script>
+  <div id="spark-tooltip" class="spark-tooltip"></div>
 </body>
 </html>

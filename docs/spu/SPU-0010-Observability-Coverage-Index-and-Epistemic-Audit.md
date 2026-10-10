@@ -103,6 +103,46 @@ Quantifies institutional blind spots across foundational assumptions:
 
 $$\text{OCI} = \frac{\sum_{i=1}^N w_i \cdot m_i}{\sum_{i=1}^N w_i} \times 100\% \ge 80.0\%$$
 
+* **Baseline Epoch Anchor ($E_0 = 73$):** $\text{OCI} = 86.5\%$, $95\%\text{ CI } [84.8\%, 88.2\%]$.
+* **Current Epoch ($E_{78}$):** $\text{OCI} = 91.2\%$, $95\%\text{ CI } [89.4\%, 92.7\%]$, $\Delta\text{OCI} = +4.7\%$ (`HEALTHY_COVERAGE`).
+* **Instrumented Assumptions:** 11 / 12 (0 institutional blind spots in ratified domains).
+
+### 3.6 Four-Tier Observability Hierarchy
+
+To enforce epistemic rigor from quantum state to meta-measurement, the observatory categorizes all telemetry into four strictly ordered tiers:
+
+```
+Tier 0: Meta-Observability
+   └─ OCI, Blind Spots, Epistemic Accountability (SPU-0010)
+Tier 1: Institutional State
+   └─ GDI (Reality Accountability), TAI (Trust Accountability)
+Tier 2: Operational Domains
+   └─ Governance (Gini), Consent (Policy), Compute (ηNPU), D2 Metrics
+Tier 3: World Simulation
+   └─ HomeTree Topology, Organisms, Quarks, Qubits, Trits
+```
+
+1. **Tier 0 (Meta-Observability):** Governs the measurement apparatus itself. Quantifies whether assumptions are instrumented, audits observational blind spots, and triggers mandatory reviews when measurement quality drops.
+2. **Tier 1 (Institutional State):** Macroscopic institutional equilibrium metrics reflecting foundational constitutional invariants ($\text{GDI} < 0.01$, $\text{TAI} \ge 0.95$).
+3. **Tier 2 (Operational Domains):** Domain-specific telemetry across governance distribution, user consent customization, distributed NPU compute efficiency ($\eta_{NPU}$), and distributed intelligence worker survival ($WSR$).
+4. **Tier 3 (World Simulation):** HomeTree multi-agent world state, cellular automata, quantum substrate state, and agent spatial trajectories.
+
+### 3.7 Constitutional Invariant XLVI (Persist $\to$ Project $\to$ Render)
+
+To prevent the game and simulation surface from inventing synthetic state independently of the underlying system of record, world simulation state is governed strictly by Constitutional Invariant XLVI:
+
+$$\text{Persist (Valkey)} \xrightarrow{\text{Project}} \text{Project (Neo4j)} \xrightarrow{\text{Render}} \text{Render (Spacebook)}$$
+
+* **Fact Layer (Valkey Substrate):** Authoritative operational state and immutable tick log. Single Source of Truth (SSOT).
+* **Memory Layer (Neo4j HomeTree):** Relational knowledge graph capturing verified causality, identity attestations, and lineage depth.
+* **Visualization Layer (Spacebook Headend):** 5D topological rendering, canvas client, and operator HUD. Purely a read-only projection; never mutates Fact Layer directly.
+
+### 3.8 Three Nested Forms of Accountability
+
+1. **Reality Accountability ($\text{GDI}$):** Measures correspondence between graph knowledge and physical/cryptographic reality: $\text{GDI}_t - 0.000$. Verified by automated 14s knowledge graph parity sweeps.
+2. **Trust Accountability ($\text{TAI}$):** Measures whether reputation capital accurately predicts observed reliability: $\text{TAI}_t (0.986) - \text{TAI}_{E_0} (0.982) = +0.004$. Verified by cryptographic attention staking and on-chain settlements.
+3. **Epistemic Accountability ($\text{OCI}$):** Measures whether the institution is measuring what it claims to measure: $\text{OCI}_t (91.2\%) - \text{OCI}_{E_0} (86.5\%) = +4.7\%$ ($95\%\text{ CI } [89.4\%, 92.7\%]$). Verified by complete assumption instrumentation and SPU-0010 epistemic audit triggers.
+
 ---
 
 ## 📈 4. Statistical Rigor & Longitudinal Methodology
