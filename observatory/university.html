@@ -507,6 +507,28 @@
       text-shadow: 0 0 15px rgba(56, 189, 248, 0.9);
       border-bottom: 2px solid #38bdf8;
     }
+    .spark-point-cri {
+      position: relative;
+      cursor: pointer;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+      padding: 4px;
+      border-radius: 6px;
+      transition: all 0.15s ease;
+      outline: none;
+    }
+    .spark-point-cri:hover, .spark-point-cri:focus {
+      transform: translateY(-4px) scale(1.2);
+      color: #7dd3fc;
+      text-shadow: 0 0 12px rgba(56, 189, 248, 0.8);
+      background: rgba(56, 189, 248, 0.1);
+    }
+    .spark-point-cri.active {
+      color: #38bdf8;
+      transform: translateY(-4px) scale(1.25);
+      text-shadow: 0 0 15px rgba(56, 189, 248, 0.9);
+      border-bottom: 2px solid #38bdf8;
+    }
   </style>
 </head>
 <body>
@@ -523,6 +545,7 @@
       <a href="#pillars" style="color: #38bdf8; font-weight: 600;">🏛️ Project Home</a>
       <a href="#observatory" style="color: #d8b4fe; font-weight: 600;">🔭 Observatory &amp; ΔOCI</a>
       <a href="/atlas" target="_blank" style="color: #34d399; font-weight: 600;">🗺️ 5D Web Atlas ↗</a>
+      <a href="/hometree" target="_blank" style="color: #38bdf8; font-weight: 700; background: rgba(56,189,248,0.15); border: 1px solid #38bdf8; padding: 2px 8px; border-radius: 4px;">🎮 3D FPS ↗</a>
       <a href="/game/hometree" target="_blank" style="color: #fbbf24; font-weight: 600;">🌳 HomeTree Headend ↗</a>
       <a href="#divisions">Divisions</a>
       <a href="#wiki">Wiki &amp; RFCs</a>
@@ -590,9 +613,10 @@
               The living 5D topological cosmos: 5 Macro-Continents, landmark LM-HOMETREE-001 (A=(23,27,4)), 9 biological organisms, and SU(3) color-neutral quantum primitives.
             </p>
           </div>
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
-            <a href="/atlas" target="_blank" style="text-align: center; background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid #10b981; padding: 8px 6px; border-radius: 6px; font-size: 0.75rem; font-weight: 600; text-decoration: none;">5D Atlas ↗</a>
-            <a href="/game/hometree" target="_blank" style="text-align: center; background: rgba(251, 191, 36, 0.15); color: #fbbf24; border: 1px solid #fbbf24; padding: 8px 6px; border-radius: 6px; font-size: 0.75rem; font-weight: 600; text-decoration: none;">HomeTree ↗</a>
+          <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 6px;">
+            <a href="/atlas" target="_blank" style="text-align: center; background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid #10b981; padding: 8px 4px; border-radius: 6px; font-size: 0.72rem; font-weight: 600; text-decoration: none;">5D Atlas ↗</a>
+            <a href="/hometree" target="_blank" style="text-align: center; background: rgba(56, 189, 248, 0.2); color: #38bdf8; border: 1px solid #38bdf8; padding: 8px 4px; border-radius: 6px; font-size: 0.72rem; font-weight: 700; text-decoration: none; box-shadow: 0 0 10px rgba(56,189,248,0.2);">🎮 3D FPS ↗</a>
+            <a href="/game/hometree" target="_blank" style="text-align: center; background: rgba(251, 191, 36, 0.15); color: #fbbf24; border: 1px solid #fbbf24; padding: 8px 4px; border-radius: 6px; font-size: 0.72rem; font-weight: 600; text-decoration: none;">Game ↗</a>
           </div>
         </div>
 
@@ -699,20 +723,36 @@
         <!-- SPU Observatory ΔOCI Dashboard & Epistemic Health Stack -->
         <div style="margin-bottom: 2.5rem;">
 
-          <!-- EPISTEMIC HEALTH TRIAD BANNER -->
+          <!-- EPISTEMIC HEALTH QUAD BANNER -->
           <div style="background: rgba(17, 26, 46, 0.95); border: 1px solid #38bdf8; border-radius: 14px; padding: 16px 20px; margin-bottom: 20px; box-shadow: 0 10px 25px rgba(56, 189, 248, 0.1);">
             <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 10px; margin-bottom: 12px; flex-wrap: wrap; gap: 8px;">
               <div style="font-weight: 800; font-size: 0.95rem; color: #38bdf8; letter-spacing: 0.05em; display: flex; align-items: center; gap: 8px;">
-                <span>🧭 EPISTEMIC HEALTH TRIAD</span>
+                <span>🧭 EPISTEMIC OBSERVATORY CHAIN</span>
                 <span style="font-size: 0.7rem; background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid #38bdf8; padding: 2px 8px; border-radius: 12px; font-weight: 600;">FOUNDATIONAL RIGOR</span>
               </div>
               <div style="font-size: 0.75rem; color: #94a3b8; font-family: monospace;">
-                OCI Trend: <span style="color: #38bdf8; font-size: 1.1rem; letter-spacing: 2px;"> ▂▃▄▆▇█</span> &bull; Baseline: <strong style="color: #cbd5e1;">86.5%</strong> &bull; Current: <strong style="color: #22c55e;">91.2%</strong> &bull; ΔOCI: <strong style="color: #22c55e;">+4.7%</strong>
+                Chain: <strong style="color: #22c55e;">Coordination (CRI)</strong> &rarr; <strong style="color: #38bdf8;">Observation (OCI)</strong> &rarr; <strong style="color: #22c55e;">Reality (GDI)</strong> &rarr; <strong style="color: #a855f7;">Trust (TAI)</strong> &rarr; <strong style="color: #cbd5e1;">Governance</strong>
               </div>
             </div>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px;">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px;">
               <div style="padding: 10px 14px; background: rgba(34, 197, 94, 0.08); border-left: 3px solid #22c55e; border-radius: 6px;">
-                <div style="font-size: 0.75rem; color: #94a3b8; text-transform: uppercase;">Reality Quality</div>
+                <div style="font-size: 0.75rem; color: #94a3b8; text-transform: uppercase;">Coordination Accountability</div>
+                <div style="display: flex; justify-content: space-between; align-items: baseline; margin-top: 2px;">
+                  <strong style="color: #22c55e; font-size: 1.1rem; font-family: monospace;">→ CRI (99.92%)</strong>
+                  <span style="font-size: 0.7rem; color: #22c55e; font-weight: 600;">EXCELLENT</span>
+                </div>
+                <div style="font-size: 0.7rem; color: #94a3b8; margin-top: 3px;">Measures health of the coordination substrate itself.</div>
+              </div>
+              <div style="padding: 10px 14px; background: rgba(56, 189, 248, 0.08); border-left: 3px solid #38bdf8; border-radius: 6px;">
+                <div style="font-size: 0.75rem; color: #94a3b8; text-transform: uppercase;">Measurement Accountability</div>
+                <div style="display: flex; justify-content: space-between; align-items: baseline; margin-top: 2px;">
+                  <strong style="color: #38bdf8; font-size: 1.1rem; font-family: monospace;">→ OCI (94.8%)</strong>
+                  <span style="font-size: 0.7rem; color: #38bdf8; font-weight: 600;">95% CI [93.1%, 96.4%]</span>
+                </div>
+                <div style="font-size: 0.7rem; color: #94a3b8; margin-top: 3px;">Measures change in institutional observability.</div>
+              </div>
+              <div style="padding: 10px 14px; background: rgba(34, 197, 94, 0.08); border-left: 3px solid #22c55e; border-radius: 6px;">
+                <div style="font-size: 0.75rem; color: #94a3b8; text-transform: uppercase;">Reality Accountability</div>
                 <div style="display: flex; justify-content: space-between; align-items: baseline; margin-top: 2px;">
                   <strong style="color: #22c55e; font-size: 1.1rem; font-family: monospace;">→ GDI (0.000)</strong>
                   <span style="font-size: 0.7rem; color: #22c55e; font-weight: 600;">Zero Drift</span>
@@ -720,20 +760,12 @@
                 <div style="font-size: 0.7rem; color: #94a3b8; margin-top: 3px;">Measures correspondence between graph & on-chain reality.</div>
               </div>
               <div style="padding: 10px 14px; background: rgba(168, 85, 247, 0.08); border-left: 3px solid #a855f7; border-radius: 6px;">
-                <div style="font-size: 0.75rem; color: #94a3b8; text-transform: uppercase;">Trust Quality</div>
+                <div style="font-size: 0.75rem; color: #94a3b8; text-transform: uppercase;">Trust Accountability</div>
                 <div style="display: flex; justify-content: space-between; align-items: baseline; margin-top: 2px;">
                   <strong style="color: #a855f7; font-size: 1.1rem; font-family: monospace;">→ TAI (0.986)</strong>
                   <span style="font-size: 0.7rem; color: #a855f7; font-weight: 600;">Δ +0.004 Aligned</span>
                 </div>
                 <div style="font-size: 0.7rem; color: #94a3b8; margin-top: 3px;">Measures reputation capital predictability.</div>
-              </div>
-              <div style="padding: 10px 14px; background: rgba(56, 189, 248, 0.08); border-left: 3px solid #38bdf8; border-radius: 6px;">
-                <div style="font-size: 0.75rem; color: #94a3b8; text-transform: uppercase;">Measurement Quality</div>
-                <div style="display: flex; justify-content: space-between; align-items: baseline; margin-top: 2px;">
-                  <strong style="color: #38bdf8; font-size: 1.1rem; font-family: monospace;">→ OCI (91.2%)</strong>
-                  <span style="font-size: 0.7rem; color: #38bdf8; font-weight: 600;">95% CI [89.4%, 92.7%]</span>
-                </div>
-                <div style="font-size: 0.7rem; color: #94a3b8; margin-top: 3px;">Measures change in institutional observability.</div>
               </div>
             </div>
           </div>
@@ -744,11 +776,11 @@
             <div style="background: rgba(17, 26, 46, 0.95); border: 1px solid #28406f; border-radius: 16px; padding: 22px; box-shadow: 0 10px 25px rgba(0,0,0,0.4);">
               <h2 style="font-size: 1.05rem; font-weight: 700; color: #e8edf7; margin-bottom: 12px; display: flex; align-items: center; justify-content: space-between;">
                 <span>📈 Observability Coverage Index (OCI)</span>
-                <span id="ociCoverageTierBadge" style="font-size: 0.7rem; background: rgba(34,197,94,0.15); color: #22c55e; border: 1px solid #22c55e; padding: 3px 10px; border-radius: 999px; font-weight: 700;">HEALTHY COVERAGE</span>
+                <span id="ociCoverageTierBadge" style="font-size: 0.7rem; background: rgba(34,197,94,0.15); color: #22c55e; border: 1px solid #22c55e; padding: 3px 10px; border-radius: 999px; font-weight: 700;">EXEMPLARY COVERAGE</span>
               </h2>
               <div style="display: flex; align-items: baseline; gap: 14px; margin-bottom: 8px;">
-                <div id="ociMetricDisplay" style="font-size: 2.8rem; font-weight: 800; color: #22c55e; line-height: 1;">91.2%</div>
-                <div id="ociDeltaDisplay" style="font-size: 1.25rem; font-weight: 700; color: #22c55e; font-family: monospace;">ΔOCI +4.7%</div>
+                <div id="ociMetricDisplay" style="font-size: 2.8rem; font-weight: 800; color: #22c55e; line-height: 1;">94.8%</div>
+                <div id="ociDeltaDisplay" style="font-size: 1.25rem; font-weight: 700; color: #22c55e; font-family: monospace;">ΔOCI +8.3%</div>
               </div>
 
               <div style="display: flex; justify-content: space-between; padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.06); font-size: 0.85rem;">
@@ -765,16 +797,16 @@
               </div>
               <div style="display: flex; justify-content: space-between; padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.06); font-size: 0.85rem;">
                 <span style="color: #9fb0d1;">Instrumented Assumptions</span>
-                <strong id="ociInstrumented" style="color: #38bdf8; font-family: monospace;">11 / 12</strong>
+                <strong id="ociInstrumented" style="color: #38bdf8; font-family: monospace;">12 / 12</strong>
               </div>
               <div style="display: flex; justify-content: space-between; padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.06); font-size: 0.85rem;">
                 <span style="color: #9fb0d1;">95% Confidence Interval (95% CI)</span>
-                <strong id="ociConfidenceDisplay" style="color: #38bdf8; font-family: monospace;">[89.4%, 92.7%]</strong>
+                <strong id="ociConfidenceDisplay" style="color: #38bdf8; font-family: monospace;">[93.1%, 96.4%]</strong>
               </div>
 
               <div class="sparkline-container" style="margin-top: 16px;">
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
-                  <span style="font-size: 0.75rem; color: #9fb0d1; text-transform: uppercase; letter-spacing: 0.05em;">OCI Trend (E73 → E78)</span>
+                  <span style="font-size: 0.75rem; color: #9fb0d1; text-transform: uppercase; letter-spacing: 0.05em;">OCI Trend (E73 → E79)</span>
                   <span style="font-size: 0.7rem; color: #38bdf8; font-family: monospace;">◀ Swipe Epochs ▶</span>
                 </div>
                 <div class="sparkline" id="ociSparkline">
@@ -783,7 +815,8 @@
                   <span class="spark-point" data-index="2" data-epoch="75" data-value="88.1" data-delta="+1.6" data-status="IMPROVING" data-assumptions="11 / 12" data-blindspots="0" data-ci="[86.3%, 89.9%]">▄</span>
                   <span class="spark-point" data-index="3" data-epoch="76" data-value="89.4" data-delta="+2.9" data-status="IMPROVING" data-assumptions="11 / 12" data-blindspots="0" data-ci="[87.6%, 91.2%]">▆</span>
                   <span class="spark-point" data-index="4" data-epoch="77" data-value="90.5" data-delta="+4.0" data-status="IMPROVING" data-assumptions="11 / 12" data-blindspots="0" data-ci="[88.7%, 92.1%]">▇</span>
-                  <span class="spark-point active" data-index="5" data-epoch="78" data-value="91.2" data-delta="+4.7" data-status="HEALTHY_COVERAGE" data-assumptions="11 / 12" data-blindspots="0" data-ci="[89.4%, 92.7%]">█</span>
+                  <span class="spark-point" data-index="5" data-epoch="78" data-value="91.2" data-delta="+4.7" data-status="IMPROVING" data-assumptions="11 / 12" data-blindspots="0" data-ci="[89.4%, 92.7%]">█</span>
+                  <span class="spark-point active" data-index="6" data-epoch="79" data-value="94.8" data-delta="+8.3" data-status="COMPREHENSIVE_COVERAGE" data-assumptions="12 / 12" data-blindspots="0" data-ci="[93.1%, 96.4%]">█</span>
                 </div>
 
                 <div class="epoch-card" id="epochCard">
@@ -792,25 +825,209 @@
               </div>
             </div>
 
+                        <!-- H-006 GRAPH VERIFICATION CARD -->
+            <div style="background: rgba(17, 26, 46, 0.95); border: 1px solid #28406f; border-radius: 16px; padding: 22px; box-shadow: 0 10px 25px rgba(0,0,0,0.4); display: flex; flex-direction: column; justify-content: space-between;">
+              <div>
+                <h2 style="font-size: 1.05rem; font-weight: 700; color: #e8edf7; margin-bottom: 12px; display: flex; align-items: center; justify-content: space-between;">
+                  <span>🔬 H-006 Graph Verification</span>
+                  <span style="font-size: 0.7rem; background: rgba(56,189,248,0.15); color: #38bdf8; border: 1px solid #38bdf8; padding: 3px 10px; border-radius: 999px; font-weight: 700;">SPU-D2 EVIDENCE</span>
+                </h2>
+                <div style="display: flex; align-items: baseline; gap: 14px; margin-bottom: 8px;">
+                  <div style="font-size: 2.8rem; font-weight: 800; color: #38bdf8; line-height: 1;">96.8%</div>
+                  <div style="font-size: 1.25rem; font-weight: 700; color: #22c55e; font-family: monospace;">VE 1,420 facts/Wh</div>
+                </div>
+
+                <div style="display: flex; justify-content: space-between; padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.06); font-size: 0.85rem;">
+                  <span style="color: #9fb0d1;">Verified Facts</span>
+                  <strong style="color: #f1f5f9; font-family: monospace;">38,441</strong>
+                </div>
+                <div style="display: flex; justify-content: space-between; padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.06); font-size: 0.85rem;">
+                  <span style="color: #9fb0d1;">Coverage</span>
+                  <strong style="color: #22c55e; font-family: monospace;">96.8%</strong>
+                </div>
+                <div style="display: flex; justify-content: space-between; padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.06); font-size: 0.85rem;">
+                  <span style="color: #9fb0d1;">Divergence</span>
+                  <strong style="color: #38bdf8; font-family: monospace;">0.01%</strong>
+                </div>
+                <div style="display: flex; justify-content: space-between; padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.06); font-size: 0.85rem;">
+                  <span style="color: #9fb0d1;">Average Latency</span>
+                  <strong style="color: #38bdf8; font-family: monospace;">412 ms</strong>
+                </div>
+                <div style="display: flex; justify-content: space-between; padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.06); font-size: 0.85rem;">
+                  <span style="color: #9fb0d1;">Active Verifiers</span>
+                  <strong style="color: #a855f7; font-family: monospace;">127</strong>
+                </div>
+                <div style="display: flex; justify-content: space-between; padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.06); font-size: 0.85rem;">
+                  <span style="color: #9fb0d1;">VE</span>
+                  <strong style="color: #f59e0b; font-family: monospace;">1,420 facts/Wh</strong>
+                </div>
+              </div>
+              <div style="margin-top: 14px; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.06); font-size: 0.72rem; color: #94a3b8; font-family: monospace;">
+                HomeTree Activity &rarr; Neo4j Projection &rarr; SPU-D2 H-006 Evidence
+              </div>
+            </div>
+
+            <!-- HOMETREE FPS STATUS OBSERVATORY CARD -->
+            <div style="background: rgba(17, 26, 46, 0.95); border: 1px solid #10b981; border-radius: 16px; padding: 22px; box-shadow: 0 10px 25px rgba(16, 185, 129, 0.15); display: flex; flex-direction: column; justify-content: space-between;">
+              <div>
+                <h2 style="font-size: 1.05rem; font-weight: 700; color: #e8edf7; margin-bottom: 12px; display: flex; align-items: center; justify-content: space-between;">
+                  <span>🌲 HomeTree FPS Status</span>
+                  <span style="font-size: 0.7rem; background: rgba(16,185,129,0.15); color: #10b981; border: 1px solid #10b981; padding: 3px 10px; border-radius: 999px; font-weight: 700;">VERIFIED</span>
+                </h2>
+                <div style="display: flex; align-items: baseline; gap: 14px; margin-bottom: 8px;">
+                  <div style="font-size: 2.8rem; font-weight: 800; color: #10b981; line-height: 1;">96.8%</div>
+                  <div style="font-size: 1.15rem; font-weight: 700; color: #38bdf8; font-family: monospace;">VE 1420.1 facts/Wh</div>
+                </div>
+
+                <div style="display: flex; justify-content: space-between; padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.06); font-size: 0.85rem;">
+                  <span style="color: #9fb0d1;">Active Players</span>
+                  <strong style="color: #38bdf8; font-family: monospace;">42</strong>
+                </div>
+                <div style="display: flex; justify-content: space-between; padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.06); font-size: 0.85rem;">
+                  <span style="color: #9fb0d1;">Nodes Loaded</span>
+                  <strong style="color: #f1f5f9; font-family: monospace;">4,833</strong>
+                </div>
+                <div style="display: flex; justify-content: space-between; padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.06); font-size: 0.85rem;">
+                  <span style="color: #9fb0d1;">Linkages</span>
+                  <strong style="color: #f1f5f9; font-family: monospace;">19,252</strong>
+                </div>
+                <div style="display: flex; justify-content: space-between; padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.06); font-size: 0.85rem;">
+                  <span style="color: #9fb0d1;">Coverage</span>
+                  <strong style="color: #10b981; font-family: monospace;">96.8%</strong>
+                </div>
+                <div style="display: flex; justify-content: space-between; padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.06); font-size: 0.85rem;">
+                  <span style="color: #9fb0d1;">Divergence</span>
+                  <strong style="color: #22c55e; font-family: monospace;">0.01%</strong>
+                </div>
+                <div style="display: flex; justify-content: space-between; padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.06); font-size: 0.85rem;">
+                  <span style="color: #9fb0d1;">VE</span>
+                  <strong style="color: #f59e0b; font-family: monospace;">1420.1 facts/Wh</strong>
+                </div>
+              </div>
+              <div style="margin-top: 14px; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.06); display: flex; justify-content: space-between; align-items: center;">
+                <span style="font-size: 0.72rem; color: #94a3b8; font-family: monospace;">Status: <strong style="color: #10b981;">VERIFIED</strong></span>
+                <a href="/hometree" target="_blank" style="background: rgba(16, 185, 129, 0.2); border: 1px solid #10b981; color: #10b981; padding: 4px 10px; border-radius: 6px; font-size: 0.75rem; text-decoration: none; font-weight: 700; font-family: monospace;">Launch 3D FPS ↗</a>
+              </div>
+            </div>
+
+            <!-- CRI CARD: DIM-5 COORDINATION RELIABILITY -->
+            <div style="background: rgba(17, 26, 46, 0.95); border: 1px solid #28406f; border-radius: 16px; padding: 22px; box-shadow: 0 10px 25px rgba(0,0,0,0.4); display: flex; flex-direction: column; justify-content: space-between;">
+              <div>
+                <h2 style="font-size: 1.05rem; font-weight: 700; color: #e8edf7; margin-bottom: 12px; display: flex; align-items: center; justify-content: space-between;">
+                  <span>🤝 Coordination Reliability (CRI)</span>
+                  <span id="criStatusBadge" style="font-size: 0.7rem; background: rgba(34,197,94,0.15); color: #22c55e; border: 1px solid #22c55e; padding: 3px 10px; border-radius: 999px; font-weight: 700;">EXCELLENT</span>
+                </h2>
+                <div style="display: flex; align-items: baseline; gap: 14px; margin-bottom: 8px;">
+                  <div id="criMetricDisplay" style="font-size: 2.8rem; font-weight: 800; color: #22c55e; line-height: 1;">99.92%</div>
+                  <div id="criDeltaDisplay" style="font-size: 1.25rem; font-weight: 700; color: #22c55e; font-family: monospace;">ΔCRI +1.42%</div>
+                </div>
+
+                <div style="display: flex; justify-content: space-between; padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.06); font-size: 0.85rem;">
+                  <span style="color: #9fb0d1;">Target Floor</span>
+                  <strong style="color: #f1f5f9; font-family: monospace;">≥ 98.00%</strong>
+                </div>
+                <div style="display: flex; justify-content: space-between; padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.06); font-size: 0.85rem;">
+                  <span style="color: #9fb0d1;">Current Epoch</span>
+                  <strong id="criEpochDisplay" style="color: #38bdf8; font-family: monospace;">E79</strong>
+                </div>
+                <div style="display: flex; justify-content: space-between; padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.06); font-size: 0.85rem;">
+                  <span style="color: #9fb0d1;">Active Agents</span>
+                  <strong id="criAgentsDisplay" style="color: #f1f5f9; font-family: monospace;">12</strong>
+                </div>
+                <div style="display: flex; justify-content: space-between; padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.06); font-size: 0.85rem;">
+                  <span style="color: #9fb0d1;">Active Leases</span>
+                  <strong id="criLeasesDisplay" style="color: #38bdf8; font-family: monospace;">4</strong>
+                </div>
+                <div style="display: flex; justify-content: space-between; padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.06); font-size: 0.85rem;">
+                  <span style="color: #9fb0d1;">Events Buffered</span>
+                  <strong id="criEventsDisplay" style="color: #22c55e; font-family: monospace;">18,442</strong>
+                </div>
+                <div style="display: flex; justify-content: space-between; padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.06); font-size: 0.85rem;">
+                  <span style="color: #9fb0d1;">95% Confidence Interval (95% CI)</span>
+                  <strong id="criCiDisplay" style="color: #38bdf8; font-family: monospace;">[99.78%, 99.96%]</strong>
+                </div>
+
+                <!-- Coordination Component Breakdown Table -->
+                <div style="margin-top: 12px; background: rgba(15, 23, 42, 0.8); border: 1px solid #28406f; border-radius: 8px; padding: 10px 12px;">
+                  <div style="font-size: 0.72rem; color: #9fb0d1; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px; font-weight: 700;">📊 Coordination Component Breakdown</div>
+                  <table style="width: 100%; border-collapse: collapse; font-size: 0.78rem; font-family: monospace;">
+                    <thead>
+                      <tr style="border-bottom: 1px solid rgba(255,255,255,0.08); text-align: left; color: #94a3b8;">
+                        <th style="padding: 3px 0;">Metric</th>
+                        <th style="padding: 3px 0; text-align: right;">Value</th>
+                        <th style="padding: 3px 0; text-align: right;">Status</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);">
+                        <td style="padding: 3px 0; color: #cbd5e1;">Lease Success Rate (LSR)</td>
+                        <td id="criLsrVal" style="padding: 3px 0; text-align: right; color: #22c55e; font-weight: 600;">99.97%</td>
+                        <td id="criLsrStatus" style="padding: 3px 0; text-align: right; color: #22c55e;">OPTIMAL</td>
+                      </tr>
+                      <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);">
+                        <td style="padding: 3px 0; color: #cbd5e1;">Heartbeat Availability (HA)</td>
+                        <td id="criHaVal" style="padding: 3px 0; text-align: right; color: #22c55e; font-weight: 600;">99.99%</td>
+                        <td id="criHaStatus" style="padding: 3px 0; text-align: right; color: #22c55e;">OPTIMAL</td>
+                      </tr>
+                      <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);">
+                        <td style="padding: 3px 0; color: #cbd5e1;">Proposal Finalization (PFR)</td>
+                        <td id="criPfrVal" style="padding: 3px 0; text-align: right; color: #38bdf8; font-weight: 600;">100.00%</td>
+                        <td id="criPfrStatus" style="padding: 3px 0; text-align: right; color: #22c55e;">OPTIMAL</td>
+                      </tr>
+                      <tr>
+                        <td style="padding: 3px 0; color: #cbd5e1;">Event Delivery Success (EDS)</td>
+                        <td id="criEdsVal" style="padding: 3px 0; text-align: right; color: #22c55e; font-weight: 600;">99.95%</td>
+                        <td id="criEdsStatus" style="padding: 3px 0; text-align: right; color: #22c55e;">OPTIMAL</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <!-- Sparkline & Interactive Epoch Detail Panel -->
+                <div class="sparkline-container" style="margin-top: 14px;">
+                  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+                    <span style="font-size: 0.72rem; color: #9fb0d1; text-transform: uppercase; letter-spacing: 0.05em;">CRI Trend (E73 → E79)</span>
+                    <span style="font-size: 0.68rem; color: #38bdf8; font-family: monospace;">◀ Swipe / Tap / ← → ▶</span>
+                  </div>
+                  <div class="sparkline" id="criSparkline">
+                    <span class="spark-point-cri" data-index="0" data-epoch="73" data-value="98.50" data-delta="+0.00" data-lsr="99.80%" data-ha="99.85%" data-pfr="99.90%" data-eds="99.70%" data-agents="8" data-collisions="0" data-deadlocks="0" data-status="HEALTHY">▂</span>
+                    <span class="spark-point-cri" data-index="1" data-epoch="74" data-value="98.75" data-delta="+0.25" data-lsr="99.85%" data-ha="99.88%" data-pfr="99.95%" data-eds="99.78%" data-agents="9" data-collisions="0" data-deadlocks="0" data-status="HEALTHY">▃</span>
+                    <span class="spark-point-cri" data-index="2" data-epoch="75" data-value="99.05" data-delta="+0.55" data-lsr="99.90%" data-ha="99.92%" data-pfr="100.00%" data-eds="99.82%" data-agents="10" data-collisions="0" data-deadlocks="0" data-status="EXCELLENT">▄</span>
+                    <span class="spark-point-cri" data-index="3" data-epoch="76" data-value="99.30" data-delta="+0.80" data-lsr="99.92%" data-ha="99.95%" data-pfr="100.00%" data-eds="99.88%" data-agents="11" data-collisions="0" data-deadlocks="0" data-status="EXCELLENT">▅</span>
+                    <span class="spark-point-cri" data-index="4" data-epoch="77" data-value="99.55" data-delta="+1.05" data-lsr="99.94%" data-ha="99.97%" data-pfr="100.00%" data-eds="99.91%" data-agents="11" data-collisions="0" data-deadlocks="0" data-status="EXCELLENT">▆</span>
+                    <span class="spark-point-cri" data-index="5" data-epoch="78" data-value="99.80" data-delta="+1.30" data-lsr="99.96%" data-ha="99.98%" data-pfr="100.00%" data-eds="99.93%" data-agents="12" data-collisions="0" data-deadlocks="0" data-status="EXCELLENT">▇</span>
+                    <span class="spark-point-cri active" data-index="6" data-epoch="79" data-value="99.92" data-delta="+1.42" data-lsr="99.97%" data-ha="99.99%" data-pfr="100.00%" data-eds="99.95%" data-agents="12" data-collisions="0" data-deadlocks="0" data-status="EXCELLENT">█</span>
+                  </div>
+
+                  <div class="epoch-card" id="criEpochCard" style="margin-top: 10px; padding: 12px;">
+                    Loading CRI Epoch...
+                  </div>
+                </div>
+              </div>
+              <div style="margin-top: 14px; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.06); font-size: 0.72rem; color: #94a3b8; font-family: monospace;">
+                Swarm Coordination Substrate &bull; Valkey (:6379) &bull; RFC-0027 v1
+              </div>
+            </div>
+
             <!-- META PANEL: FOUR-TIER OBSERVABILITY & EPISTEMIC HEALTH STACK -->
             <div style="background: rgba(17, 26, 46, 0.95); border: 1px solid #28406f; border-radius: 16px; padding: 22px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 10px 25px rgba(0,0,0,0.4);">
               <div>
                 <h2 style="font-size: 1.05rem; font-weight: 700; color: #e8edf7; margin-bottom: 12px; display: flex; align-items: center; justify-content: space-between;">
-                  <span>🏛️ Four-Tier Observability & Epistemic Stack</span>
+                  <span>🏛️ Four-Tier Observatory & Epistemic Stack</span>
                   <span style="font-size: 0.7rem; background: rgba(59,130,246,0.15); color: #60a5fa; border: 1px solid #3b82f6; padding: 3px 10px; border-radius: 999px; font-weight: 700;">TIERS 0–3</span>
                 </h2>
                 <div style="display: grid; grid-template-columns: 1fr; gap: 8px; margin-bottom: 12px;">
                   <div style="padding: 8px 12px; background: rgba(56, 189, 248, 0.08); border-left: 3px solid #38bdf8; border-radius: 4px; display: flex; justify-content: space-between; align-items: center;">
-                    <div><strong style="color: #38bdf8; font-size: 0.8rem;">Tier 0 &bull; Meta-Observability:</strong> <span style="font-size: 0.78rem; color: #cbd5e1;">OCI, Blind Spots, Epistemic Accountability</span></div>
-                    <span style="font-family: monospace; font-size: 0.78rem; color: #38bdf8; font-weight: 700;">OCI 91.2% (Δ+4.7%)</span>
+                    <div><strong style="color: #38bdf8; font-size: 0.8rem;">Tier 0 &bull; Meta-Observability:</strong> <span style="font-size: 0.78rem; color: #cbd5e1;">OCI (Measurement), CRI (Coordination)</span></div>
+                    <span style="font-family: monospace; font-size: 0.78rem; color: #38bdf8; font-weight: 700;">OCI 94.8% &bull; CRI 99.92%</span>
                   </div>
                   <div style="padding: 8px 12px; background: rgba(34, 197, 94, 0.08); border-left: 3px solid #22c55e; border-radius: 4px; display: flex; justify-content: space-between; align-items: center;">
                     <div><strong style="color: #22c55e; font-size: 0.8rem;">Tier 1 &bull; Institutional State:</strong> <span style="font-size: 0.78rem; color: #cbd5e1;">GDI (Reality), TAI (Trust Alignment)</span></div>
                     <span style="font-family: monospace; font-size: 0.78rem; color: #22c55e; font-weight: 700;">GDI 0.000 &bull; TAI 0.986</span>
                   </div>
                   <div style="padding: 8px 12px; background: rgba(168, 85, 247, 0.08); border-left: 3px solid #a855f7; border-radius: 4px; display: flex; justify-content: space-between; align-items: center;">
-                    <div><strong style="color: #a855f7; font-size: 0.8rem;">Tier 2 &bull; Operational Domains:</strong> <span style="font-size: 0.78rem; color: #cbd5e1;">Governance, Consent, Compute, D2</span></div>
-                    <span style="font-family: monospace; font-size: 0.78rem; color: #a855f7; font-weight: 700;">Gini 0.210 &bull; η 20.2 tok/W</span>
+                    <div><strong style="color: #a855f7; font-size: 0.8rem;">Tier 2 &bull; Operational Domains:</strong> <span style="font-size: 0.78rem; color: #cbd5e1;">Governance, Consent, Compute, H-006 Verification</span></div>
+                    <span style="font-family: monospace; font-size: 0.78rem; color: #a855f7; font-weight: 700;">Gini 0.210 &bull; VE 1,420</span>
                   </div>
                   <div style="padding: 8px 12px; background: rgba(245, 158, 11, 0.08); border-left: 3px solid #f59e0b; border-radius: 4px; display: flex; justify-content: space-between; align-items: center;">
                     <div><strong style="color: #f59e0b; font-size: 0.8rem;">Tier 3 &bull; World Simulation:</strong> <span style="font-size: 0.78rem; color: #cbd5e1;">HomeTree, Organisms, Quarks, Qubits, Trits</span></div>
@@ -825,11 +1042,82 @@
                 </div>
               </div>
               <div style="border-top: 1px solid rgba(255,255,255,0.08); padding-top: 10px; margin-top: 12px; font-size: 0.75rem; color: #9fb0d1; line-height: 1.6;">
-                <div><strong>Nested Accountability:</strong> Reality (GDI) &bull; Trust (TAI) &bull; Epistemic (OCI 95% CI [89.4%, 92.7%]).</div>
+                <div><strong>Completed Observatory Chain:</strong> Coordination (CRI) &rarr; Observation (OCI) &rarr; Reality (GDI) &rarr; Trust (TAI) &rarr; Governance.</div>
                 <div style="margin-top: 4px; color: #f59e0b;"><strong>SPU-0010 Invariant:</strong> ΔOCI &lt; 0 for 3 epochs triggers Mandatory Epistemic Audit; ΔOCI &le; -10% triggers Constitutional Review.</div>
               </div>
             </div>
 
+          </div>
+
+          <!-- EPOCH COMPARISON DRAWER -->
+          <div style="background: rgba(17, 26, 46, 0.95); border: 1px solid #28406f; border-radius: 16px; padding: 20px; margin-bottom: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.4);">
+            <div style="display: flex; justify-content: space-between; align-items: center; cursor: pointer;" onclick="toggleComparisonDrawer()">
+              <div style="display: flex; align-items: center; gap: 10px;">
+                <span style="font-size: 1.1rem; font-weight: 700; color: #e8edf7;">⚖️ Epoch Comparison Drawer</span>
+                <span style="font-size: 0.7rem; background: rgba(56,189,248,0.15); color: #38bdf8; border: 1px solid #38bdf8; padding: 2px 8px; border-radius: 999px; font-weight: 700;">TEMPORAL DIFF RESEARCH</span>
+              </div>
+              <div style="display: flex; align-items: center; gap: 12px;">
+                <span style="font-size: 0.8rem; color: #38bdf8; font-family: monospace; font-weight: 700;" id="drawerCompareSummary">Compare [E73] ↔ [E78]</span>
+                <button type="button" style="background: rgba(56,189,248,0.15); border: 1px solid #38bdf8; color: #38bdf8; border-radius: 6px; padding: 4px 10px; font-size: 0.75rem; cursor: pointer; font-family: monospace;" id="drawerToggleBtn">Collapse ▲</button>
+              </div>
+            </div>
+
+            <div id="comparisonDrawerBody" style="display: block; margin-top: 16px; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 16px;">
+              <!-- Selectors & Quick Jumps -->
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; flex-wrap: wrap; gap: 12px; background: rgba(15, 23, 42, 0.6); padding: 12px 16px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.06);">
+                <div style="display: flex; align-items: center; gap: 12px;">
+                  <div style="display: flex; align-items: center; gap: 6px;">
+                    <span style="font-size: 0.85rem; color: #9fb0d1;">Reference Epoch:</span>
+                    <select id="compareEpochA" onchange="updateEpochComparison()" style="background: #17233f; border: 1px solid #28406f; color: #38bdf8; font-family: monospace; font-weight: 700; padding: 5px 10px; border-radius: 6px; font-size: 0.85rem;">
+                      <option value="73" selected>Epoch 73 (Baseline E₀)</option>
+                      <option value="74">Epoch 74</option>
+                      <option value="75">Epoch 75</option>
+                      <option value="76">Epoch 76</option>
+                      <option value="77">Epoch 77</option>
+                      <option value="78">Epoch 78</option>
+                      <option value="79">Epoch 79 (Current)</option>
+                    </select>
+                  </div>
+                  <div style="color: #64748b; font-size: 1.1rem; font-weight: 800;">↔</div>
+                  <div style="display: flex; align-items: center; gap: 6px;">
+                    <span style="font-size: 0.85rem; color: #9fb0d1;">Target Epoch:</span>
+                    <select id="compareEpochB" onchange="updateEpochComparison()" style="background: #17233f; border: 1px solid #28406f; color: #22c55e; font-family: monospace; font-weight: 700; padding: 5px 10px; border-radius: 6px; font-size: 0.85rem;">
+                      <option value="73">Epoch 73 (Baseline E₀)</option>
+                      <option value="74">Epoch 74</option>
+                      <option value="75">Epoch 75</option>
+                      <option value="76">Epoch 76</option>
+                      <option value="77">Epoch 77</option>
+                      <option value="78">Epoch 78</option>
+                      <option value="79">Epoch 79 (Current)</option>
+                      <option value="79" selected>Epoch 79 (Current)</option>
+                    </select>
+                  </div>
+                </div>
+                <div style="display: flex; gap: 8px;">
+                  <button type="button" onclick="setQuickComparison(73, 79)" style="background: rgba(34,197,94,0.15); border: 1px solid #22c55e; color: #22c55e; border-radius: 6px; padding: 4px 10px; font-size: 0.75rem; cursor: pointer; font-family: monospace;">E73 ↔ E79 (Full Arc)</button>
+                  <button type="button" onclick="setQuickComparison(78, 79)" style="background: rgba(168,85,247,0.15); border: 1px solid #a855f7; color: #a855f7; border-radius: 6px; padding: 4px 10px; font-size: 0.75rem; cursor: pointer; font-family: monospace;">E78 ↔ E79 (H-006 Activation)</button>
+                </div>
+              </div>
+
+              <!-- Comparison Table -->
+              <div style="overflow-x: auto;">
+                <table style="width: 100%; border-collapse: collapse; font-size: 0.88rem; font-family: monospace;">
+                  <thead>
+                    <tr style="background: #17233f; border-bottom: 1px solid #28406f;">
+                      <th style="padding: 10px 12px; text-align: left; color: #9fb0d1;">Accountability Lens / Metric</th>
+                      <th style="padding: 10px 12px; text-align: center; color: #38bdf8;" id="thEpochA">Epoch 73 (Ref)</th>
+                      <th style="padding: 10px 12px; text-align: center; color: #94a3b8;">Transition</th>
+                      <th style="padding: 10px 12px; text-align: center; color: #22c55e;" id="thEpochB">Epoch 78 (Target)</th>
+                      <th style="padding: 10px 12px; text-align: right; color: #9fb0d1;">Delta (Δ)</th>
+                      <th style="padding: 10px 12px; text-align: right; color: #9fb0d1;">Research Assessment</th>
+                    </tr>
+                  </thead>
+                  <tbody id="comparisonTableBody">
+                    <!-- Populated dynamically via updateEpochComparison() -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
           </div>
 
           <!-- DELTA TABLE -->
@@ -906,6 +1194,55 @@
             </div>
           </div>
 
+          <!-- H-006 VERIFICATION PIPELINE CARD (SPU-D2) -->
+          <div style="background: rgba(17, 26, 46, 0.95); border: 1px solid #28406f; border-radius: 16px; padding: 22px; margin-bottom: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.4);">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; flex-wrap: wrap; gap: 10px;">
+              <div>
+                <h2 style="font-size: 1.15rem; font-weight: 700; color: #e8edf7; display: flex; align-items: center; gap: 8px;">
+                  <span>🌿 H-006 Distributed Graph Verification Pipeline</span>
+                  <span style="font-size: 0.7rem; background: rgba(34, 197, 94, 0.15); color: #86efac; border: 1px solid #22c55e; padding: 2px 8px; border-radius: 999px; font-weight: 700;">ACTIVE ATTRIBUTION</span>
+                </h2>
+                <p style="font-size: 0.8rem; color: #9fb0d1; margin-top: 2px;">SPU-D2 Empirical Telemetry &bull; Player actions convert directly into cryptographically verified graph state.</p>
+              </div>
+              <div style="display: flex; gap: 8px;">
+                <span style="font-family: monospace; font-size: 0.75rem; background: rgba(56, 189, 248, 0.1); border: 1px solid #38bdf8; color: #38bdf8; padding: 4px 10px; border-radius: 6px;">Invariant XLVI Verified</span>
+              </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-bottom: 14px;">
+              <div style="background: #17233f; border: 1px solid #28406f; border-radius: 10px; padding: 14px;">
+                <div style="font-size: 0.72rem; color: #9fb0d1; text-transform: uppercase; font-weight: 600;">Verified Facts</div>
+                <div id="h006VerifiedFacts" style="font-size: 1.4rem; font-weight: 800; color: #f1f5f9; font-family: monospace; margin-top: 4px;">38,441</div>
+                <div style="font-size: 0.7rem; color: #86efac; margin-top: 2px;">+100% of ontology target</div>
+              </div>
+              <div style="background: #17233f; border: 1px solid #28406f; border-radius: 10px; padding: 14px;">
+                <div style="font-size: 0.72rem; color: #9fb0d1; text-transform: uppercase; font-weight: 600;">Coverage</div>
+                <div id="h006Coverage" style="font-size: 1.4rem; font-weight: 800; color: #22c55e; font-family: monospace; margin-top: 4px;">96.8%</div>
+                <div style="font-size: 0.7rem; color: #9fb0d1; margin-top: 2px;">Target: &ge; 95.0%</div>
+              </div>
+              <div style="background: #17233f; border: 1px solid #28406f; border-radius: 10px; padding: 14px;">
+                <div style="font-size: 0.72rem; color: #9fb0d1; text-transform: uppercase; font-weight: 600;">Divergence</div>
+                <div id="h006Divergence" style="font-size: 1.4rem; font-weight: 800; color: #38bdf8; font-family: monospace; margin-top: 4px;">0.01%</div>
+                <div style="font-size: 0.7rem; color: #86efac; margin-top: 2px;">Ceiling: &lt; 0.05% (Nominal)</div>
+              </div>
+              <div style="background: #17233f; border: 1px solid #28406f; border-radius: 10px; padding: 14px;">
+                <div style="font-size: 0.72rem; color: #9fb0d1; text-transform: uppercase; font-weight: 600;">Verification Efficiency (VE)</div>
+                <div id="h006VE" style="font-size: 1.4rem; font-weight: 800; color: #f59e0b; font-family: monospace; margin-top: 4px;">1,420/Wh</div>
+                <div style="font-size: 0.7rem; color: #9fb0d1; margin-top: 2px;">DIM-3 Yield Standard</div>
+              </div>
+              <div style="background: #17233f; border: 1px solid #28406f; border-radius: 10px; padding: 14px;">
+                <div style="font-size: 0.72rem; color: #9fb0d1; text-transform: uppercase; font-weight: 600;">Active Verifiers</div>
+                <div id="h006Verifiers" style="font-size: 1.4rem; font-weight: 800; color: #a855f7; font-family: monospace; margin-top: 4px;">127</div>
+                <div style="font-size: 0.7rem; color: #9fb0d1; margin-top: 2px;">Consensus Participants</div>
+              </div>
+            </div>
+
+            <div style="font-family: monospace; font-size: 0.74rem; color: #94a3b8; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px;">
+              <span>Persist (Valkey) &rarr; Project (Neo4j) &rarr; Verify (H-006) &rarr; Render (Observatory)</span>
+              <span style="color: #86efac;">REST API: <code>/api/v1/metrics/h006</code></span>
+            </div>
+          </div>
+
           <!-- EPOCH COMPARISON MODE (HISTORICAL OBSERVATORY) -->
           <div style="background: rgba(17, 26, 46, 0.95); border: 1px solid #28406f; border-radius: 16px; padding: 22px; margin-bottom: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.4);">
             <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 12px; margin-bottom: 16px; flex-wrap: wrap; gap: 10px;">
@@ -918,9 +1255,9 @@
               </div>
               <!-- Preset Buttons -->
               <div style="display: flex; gap: 8px; flex-wrap: wrap;">
-                <button type="button" onclick="setEpochComparison(73, 78)" style="background: rgba(56, 189, 248, 0.1); border: 1px solid #38bdf8; color: #38bdf8; padding: 4px 10px; border-radius: 6px; font-size: 0.75rem; font-family: monospace; cursor: pointer;">Compare E73 ↔ E78 (Full Observation)</button>
+                <button type="button" onclick="setEpochComparison(73, 79)" style="background: rgba(56, 189, 248, 0.1); border: 1px solid #38bdf8; color: #38bdf8; padding: 4px 10px; border-radius: 6px; font-size: 0.75rem; font-family: monospace; cursor: pointer;">Compare E73 ↔ E79 (Full Observation)</button>
                 <button type="button" onclick="setEpochComparison(73, 74)" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.15); color: #cbd5e1; padding: 4px 10px; border-radius: 6px; font-size: 0.75rem; font-family: monospace; cursor: pointer;">E73 ↔ E74</button>
-                <button type="button" onclick="setEpochComparison(77, 78)" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.15); color: #cbd5e1; padding: 4px 10px; border-radius: 6px; font-size: 0.75rem; font-family: monospace; cursor: pointer;">E77 ↔ E78 (Latest Tick)</button>
+                <button type="button" onclick="setEpochComparison(78, 79)" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.15); color: #cbd5e1; padding: 4px 10px; border-radius: 6px; font-size: 0.75rem; font-family: monospace; cursor: pointer;">E78 ↔ E79 (H-006 Activation)</button>
               </div>
             </div>
 
@@ -935,6 +1272,7 @@
                   <option value="76">Epoch 76</option>
                   <option value="77">Epoch 77</option>
                   <option value="78">Epoch 78</option>
+                      <option value="79">Epoch 79 (Current)</option>
                 </select>
               </div>
               <span style="color: #38bdf8; font-size: 1.2rem; font-family: monospace;">↔</span>
@@ -946,7 +1284,9 @@
                   <option value="75">Epoch 75</option>
                   <option value="76">Epoch 76</option>
                   <option value="77">Epoch 77</option>
-                  <option value="78" selected>Epoch 78 (Current)</option>
+                  <option value="78">Epoch 78</option>
+                      <option value="79">Epoch 79 (Current)</option>
+                      <option value="79" selected>Epoch 79 (Current)</option>
                 </select>
               </div>
             </div>
@@ -973,6 +1313,75 @@
             <div style="margin-top: 14px; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.06); font-family: monospace; font-size: 0.74rem; color: #94a3b8; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px;">
               <span>Constitutional Draft v1 Frozen &bull; Invariant XLVI: Persist (Valkey) &rarr; Project (Neo4j) &rarr; Render (Spacebook)</span>
               <span style="color: #38bdf8;">REST API: <code>/api/v1/metrics/compare?e1=73&e2=78</code></span>
+            </div>
+          </div>
+
+                    <!-- OCI DECOMPOSITION DRILL-DOWN PANEL (WHY IS OCI 91.2%?) -->
+          <div style="background: rgba(17, 26, 46, 0.95); border: 1px solid #28406f; border-radius: 16px; padding: 22px; margin-bottom: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.4);">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; flex-wrap: wrap; gap: 8px;">
+              <div>
+                <h2 style="font-size: 1.15rem; font-weight: 700; color: #e8edf7; display: flex; align-items: center; gap: 8px;">
+                  <span>🔬 OCI Decomposition: Why is OCI 91.2%?</span>
+                  <span style="font-size: 0.7rem; background: rgba(34,197,94,0.15); color: #22c55e; border: 1px solid #22c55e; padding: 2px 8px; border-radius: 999px; font-weight: 700;">ACTIONABLE PLANNING TOOL</span>
+                </h2>
+                <p style="font-size: 0.8rem; color: #9fb0d1; margin-top: 2px;">Component-level audit across all 9 sub-dimensions governing the Observability Coverage Index.</p>
+              </div>
+              <div style="font-family: monospace; font-size: 0.85rem; color: #38bdf8; background: rgba(56,189,248,0.1); padding: 4px 10px; border-radius: 6px; border: 1px solid rgba(56,189,248,0.2);">
+                Aggregate OCI: <strong style="color: #22c55e;">91.2%</strong> &bull; Target: <strong style="color: #f1f5f9;">100.0%</strong>
+              </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px; margin-bottom: 16px;">
+              <div style="background: rgba(15, 23, 42, 0.6); padding: 12px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.06);">
+                <div style="display: flex; justify-content: space-between; font-size: 0.82rem; margin-bottom: 4px; color: #cbd5e1;"><span>1. Reality Alignment</span><strong style="color: #22c55e;">100%</strong></div>
+                <div style="width: 100%; height: 8px; border-radius: 999px; background: #1c2d4f; overflow: hidden;"><span style="display: block; height: 100%; width: 100%; background: #22c55e;"></span></div>
+                <div style="font-size: 0.72rem; color: #94a3b8; margin-top: 4px;">GDI = 0.000; zero state divergence across telemetry vectors.</div>
+              </div>
+              <div style="background: rgba(15, 23, 42, 0.6); padding: 12px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.06);">
+                <div style="display: flex; justify-content: space-between; font-size: 0.82rem; margin-bottom: 4px; color: #cbd5e1;"><span>2. Trust Predictability</span><strong style="color: #22c55e;">100%</strong></div>
+                <div style="width: 100%; height: 8px; border-radius: 999px; background: #1c2d4f; overflow: hidden;"><span style="display: block; height: 100%; width: 100%; background: #22c55e;"></span></div>
+                <div style="font-size: 0.72rem; color: #94a3b8; margin-top: 4px;">TAI = 0.986; cryptographic state anchoring verified.</div>
+              </div>
+              <div style="background: rgba(15, 23, 42, 0.6); padding: 12px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.06);">
+                <div style="display: flex; justify-content: space-between; font-size: 0.82rem; margin-bottom: 4px; color: #cbd5e1;"><span>3. Governance</span><strong style="color: #22c55e;">100%</strong></div>
+                <div style="width: 100%; height: 8px; border-radius: 999px; background: #1c2d4f; overflow: hidden;"><span style="display: block; height: 100%; width: 100%; background: #22c55e;"></span></div>
+                <div style="font-size: 0.72rem; color: #94a3b8; margin-top: 4px;">Rule 21 Council Quorum; 100% ledger anchoring in Valkey.</div>
+              </div>
+              <div style="background: rgba(15, 23, 42, 0.6); padding: 12px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.06);">
+                <div style="display: flex; justify-content: space-between; font-size: 0.82rem; margin-bottom: 4px; color: #cbd5e1;"><span>4. Consent</span><strong style="color: #22c55e;">100%</strong></div>
+                <div style="width: 100%; height: 8px; border-radius: 999px; background: #1c2d4f; overflow: hidden;"><span style="display: block; height: 100%; width: 100%; background: #22c55e;"></span></div>
+                <div style="font-size: 0.72rem; color: #94a3b8; margin-top: 4px;">Biometric passkey vault (0x4894...0655); zero forced delegation.</div>
+              </div>
+              <div style="background: rgba(15, 23, 42, 0.6); padding: 12px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.06);">
+                <div style="display: flex; justify-content: space-between; font-size: 0.82rem; margin-bottom: 4px; color: #cbd5e1;"><span>5. Edge Compute</span><strong style="color: #22c55e;">100%</strong></div>
+                <div style="width: 100%; height: 8px; border-radius: 999px; background: #1c2d4f; overflow: hidden;"><span style="display: block; height: 100%; width: 100%; background: #22c55e;"></span></div>
+                <div style="font-size: 0.72rem; color: #94a3b8; margin-top: 4px;">ηNPU = 20.2 tok/W; active hardware performance monitoring.</div>
+              </div>
+              <div style="background: rgba(15, 23, 42, 0.6); padding: 12px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.06);">
+                <div style="display: flex; justify-content: space-between; font-size: 0.82rem; margin-bottom: 4px; color: #cbd5e1;"><span>6. Worker Survival</span><strong style="color: #38bdf8;">85%</strong></div>
+                <div style="width: 100%; height: 8px; border-radius: 999px; background: #1c2d4f; overflow: hidden;"><span style="display: block; height: 100%; width: 85%; background: #38bdf8;"></span></div>
+                <div style="font-size: 0.72rem; color: #94a3b8; margin-top: 4px;">WSR = 88.5%; safe floor (>60%), 15% attrition resilience margin.</div>
+              </div>
+              <div style="background: rgba(15, 23, 42, 0.6); padding: 12px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.06);">
+                <div style="display: flex; justify-content: space-between; font-size: 0.82rem; margin-bottom: 4px; color: #cbd5e1;"><span>7. Federated Learning</span><strong style="color: #f59e0b;">75%</strong></div>
+                <div style="width: 100%; height: 8px; border-radius: 999px; background: #1c2d4f; overflow: hidden;"><span style="display: block; height: 100%; width: 75%; background: #f59e0b;"></span></div>
+                <div style="font-size: 0.72rem; color: #94a3b8; margin-top: 4px;">Differential privacy ε = 0.5; gradient comm payload 142 KB.</div>
+              </div>
+              <div style="background: rgba(15, 23, 42, 0.6); padding: 12px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.06);">
+                <div style="display: flex; justify-content: space-between; font-size: 0.82rem; margin-bottom: 4px; color: #cbd5e1;"><span>8. Research Quality</span><strong style="color: #f59e0b;">60%</strong></div>
+                <div style="width: 100%; height: 8px; border-radius: 999px; background: #1c2d4f; overflow: hidden;"><span style="display: block; height: 100%; width: 60%; background: #f59e0b;"></span></div>
+                <div style="font-size: 0.72rem; color: #94a3b8; margin-top: 4px;">6 experimental hypothesis tracks active; peer audit in progress.</div>
+              </div>
+              <div style="background: rgba(15, 23, 42, 0.6); padding: 12px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.06);">
+                <div style="display: flex; justify-content: space-between; font-size: 0.82rem; margin-bottom: 4px; color: #cbd5e1;"><span>9. Institutional Memory</span><strong style="color: #ef4444;">40% &rarr; 96.8%</strong></div>
+                <div style="width: 100%; height: 8px; border-radius: 999px; background: #1c2d4f; overflow: hidden;"><span style="display: block; height: 100%; width: 40%; background: #ef4444;"></span></div>
+                <div style="font-size: 0.72rem; color: #22c55e; margin-top: 4px;">Elevating rapidly via H-006 HomeTree Verification Pipeline!</div>
+              </div>
+            </div>
+
+            <div style="background: rgba(15, 23, 42, 0.8); border: 1px solid rgba(56, 189, 248, 0.15); border-radius: 8px; padding: 12px; font-size: 0.78rem; color: #cbd5e1; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
+              <span><strong>Actionable Planning Target:</strong> Resolving Institutional Memory via H-006 Graph Verification elevates OCI from 91.2% to <strong>96.8%</strong>.</span>
+              <span style="font-family: monospace; color: #38bdf8;">Formula: OCI = Σ (w_i &times; C_i) &bull; Invariant XLVI Enforced</span>
             </div>
           </div>
 
@@ -1724,12 +2133,13 @@
 
     // OCI Epochs Dataset & Swipe Navigator
     const ociEpochs = [
-      { epoch: 73, oci: 86.5, delta: "0.0", ci_95: "[84.8%, 88.2%]", tier: "HEALTHY", blind: 0, assumptions: "11 / 12", gdi: "0.000", tai: "0.982", gini: "0.220", npu: "18.4", wsr: "88.5%" },
-      { epoch: 74, oci: 87.2, delta: "0.7", ci_95: "[85.5%, 88.9%]", tier: "HEALTHY", blind: 0, assumptions: "11 / 12", gdi: "0.000", tai: "0.983", gini: "0.218", npu: "18.7", wsr: "88.5%" },
-      { epoch: 75, oci: 88.1, delta: "1.6", ci_95: "[86.3%, 89.9%]", tier: "HEALTHY", blind: 0, assumptions: "11 / 12", gdi: "0.000", tai: "0.984", gini: "0.215", npu: "19.1", wsr: "88.5%" },
-      { epoch: 76, oci: 89.4, delta: "2.9", ci_95: "[87.6%, 91.2%]", tier: "HEALTHY", blind: 0, assumptions: "11 / 12", gdi: "0.000", tai: "0.985", gini: "0.213", npu: "19.6", wsr: "88.5%" },
-      { epoch: 77, oci: 90.5, delta: "4.0", ci_95: "[88.7%, 92.1%]", tier: "HEALTHY", blind: 0, assumptions: "11 / 12", gdi: "0.000", tai: "0.985", gini: "0.211", npu: "19.9", wsr: "88.5%" },
-      { epoch: 78, oci: 91.2, delta: "4.7", ci_95: "[89.4%, 92.7%]", tier: "HEALTHY", blind: 0, assumptions: "11 / 12", gdi: "0.000", tai: "0.986", gini: "0.210", npu: "20.2", wsr: "88.5%" }
+      { epoch: 73, oci: 86.5, delta: "0.0", ci_95: "[84.8%, 88.2%]", tier: "HEALTHY", blind: 0, assumptions: "11 / 12", gdi: "0.000", tai: "0.982", gini: "0.220", npu: "18.4", wsr: "88.5%", ve: "N/A", cov: "N/A" },
+      { epoch: 74, oci: 87.2, delta: "0.7", ci_95: "[85.5%, 88.9%]", tier: "HEALTHY", blind: 0, assumptions: "11 / 12", gdi: "0.000", tai: "0.983", gini: "0.218", npu: "18.7", wsr: "88.5%", ve: "1,150", cov: "82.4" },
+      { epoch: 75, oci: 88.1, delta: "1.6", ci_95: "[86.3%, 89.9%]", tier: "HEALTHY", blind: 0, assumptions: "11 / 12", gdi: "0.000", tai: "0.984", gini: "0.215", npu: "19.1", wsr: "88.5%", ve: "1,240", cov: "88.1" },
+      { epoch: 76, oci: 89.4, delta: "2.9", ci_95: "[87.6%, 91.2%]", tier: "HEALTHY", blind: 0, assumptions: "11 / 12", gdi: "0.000", tai: "0.985", gini: "0.213", npu: "19.6", wsr: "88.5%", ve: "1,310", cov: "92.3" },
+      { epoch: 77, oci: 90.5, delta: "4.0", ci_95: "[88.7%, 92.1%]", tier: "HEALTHY", blind: 0, assumptions: "11 / 12", gdi: "0.000", tai: "0.985", gini: "0.211", npu: "19.9", wsr: "88.5%", ve: "1,380", cov: "95.1" },
+      { epoch: 78, oci: 91.2, delta: "4.7", ci_95: "[89.4%, 92.7%]", tier: "HEALTHY", blind: 0, assumptions: "11 / 12", gdi: "0.000", tai: "0.986", gini: "0.210", npu: "20.2", wsr: "88.5%", ve: "1,420", cov: "96.8" },
+      { epoch: 79, oci: 93.8, delta: "7.3", ci_95: "[92.1%, 95.4%]", tier: "EXEMPLARY", blind: 0, assumptions: "12 / 12", gdi: "0.000", tai: "0.986", gini: "0.210", npu: "20.2", wsr: "88.5%", ve: "1,420", cov: "96.8", cri: "99.98%" }
     ];
 
     let currentEpochIndex = ociEpochs.length - 1;
@@ -1860,12 +2270,311 @@
     // Keyboard Arrow Navigation
     document.addEventListener("keydown", e => {
       if (document.activeElement.tagName === 'INPUT' || document.activeElement.tagName === 'TEXTAREA') return;
+      if (document.activeElement.classList.contains('spark-point-cri') || document.activeElement.id === 'criEpochCard') {
+        if (e.key === "ArrowLeft" && currentCriEpochIndex > 0) {
+          renderCriEpoch(currentCriEpochIndex - 1, 'right');
+        } else if (e.key === "ArrowRight" && currentCriEpochIndex < criEpochs.length - 1) {
+          renderCriEpoch(currentCriEpochIndex + 1, 'left');
+        }
+        return;
+      }
       if (e.key === "ArrowLeft" && currentEpochIndex > 0) {
         renderEpoch(currentEpochIndex - 1, 'right');
       } else if (e.key === "ArrowRight" && currentEpochIndex < ociEpochs.length - 1) {
         renderEpoch(currentEpochIndex + 1, 'left');
       }
     });
+
+    // ==========================================
+    // DIM-5 CRI Epochs Dataset & Interactive Detail Panel
+    // ==========================================
+    const criEpochs = [
+      { epoch: 73, cri: 98.50, delta: "+0.00", lsr: "99.80%", ha: "99.85%", pfr: "99.90%", eds: "99.70%", agents: 8, leases: 2, collisions: 0, deadlocks: 0, status: "HEALTHY" },
+      { epoch: 74, cri: 98.75, delta: "+0.25", lsr: "99.85%", ha: "99.88%", pfr: "99.95%", eds: "99.78%", agents: 9, leases: 3, collisions: 0, deadlocks: 0, status: "HEALTHY" },
+      { epoch: 75, cri: 99.05, delta: "+0.55", lsr: "99.90%", ha: "99.92%", pfr: "100.00%", eds: "99.82%", agents: 10, leases: 3, collisions: 0, deadlocks: 0, status: "EXCELLENT" },
+      { epoch: 76, cri: 99.30, delta: "+0.80", lsr: "99.92%", ha: "99.95%", pfr: "100.00%", eds: "99.88%", agents: 11, leases: 3, collisions: 0, deadlocks: 0, status: "EXCELLENT" },
+      { epoch: 77, cri: 99.55, delta: "+1.05", lsr: "99.94%", ha: "99.97%", pfr: "100.00%", eds: "99.91%", agents: 11, leases: 4, collisions: 0, deadlocks: 0, status: "EXCELLENT" },
+      { epoch: 78, cri: 99.80, delta: "+1.30", lsr: "99.96%", ha: "99.98%", pfr: "100.00%", eds: "99.93%", agents: 12, leases: 4, collisions: 0, deadlocks: 0, status: "EXCELLENT" },
+      { epoch: 79, cri: 99.92, delta: "+1.42", lsr: "99.97%", ha: "99.99%", pfr: "100.00%", eds: "99.95%", agents: 12, leases: 4, collisions: 0, deadlocks: 0, status: "EXCELLENT" }
+    ];
+
+    let currentCriEpochIndex = criEpochs.length - 1;
+    const criEpochCard = document.getElementById("criEpochCard");
+
+    function getCriStatusColor(status) {
+      if (status === "EXCELLENT") return "#22c55e";
+      if (status === "HEALTHY") return "#38bdf8";
+      if (status === "CAUTION") return "#f59e0b";
+      return "#f43f5e";
+    }
+
+    function renderCriEpoch(index, direction) {
+      if (!criEpochCard) return;
+      currentCriEpochIndex = index;
+      const c = criEpochs[index];
+      const statusColor = getCriStatusColor(c.status);
+
+      // Update active highlight on CRI spark points
+      document.querySelectorAll(".spark-point-cri").forEach((pt, i) => {
+        if (i === index) {
+          pt.classList.add("active");
+        } else {
+          pt.classList.remove("active");
+        }
+      });
+
+      if (direction) {
+        criEpochCard.style.transform = direction === 'left' ? 'translateX(-8px)' : 'translateX(8px)';
+        setTimeout(() => { criEpochCard.style.transform = 'translateX(0)'; }, 150);
+      }
+
+      criEpochCard.innerHTML = `
+        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 6px; margin-bottom: 8px;">
+          <strong style="color: #38bdf8; font-size: 1.0rem; font-family: monospace;">Epoch ${c.epoch}</strong>
+          <span style="background: rgba(34,197,94,0.15); color: ${statusColor}; border: 1px solid ${statusColor}; font-size: 0.65rem; padding: 2px 8px; border-radius: 999px; font-weight: 700;">${c.status}</span>
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 6px; font-size: 0.8rem; font-family: monospace;">
+          <div><span style="color: #9fb0d1;">CRI:</span> <strong style="color: #f1f5f9;">${c.cri.toFixed(2)}%</strong></div>
+          <div><span style="color: #9fb0d1;">ΔCRI:</span> <strong style="color: #22c55e;">${c.delta}%</strong></div>
+          <div><span style="color: #9fb0d1;">LSR:</span> <strong style="color: #22c55e;">${c.lsr}</strong></div>
+          <div><span style="color: #9fb0d1;">HA:</span> <strong style="color: #22c55e;">${c.ha}</strong></div>
+          <div><span style="color: #9fb0d1;">PFR:</span> <strong style="color: #38bdf8;">${c.pfr}</strong></div>
+          <div><span style="color: #9fb0d1;">EDS:</span> <strong style="color: #22c55e;">${c.eds}</strong></div>
+          <div><span style="color: #9fb0d1;">Active Agents:</span> <strong style="color: #f1f5f9;">${c.agents}</strong></div>
+          <div><span style="color: #9fb0d1;">Lease Collisions:</span> <strong style="color: #22c55e;">${c.collisions}</strong></div>
+          <div><span style="color: #9fb0d1;">Deadlocks:</span> <strong style="color: #22c55e;">${c.deadlocks}</strong></div>
+          <div><span style="color: #9fb0d1;">Status:</span> <strong style="color: ${statusColor};">${c.status}</strong></div>
+        </div>
+      `;
+
+      // Synchronize primary CRI card stats
+      const metricEl = document.getElementById("criMetricDisplay");
+      if (metricEl) metricEl.textContent = `${c.cri.toFixed(2)}%`;
+      const deltaEl = document.getElementById("criDeltaDisplay");
+      if (deltaEl) deltaEl.textContent = `ΔCRI ${c.delta}%`;
+      const statusBadge = document.getElementById("criStatusBadge");
+      if (statusBadge) {
+        statusBadge.textContent = c.status;
+        statusBadge.style.color = statusColor;
+        statusBadge.style.borderColor = statusColor;
+      }
+      const epochEl = document.getElementById("criEpochDisplay");
+      if (epochEl) epochEl.textContent = `E${c.epoch}`;
+      const agentsEl = document.getElementById("criAgentsDisplay");
+      if (agentsEl) agentsEl.textContent = `${c.agents}`;
+      const lsrEl = document.getElementById("criLsrVal");
+      if (lsrEl) lsrEl.textContent = c.lsr;
+      const haEl = document.getElementById("criHaVal");
+      if (haEl) haEl.textContent = c.ha;
+      const pfrEl = document.getElementById("criPfrVal");
+      if (pfrEl) pfrEl.textContent = c.pfr;
+      const edsEl = document.getElementById("criEdsVal");
+      if (edsEl) edsEl.textContent = c.eds;
+    }
+
+    renderCriEpoch(currentCriEpochIndex);
+
+    // Tap/Click Selection on CRI Points
+    document.querySelectorAll(".spark-point-cri").forEach(point => {
+      point.addEventListener("click", () => {
+        const idx = parseInt(point.dataset.index);
+        if (!isNaN(idx)) {
+          const dir = idx > currentCriEpochIndex ? 'left' : (idx < currentCriEpochIndex ? 'right' : null);
+          renderCriEpoch(idx, dir);
+        }
+      });
+      point.setAttribute("tabindex", "0");
+      point.addEventListener("keydown", e => {
+        if (e.key === "Enter" || e.key === " ") {
+          const idx = parseInt(point.dataset.index);
+          if (!isNaN(idx)) renderCriEpoch(idx);
+        }
+      });
+    });
+
+    // Touch Swipe & Mouse Drag Support on criEpochCard
+    if (criEpochCard) {
+      let criTouchStartX = 0;
+      let criTouchStartY = 0;
+      criEpochCard.addEventListener("touchstart", e => {
+        criTouchStartX = e.changedTouches[0].clientX;
+        criTouchStartY = e.changedTouches[0].clientY;
+      }, { passive: true });
+
+      criEpochCard.addEventListener("touchend", e => {
+        const deltaX = e.changedTouches[0].clientX - criTouchStartX;
+        const deltaY = e.changedTouches[0].clientY - criTouchStartY;
+        if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > 35) {
+          if (deltaX < 0) {
+            if (currentCriEpochIndex < criEpochs.length - 1) renderCriEpoch(currentCriEpochIndex + 1, 'left');
+          } else {
+            if (currentCriEpochIndex > 0) renderCriEpoch(currentCriEpochIndex - 1, 'right');
+          }
+        }
+      }, { passive: true });
+
+      let isCriMouseDown = false;
+      let criMouseStartX = 0;
+      criEpochCard.addEventListener("mousedown", e => {
+        isCriMouseDown = true;
+        criMouseStartX = e.clientX;
+      });
+      window.addEventListener("mouseup", e => {
+        if (!isCriMouseDown) return;
+        isCriMouseDown = false;
+        const deltaX = e.clientX - criMouseStartX;
+        if (Math.abs(deltaX) > 35) {
+          if (deltaX < 0 && currentCriEpochIndex < criEpochs.length - 1) {
+            renderCriEpoch(currentCriEpochIndex + 1, 'left');
+          } else if (deltaX > 0 && currentCriEpochIndex > 0) {
+            renderCriEpoch(currentCriEpochIndex - 1, 'right');
+          }
+        }
+      });
+    }
+
+    // ==========================================
+    // Epoch Comparison Drawer Engine
+    // ==========================================
+    let isComparisonDrawerOpen = true;
+
+    function toggleComparisonDrawer() {
+      const body = document.getElementById("comparisonDrawerBody");
+      const btn = document.getElementById("drawerToggleBtn");
+      if (!body || !btn) return;
+      isComparisonDrawerOpen = !isComparisonDrawerOpen;
+      body.style.display = isComparisonDrawerOpen ? "block" : "none";
+      btn.textContent = isComparisonDrawerOpen ? "Collapse ▲" : "Expand Drawer ▼";
+    }
+
+    function setQuickComparison(a, b) {
+      const selA = document.getElementById("compareEpochA");
+      const selB = document.getElementById("compareEpochB");
+      if (selA && selB) {
+        selA.value = String(a);
+        selB.value = String(b);
+        updateEpochComparison();
+      }
+    }
+
+    function updateEpochComparison() {
+      const selA = document.getElementById("compareEpochA");
+      const selB = document.getElementById("compareEpochB");
+      const tbody = document.getElementById("comparisonTableBody");
+      const thA = document.getElementById("thEpochA");
+      const thB = document.getElementById("thEpochB");
+      const summary = document.getElementById("drawerCompareSummary");
+      if (!selA || !selB || !tbody) return;
+
+      const epA_val = parseInt(selA.value);
+      const epB_val = parseInt(selB.value);
+
+      const epA = ociEpochs.find(e => e.epoch === epA_val) || ociEpochs[0];
+      const epB = ociEpochs.find(e => e.epoch === epB_val) || ociEpochs[ociEpochs.length - 1];
+
+      if (thA) thA.textContent = `Epoch ${epA.epoch} (Ref)`;
+      if (thB) thB.textContent = `Epoch ${epB.epoch} (Target)`;
+      if (summary) summary.textContent = `Compare [E${epA.epoch}] ↔ [E${epB.epoch}]`;
+
+      const dOCI = (epB.oci - epA.oci).toFixed(1);
+      const dOCI_str = dOCI >= 0 ? `+${dOCI}%` : `${dOCI}%`;
+
+      const dTAI = (parseFloat(epB.tai) - parseFloat(epA.tai)).toFixed(3);
+      const dTAI_str = dTAI >= 0 ? `+${dTAI}` : `${dTAI}`;
+
+      const dGini = (parseFloat(epB.gini) - parseFloat(epA.gini)).toFixed(3);
+      const dGini_str = dGini >= 0 ? `+${dGini}` : `${dGini}`;
+
+      const dNPU = (parseFloat(epB.npu) - parseFloat(epA.npu)).toFixed(1);
+      const dNPU_str = dNPU >= 0 ? `+${dNPU} tok/W` : `${dNPU} tok/W`;
+
+      const rows = [
+        {
+          metric: "OCI (Epistemic Accountability)",
+          valA: `${epA.oci}% <span style='font-size:0.75rem; color:#94a3b8;'>(${epA.ci_95})</span>`,
+          trans: "→",
+          valB: `${epB.oci}% <span style='font-size:0.75rem; color:#86efac;'>(${epB.ci_95})</span>`,
+          delta: dOCI_str,
+          deltaColor: dOCI >= 0 ? "#22c55e" : "#ef4444",
+          assessment: epB.oci >= 80.0 ? "HEALTHY_COVERAGE" : "MARGINAL_COVERAGE",
+          assessColor: "#22c55e"
+        },
+        {
+          metric: "TAI (Trust Accountability)",
+          valA: `${epA.tai}`,
+          trans: "→",
+          valB: `${epB.tai}`,
+          delta: dTAI_str,
+          deltaColor: parseFloat(dTAI) >= 0 ? "#22c55e" : "#ef4444",
+          assessment: parseFloat(epB.tai) >= 0.95 ? "HIGH_PREDICTABILITY" : "AUDIT_FLAG",
+          assessColor: "#a855f7"
+        },
+        {
+          metric: "GDI (Reality Accountability)",
+          valA: `${epA.gdi}`,
+          trans: "→",
+          valB: `${epB.gdi}`,
+          delta: "0.000",
+          deltaColor: "#60a5fa",
+          assessment: "STABLE (Zero Drift)",
+          assessColor: "#60a5fa"
+        },
+        {
+          metric: "Governance Power Gini",
+          valA: `${epA.gini}`,
+          trans: "→",
+          valB: `${epB.gini}`,
+          delta: dGini_str,
+          deltaColor: parseFloat(dGini) <= 0 ? "#22c55e" : "#ef4444",
+          assessment: "ANTI-CAPTURE (Decentralizing)",
+          assessColor: "#38bdf8"
+        },
+        {
+          metric: "ηNPU Edge Efficiency",
+          valA: `${epA.npu} tok/W`,
+          trans: "→",
+          valB: `${epB.npu} tok/W`,
+          delta: dNPU_str,
+          deltaColor: parseFloat(dNPU) >= 0 ? "#22c55e" : "#ef4444",
+          assessment: "ACCELERATING (+9.8%)",
+          assessColor: "#22c55e"
+        },
+        {
+          metric: "Worker Survival Rate (WSR)",
+          valA: epA.epoch === 73 ? "N/A (Anchor)" : epA.wsr,
+          trans: "→",
+          valB: epB.wsr,
+          delta: epA.epoch === 73 ? "+88.5%" : "+0.0%",
+          deltaColor: "#22c55e",
+          assessment: "STABLE_RETENTION (>60% Floor)",
+          assessColor: "#22c55e"
+        },
+        {
+          metric: "Blind Spots Remaining",
+          valA: `${epA.blind}`,
+          trans: "→",
+          valB: `${epB.blind}`,
+          delta: "0",
+          deltaColor: "#22c55e",
+          assessment: "ZERO BLIND SPOTS",
+          assessColor: "#22c55e"
+        }
+      ];
+
+      tbody.innerHTML = rows.map((r, i) => `
+        <tr style="border-bottom: 1px solid rgba(255,255,255,0.06); ${i % 2 === 1 ? 'background: rgba(23, 35, 63, 0.3);' : ''}">
+          <td style="padding: 10px 12px; color: #f1f5f9; font-weight: 600;">${r.metric}</td>
+          <td style="padding: 10px 12px; text-align: center; color: #38bdf8;">${r.valA}</td>
+          <td style="padding: 10px 12px; text-align: center; color: #64748b;">${r.trans}</td>
+          <td style="padding: 10px 12px; text-align: center; color: #22c55e; font-weight: 700;">${r.valB}</td>
+          <td style="padding: 10px 12px; text-align: right; color: ${r.deltaColor}; font-weight: 700;">${r.delta}</td>
+          <td style="padding: 10px 12px; text-align: right; color: ${r.assessColor}; font-weight: 600;">${r.assessment}</td>
+        </tr>
+      `).join('');
+    }
+
+    // Initialize Epoch Comparison Drawer on load
+    updateEpochComparison();
 
     // Sparkline Interactive Tooltip Handler (Touch, Hover, Keyboard)
     const sparkTooltip = document.getElementById("spark-tooltip");
@@ -1976,7 +2685,9 @@
         { metric: 'OCI (Measurement Quality)', valA: `${d1.oci}%`, valB: `${d2.oci}%`, delta: `${deltaOci >= 0 ? '+' : ''}${deltaOci}%`, ci: `${d2.ci_95}`, interp: 'Healthy Coverage (11/12 assumptions instrumented)', color: '#38bdf8' },
         { metric: 'ηNPU (Compute Yield)', valA: `${d1.npu} tok/W`, valB: `${d2.npu} tok/W`, delta: `+${deltaNpu} tok/W`, ci: 'Moving Avg 30d: 19.8', interp: 'Nominal Efficiency Gain', color: '#22c55e' },
         { metric: 'WSR (Worker Survival)', valA: d1.epoch === 73 ? '--' : d1.wsr, valB: d2.wsr, delta: wsrTransition, ci: 'Floor: > 40.0%', interp: 'Sustainable Participant Retention', color: '#22c55e' },
-        { metric: 'Gini (Anti-Capture)', valA: d1.gini, valB: d2.gini, delta: `${deltaGini}`, ci: 'Ceiling: <= 0.45', interp: 'Progressively Dispersed Governance', color: '#38bdf8' }
+        { metric: 'Gini (Anti-Capture)', valA: d1.gini, valB: d2.gini, delta: `${deltaGini}`, ci: 'Ceiling: <= 0.45', interp: 'Progressively Dispersed Governance', color: '#38bdf8' },
+        { metric: 'VE (Verification Efficiency)', valA: d1.epoch === 73 ? 'N/A (Anchor)' : `${d1.ve || 1150} facts/Wh`, valB: `${d2.ve || 1420} facts/Wh`, delta: d1.epoch === 73 ? '+1,420 facts/Wh' : '+40 facts/Wh', ci: 'Target: > 1,000 facts/Wh', interp: 'High-Yield Proof Attribution', color: '#22c55e' },
+        { metric: 'Verification Coverage', valA: d1.epoch === 73 ? 'N/A (Anchor)' : `${d1.cov || 82.4}%`, valB: `${d2.cov || 96.8}%`, delta: d1.epoch === 73 ? '+96.8%' : '+1.7%', ci: 'Target: >= 95.0%', interp: 'Sovereign Graph Comprehensiveness', color: '#22c55e' }
       ];
 
       const tbody = document.getElementById("epochComparisonBody");
