@@ -1,16 +1,17 @@
 # 🎓 Space.University (SPU)
-### Sovereign Research Institution for Empirical Attention Governance, Personal Sovereignty & Distributed Edge Supercomputing
+### Sovereign Research Institution for Empirical Attention Governance, Computational Biophysics ($N=1,040$), Bio-Acoustic Signal Processing, Personal Sovereignty & Distributed Edge Supercomputing
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Status: Phase I Empirical](https://img.shields.io/badge/Status-Phase%20I%20Empirical-success.svg)]()
-[![Baseline Anchor: Epoch 73](https://img.shields.io/badge/Baseline%20Anchor-Epoch%2073-orange.svg)]()
+[![Biophysics Cohort: N=1,040 PDB](https://img.shields.io/badge/Biophysics%20Cohort-N%3D1%2C040%20PDB%20(R²%3D0.8048)-cyan.svg)](docs/spu/SPU-0011-Computational-Biophysics-Contact-Topology-Scaling.md)
+[![Baseline Anchor: Epoch 79](https://img.shields.io/badge/Observatory%20Epoch-Epoch%2079%20(OCI%3D93.8%25)-orange.svg)]()
 [![Public Observatory](https://img.shields.io/badge/Public%20Observatory-space.university-purple.svg)](https://space.university/)
 
-**Space.University** is an open scientific research institution dedicated to the empirical measurement of decentralized attention sovereignty, contribution-based governance, and mobile edge supercomputing.
+**Space.University** is an open scientific research institution dedicated to the empirical measurement of decentralized attention sovereignty, contribution-based governance, mobile edge supercomputing, **3D macromolecular Kirchhoff contact topology ($N=1,040$ protein structures)**, **bio-acoustic spectral signal processing (`SPEC-SOV-RC1-2026-0001`)**, and **Attributed Temporal Fact Hypergraphs (`ATFH`)**.
 
 ---
 
-## 🏛️ The Four Epistemic Layers
+## 🏛️ The Epistemic & Scientific Architecture
 
 ```mermaid
 graph TD
@@ -33,15 +34,18 @@ graph TD
         SPU7["SPU-0007: Validation Framework"]
     end
 
-    subgraph Layer3 ["Layer 3: SPU-D2 Distributed Intelligence Track (EXPERIMENTAL)"]
+    subgraph Layer3 ["Layer 3: Specialized Research Divisions (SPU-D2 / D5 / D6)"]
         SPU8["SPU-0008: Android Edge Specification"]
         SPU9["SPU-0009: Stratum-5D Supercomputer"]
+        SPU11["SPU-0011: N=1,040 Protein Contact Topology Law (SPU-D5)"]
+        SPU12["SPU-0012: Bio-Acoustic Signal Processing & ATFH (SPU-D6)"]
     end
 
     subgraph Layer4 ["Layer 4: Public Observatory & Implementation"]
         OBS["Public Observatory (space.university)"]
         ANDROID["Spacebook Android Edge Node (StrongBox HSM)"]
         STRATUM["Stratum-5D PoUW Engine (:3335 / :3337)"]
+        ATFH["HomeTree Neo4j ATFH Hypergraph"]
     end
 
     Layer1 -.->|Frozen Rules| Layer2
@@ -64,7 +68,7 @@ graph TD
 * **[RFC-0029-B: Topological Graph Lineage](docs/rfc/RFC-0029-B.md)**
 * **[RFC-0030: Attention Sovereignty Settlement](docs/rfc/RFC-0030.md)**
 
-### 🔬 SPU Phase I: Empirical Research Documents
+### 🔬 SPU Phase I & Specialized Division Documents (`SPU-D1` to `SPU-D6`)
 * **[SPU-0001: The Spacebook Manifesto](docs/spu/SPU-0001-The-Spacebook-Manifesto.md)**
 * **[SPU-0002: Spacebook University Experimental Charter](docs/spu/SPU-0002-Spacebook-University-Experimental-Charter.md)**
 * **[SPU-0003: Privacy, Consent, and Personal Sovereignty](docs/spu/SPU-0003-Privacy-Consent-Personal-Sovereignty.md)**
@@ -76,22 +80,28 @@ graph TD
 * **[SPU-0009: Stratum-5D Distributed Supercomputer Research Track](docs/spu/SPU-0009-Distributed-Supercomputer-Stratum-5D-Research-Track.md)**
 * **[SPU-D2: Division of Distributed Intelligence Charter & Hypotheses](docs/spu/SPU-D2-Division-of-Distributed-Intelligence.md)**
 * **[SPU-0010: Observability Coverage Index (OCI) & Epistemic Audit Standard](docs/spu/SPU-0010-Observability-Coverage-Index-and-Epistemic-Audit.md)**
+* **[SPU-0011: Computational Biophysics & The N=1,040 Protein Contact Topology Scaling Law (`SPU-D5`)](docs/spu/SPU-0011-Computational-Biophysics-Contact-Topology-Scaling.md)**
+* **[SPU-0012: Bio-Acoustic Signal Processing, Cross-Runtime Spectral Parity & ATFH Hypergraphs (`SPU-D6`)](docs/spu/SPU-0012-BioAcoustic-Signal-Processing-and-ATFH-Hypergraphs.md)**
 * **[Master Autodoc: Distributed Supercomputer & Android App Specification](docs/AUTODOC_SPACEBOOK_5D_DISTRIBUTED_SUPERCOMPUTER.md)**
 
 ---
 
-## 🧪 Empirical Hypotheses & Baseline Anchor ($E_0 = 73$)
+## 🧪 Empirical Hypotheses & Validated Benchmarks
 
-| ID | Hypothesis | Primary Metric | Target Threshold | Baseline Anchor ($E_0$) |
+| ID | Hypothesis | Primary Metric | Target / Baseline | Validated Result |
 | :--- | :--- | :--- | :--- | :--- |
 | **H-000** | **Graph Reality Alignment** | Graph Drift Index ($\text{GDI}$) | $\text{GDI} < 0.01$ | $0.000$ (Zero Drift) |
-| **H-001** | **Governance Defect Resistance** | Defect Rate & Gini Coefficient | $\text{Defect} < 5.0\%$, $\text{Gini} < 0.45$ | $\text{Defect: } 0.0\%$, $\text{Gini: } 0.22$ |
-| **H-002** | **Trust Predictability** | Trust Alignment Index ($\text{TAI}$) | $\text{TAI} \ge 0.95$ | $0.982$ |
+| **H-001** | **Governance Defect Resistance** | Defect Rate & Gini Coefficient | $\text{Defect} < 5.0\%$, $\text{Gini} < 0.45$ | $\text{Defect: } 0.0\%$, $\text{Gini: } 0.210$ |
+| **H-002** | **Trust Predictability** | Trust Alignment Index ($\text{TAI}$) | $\text{TAI} \ge 0.95$ | $0.986$ |
 | **H-003** | **Consent Preference** | Policy Customization & Revocation Latency | $\text{Custom} > 25.0\%$, $\text{Revoc} < 1000\text{ms}$ | $\text{Custom: } 100\%$, $\text{Revoc: } 85\text{ms}$ |
-| **H-004** | **Distributed Compute Viability** | Mobile NPU Efficiency | $\eta \ge 12.0 \text{ tok/W}$ | $18.4 \text{ tok/W}$ |
+| **H-004** | **Distributed Compute Viability** | Mobile NPU Efficiency | $\eta \ge 12.0 \text{ tok/W}$ | $20.2 \text{ tok/W}$ |
 | **H-005** | **Participant Usability & Retention** | Device Opt-Out Rate ($O_{rate}$) | $O_{rate} < 5.0\%$ | $0.0\%$ |
 | **H-006** | **Graph Verification Scalability** | Subgraph Coverage & Audit Latency | Coverage $\ge 99.0\%$, Latency $\le 60\text{s}$ | $100.0\%$, $18\text{s}$ |
-| **H-007** | **Federated Privacy Preservation** | Differential Privacy Budget | $\epsilon \le 1.0$, Accuracy Delta $> 0.0\%$ | $\epsilon = 0.5$, $\Delta = 10^{-5}$ |
+| **H-007** | **Federated Privacy Preservation** | Differential Privacy Budget | $\epsilon \le 1.0$, Accuracy Delta $> 0.0\%$ | $\epsilon = 0.5$, $\Delta = +1.4\%$ |
+| **H-008** | **3D Protein Contact Topology Scaling (`SPU-D5`)** | Variance Explained in $\nu_1$ ($\langle z\rangle / R_g$ vs. $1/\sqrt{N_{C_\alpha}}$) | $R^2_{\text{topo}} \gg R^2_{\text{size}}$ ($N=1,040$) | **$80.48\%$ vs. $16.02\%$ ($5.02\times$)** |
+| **H-009** | **Biophysical Out-of-Sample Generalization (`SPU-D5`)** | 10-Fold CV $R^2_{\text{CV}}$ & Cross-Kingdom $R^2_{\text{OOS}}$ | $R^2_{\text{CV}} \ge 0.75$, $R^2_{\text{OOS}} \ge 0.75$ | **$R^2_{\text{CV}} = 0.8039$, $R^2_{\text{OOS}} = 0.8612$** |
+| **H-010** | **Bio-Acoustic Spectral Parity & Octave Null Control (`SPU-D6`)** | Python$\leftrightarrow$TS FFT Delta & Mod-2 Octave $R^2$ | $\Delta f = 0.0\text{ Hz}$, Null $R^2 < 0.01$ | **$0.000000\text{ Hz}$ Parity, $R^2 = 0.06\%$ (Null)** |
+| **H-011** | **HomeTree ATFH ClaimCluster Provenance (`SPU-D6`)** | Logarithmic Trust Distance $d_{\text{trust}}$ | Verified $< 0.5$, Null $> 5.0$ | **Law: $0.217$, Null: $7.419$ (Isolated)** |
 
 ---
 
