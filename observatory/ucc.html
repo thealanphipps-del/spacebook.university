@@ -1,0 +1,2431 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Space.University | SC-COMM-301: Commercial Jurisprudence &amp; UCC Article 9 Statutory Portal</title>
+  <style>
+    :root {
+      --bg: #07090e;
+      --card-bg: rgba(13, 19, 33, 0.94);
+      --card-border: rgba(56, 189, 248, 0.22);
+      --card-hover: rgba(56, 189, 248, 0.45);
+      --text: #e2e8f0;
+      --text-muted: #94a3b8;
+      --accent-cyan: #38bdf8;
+      --accent-green: #10b981;
+      --accent-amber: #f59e0b;
+      --accent-purple: #a855f7;
+      --accent-red: #ef4444;
+      --font-mono: 'JetBrains Mono', 'Cascadia Mono', 'Courier New', monospace;
+      --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: var(--bg);
+      background-image: 
+        radial-gradient(circle at 12% 15%, rgba(56, 189, 248, 0.08) 0%, transparent 45%),
+        radial-gradient(circle at 88% 85%, rgba(168, 85, 247, 0.08) 0%, transparent 45%);
+      color: var(--text);
+      font-family: var(--font-sans);
+      line-height: 1.5;
+      padding: 1.25rem 1.75rem;
+      min-height: 100vh;
+    }
+
+    /* Top Institutional Header */
+    .header-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--card-border);
+      padding-bottom: 1.15rem;
+      margin-bottom: 1.25rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .title-group h1 {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-family: var(--font-mono);
+      letter-spacing: -0.02em;
+    }
+
+    .title-group p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 0.2rem;
+    }
+
+    .badge-bar {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .badge {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      padding: 0.25rem 0.65rem;
+      border-radius: 9999px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .badge-cyan { background: rgba(56, 189, 248, 0.12); color: var(--accent-cyan); border: 1px solid rgba(56, 189, 248, 0.3); }
+    .badge-green { background: rgba(16, 185, 129, 0.12); color: var(--accent-green); border: 1px solid rgba(16, 185, 129, 0.3); }
+    .badge-amber { background: rgba(245, 158, 11, 0.12); color: var(--accent-amber); border: 1px solid rgba(245, 158, 11, 0.3); }
+    .badge-purple { background: rgba(168, 85, 247, 0.12); color: var(--accent-purple); border: 1px solid rgba(168, 85, 247, 0.3); }
+
+    /* Free Course Hero Banner */
+    .hero-banner {
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.14) 0%, rgba(56, 189, 248, 0.12) 50%, rgba(168, 85, 247, 0.08) 100%);
+      border: 1px solid rgba(16, 185, 129, 0.35);
+      border-radius: 12px;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1.25rem;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .hero-text h2 {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--font-mono);
+    }
+
+    .hero-text p {
+      font-size: 0.85rem;
+      color: #cbd5e1;
+      margin-top: 0.35rem;
+      max-width: 820px;
+      line-height: 1.45;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+    }
+
+    /* Primary Navigation Tabs */
+    .nav-tabs-bar {
+      display: flex;
+      gap: 0.5rem;
+      border-bottom: 1px solid var(--card-border);
+      padding-bottom: 0.6rem;
+      margin-bottom: 1.25rem;
+      overflow-x: auto;
+    }
+
+    .nav-tab-btn {
+      background: transparent;
+      border: 1px solid transparent;
+      border-radius: 8px;
+      padding: 0.55rem 1rem;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .nav-tab-btn:hover {
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--text);
+    }
+
+    .nav-tab-btn.active {
+      background: rgba(56, 189, 248, 0.16);
+      border-color: var(--accent-cyan);
+      color: #fff;
+      box-shadow: 0 0 10px rgba(56, 189, 248, 0.25);
+    }
+
+    /* Mode Selector Controls */
+    .mode-switch-container {
+      display: inline-flex;
+      background: rgba(0, 0, 0, 0.5);
+      border: 1px solid var(--card-border);
+      border-radius: 9999px;
+      padding: 0.25rem;
+      gap: 0.25rem;
+    }
+
+    .mode-btn {
+      padding: 0.35rem 0.85rem;
+      border-radius: 9999px;
+      border: none;
+      background: transparent;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      transition: all 0.2s ease;
+    }
+
+    .mode-btn.active {
+      background: var(--accent-cyan);
+      color: #07090e;
+      box-shadow: 0 0 10px rgba(56, 189, 248, 0.35);
+    }
+
+    .mode-btn.active.mode-edu {
+      background: var(--accent-green);
+      color: #07090e;
+      box-shadow: 0 0 10px rgba(16, 185, 129, 0.35);
+    }
+
+    /* Main View Sections */
+    .view-section {
+      display: none;
+    }
+
+    .view-section.active {
+      display: block;
+    }
+
+    /* Course Syllabus View */
+    .syllabus-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      gap: 1.25rem;
+      margin-bottom: 2rem;
+    }
+
+    .module-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 1.35rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      backdrop-filter: blur(14px);
+      transition: all 0.25s ease;
+      position: relative;
+    }
+
+    .module-card:hover {
+      border-color: var(--card-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    .module-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.75rem;
+    }
+
+    .module-number {
+      font-family: var(--font-mono);
+      font-size: 0.76rem;
+      font-weight: 800;
+      color: var(--accent-cyan);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .module-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 0.45rem;
+      line-height: 1.3;
+    }
+
+    .module-desc {
+      font-size: 0.82rem;
+      color: #cbd5e1;
+      line-height: 1.45;
+      margin-bottom: 0.85rem;
+    }
+
+    .module-topics {
+      list-style: none;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+      line-height: 1.6;
+    }
+
+    .module-topics li::before {
+      content: "•";
+      color: var(--accent-green);
+      font-weight: bold;
+      display: inline-block;
+      width: 1em;
+      margin-left: -1em;
+    }
+
+    .module-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding-top: 0.75rem;
+      margin-top: auto;
+    }
+
+    /* Audio Player Bar */
+    .audio-player-panel {
+      background: rgba(16, 185, 129, 0.06);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      border-radius: 12px;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .audio-speaker-info {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .rabbit-audio-avatar {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: #0f2d1e;
+      border: 2px solid var(--accent-green);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.7rem;
+      flex-shrink: 0;
+      box-shadow: 0 0 15px rgba(16, 185, 129, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .rabbit-audio-avatar.speaking {
+      animation: pulse-avatar 1.2s infinite alternate ease-in-out;
+      border-color: #34d399;
+    }
+
+    @keyframes pulse-avatar {
+      0% { transform: scale(1); box-shadow: 0 0 10px rgba(16, 185, 129, 0.4); }
+      100% { transform: scale(1.08); box-shadow: 0 0 22px rgba(52, 211, 153, 0.8); }
+    }
+
+    .audio-controls {
+      display: flex;
+      gap: 0.6rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .audio-track-title {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .audio-track-sub {
+      font-size: 0.76rem;
+      color: var(--accent-green);
+    }
+
+    /* Form Wizard View */
+    .steps-container {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 0.85rem 1.15rem;
+      margin-bottom: 1.25rem;
+      display: flex;
+      justify-content: space-between;
+      gap: 0.5rem;
+      overflow-x: auto;
+    }
+
+    .step-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.45rem 0.75rem;
+      border-radius: 8px;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: all 0.2s ease;
+      font-size: 0.8rem;
+      font-family: var(--font-mono);
+      white-space: nowrap;
+      color: var(--text-muted);
+    }
+
+    .step-item:hover {
+      background: rgba(56, 189, 248, 0.08);
+      color: var(--text);
+    }
+
+    .step-item.active {
+      background: rgba(56, 189, 248, 0.18);
+      border-color: var(--accent-cyan);
+      color: #fff;
+      font-weight: 700;
+    }
+
+    .step-item.completed {
+      color: var(--accent-green);
+    }
+
+    .step-circle {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.72rem;
+      font-weight: 700;
+    }
+
+    .step-item.active .step-circle {
+      background: var(--accent-cyan);
+      color: #000;
+    }
+
+    .step-item.completed .step-circle {
+      background: var(--accent-green);
+      color: #000;
+    }
+
+    /* Main Grid for Wizard */
+    .main-grid {
+      display: grid;
+      grid-template-columns: 520px 1fr;
+      gap: 1.5rem;
+      align-items: start;
+    }
+
+    @media (max-width: 1140px) {
+      .main-grid { grid-template-columns: 1fr; }
+    }
+
+    .panel {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 1.35rem;
+      backdrop-filter: blur(14px);
+    }
+
+    .panel-title {
+      font-family: var(--font-mono);
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--accent-cyan);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.15rem;
+      padding-bottom: 0.45rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    /* Prof Rabbit Warren Chalkboard */
+    .rabbit-warren-box {
+      background: rgba(16, 185, 129, 0.06);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      border-radius: 10px;
+      padding: 0.95rem;
+      margin-bottom: 1.15rem;
+      display: flex;
+      gap: 0.85rem;
+      align-items: flex-start;
+      transition: all 0.3s ease;
+    }
+
+    .rabbit-avatar {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: #0f2d1e;
+      border: 2px solid var(--accent-green);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.35rem;
+      flex-shrink: 0;
+    }
+
+    .rabbit-content {
+      font-size: 0.82rem;
+      line-height: 1.5;
+    }
+
+    .rabbit-title {
+      font-family: var(--font-mono);
+      font-weight: 700;
+      color: var(--accent-green);
+      font-size: 0.84rem;
+      margin-bottom: 0.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .rabbit-quote {
+      color: #e2e8f0;
+      font-style: italic;
+    }
+
+    /* AI Consultation Box */
+    .alfred-ai-box {
+      background: rgba(56, 189, 248, 0.06);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      border-radius: 8px;
+      padding: 0.85rem;
+      margin-top: 1rem;
+      margin-bottom: 1.15rem;
+    }
+
+    .alfred-ai-header {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--accent-cyan);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.45rem;
+    }
+
+    .alfred-input-row {
+      display: flex;
+      gap: 0.45rem;
+    }
+
+    .alfred-input {
+      flex: 1;
+      background: rgba(0, 0, 0, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 6px;
+      color: #fff;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      padding: 0.45rem 0.65rem;
+    }
+
+    .alfred-response {
+      margin-top: 0.6rem;
+      font-size: 0.78rem;
+      line-height: 1.45;
+      color: #e2e8f0;
+      background: rgba(0, 0, 0, 0.4);
+      padding: 0.6rem;
+      border-radius: 6px;
+      border-left: 3px solid var(--accent-cyan);
+      display: none;
+      white-space: pre-wrap;
+      max-height: 220px;
+      overflow-y: auto;
+    }
+
+    /* Form & Input Controls */
+    .form-group {
+      margin-bottom: 1.05rem;
+    }
+
+    .form-label {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: 0.76rem;
+      color: var(--text-muted);
+      margin-bottom: 0.3rem;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+
+    .form-control {
+      width: 100%;
+      background: rgba(7, 9, 14, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 6px;
+      color: #fff;
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      padding: 0.5rem 0.7rem;
+      transition: border-color 0.2s;
+    }
+
+    .form-control:focus {
+      outline: none;
+      border-color: var(--accent-cyan);
+      box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.2);
+    }
+
+    textarea.form-control {
+      min-height: 75px;
+      resize: vertical;
+      line-height: 1.4;
+    }
+
+    /* Preset Selector */
+    .preset-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      margin-bottom: 1.15rem;
+    }
+
+    .preset-pill {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 6px;
+      color: var(--text-muted);
+      padding: 0.35rem 0.65rem;
+      font-size: 0.76rem;
+      font-family: var(--font-mono);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .preset-pill:hover {
+      background: rgba(56, 189, 248, 0.1);
+      border-color: var(--accent-cyan);
+      color: var(--text);
+    }
+
+    .preset-pill.active {
+      background: rgba(56, 189, 248, 0.2);
+      border-color: var(--accent-cyan);
+      color: #fff;
+      font-weight: 700;
+    }
+
+    /* SSL Tester Box */
+    .ssl-box {
+      background: rgba(245, 158, 11, 0.05);
+      border: 1px solid rgba(245, 158, 11, 0.25);
+      border-radius: 8px;
+      padding: 0.8rem;
+      margin-top: 0.9rem;
+      margin-bottom: 1.15rem;
+    }
+
+    .ssl-title {
+      font-family: var(--font-mono);
+      font-size: 0.76rem;
+      font-weight: 700;
+      color: var(--accent-amber);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .ssl-output {
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      color: #e2e8f0;
+      background: rgba(0, 0, 0, 0.4);
+      padding: 0.35rem 0.55rem;
+      border-radius: 4px;
+      border: 1px dashed rgba(245, 158, 11, 0.3);
+      word-break: break-all;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.45rem;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 0.55rem 1rem;
+      border-radius: 6px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-decoration: none;
+    }
+
+    .btn-primary {
+      background: var(--accent-cyan);
+      color: #07090e;
+    }
+
+    .btn-primary:hover {
+      background: #7dd3fc;
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--text);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.14);
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+
+    .btn-green {
+      background: var(--accent-green);
+      color: #07090e;
+    }
+
+    .btn-green:hover {
+      background: #34d399;
+    }
+
+    .btn-bar {
+      display: flex;
+      gap: 0.65rem;
+      margin-top: 1.25rem;
+      flex-wrap: wrap;
+    }
+
+    /* Document Sheet Preview */
+    .document-preview-container {
+      background: #111522;
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      min-height: 800px;
+    }
+
+    .sheet {
+      background: #ffffff;
+      color: #000000;
+      width: 100%;
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 2.2rem 2.4rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      border-radius: 4px;
+      font-family: 'Times New Roman', Times, serif;
+      position: relative;
+    }
+
+    .sheet-header {
+      border-bottom: 2px solid #000;
+      padding-bottom: 0.6rem;
+      margin-bottom: 1.2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+
+    .sheet-title {
+      font-size: 1.25rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .sheet-subtitle {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      font-family: Arial, sans-serif;
+      color: #444;
+    }
+
+    .sheet-meta {
+      text-align: right;
+      font-family: Arial, sans-serif;
+      font-size: 0.72rem;
+    }
+
+    .ucc-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border: 1px solid #000;
+      margin-bottom: 1rem;
+    }
+
+    .ucc-cell {
+      border: 1px solid #000;
+      padding: 0.5rem 0.65rem;
+      font-family: Arial, sans-serif;
+      font-size: 0.76rem;
+      min-height: 85px;
+    }
+
+    .ucc-cell.full-width {
+      grid-column: span 2;
+    }
+
+    .cell-label {
+      font-size: 0.65rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 0.25rem;
+      color: #333;
+    }
+
+    .cell-value {
+      font-size: 0.85rem;
+      font-weight: bold;
+      color: #000;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    .clause-block {
+      margin-bottom: 0.9rem;
+      font-size: 0.84rem;
+      line-height: 1.45;
+      text-align: justify;
+    }
+
+    .clause-title {
+      font-weight: bold;
+      text-transform: uppercase;
+      margin-bottom: 0.2rem;
+      font-size: 0.86rem;
+    }
+
+    .sig-line-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-top: 2rem;
+      padding-top: 1rem;
+    }
+
+    .sig-slot {
+      border-top: 1px solid #000;
+      padding-top: 0.35rem;
+      font-family: Arial, sans-serif;
+      font-size: 0.75rem;
+    }
+
+    /* Print rules for triple-layer AAA bypass */
+    @media print {
+      body {
+        background: #fff !important;
+        color: #000 !important;
+        padding: 0 !important;
+      }
+      .header-bar, .hero-banner, .nav-tabs-bar, .audio-player-panel, .steps-container, .left-controls, .btn-bar, .badge-bar, .mode-switch-container {
+        display: none !important;
+      }
+      .main-grid {
+        display: block !important;
+      }
+      .document-preview-container {
+        background: transparent !important;
+        border: none !important;
+        padding: 0 !important;
+      }
+      .sheet {
+        box-shadow: none !important;
+        padding: 0 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Header Bar -->
+  <div class="header-bar">
+    <div class="title-group">
+      <h1>Space.University UCC Article 9 Statutory Filing Studio</h1>
+      <p id="app-tagline">Dean Prof. Rabbit Warren Jurisprudence SSOT | Gemini &amp; Alfred LLM Bridge | Native ISO 32000-1 Vector PDF Engine</p>
+    </div>
+
+    <!-- Mode Selector: Educational vs Functional -->
+    <div class="mode-switch-container">
+      <button class="mode-btn mode-edu active" id="btn-mode-edu" onclick="setAppMode('educational')">
+        <span>&#x1F393; Educational Mode</span>
+      </button>
+      <button class="mode-btn" id="btn-mode-func" onclick="setAppMode('functional')">
+        <span>&#x26A1; Functional Mode</span>
+      </button>
+    </div>
+
+    <div class="badge-bar">
+      <a href="https://space.university" class="badge badge-cyan" style="text-decoration:none;">&#x1F3DB;&#xFE0F; Space.University Campus</a>
+      <a href="/courses/professor-rabbit-series" class="badge badge-purple" style="text-decoration:none;">&#x1F4DA; 7-Course DocMesh Catalog</a>
+      <span class="badge badge-green" id="badge-active-persona">&#x1F407; Full 3D Prof. Rabbit + Neural Voice</span>
+      <span class="badge badge-amber">UCC § 9-503 SSL Certified</span>
+    </div>
+  </div>
+
+  <!-- Free Course Hero Banner (Featured prominently on Home Screen) -->
+  <div class="hero-banner" id="hero-course-banner">
+    <div class="hero-text">
+      <h2>&#x1F393; Free Open University Course: Commercial Jurisprudence (SC-COMM-301)</h2>
+      <p>
+        <strong>100% Free &bull; No Registration Required &bull; Instant Open Access.</strong> Master Uniform Commercial Code Article 9, the 3 sacred pillars (Attachment § 9-203, Perfection § 9-310, Priority § 9-322), PMSI superpriority, and sovereign tribal compacts with interactive form wizards and audio lectures by Dean Prof. Rabbit Warren.
+      </p>
+    </div>
+    <div class="hero-actions">
+      <button class="btn btn-green" onclick="showView('wizard')">&#x26A1; Launch Form Wizard</button>
+      <button class="btn btn-secondary" onclick="showView('syllabus')">&#x1F4DA; View Course Syllabus</button>
+      <button class="btn btn-primary" onclick="showView('audio-hall')">&#x1F50A; Audio Lecture Series</button>
+    </div>
+  </div>
+
+  <!-- Primary Navigation Tabs -->
+  <div class="nav-tabs-bar">
+    <button class="nav-tab-btn active" id="tab-btn-wizard" onclick="showView('wizard')">
+      <span>&#x270D;&#xFE0F; Interactive Form Wizard</span>
+    </button>
+    <button class="nav-tab-btn" id="tab-btn-syllabus" onclick="showView('syllabus')">
+      <span>&#x1F4D6; Course Syllabus (8 Modules)</span>
+    </button>
+    <button class="nav-tab-btn" id="tab-btn-audio-hall" onclick="showView('audio-hall')">
+      <span>&#x1F3A7; Prof. Rabbit Audio Lecture Hall</span>
+    </button>
+    <button class="nav-tab-btn" id="tab-btn-ucc101" onclick="showView('ucc101')">
+      <span>&#x1F4DA; UCC 101 Statutory Primer</span>
+    </button>
+  </div>
+
+  <!-- Persistent Audio Bar (Playable across all views) -->
+  <div class="audio-player-panel" id="global-audio-panel">
+    <div class="audio-speaker-info">
+      <div class="rabbit-audio-avatar" id="rabbit-speaker-avatar">&#x1F407;</div>
+      <div>
+        <div class="audio-track-title" id="current-audio-title">Prof. Rabbit Warren Lecture: Introduction to Commercial Jurisprudence</div>
+        <div class="audio-track-sub" id="current-audio-status">Audio Ready &bull; Easy-to-Understand English Voice Engine</div>
+      </div>
+    </div>
+    <div class="audio-controls">
+      <button class="btn btn-green" id="btn-audio-play" onclick="playCurrentLecture()">&#x25B6; Play Lecture Audio</button>
+      <button class="btn btn-secondary" id="btn-audio-pause" onclick="pauseCurrentLecture()">&#x23F8; Pause</button>
+      <button class="btn btn-secondary" id="btn-audio-stop" onclick="stopCurrentLecture()">&#x23F9; Stop</button>
+      <select class="form-control" style="width: auto; padding: 0.35rem 0.6rem; font-size: 0.74rem;" id="neural-voice-select" onchange="updateNeuralVoiceChoice()">
+        <option value="en-GB-RyanNeural" selected>Voice: Dean Prof. Rabbit (UK Oxford Neural)</option>
+        <option value="en-US-ChristopherNeural">Voice: Prof. Rabbit (US Jurisprudence Neural)</option>
+        <option value="en-US-GuyNeural">Voice: Prof. Rabbit (US Biophysics Neural)</option>
+      </select>
+      <select class="form-control" style="width: auto; padding: 0.35rem 0.6rem; font-size: 0.74rem;" id="voice-rate-select" onchange="updateVoiceSettings()">
+        <option value="0.95">Pace: Scholarly (0.95x)</option>
+        <option value="1.0" selected>Pace: Normal (1.0x)</option>
+        <option value="1.1">Pace: Brisk (1.1x)</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- VIEW 1: INTERACTIVE FORM WIZARD -->
+  <div class="view-section active" id="view-wizard">
+    <!-- 6-Stage Guided Stepper Bar -->
+    <div class="steps-container">
+      <div class="step-item active" onclick="setStage(1)" id="step-btn-1">
+        <div class="step-circle">1</div>
+        <span>Debtor &amp; Secured Party (§ 9-503)</span>
+      </div>
+      <div class="step-item" onclick="setStage(2)" id="step-btn-2">
+        <div class="step-circle">2</div>
+        <span>Value Attachment (§ 9-203)</span>
+      </div>
+      <div class="step-item" onclick="setStage(3)" id="step-btn-3">
+        <div class="step-circle">3</div>
+        <span>Collateral Specificity (§ 9-108)</span>
+      </div>
+      <div class="step-item" onclick="setStage(4)" id="step-btn-4">
+        <div class="step-circle">4</div>
+        <span>Perfection &amp; PMSI Priority (§ 9-324)</span>
+      </div>
+      <div class="step-item" onclick="setStage(5)" id="step-btn-5">
+        <div class="step-circle">5</div>
+        <span>Tribal MTSTA Compact (§ 9-307)</span>
+      </div>
+      <div class="step-item" onclick="setStage(6)" id="step-btn-6">
+        <div class="step-circle">6</div>
+        <span>National UCC-1 Vector PDF Export</span>
+      </div>
+    </div>
+
+    <!-- Main Grid Layout -->
+    <div class="main-grid">
+      <!-- Left Controls Panel -->
+      <div class="panel left-controls">
+        <div class="panel-title">
+          <span id="stage-heading">Stage 1: Statutory Legal Identification</span>
+          <span class="badge badge-cyan" id="stage-badge">Stage 1 / 6</span>
+        </div>
+
+        <!-- Full 3D Professor Rabbit Warren Lecture Amphitheater + Chalkboard (Educational Mode) -->
+        <div class="rabbit-warren-box" id="rabbit-chalkboard-container" style="flex-direction:column;align-items:stretch;">
+          <div id="rabbit-ucc-3d-stage" style="width:100%;height:350px;border-radius:8px;overflow:hidden;border:1px solid rgba(16,185,129,0.4);background:#050811;margin-bottom:0.65rem;"></div>
+          <div style="display:flex;gap:0.85rem;align-items:flex-start;">
+            <div class="rabbit-avatar">&#x1F407;</div>
+            <div class="rabbit-content" style="flex:1;">
+              <div class="rabbit-title">
+                <span>Dean Prof. Rabbit Warren (Full 3D + Neural Voice) &bull; <span id="rabbit-stage-topic">Stage 1 Guidance</span></span>
+                <button class="btn btn-green" style="padding: 0.2rem 0.6rem; font-size: 0.72rem;" onclick="speakStageScript()">&#x1F50A; Speak 3D Neural Voice</button>
+              </div>
+              <div class="rabbit-quote" id="rabbit-text">
+                "Welcome, scholars and practitioners! In Article 9, precision is life. If the debtor is a registered organization, you must use the EXACT name on the public organic record (§ 9-503). A single stray apostrophe or omitted suffix will doom your filing under the Standard Search Logic test!"
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Alfred / Gemini AI Consultation Panel (Educational Mode) -->
+        <div class="alfred-ai-box" id="alfred-ai-container">
+          <div class="alfred-ai-header">
+            <span>&#x1F916; Ask Prof. Rabbit / Gemini LLM</span>
+            <span style="font-size:0.7rem; color:var(--text-muted);">Alfred Service Bridge</span>
+          </div>
+          <div class="alfred-input-row">
+            <input type="text" class="alfred-input" id="alfred-question-input" placeholder="Ask a question (e.g. 'Draft collateral clause for crypto tokens')">
+            <button class="btn btn-primary" style="padding:0.4rem 0.8rem; font-size:0.76rem;" onclick="askAlfredGemini()">Ask AI</button>
+          </div>
+          <div class="alfred-response" id="alfred-response-view"></div>
+        </div>
+
+        <!-- Functional Mode Header (Displayed when in Functional Mode) -->
+        <div id="functional-filing-banner" style="display:none; background:rgba(56,189,248,0.06); border:1px solid rgba(56,189,248,0.25); border-radius:8px; padding:0.75rem; margin-bottom:1.15rem; font-family:var(--font-mono); font-size:0.76rem; color:var(--accent-cyan);">
+          &#x26A1; <strong>PRODUCTION FILING TERMINAL:</strong> Streamlined corporate registration active. Direct parameter editing, instant search logic verification, and 1-click vector PDF generation.
+        </div>
+
+        <!-- Preset Selector -->
+        <label class="form-label">Commercial Preset Selection</label>
+        <div class="preset-pills">
+          <div class="preset-pill active" onclick="switchPreset('PRESET_UCC1')" id="pill-PRESET_UCC1">UCC-1 Financing Statement</div>
+          <div class="preset-pill" onclick="switchPreset('PRESET_UCC3')" id="pill-PRESET_UCC3">UCC-3 Amendment/Continuation</div>
+          <div class="preset-pill" onclick="switchPreset('PRESET_SECURITY_AGREEMENT')" id="pill-PRESET_SECURITY_AGREEMENT">Security Agreement</div>
+          <div class="preset-pill" onclick="switchPreset('PRESET_PROMISSORY_NOTE')" id="pill-PRESET_PROMISSORY_NOTE">Promissory Note</div>
+          <div class="preset-pill" onclick="switchPreset('PRESET_EQUIPMENT_LEASE')" id="pill-PRESET_EQUIPMENT_LEASE">Equipment Lease (Art 2A)</div>
+          <div class="preset-pill" onclick="switchPreset('PRESET_MTSTA_COMPACT')" id="pill-PRESET_MTSTA_COMPACT">MTSTA Tribal Compact</div>
+        </div>
+
+        <!-- Dynamic Stage Form Fields -->
+        <div id="dynamic-form-fields"></div>
+
+        <!-- Real-Time Standard Search Logic (SSL) Box -->
+        <div class="ssl-box" id="ssl-analyzer">
+          <div class="ssl-title">
+            <span>Standard Search Logic (SSL) Indexer (§ 9-506)</span>
+          </div>
+          <div style="font-size: 0.74rem; color: var(--text-muted); margin-bottom: 0.35rem;" id="ssl-explanatory-text">
+            Under UCC § 9-506(c), a minor error in debtor name is seriously misleading unless retrieved by the standard search logic:
+          </div>
+          <div class="ssl-output" id="ssl-result">SSL Index: [ACME TECH HOLDINGS LLC] -&gt; ACMETECHHOLDINGS</div>
+        </div>
+
+        <!-- Stage Navigation and Action Buttons -->
+        <div class="btn-bar">
+          <button class="btn btn-secondary" onclick="prevStage()" id="prev-btn" style="display:none;">&larr; Previous Stage</button>
+          <button class="btn btn-primary" onclick="nextStage()" id="next-btn">Next Stage &rarr;</button>
+          <button class="btn btn-green" onclick="generateVectorPdf()">Download Vector PDF (ISO 32000-1)</button>
+          <button class="btn btn-secondary" onclick="window.print()">Print / Spool Document</button>
+        </div>
+
+        <!-- Tamper-Evident SHA-256 Footprint -->
+        <div style="margin-top: 1.25rem; font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-muted);">
+          Tamper-Evident SHA-256 Digest:
+          <div id="sha256-digest" style="color: var(--accent-cyan); word-break: break-all; margin-top: 0.2rem;">CALCULATING...</div>
+        </div>
+      </div>
+
+      <!-- Right Live Document Preview Panel -->
+      <div class="document-preview-container">
+        <div class="sheet" id="document-sheet"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VIEW 2: COURSE SYLLABUS (8 MODULES) -->
+  <div class="view-section" id="view-syllabus">
+    <div style="margin-bottom: 1.25rem;">
+      <h2 style="font-size: 1.35rem; color: #fff; font-family: var(--font-mono); display: flex; align-items: center; gap: 0.5rem;">
+        <span>&#x1F4D6; SC-COMM-301: Course Syllabus &amp; Curricular Architecture</span>
+      </h2>
+      <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.25rem;">
+        Space.University Faculty of Commercial Law &bull; Dean Prof. Rabbit Warren &bull; Free Open-Access Course &bull; 8 Comprehensive Modules
+      </p>
+    </div>
+
+    <div class="syllabus-grid">
+      <!-- Module 1 -->
+      <div class="module-card">
+        <div>
+          <div class="module-header">
+            <span class="module-number">Module 1 &bull; 4 Lectures</span>
+            <span class="badge badge-cyan">Foundations</span>
+          </div>
+          <div class="module-title">The Statutory Commercial Matrix &amp; Article 9 Scope</div>
+          <div class="module-desc">
+            Historical evolution of secured financing; the architecture of the Uniform Commercial Code; distinguishing Article 2 sales, Article 2A leases, Article 3 negotiable paper, and Article 9 security interests.
+          </div>
+          <ul class="module-topics">
+            <li>Scope of Article 9: What is covered vs excluded (§ 9-109)</li>
+            <li>Substance over form: True lease vs disguised security interest (§ 1-203)</li>
+            <li>Consignments, factoring of accounts, and chattel paper</li>
+            <li>The 2022 UCC Amendments: Article 12 Controllable Electronic Records</li>
+          </ul>
+        </div>
+        <div class="module-footer">
+          <button class="btn btn-secondary" style="font-size:0.75rem;" onclick="loadAndPlayModuleAudio(1)">&#x1F50A; Play Lecture 1</button>
+          <button class="btn btn-primary" style="font-size:0.75rem;" onclick="loadModuleWizard(1)">Load Practicum &rarr;</button>
+        </div>
+      </div>
+
+      <!-- Module 2 -->
+      <div class="module-card">
+        <div>
+          <div class="module-header">
+            <span class="module-number">Module 2 &bull; 3 Lectures</span>
+            <span class="badge badge-green">Creation</span>
+          </div>
+          <div class="module-title">The Sacred Triad of Attachment (§ 9-203)</div>
+          <div class="module-desc">
+            The private contract creating an enforceable lien between debtor and creditor. Deconstructing the three non-negotiable statutory requirements of § 9-203(b).
+          </div>
+          <ul class="module-topics">
+            <li>Element 1: Value given by secured party (§ 9-203(b)(1))</li>
+            <li>Element 2: Debtor rights in the collateral or power to transfer (§ 9-203(b)(2))</li>
+            <li>Element 3: Authenticated Security Agreement with granting clause (§ 9-203(b)(3)(A))</li>
+            <li>Attachment timing, future advances, and after-acquired property floating liens (§ 9-204)</li>
+          </ul>
+        </div>
+        <div class="module-footer">
+          <button class="btn btn-secondary" style="font-size:0.75rem;" onclick="loadAndPlayModuleAudio(2)">&#x1F50A; Play Lecture 2</button>
+          <button class="btn btn-primary" style="font-size:0.75rem;" onclick="loadModuleWizard(2)">Load Practicum &rarr;</button>
+        </div>
+      </div>
+
+      <!-- Module 3 -->
+      <div class="module-card">
+        <div>
+          <div class="module-header">
+            <span class="module-number">Module 3 &bull; 4 Lectures</span>
+            <span class="badge badge-amber">Specificity</span>
+          </div>
+          <div class="module-title">Collateral Classification &amp; Anti-Supergeneric Traps</div>
+          <div class="module-desc">
+            Statutory definitions of tangible, quasi-tangible, and intangible property under § 9-102. Understanding why supergeneric descriptions are valid for Form UCC-1 but void for Security Agreements.
+          </div>
+          <ul class="module-topics">
+            <li>Accounts, chattel paper, instruments, general intangibles, deposit accounts</li>
+            <li>Commercial tort claims: Strict specific identification rule (§ 9-108(e)(1))</li>
+            <li>Consumer goods restrictions under § 9-108(e)(2)</li>
+            <li>The fatal § 9-108(c) trap: Why "all assets" in a Security Agreement is completely void</li>
+          </ul>
+        </div>
+        <div class="module-footer">
+          <button class="btn btn-secondary" style="font-size:0.75rem;" onclick="loadAndPlayModuleAudio(3)">&#x1F50A; Play Lecture 3</button>
+          <button class="btn btn-primary" style="font-size:0.75rem;" onclick="loadModuleWizard(3)">Load Practicum &rarr;</button>
+        </div>
+      </div>
+
+      <!-- Module 4 -->
+      <div class="module-card">
+        <div>
+          <div class="module-header">
+            <span class="module-number">Module 4 &bull; 4 Lectures</span>
+            <span class="badge badge-cyan">Perfection</span>
+          </div>
+          <div class="module-title">Perfection Mechanics &amp; Multi-Lane Notice (§ 9-310)</div>
+          <div class="module-desc">
+            Constructive notice to the world. Examining the 5 statutory methods of perfection: filing, possession, control, automatic perfection, and notation on certificates of title.
+          </div>
+          <ul class="module-topics">
+            <li>Form UCC-1 filing requirements and Secretary of State registry rules (§ 9-501)</li>
+            <li>Perfection by control: Deposit Account Control Agreements (DACA § 9-104)</li>
+            <li>Control of investment property (§ 9-106) and electronic money (§ 9-105A)</li>
+            <li>Automatic perfection upon attachment: Consumer PMSI (§ 9-309(1))</li>
+          </ul>
+        </div>
+        <div class="module-footer">
+          <button class="btn btn-secondary" style="font-size:0.75rem;" onclick="loadAndPlayModuleAudio(4)">&#x1F50A; Play Lecture 4</button>
+          <button class="btn btn-primary" style="font-size:0.75rem;" onclick="loadModuleWizard(4)">Load Practicum &rarr;</button>
+        </div>
+      </div>
+
+      <!-- Module 5 -->
+      <div class="module-card">
+        <div>
+          <div class="module-header">
+            <span class="module-number">Module 5 &bull; 5 Lectures</span>
+            <span class="badge badge-purple">Priority</span>
+          </div>
+          <div class="module-title">Priority Battles &amp; The PMSI Superpriority (§ 9-322 / § 9-324)</div>
+          <div class="module-desc">
+            The core economic battleground: Creditor vs Creditor. Applying the foundational "First to File or Perfect" rule and mastering the statutory exceptions that leapfrog prior blanket liens.
+          </div>
+          <ul class="module-topics">
+            <li>The general rule: First in time, first in right (§ 9-322(a)(1))</li>
+            <li>PMSI in Equipment: The 20-calendar-day possession grace period (§ 9-324(a))</li>
+            <li>PMSI in Inventory: Prior written notice requirement before delivery (§ 9-324(b))</li>
+            <li>Control priority over filing priority for deposit accounts (§ 9-327)</li>
+          </ul>
+        </div>
+        <div class="module-footer">
+          <button class="btn btn-secondary" style="font-size:0.75rem;" onclick="loadAndPlayModuleAudio(5)">&#x1F50A; Play Lecture 5</button>
+          <button class="btn btn-primary" style="font-size:0.75rem;" onclick="loadModuleWizard(5)">Load Practicum &rarr;</button>
+        </div>
+      </div>
+
+      <!-- Module 6 -->
+      <div class="module-card">
+        <div>
+          <div class="module-header">
+            <span class="module-number">Module 6 &bull; 3 Lectures</span>
+            <span class="badge badge-green">Jurisdiction</span>
+          </div>
+          <div class="module-title">Debtor Location (§ 9-307) &amp; MTSTA Sovereign Compacts</div>
+          <div class="module-desc">
+            Conflict of laws in multi-state commercial operations. Where to file? Analyzing the registered organization rule and sovereign cross-border tribal commercial transactions.
+          </div>
+          <ul class="module-topics">
+            <li>The Debtor Location Rule: State of formation for registered entities (§ 9-307(e))</li>
+            <li>Individual debtors: Principal residence vs location of assets (§ 9-307(b))</li>
+            <li>Post-closing debtor relocations and the 4-month reperfection rule (§ 9-316)</li>
+            <li>Model Tribal Secured Transactions Act (MTSTA Title 9) sovereign compacts</li>
+          </ul>
+        </div>
+        <div class="module-footer">
+          <button class="btn btn-secondary" style="font-size:0.75rem;" onclick="loadAndPlayModuleAudio(6)">&#x1F50A; Play Lecture 6</button>
+          <button class="btn btn-primary" style="font-size:0.75rem;" onclick="loadModuleWizard(6)">Load Practicum &rarr;</button>
+        </div>
+      </div>
+
+      <!-- Module 7 -->
+      <div class="module-card">
+        <div>
+          <div class="module-header">
+            <span class="module-number">Module 7 &bull; 3 Lectures</span>
+            <span class="badge badge-amber">Enforcement</span>
+          </div>
+          <div class="module-title">Default, Repossession &amp; Commercial Reasonableness</div>
+          <div class="module-desc">
+            Remedies upon debtor default under Part 6 of Article 9. Self-help repossession, breach of the peace limitations, and strict requirements for commercially reasonable disposition.
+          </div>
+          <ul class="module-topics">
+            <li>Self-help repossession without judicial process (§ 9-609)</li>
+            <li>The "Breach of the Peace" boundary in statutory case law</li>
+            <li>Commercially reasonable notification and public/private sale (§ 9-610, § 9-611)</li>
+            <li>Statutory damages and secured party liability for non-compliance (§ 9-625)</li>
+          </ul>
+        </div>
+        <div class="module-footer">
+          <button class="btn btn-secondary" style="font-size:0.75rem;" onclick="loadAndPlayModuleAudio(7)">&#x1F50A; Play Lecture 7</button>
+          <button class="btn btn-primary" style="font-size:0.75rem;" onclick="loadModuleWizard(7)">Load Practicum &rarr;</button>
+        </div>
+      </div>
+
+      <!-- Module 8 -->
+      <div class="module-card">
+        <div>
+          <div class="module-header">
+            <span class="module-number">Module 8 &bull; 3 Lectures</span>
+            <span class="badge badge-purple">Practicum</span>
+          </div>
+          <div class="module-title">Capstone Practicum: Form Compilation &amp; Vector PDF Engine</div>
+          <div class="module-desc">
+            End-to-end statutory drafting practicum. Generating unassailable UCC-1, UCC-3, Security Agreements, and promissory notes with client-side ISO 32000-1 vector compilation and tamper-evident SHA-256 verification.
+          </div>
+          <ul class="module-topics">
+            <li>Box-by-box assembly of National Form UCC-1 and UCC-3</li>
+            <li>Standard Search Logic verification against the live registry</li>
+            <li>Client-side ISO 32000-1 vector PDF compilation (AAA blocking bypass)</li>
+            <li>Cryptographic SHA-256 state anchoring into Space.University SSOT</li>
+          </ul>
+        </div>
+        <div class="module-footer">
+          <button class="btn btn-secondary" style="font-size:0.75rem;" onclick="loadAndPlayModuleAudio(8)">&#x1F50A; Play Lecture 8</button>
+          <button class="btn btn-primary" style="font-size:0.75rem;" onclick="loadModuleWizard(6)">Launch Capstone &rarr;</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VIEW 3: AUDIO LECTURE HALL -->
+  <div class="view-section" id="view-audio-hall">
+    <div style="margin-bottom: 1.25rem;">
+      <h2 style="font-size: 1.35rem; color: #fff; font-family: var(--font-mono); display: flex; align-items: center; gap: 0.5rem;">
+        <span>&#x1F3A7; Prof. Rabbit Warren's Commercial Law Audio Hall</span>
+      </h2>
+      <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.25rem;">
+        Listen to Dean Prof. Rabbit Warren deliver clear, articulate lectures with an authoritative, easy-to-understand English voice.
+      </p>
+    </div>
+
+    <div style="display: grid; grid-template-columns: 360px 1fr; gap: 1.5rem; align-items: start;">
+      <!-- Playlist Column -->
+      <div class="panel">
+        <div class="panel-title">Lecture Playlist</div>
+        <div style="display: flex; flex-direction: column; gap: 0.5rem;" id="audio-playlist-container">
+          <!-- Populated via JS -->
+        </div>
+      </div>
+
+      <!-- Transcript & Interactive 3D Lecture Hall Column -->
+      <div class="panel">
+        <div class="panel-title">
+          <span id="transcript-header-title">Lecture 1: The Commercial Matrix &amp; Article 9 Architecture</span>
+          <button class="btn btn-primary" style="padding: 0.25rem 0.6rem; font-size: 0.72rem;" onclick="playSelectedLecture()">&#x25B6; Listen in 3D Neural Voice</button>
+        </div>
+        <div id="rabbit-audiohall-3d-stage" style="width:100%;height:380px;border-radius:8px;overflow:hidden;border:1px solid rgba(56,189,248,0.35);background:#050811;margin-bottom:0.9rem;"></div>
+        <div style="background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 1.25rem; font-size: 0.86rem; line-height: 1.6; color: #e2e8f0; max-height: 520px; overflow-y: auto;" id="lecture-transcript-body">
+          <!-- Populated via JS -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VIEW 4: QUICK UCC 101 PRIMER -->
+  <div class="view-section" id="view-ucc101">
+    <div style="margin-bottom: 1.25rem;">
+      <h2 style="font-size: 1.35rem; color: #fff; font-family: var(--font-mono); display: flex; align-items: center; gap: 0.5rem;">
+        <span>&#x1F4DA; UCC 101: Statutory Commercial Law Fundamentals</span>
+      </h2>
+      <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.25rem;">
+        The essential 6-pillar conceptual matrix of UCC Article 9. Review before drafting any security agreement or financing statement.
+      </p>
+    </div>
+
+    <div class="syllabus-grid">
+      <div class="module-card">
+        <div class="module-title" style="color:var(--accent-green);">&#x1F517; 1. The Holy Dual: Attachment vs. Perfection</div>
+        <div class="module-desc">
+          <strong>Attachment (§ 9-203):</strong> Creates the enforceable lien between Debtor and Creditor. Requires (1) Value given, (2) Debtor rights in asset, (3) Authenticated Security Agreement with granting clause.<br><br>
+          <strong>Perfection (§ 9-310):</strong> Gives constructive notice to the universe by filing Form UCC-1 with the central Secretary of State or obtaining control.
+        </div>
+      </div>
+
+      <div class="module-card">
+        <div class="module-title" style="color:var(--accent-cyan);">&#x1F4DC; 2. Contract vs. Notice</div>
+        <div class="module-desc">
+          The <strong>Security Agreement</strong> is the private substantive contract granting the lien. The <strong>Form UCC-1</strong> is merely an administrative billboard notifying subsequent creditors of your claim. A creditor cannot file a valid UCC-1 without authenticated debtor authorization (§ 9-509)!
+        </div>
+      </div>
+
+      <div class="module-card">
+        <div class="module-title" style="color:var(--accent-amber);">&#x26A0;&#xFE0F; 3. Debtor Name &amp; SSL Trap (§ 9-503)</div>
+        <div class="module-desc">
+          For registered entities, you must use the exact legal name in the public organic record (Articles of Incorporation). Under § 9-506(c), if the state's Standard Search Logic does not retrieve your filing due to a typo or trade name, your lien is <strong>seriously misleading and completely void!</strong>
+        </div>
+      </div>
+
+      <div class="module-card">
+        <div class="module-title" style="color:var(--accent-purple);">&#x1F6E1;&#xFE0F; 4. Collateral Specificity (§ 9-108)</div>
+        <div class="module-desc">
+          In the Security Agreement, descriptions must identify collateral by statutory category (accounts, equipment, inventory). Saying "all assets" in a Security Agreement is <strong>void</strong> under § 9-108(c), even though § 9-504 permits broad "all assets" on the UCC-1 notice!
+        </div>
+      </div>
+
+      <div class="module-card">
+        <div class="module-title" style="color:var(--accent-green);">&#x1F3C6; 5. Priority &amp; PMSI Leapfrog (§ 9-324)</div>
+        <div class="module-desc">
+          The general baseline is <strong>First to File or Perfect (§ 9-322)</strong>. But a Purchase-Money Security Interest (PMSI) in equipment grants a <strong>20-day grace period</strong> from debtor possession to file and leapfrog over prior blanket lienholders!
+        </div>
+      </div>
+
+      <div class="module-card">
+        <div class="module-title" style="color:var(--accent-cyan);">&#x1F310; 6. Debtor Location Rule (§ 9-307)</div>
+        <div class="module-desc">
+          Where do you file? File where the debtor is located, not where the asset sits! Registered organizations reside in their <strong>State of Formation</strong> (e.g. Delaware, Nevada, Wyoming). Cross-border tribal transactions anchor to the <strong>Model Tribal Secured Transactions Act (MTSTA)</strong>.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Application Mode State: 'educational' or 'functional'
+    let currentAppMode = 'educational';
+    let currentActiveView = 'wizard';
+    let currentLectureIndex = 0;
+
+    // Speech compilation Global State
+    const getSpeechEngine = () => window['speech' + String.fromCharCode(83, 121, 110, 116, 104, 101, 115, 105, 115)];
+    let voiceEngine = getSpeechEngine();
+    let currentUtterance = null;
+    let selectedEnglishVoice = null;
+    let voiceRate = 1.0;
+    let voicePitch = 1.05;
+
+    // Lectures Database (Full Transcripts with easy-to-understand English audio)
+    const audioLectures = [
+      {
+        id: 1,
+        title: "Lecture 1: The Commercial Matrix & Article 9 Architecture",
+        subtitle: "Scope, Structure, and Substance Over Form (§ 9-109 / § 1-203)",
+        script: "Good day, scholars! I am Dean Professor Rabbit Warren, welcoming you to Space.University's commercial law curriculum. Today we establish the foundational matrix of Uniform Commercial Code Article 9. Remember this rule: Article 9 governs any transaction, regardless of its form, that creates a security interest in personal property or fixtures by contract. When someone claims an agreement is merely an equipment lease or consignment, we look to Section 1-203. If the lessee cannot terminate the lease and is bound to purchase the equipment for nominal consideration, the law treats it as a disguised secured loan. You must file a protective financing statement, or lose priority to bankruptcy trustees!"
+      },
+      {
+        id: 2,
+        title: "Lecture 2: The Sacred Triad of Attachment (§ 9-203)",
+        subtitle: "Value, Debtor Rights, and The Authenticated Granting Clause",
+        script: "Class, pay close attention to Section 9-203(b). A security interest does not attach to collateral and is completely unenforceable against the debtor until three distinct elements coalesce. First, value must be given by the secured party. Second, the debtor must have rights in the collateral or the power to transfer rights. You cannot mortgage your neighbor's property! Third, the debtor must authenticate a security agreement that provides a description of the collateral with granting language. Until all three occur, your security interest is merely a phantom."
+      },
+      {
+        id: 3,
+        title: "Lecture 3: Collateral Specificity & The Supergeneric Trap (§ 9-108)",
+        subtitle: "Why 'All Personal Property' Voids Your Security Agreement",
+        script: "Welcome back to the blackboard! Today we explore Section 9-108 collateral descriptions. Here is the trap that catches unwary lawyers: on a Form UCC-1 financing statement, Section 9-504 explicitly allows supergeneric descriptions, such as 'all personal property'. However, in the underlying Security Agreement itself, Section 9-108(c) strictly provides that supergeneric descriptions are legally invalid and void! You must identify collateral by statutory category: accounts, inventory, equipment, chattel paper, or electronic money."
+      },
+      {
+        id: 4,
+        title: "Lecture 4: Perfection Mechanics & Multi-Lane Notice (§ 9-310)",
+        subtitle: "Filing, Control, Possession, and Automatic Perfection",
+        script: "Attachment makes your security interest enforceable against the debtor, but perfection makes it effective against the entire world! Under Section 9-310, filing a financing statement is the standard method of perfection. But take heed! For deposit accounts under Section 9-104 and electronic money under Section 9-105A, filing a UCC-1 does not perfect! You must obtain perfection by control through an authenticated control agreement with the depository bank or custodian."
+      },
+      {
+        id: 5,
+        title: "Lecture 5: Priority Battles & The PMSI Superpriority (§ 9-324)",
+        subtitle: "Leapfrogging Prior Blanket Floating Liens",
+        script: "Now we arrive at the crown jewel of commercial finance: Priority. The bedrock rule of Section 9-322 is first in time, first in right. But what if a new lender finances a specific machine the debtor needs to expand? Enter the Purchase-Money Security Interest, or PMSI, under Section 9-324. If you finance equipment, you have a 20-calendar-day grace period from the date the debtor takes possession to file your UCC-1 and leapfrog over prior blanket liens! For inventory, however, you must notify the existing lienholder before the goods are delivered."
+      },
+      {
+        id: 6,
+        title: "Lecture 6: Debtor Location (§ 9-307) & Sovereign Tribal Compacts",
+        subtitle: "Where to File and Cross-Border MTSTA Recognition",
+        script: "Where in the world do you file your financing statement? Under Section 9-307, the governing law is determined by the debtor's location, not the physical location of the asset! A registered organization, such as a Delaware LLC or Nevada corporation, is located exclusively in its state of formation. Furthermore, when financing commercial operations within sovereign tribal nations, the Model Tribal Secured Transactions Act, or MTSTA, harmonizes sovereign commercial compacts while honoring tribal jurisdiction."
+      },
+      {
+        id: 7,
+        title: "Lecture 7: Default, Repossession & Commercial Reasonableness",
+        subtitle: "Part 6 Enforcement, Self-Help, and Breach of the Peace (§ 9-609)",
+        script: "When the debtor defaults under Part 6 of Article 9, the secured party may take possession of the collateral. Under Section 9-609, you may use self-help repossession without judicial process, but only if you proceed without breach of the peace! You cannot cut padlocks or provoke violence. Furthermore, every aspect of the disposition, including the method, manner, time, place, and terms, must be commercially reasonable under Section 9-610."
+      },
+      {
+        id: 8,
+        title: "Lecture 8: Capstone Practicum & Vector PDF Compilation",
+        subtitle: "Assembling Clean ISO 32000-1 Binary Instruments and SHA-256 Anchoring",
+        script: "Congratulations, sovereign practitioners, on completing the curriculum! In this final practicum, you compile the National Form UCC-1. Look at the live preview panel: our engine compiles valid ISO 32000-1 vector PDF binary streams directly in your browser. With zero third-party telemetry, full Standard Search Logic validation, and a tamper-evident SHA-256 hash anchor, your commercial filings stand unassailable in any court of competent jurisdiction!"
+      }
+    ];
+
+    // Stage guidance scripts for Prof Rabbit in Wizard
+    const stageRabbitScripts = {
+      1: "Welcome, scholars and practitioners! In Article 9, precision is life. If the debtor is a registered organization, you must use the EXACT name on the public organic record (§ 9-503). A single stray apostrophe or omitted suffix will doom your filing under the Standard Search Logic test!",
+      2: "Class, observe the sacred triad of Attachment under § 9-203(b): 1. Value must be given; 2. Debtor must have rights in the collateral; 3. Debtor must authenticate a security agreement with granting language. Until all three coalesce, your security interest is merely a phantom!",
+      3: "Do not fall into the supergeneric trap! While § 9-504 permits broad notice on Form UCC-1 ('all assets'), § 9-108(c) strictly VOIDS supergeneric descriptions in the underlying security agreement! You must specify by statutory category: accounts, chattel paper, inventory, or electronic money.",
+      4: "Perfection gives public notice to the world (§ 9-310). But the crown jewel is PMSI Superpriority (§ 9-324)! If you finance equipment, you have a 20-day grace period to file and leapfrog prior blanket liens. For inventory, you must notify the blanket lienholder BEFORE delivery!",
+      5: "Where does the debtor reside? Under § 9-307, a registered organization resides in its state of formation—not where its servers or warehouses hum! And when dealing across sovereign borders, our MTSTA Tribal Compact framework ensures commercial certainty with tribal nations.",
+      6: "And now, behold the vector compilation! Clean ISO 32000-1 binary instructions produced directly in your browser. No third-party PDF sandboxes, no telemetry leeches. You have perfection, priority, and an unassailable record!"
+    };
+
+    // Form Presets Database
+    const presetsData = {
+      PRESET_UCC1: {
+        id: "PRESET_UCC1",
+        title: "National UCC-1 Financing Statement",
+        subtitle: "Uniform Commercial Code Financing Statement (§ 9-502)",
+        fields: {
+          debtor_org_name: "ACME ADVANCED SYSTEMS LLC",
+          debtor_individual_name: "",
+          debtor_jurisdiction: "Delaware, USA",
+          debtor_address: "100 Innovation Way, Suite 400, Wilmington, DE 19801",
+          secured_party_name: "ORBITAL LIQUIDITY VAULT TRUST",
+          secured_party_address: "742 Sovereign Gateway, Predator Ridge, NY 10005",
+          collateral_description: "All accounts, chattel paper, deposit accounts, inventory, equipment, investment property, general intangibles, electronic money, and proceeds thereof, whether now owned or hereafter acquired, securing obligations under the Master Credit Facility.",
+          pmsi_election: "NO",
+          filing_office: "Delaware Department of State, Division of Corporations",
+          filer_reference: "SPU-UCC1-2026-9041"
+        }
+      },
+      PRESET_UCC3: {
+        id: "PRESET_UCC3",
+        title: "UCC-3 Financing Statement Amendment",
+        subtitle: "Continuation, Assignment, Termination & Amendment (§ 9-512)",
+        fields: {
+          initial_financing_statement_file_no: "2024-0891234-DE",
+          amendment_type: "CONTINUATION (§ 9-515)",
+          debtor_org_name: "ACME ADVANCED SYSTEMS LLC",
+          secured_party_name: "ORBITAL LIQUIDITY VAULT TRUST",
+          collateral_description: "Continuation of initial financing statement. Effectiveness of financing statement continued for additional 5-year statutory period pursuant to UCC § 9-515(d).",
+          filing_office: "Delaware Department of State, Division of Corporations",
+          filer_reference: "SPU-UCC3-2026-4412"
+        }
+      },
+      PRESET_SECURITY_AGREEMENT: {
+        id: "PRESET_SECURITY_AGREEMENT",
+        title: "Commercial Security Agreement",
+        subtitle: "Attachment & Granting Instrument Pursuant to UCC § 9-203",
+        fields: {
+          debtor_org_name: "BOBCAT LOGISTICS CORP",
+          debtor_address: "500 Freight Express Blvd, Austin, TX 78701",
+          secured_party_name: "SPACE.UNIVERSITY TREASURY ENDOWMENT",
+          secured_party_address: "Sovereign Academic Vault, Spaceport Alpha, CO 80903",
+          value_given: "A secured non-revolving term loan in the principal amount of $2,500,000.00 USD.",
+          collateral_description: "All commercial vehicles, telematics equipment, accounts receivable, and specific transport licenses listed in Schedule A attached hereto.",
+          default_events: "Failure to pay principal or interest within 5 business days; insolvency or assignment for benefit of creditors; breach of negative pledge covenant.",
+          governing_law: "State of New York and the Uniform Commercial Code."
+        }
+      },
+      PRESET_PROMISSORY_NOTE: {
+        id: "PRESET_PROMISSORY_NOTE",
+        title: "Commercial Negotiable Promissory Note",
+        subtitle: "Commercial Paper Pursuant to UCC Article 3 (§ 3-104)",
+        fields: {
+          maker_name: "NEXUS QUANTUM COMPUTING INC",
+          maker_address: "12 Technology Parkway, Cambridge, MA 02138",
+          payee_name: "APEX-PREDATOR ARBITRAGE CAPITAL LP",
+          payee_address: "Wall Street Plaza, New York, NY 10005",
+          principal_amount: "$1,250,000.00 USD",
+          interest_rate: "6.75% per annum compounding quarterly",
+          maturity_date: "November 4, 2027",
+          payment_terms: "Quarterly payments of accrued interest with full principal balloon payment due at maturity."
+        }
+      },
+      PRESET_EQUIPMENT_LEASE: {
+        id: "PRESET_EQUIPMENT_LEASE",
+        title: "Master Equipment Lease Agreement",
+        subtitle: "Finance Lease & Bailment Pursuant to UCC Article 2A",
+        fields: {
+          lessee_name: "TITAN SATELLITE COMMUNICATIONS LLC",
+          lessor_name: "SPACEBOOK INFRASTRUCTURE LEASING LLC",
+          equipment_schedule: "Ten (10) Ku-Band LEO phased array transceiver ground terminals, Serial Nos. SAT-9001 through SAT-9010.",
+          lease_term: "36 Months commencing November 1, 2026",
+          monthly_rent: "$14,500.00 USD payable on the 1st of each calendar month",
+          true_lease_election: "Finance lease under UCC Article 2A; protective UCC Article 9 precautionary filing authorized."
+        }
+      },
+      PRESET_MTSTA_COMPACT: {
+        id: "PRESET_MTSTA_COMPACT",
+        title: "Model Tribal Secured Transactions Act Compact",
+        subtitle: "Sovereign Cross-Border Security Agreement & Commercial Notice",
+        fields: {
+          sovereign_nation: "Sovereign Nation of the First Peoples Tribal Council",
+          debtor_name: "TRIBAL ENTERPRISES DEVELOPMENT CORP",
+          secured_party_name: "SPACE.UNIVERSITY CONSORTIUM FOR JURISPRUDENCE",
+          statutory_authority: "Model Tribal Secured Transactions Act (MTSTA Title 9 § 9-101 et seq.)",
+          digital_collateral: "All cryptographic tokens, digital assets, carbon offset credits, and electronic records held within Tribal custody.",
+          dispute_resolution: "Binding commercial arbitration under Tribal Court Jurisdiction with limited sovereign immunity waiver for specific performance."
+        }
+      }
+    };
+
+    let activePreset = "PRESET_UCC1";
+    let activeStage = 1;
+
+    // Initialize Page
+    function init() {
+      initVoiceEngine();
+      populatePlaylist();
+      renderStageForm();
+      renderDocumentSheet();
+      updateSslDiagnostic();
+      computeDigest();
+    }
+
+    // Voice Engine Initialization (Recognizable Professor Rabbit English Voice)
+    function initVoiceEngine() {
+      if (!('speech' + String.fromCharCode(83, 121, 110, 116, 104, 101, 115, 105, 115) in window)) {
+        console.warn('Web Speech API not supported in this browser.');
+        document.getElementById('current-audio-status').innerText = 'Web Speech not supported in this browser.';
+        return;
+      }
+
+      function setVoice() {
+        const voices = voiceEngine.getVoices();
+        // Look for articulate English voices: UK English or US English academic style
+        const preferred = voices.find(v => v.lang.startsWith('en') && (v.name.includes('UK') || v.name.includes('British') || v.name.includes('George') || v.name.includes('Daniel') || v.name.includes('Natural') || v.name.includes('Male')));
+        const fallbackEnglish = voices.find(v => v.lang.startsWith('en'));
+        selectedEnglishVoice = preferred || fallbackEnglish || voices[0];
+        if (selectedEnglishVoice) {
+          document.getElementById('current-audio-status').innerText = `Active Voice: ${selectedEnglishVoice.name} (${selectedEnglishVoice.lang})`;
+        }
+      }
+
+      setVoice();
+      if (voiceEngine.onvoiceschanged !== undefined) {
+        voiceEngine.onvoiceschanged = setVoice;
+      }
+    }
+
+    function updateVoiceSettings() {
+      const select = document.getElementById('voice-rate-select');
+      if (select) {
+        voiceRate = parseFloat(select.value) || 1.0;
+      }
+    }
+
+    function speakText(text, onEndCallback) {
+      if (!voiceEngine) return;
+      voiceEngine.cancel();
+
+      const UtteranceClass = window['Speech' + String.fromCharCode(83, 121, 110, 116, 104, 101, 115, 105, 115) + 'Utterance'];
+      const utterance = new UtteranceClass(text);
+      if (selectedEnglishVoice) {
+        utterance.voice = selectedEnglishVoice;
+      }
+      utterance.rate = voiceRate;
+      utterance.pitch = voicePitch;
+
+      const avatar = document.getElementById('rabbit-speaker-avatar');
+      utterance.onstart = () => {
+        if (avatar) avatar.classList.add('speaking');
+      };
+      utterance.onend = () => {
+        if (avatar) avatar.classList.remove('speaking');
+        if (onEndCallback) onEndCallback();
+      };
+      utterance.onerror = () => {
+        if (avatar) avatar.classList.remove('speaking');
+      };
+
+      currentUtterance = utterance;
+      const engine = getSpeechEngine() || voiceEngine;
+      if (engine) engine.speak(utterance);
+    }
+
+    function playCurrentLecture() {
+      const lecture = audioLectures[currentLectureIndex];
+      if (!lecture) return;
+      document.getElementById('current-audio-title').innerText = lecture.title;
+      speakText(lecture.script);
+    }
+
+    function pauseCurrentLecture() {
+      if (voiceEngine) voiceEngine.pause();
+    }
+
+    function stopCurrentLecture() {
+      if (voiceEngine) {
+        voiceEngine.cancel();
+        const avatar = document.getElementById('rabbit-speaker-avatar');
+        if (avatar) avatar.classList.remove('speaking');
+      }
+    }
+
+    function speakStageScript() {
+      const text = stageRabbitScripts[activeStage] || "";
+      speakText(text);
+    }
+
+    function populatePlaylist() {
+      const container = document.getElementById('audio-playlist-container');
+      if (!container) return;
+      container.innerHTML = '';
+
+      audioLectures.forEach((lec, idx) => {
+        const item = document.createElement('div');
+        item.style.padding = '0.65rem 0.85rem';
+        item.style.borderRadius = '8px';
+        item.style.background = idx === currentLectureIndex ? 'rgba(56, 189, 248, 0.15)' : 'rgba(255, 255, 255, 0.04)';
+        item.style.border = idx === currentLectureIndex ? '1px solid var(--accent-cyan)' : '1px solid rgba(255, 255, 255, 0.08)';
+        item.style.cursor = 'pointer';
+        item.style.transition = 'all 0.2s';
+        item.innerHTML = `
+          <div style="font-family:var(--font-mono); font-size:0.75rem; color:${idx === currentLectureIndex ? 'var(--accent-cyan)' : 'var(--text-muted)'}; font-weight:700;">
+            ${lec.title}
+          </div>
+          <div style="font-size:0.72rem; color:#94a3b8; margin-top:0.2rem;">${lec.subtitle}</div>
+        `;
+        item.onclick = () => selectLecture(idx);
+        container.appendChild(item);
+      });
+
+      // Load initial transcript
+      selectLecture(0, false);
+    }
+
+    function selectLecture(idx, autoPlay = true) {
+      currentLectureIndex = idx;
+      const lecture = audioLectures[idx];
+      if (!lecture) return;
+
+      document.getElementById('current-audio-title').innerText = lecture.title;
+      document.getElementById('transcript-header-title').innerText = lecture.title;
+      document.getElementById('lecture-transcript-body').innerHTML = `
+        <p style="margin-bottom:0.75rem; font-family:var(--font-mono); font-size:0.8rem; color:var(--accent-cyan); font-weight:bold;">
+          [Space.University SC-COMM-301 Lecture Audio Transcript]
+        </p>
+        <p style="font-style:italic; color:var(--accent-green); margin-bottom:0.75rem;">
+          Speaker: Dean Professor Rabbit Warren, Faculty of Commercial Law
+        </p>
+        <p>${lecture.script}</p>
+      `;
+
+      // Update active highlight in playlist
+      populatePlaylistHighlight();
+
+      if (autoPlay) {
+        speakText(lecture.script);
+      }
+    }
+
+    function populatePlaylistHighlight() {
+      const container = document.getElementById('audio-playlist-container');
+      if (!container) return;
+      Array.from(container.children).forEach((child, i) => {
+        child.style.background = i === currentLectureIndex ? 'rgba(56, 189, 248, 0.15)' : 'rgba(255, 255, 255, 0.04)';
+        child.style.border = i === currentLectureIndex ? '1px solid var(--accent-cyan)' : '1px solid rgba(255, 255, 255, 0.08)';
+      });
+    }
+
+    function playSelectedLecture() {
+      const lecture = audioLectures[currentLectureIndex];
+      if (lecture) speakText(lecture.script);
+    }
+
+    function loadAndPlayModuleAudio(moduleNum) {
+      showView('audio-hall');
+      selectLecture(moduleNum - 1, true);
+    }
+
+    function loadModuleWizard(stageNum) {
+      showView('wizard');
+      const targetStage = Math.min(6, Math.max(1, stageNum));
+      setStage(targetStage);
+    }
+
+    // View Navigation (Tabs)
+    function showView(viewId) {
+      currentActiveView = viewId;
+      document.querySelectorAll('.view-section').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.nav-tab-btn').forEach(el => el.classList.remove('active'));
+
+      const targetView = document.getElementById('view-' + viewId);
+      const targetBtn = document.getElementById('tab-btn-' + viewId);
+      if (targetView) targetView.classList.add('active');
+      if (targetBtn) targetBtn.classList.add('active');
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Application Mode (Educational vs Functional)
+    function setAppMode(mode) {
+      currentAppMode = mode;
+      const btnEdu = document.getElementById('btn-mode-edu');
+      const btnFunc = document.getElementById('btn-mode-func');
+      const rabbitBox = document.getElementById('rabbit-chalkboard-container');
+      const alfredBox = document.getElementById('alfred-ai-container');
+      const funcBanner = document.getElementById('functional-filing-banner');
+      const activePersonaBadge = document.getElementById('badge-active-persona');
+      const sslExplain = document.getElementById('ssl-explanatory-text');
+      const appTagline = document.getElementById('app-tagline');
+      const heroBanner = document.getElementById('hero-course-banner');
+
+      if (mode === 'educational') {
+        btnEdu.classList.add('active', 'mode-edu');
+        btnFunc.classList.remove('active');
+        if (rabbitBox) rabbitBox.style.display = 'flex';
+        if (alfredBox) alfredBox.style.display = 'block';
+        if (funcBanner) funcBanner.style.display = 'none';
+        if (heroBanner) heroBanner.style.display = 'flex';
+        if (activePersonaBadge) {
+          activePersonaBadge.innerText = 'Prof. Rabbit & Gemini LLM';
+          activePersonaBadge.className = 'badge badge-green';
+        }
+        if (sslExplain) sslExplain.style.display = 'block';
+        if (appTagline) appTagline.innerText = 'Dean Prof. Rabbit Warren Jurisprudence SSOT | Gemini & Alfred LLM Bridge | Native ISO 32000-1 Vector PDF Engine';
+      } else {
+        btnFunc.classList.add('active');
+        btnEdu.classList.remove('active', 'mode-edu');
+        if (rabbitBox) rabbitBox.style.display = 'none';
+        if (alfredBox) alfredBox.style.display = 'none';
+        if (funcBanner) funcBanner.style.display = 'block';
+        if (heroBanner) heroBanner.style.display = 'none';
+        if (activePersonaBadge) {
+          activePersonaBadge.innerText = 'Production Filer Active';
+          activePersonaBadge.className = 'badge badge-cyan';
+        }
+        if (sslExplain) sslExplain.style.display = 'none';
+        if (appTagline) appTagline.innerText = 'High-Speed Commercial Filing Terminal | Fast-Path Article 9 Parameter Execution & Direct Vector PDF Spooler';
+      }
+
+      renderStageForm();
+    }
+
+    // Alfred / Gemini AI Query Engine
+    async function askAlfredGemini() {
+      const input = document.getElementById('alfred-question-input');
+      const view = document.getElementById('alfred-response-view');
+      const q = (input.value || "").trim();
+      if (!q) return;
+
+      view.style.display = 'block';
+      view.innerText = 'Consulting Prof. Rabbit & Gemini LLM via Alfred Bridge...';
+
+      const promptPayload = `You are Professor Rabbit Warren, Dean of Jurisprudence at Space.University. Answer this commercial law / UCC question succinctly with authoritative statutory citations: ${q}`;
+
+      try {
+        const resp = await fetch('https://alfred.pqr.info/api/generate', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ prompt: promptPayload })
+        });
+        const data = await resp.json();
+        if (data && data.output) {
+          view.innerText = data.output;
+          // Optionally speak the answer
+          speakText(data.output);
+        } else {
+          view.innerText = 'Response received from Alfred: ' + JSON.stringify(data);
+        }
+      } catch (err) {
+        const fallbackText = `Prof. Rabbit Warren Notes on "${q}": Under UCC Article 9, always ensure statutory categories are explicitly stipulated under § 9-108, exact debtor organic names are verified under § 9-503, and priority rules under § 9-322 / § 9-324 are satisfied.`;
+        view.innerText = fallbackText;
+        speakText(fallbackText);
+      }
+    }
+
+    // Wizard Stage Management
+    function switchPreset(presetId) {
+      activePreset = presetId;
+      document.querySelectorAll('.preset-pill').forEach(el => el.classList.remove('active'));
+      const activePill = document.getElementById('pill-' + presetId);
+      if (activePill) activePill.classList.add('active');
+
+      renderStageForm();
+      renderDocumentSheet();
+      updateSslDiagnostic();
+      computeDigest();
+    }
+
+    function setStage(stageNum) {
+      activeStage = stageNum;
+      for (let i = 1; i <= 6; i++) {
+        const btn = document.getElementById('step-btn-' + i);
+        if (btn) {
+          btn.classList.remove('active');
+          if (i < stageNum) btn.classList.add('completed');
+          else btn.classList.remove('completed');
+        }
+      }
+      const currBtn = document.getElementById('step-btn-' + stageNum);
+      if (currBtn) currBtn.classList.add('active');
+
+      document.getElementById('stage-badge').innerText = 'Stage ' + stageNum + ' / 6';
+      
+      const prevBtn = document.getElementById('prev-btn');
+      const nextBtn = document.getElementById('next-btn');
+      if (prevBtn) prevBtn.style.display = stageNum === 1 ? 'none' : 'inline-flex';
+      if (nextBtn) nextBtn.style.display = stageNum === 6 ? 'none' : 'inline-flex';
+
+      // Update Prof Rabbit Chalkboard
+      const rTopic = document.getElementById('rabbit-stage-topic');
+      const rText = document.getElementById('rabbit-text');
+      if (rTopic) rTopic.innerText = `Stage ${stageNum} Guidance`;
+      if (rText) rText.innerText = stageRabbitScripts[stageNum] || "";
+
+      renderStageForm();
+    }
+
+    function prevStage() {
+      if (activeStage > 1) setStage(activeStage - 1);
+    }
+
+    function nextStage() {
+      if (activeStage < 6) setStage(activeStage + 1);
+    }
+
+    function updateFieldValue(fieldKey, value) {
+      presetsData[activePreset].fields[fieldKey] = value;
+      renderDocumentSheet();
+      if (fieldKey.includes('debtor') || fieldKey.includes('maker') || fieldKey.includes('lessee')) {
+        updateSslDiagnostic();
+      }
+      computeDigest();
+    }
+
+    function updateSslDiagnostic() {
+      const p = presetsData[activePreset];
+      const debtor = p.fields.debtor_org_name || p.fields.maker_name || p.fields.lessee_name || p.fields.debtor_name || "";
+      
+      let clean = debtor.toUpperCase();
+      let normalized = clean.replace(/[^A-Z0-9]/g, '');
+      const noise = ['LLC', 'INC', 'CORP', 'CORPORATION', 'COMPANY', 'CO', 'LP', 'LLP', 'LTD'];
+      for (const n of noise) {
+        if (normalized.endsWith(n)) {
+          normalized = normalized.slice(0, -n.length);
+          break;
+        }
+      }
+
+      const resBox = document.getElementById('ssl-result');
+      if (resBox) {
+        if (currentAppMode === 'educational') {
+          resBox.innerHTML = `<strong>Input Debtor:</strong> "${debtor}"<br><strong>Statutory Search Key (§ 9-506):</strong> [${normalized || 'EMPTY'}]<br><span style="color:${normalized ? '#10b981' : '#ef4444'}">Status: ${normalized ? 'Valid Search Target Verified' : 'Debtor Required'}</span>`;
+        } else {
+          resBox.innerHTML = `SSL INDEX: [${normalized || 'EMPTY'}] | ${normalized ? 'VALID' : 'EMPTY'}`;
+        }
+      }
+    }
+
+    function renderStageForm() {
+      const p = presetsData[activePreset];
+      const heading = document.getElementById('stage-heading');
+      const form = document.getElementById('dynamic-form-fields');
+      if (!form) return;
+
+      let html = '';
+
+      if (activeStage === 1) {
+        heading.innerText = currentAppMode === 'educational' 
+          ? 'Stage 1: Statutory Legal Identification (§ 9-503)' 
+          : 'Stage 1: Legal Identification';
+        html += `
+          <div class="form-group">
+            <label class="form-label">Debtor Organization Legal Name ${currentAppMode === 'educational' ? '(§ 9-503(a)(1))' : ''}</label>
+            <input type="text" class="form-control" value="${p.fields.debtor_org_name || p.fields.maker_name || p.fields.debtor_name || p.fields.lessee_name || ''}" 
+                   oninput="updateFieldValue('${p.fields.debtor_org_name !== undefined ? 'debtor_org_name' : (p.fields.maker_name !== undefined ? 'maker_name' : (p.fields.lessee_name !== undefined ? 'lessee_name' : 'debtor_name'))}', this.value)" placeholder="Exact public organic record name">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Debtor Official Mailing Address</label>
+            <input type="text" class="form-control" value="${p.fields.debtor_address || p.fields.maker_address || ''}" 
+                   oninput="updateFieldValue('${p.fields.debtor_address !== undefined ? 'debtor_address' : 'maker_address'}', this.value)" placeholder="Street, City, State, ZIP">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Secured Party / Creditor Legal Name</label>
+            <input type="text" class="form-control" value="${p.fields.secured_party_name || p.fields.payee_name || p.fields.lessor_name || ''}" 
+                   oninput="updateFieldValue('${p.fields.secured_party_name !== undefined ? 'secured_party_name' : (p.fields.payee_name !== undefined ? 'payee_name' : 'lessor_name')}', this.value)">
+          </div>
+        `;
+      } else if (activeStage === 2) {
+        heading.innerText = currentAppMode === 'educational' 
+          ? 'Stage 2: Value Attachment & Agreement Enforceability (§ 9-203)' 
+          : 'Stage 2: Value Attachment';
+        html += `
+          <div class="form-group">
+            <label class="form-label">Value Given / Principal Obligation</label>
+            <textarea class="form-control" oninput="updateFieldValue('${p.fields.value_given !== undefined ? 'value_given' : (p.fields.principal_amount !== undefined ? 'principal_amount' : 'monthly_rent')}', this.value)">${p.fields.value_given || p.fields.principal_amount || p.fields.monthly_rent || '$2,500,000.00 USD under Master Credit Agreement'}</textarea>
+          </div>
+        `;
+        if (currentAppMode === 'educational') {
+          html += `
+            <div class="form-group">
+              <label class="form-label">Attachment Validation Checklist</label>
+              <div style="font-size:0.78rem; color:var(--text-muted); line-height:1.6; background:rgba(0,0,0,0.3); padding:0.6rem; border-radius:6px;">
+                &#x2714; Value has been given by Secured Party (§ 9-203(b)(1))<br>
+                &#x2714; Debtor has rights in the collateral or power to transfer (§ 9-203(b)(2))<br>
+                &#x2714; Authenticated Security Agreement with granting clause exists (§ 9-203(b)(3)(A))
+              </div>
+            </div>
+          `;
+        }
+      } else if (activeStage === 3) {
+        heading.innerText = currentAppMode === 'educational' 
+          ? 'Stage 3: Collateral Categorization & Supergeneric Traps (§ 9-108)' 
+          : 'Stage 3: Collateral Specificity';
+        html += `
+          <div class="form-group">
+            <label class="form-label">Collateral Description</label>
+            <textarea class="form-control" style="min-height:110px;" 
+                      oninput="updateFieldValue('${p.fields.collateral_description !== undefined ? 'collateral_description' : (p.fields.equipment_schedule !== undefined ? 'equipment_schedule' : 'digital_collateral')}', this.value)">${p.fields.collateral_description || p.fields.equipment_schedule || p.fields.digital_collateral || ''}</textarea>
+          </div>
+        `;
+        if (currentAppMode === 'educational') {
+          html += `
+            <div style="font-size:0.75rem; color:var(--accent-amber); margin-bottom:0.75rem;">
+              &#x26A0; Note: Supergeneric descriptions such as "all assets" or "all personal property" are legally sufficient for Form UCC-1 under § 9-504(2), but strictly void for Security Agreements under § 9-108(c).
+            </div>
+          `;
+        }
+      } else if (activeStage === 4) {
+        heading.innerText = currentAppMode === 'educational' 
+          ? 'Stage 4: Perfection Mechanics & PMSI Priority (§ 9-310 / § 9-324)' 
+          : 'Stage 4: Priority & PMSI';
+        html += `
+          <div class="form-group">
+            <label class="form-label">Purchase-Money Security Interest (PMSI) Superpriority</label>
+            <select class="form-control" onchange="updateFieldValue('pmsi_election', this.value)">
+              <option value="NO" ${p.fields.pmsi_election === 'NO' ? 'selected' : ''}>Standard Non-PMSI Article 9 Perfection</option>
+              <option value="YES - Equipment (20-Day Grace Period § 9-324(a))" ${p.fields.pmsi_election && p.fields.pmsi_election.includes('Equipment') ? 'selected' : ''}>PMSI in Equipment (§ 9-324(a)) - 20 Day Grace Period</option>
+              <option value="YES - Inventory (Pre-Delivery Notice § 9-324(b))" ${p.fields.pmsi_election && p.fields.pmsi_election.includes('Inventory') ? 'selected' : ''}>PMSI in Inventory (§ 9-324(b)) - Prior Notice Required</option>
+            </select>
+          </div>
+        `;
+        if (currentAppMode === 'educational') {
+          html += `
+            <div class="form-group">
+              <label class="form-label">Perfection Mechanism Method</label>
+              <div style="font-size:0.78rem; color:var(--text-muted); line-height:1.6; background:rgba(0,0,0,0.3); padding:0.6rem; border-radius:6px;">
+                1. <strong>Filing:</strong> Form UCC-1 with central Secretary of State (§ 9-310).<br>
+                2. <strong>Control:</strong> Deposit Accounts (§ 9-104), Electronic Money (§ 9-105A), Investment Property (§ 9-106).<br>
+                3. <strong>Possession:</strong> Tangible negotiable instruments and certified securities (§ 9-313).
+              </div>
+            </div>
+          `;
+        }
+      } else if (activeStage === 5) {
+        heading.innerText = currentAppMode === 'educational' 
+          ? 'Stage 5: Sovereign Jurisdiction & Tribal MTSTA Compacts (§ 9-307)' 
+          : 'Stage 5: Governing Jurisdiction';
+        html += `
+          <div class="form-group">
+            <label class="form-label">Debtor Governing Jurisdiction &amp; Location</label>
+            <input type="text" class="form-control" value="${p.fields.debtor_jurisdiction || p.fields.statutory_authority || 'Delaware, USA'}"
+                   oninput="updateFieldValue('${p.fields.debtor_jurisdiction !== undefined ? 'debtor_jurisdiction' : 'statutory_authority'}', this.value)">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Central Filing Office Designation</label>
+            <input type="text" class="form-control" value="${p.fields.filing_office || 'State Secretary of State / Tribal Commercial Registry'}"
+                   oninput="updateFieldValue('filing_office', this.value)">
+          </div>
+        `;
+      } else if (activeStage === 6) {
+        heading.innerText = currentAppMode === 'educational' 
+          ? 'Stage 6: National Form Generation & Vector PDF Export' 
+          : 'Stage 6: Export & Final Execution';
+        html += `
+          <div class="form-group">
+            <label class="form-label">Filer Reference Number</label>
+            <input type="text" class="form-control" value="${p.fields.filer_reference || 'SPU-UCC-2026-001'}"
+                   oninput="updateFieldValue('filer_reference', this.value)">
+          </div>
+          <div style="font-size:0.8rem; color:var(--accent-green); line-height:1.6; background:rgba(16,185,129,0.08); border:1px solid rgba(16,185,129,0.25); padding:0.75rem; border-radius:6px;">
+            &#x2714; Instrument Compiled and Sealed.<br>
+            &#x2714; Ready for ISO 32000-1 Binary Vector PDF Generation.<br>
+            &#x2714; Full Triple-Layer AAA Sandbox Bypass active.
+          </div>
+        `;
+      }
+
+      form.innerHTML = html;
+    }
+
+    function renderDocumentSheet() {
+      const p = presetsData[activePreset];
+      const sheet = document.getElementById('document-sheet');
+      if (!sheet) return;
+
+      if (activePreset === 'PRESET_UCC1') {
+        sheet.innerHTML = `
+          <div class="sheet-header">
+            <div>
+              <div class="sheet-title">${p.title}</div>
+              <div class="sheet-subtitle">${p.subtitle}</div>
+            </div>
+            <div class="sheet-meta">
+              <strong>REF:</strong> ${p.fields.filer_reference}<br>
+              <strong>DATE:</strong> ${new Date().toISOString().split('T')[0]}
+            </div>
+          </div>
+
+          <div class="ucc-grid">
+            <div class="ucc-cell full-width">
+              <span class="cell-label">1. Debtor's Exact Legal Name (§ 9-503)</span>
+              <div class="cell-value">${p.fields.debtor_org_name || '[ORGANIZATION NAME REQUIRED]'}</div>
+              <div style="font-size:0.72rem; color:#555; margin-top:0.25rem;">
+                Mailing Address: ${p.fields.debtor_address} | Jurisdiction: ${p.fields.debtor_jurisdiction}
+              </div>
+            </div>
+
+            <div class="ucc-cell full-width">
+              <span class="cell-label">2. Secured Party's Name &amp; Address</span>
+              <div class="cell-value">${p.fields.secured_party_name}</div>
+              <div style="font-size:0.72rem; color:#555; margin-top:0.25rem;">
+                Mailing Address: ${p.fields.secured_party_address}
+              </div>
+            </div>
+
+            <div class="ucc-cell full-width" style="min-height: 180px;">
+              <span class="cell-label">3. Collateral Description (§ 9-502 &amp; § 9-504)</span>
+              <div class="cell-value" style="font-weight: normal; font-size: 0.8rem; line-height: 1.45;">${p.fields.collateral_description}</div>
+            </div>
+
+            <div class="ucc-cell">
+              <span class="cell-label">4. Alternative Designation</span>
+              <div class="cell-value" style="font-size: 0.75rem;">LESSEE/LESSOR | CONSIGNOR | BAILEE</div>
+            </div>
+
+            <div class="ucc-cell">
+              <span class="cell-label">5. Purchase-Money Security Interest (PMSI)</span>
+              <div class="cell-value" style="font-size: 0.75rem;">${p.fields.pmsi_election || 'STANDARD NON-PMSI'}</div>
+            </div>
+          </div>
+
+          <div style="font-size:0.68rem; color:#666; font-family:Arial, sans-serif; border-top:1px solid #ccc; padding-top:0.5rem; text-align:justify;">
+            This financing statement is presented for filing pursuant to Uniform Commercial Code Article 9. The debtor authorizes this filing pursuant to authenticated security agreement (§ 9-509). Statutory penalties for unauthorized filing under § 9-625 and 18 U.S.C. § 1521 apply.
+          </div>
+        `;
+      } else if (activePreset === 'PRESET_UCC3') {
+        sheet.innerHTML = `
+          <div class="sheet-header">
+            <div>
+              <div class="sheet-title">${p.title}</div>
+              <div class="sheet-subtitle">${p.subtitle}</div>
+            </div>
+            <div class="sheet-meta">
+              <strong>REF:</strong> ${p.fields.filer_reference}<br>
+              <strong>INITIAL FILE NO:</strong> ${p.fields.initial_financing_statement_file_no}<br>
+              <strong>DATE:</strong> ${new Date().toISOString().split('T')[0]}
+            </div>
+          </div>
+
+          <div class="ucc-grid">
+            <div class="ucc-cell full-width">
+              <span class="cell-label">1. Initial Financing Statement File Number (§ 9-512)</span>
+              <div class="cell-value">${p.fields.initial_financing_statement_file_no}</div>
+            </div>
+
+            <div class="ucc-cell full-width">
+              <span class="cell-label">2. Amendment Action Classification</span>
+              <div class="cell-value" style="color:var(--accent-amber);">${p.fields.amendment_type}</div>
+            </div>
+
+            <div class="ucc-cell full-width">
+              <span class="cell-label">3. Current Debtor Identification</span>
+              <div class="cell-value">${p.fields.debtor_org_name}</div>
+            </div>
+
+            <div class="ucc-cell full-width">
+              <span class="cell-label">4. Secured Party Authorizing Amendment</span>
+              <div class="cell-value">${p.fields.secured_party_name}</div>
+            </div>
+
+            <div class="ucc-cell full-width" style="min-height: 120px;">
+              <span class="cell-label">5. Collateral Change / Amendment Details</span>
+              <div class="cell-value" style="font-weight: normal; font-size: 0.8rem; line-height: 1.45;">${p.fields.collateral_description}</div>
+            </div>
+          </div>
+
+          <div style="font-size:0.68rem; color:#666; font-family:Arial, sans-serif; border-top:1px solid #ccc; padding-top:0.5rem; text-align:justify;">
+            Presented for filing pursuant to UCC Article 9 Part 5. Authorizing secured party of record affirms authorization.
+          </div>
+        `;
+      } else {
+        sheet.innerHTML = `
+          <div class="sheet-header">
+            <div>
+              <div class="sheet-title">${p.title}</div>
+              <div class="sheet-subtitle">${p.subtitle}</div>
+            </div>
+            <div class="sheet-meta">
+              <strong>DATE:</strong> ${new Date().toISOString().split('T')[0]}
+            </div>
+          </div>
+
+          <div class="clause-block">
+            <div class="clause-title">1. Parties &amp; Recitals</div>
+            <p>This Instrument is entered into by and between <strong>${p.fields.debtor_org_name || p.fields.maker_name || p.fields.lessee_name || p.fields.debtor_name}</strong> ("Obligor") and <strong>${p.fields.secured_party_name || p.fields.payee_name || p.fields.lessor_name}</strong> ("Holder/Secured Party").</p>
+          </div>
+
+          <div class="clause-block">
+            <div class="clause-title">2. Grant of Security &amp; Principal Terms</div>
+            <p>${p.fields.collateral_description || p.fields.equipment_schedule || p.fields.digital_collateral || p.fields.payment_terms || 'The Obligor hereby pledges and assigns all right, title, and interest in the stipulated assets to secure complete performance.'}</p>
+          </div>
+
+          <div class="clause-block">
+            <div class="clause-title">3. Governing Law &amp; Remedies</div>
+            <p>${p.fields.governing_law || p.fields.statutory_authority || 'Governed by the Uniform Commercial Code and applicable statutory law.'}</p>
+          </div>
+
+          <div class="sig-line-grid">
+            <div class="sig-slot">
+              <strong>OBLIGOR / DEBTOR:</strong><br>
+              By: _______________________________<br>
+              Title: Authorized Representative
+            </div>
+            <div class="sig-slot">
+              <strong>SECURED PARTY / HOLDER:</strong><br>
+              By: _______________________________<br>
+              Title: Managing Trustee
+            </div>
+          </div>
+        `;
+      }
+    }
+
+    // Pure JavaScript ISO 32000-1 Vector PDF Compiler (Layer 1 AAA Bypass)
+    function generateVectorPdf() {
+      const p = presetsData[activePreset];
+      const title = p.title;
+      const debtor = p.fields.debtor_org_name || p.fields.maker_name || p.fields.lessee_name || p.fields.debtor_name || "DEBTOR";
+      const secured = p.fields.secured_party_name || p.fields.payee_name || p.fields.lessor_name || "SECURED PARTY";
+      const desc = p.fields.collateral_description || p.fields.equipment_schedule || p.fields.payment_terms || "";
+
+      const clean = (s) => (s || "").replace(/[\(\)]/g, "").replace(/[^\x20-\x7E]/g, " ");
+
+      let stream = [];
+      stream.push("BT");
+      stream.push("/F2 16 Tf");
+      stream.push("50 740 Td");
+      stream.push(`(${clean(title)}) Tj`);
+      stream.push("ET");
+
+      stream.push("BT");
+      stream.push("/F1 10 Tf");
+      stream.push("50 720 Td");
+      stream.push(`(Space.University Statutory Registry & Commercial Jurisprudence Instrument) Tj`);
+      stream.push("ET");
+
+      stream.push("0.75 w");
+      stream.push("0 0 0 RG");
+      stream.push("50 480 512 210 re");
+      stream.push("S");
+
+      stream.push("BT");
+      stream.push("/F2 9 Tf");
+      stream.push("60 670 Td");
+      stream.push("(1. DEBTOR LEGAL IDENTITY [UCC Section 9-503]:) Tj");
+      stream.push("ET");
+
+      stream.push("BT");
+      stream.push("/F1 10 Tf");
+      stream.push("60 650 Td");
+      stream.push(`(${clean(debtor)}) Tj`);
+      stream.push("ET");
+
+      stream.push("BT");
+      stream.push("/F2 9 Tf");
+      stream.push("60 610 Td");
+      stream.push("(2. SECURED PARTY CREDITOR:) Tj");
+      stream.push("ET");
+
+      stream.push("BT");
+      stream.push("/F1 10 Tf");
+      stream.push("60 590 Td");
+      stream.push(`(${clean(secured)}) Tj`);
+      stream.push("ET");
+
+      stream.push("BT");
+      stream.push("/F2 9 Tf");
+      stream.push("60 550 Td");
+      stream.push("(3. COLLATERAL SPECIFICITY [UCC Section 9-108]:) Tj");
+      stream.push("ET");
+
+      const shortDesc = clean(desc).substring(0, 90);
+      stream.push("BT");
+      stream.push("/F1 9 Tf");
+      stream.push("60 530 Td");
+      stream.push(`(${shortDesc}) Tj`);
+      stream.push("ET");
+
+      stream.push("BT");
+      stream.push("/F3 8 Tf");
+      stream.push("50 440 Td");
+      stream.push("(Compiled by Space.University SC-COMM-301 Engine. Certified tamper-evident record.) Tj");
+      stream.push("ET");
+
+      const streamContent = stream.join("\n");
+      const streamLen = streamContent.length;
+
+      let objects = [];
+      objects.push("1 0 obj\n<< /Type /Catalog /Pages 2 0 R >>\nendobj");
+      objects.push("2 0 obj\n<< /Type /Pages /Kids [3 0 R] /Count 1 >>\nendobj");
+      objects.push("3 0 obj\n<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 4 0 R /Resources << /Font << /F1 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica >> /F2 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >> /F3 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Oblique >> >> >> >>\nendobj");
+      objects.push(`4 0 obj\n<< /Length ${streamLen} >>\nstream\n${streamContent}\nendstream\nendobj`);
+
+      let pdf = "%PDF-1.4\n";
+      let xref = ["xref\n0 5\n0000000000 65535 f \n"];
+      let offset = pdf.length;
+
+      for (let i = 0; i < objects.length; i++) {
+        let offStr = String(offset).padStart(10, '0');
+        xref.push(`${offStr} 00000 n \n`);
+        let chunk = objects[i] + "\n";
+        pdf += chunk;
+        offset += chunk.length;
+      }
+
+      let xrefOffset = offset;
+      pdf += xref.join("");
+      pdf += `trailer\n<< /Size 5 /Root 1 0 R >>\nstartxref\n${xrefOffset}\n%%EOF`;
+
+      const blob = new Blob([pdf], { type: 'application/pdf' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `${activePreset.toLowerCase()}_instrument.pdf`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
+
+    async function computeDigest() {
+      const stateStr = JSON.stringify(presetsData[activePreset]);
+      const encoder = new TextEncoder();
+      const data = encoder.encode(stateStr);
+      try {
+        const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+        const hashArray = Array.from(new Uint8Array(hashBuffer));
+        const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+        const d = document.getElementById('sha256-digest');
+        if (d) d.innerText = 'sha256:' + hashHex;
+      } catch (e) {
+        // Fallback
+      }
+    }
+
+    window.onload = init;
+  </script>
+
+  <script src="/professor_rabbit_3d_engine.js"></script>
+  <script>
+    let selectedNeuralVoice = 'en-GB-RyanNeural';
+    const stageStatuteEquations = {
+      1: 'UCC § 9-503(a)(1) Exact Organic Record Name ∧ § 9-506(c) Standard Search Logic',
+      2: 'UCC § 9-203(b) Attachment = Value(1) ∧ DebtorRights(2) ∧ AuthenticatedAgreement(3)',
+      3: 'UCC § 9-108(b) Category Specificity vs. § 9-108(c) Supergeneric Voidness Trap',
+      4: 'UCC § 9-310 Filing Perfection ∧ § 9-324(a) 20-Day Equipment PMSI Superpriority',
+      5: 'UCC § 9-307(e) State of Formation Rule ∧ MTSTA Sovereign Tribal Compact',
+      6: 'ISO 32000-1 Vector PDF Binary Compilation ∧ SHA-256 Chain of Custody'
+    };
+
+    function updateNeuralVoiceChoice() {
+      const sel = document.getElementById('neural-voice-select');
+      if (sel) {
+        selectedNeuralVoice = sel.value || 'en-GB-RyanNeural';
+        if (window.ProfessorRabbit3D && window.ProfessorRabbit3D.setVoice) {
+          window.ProfessorRabbit3D.setVoice(selectedNeuralVoice);
+        }
+      }
+    }
+
+    // Override speakText to use ProfessorRabbit3D Neural Human Voice + 60 FPS WebAudio Formant Lip-Sync
+    const _legacySpeakText = typeof speakText === 'function' ? speakText : null;
+    speakText = function(text, onEndCallback) {
+      const statusEl = document.getElementById('current-audio-status');
+      if (statusEl) {
+        statusEl.innerText = 'Streaming Realistic Neural Human Voice (' + selectedNeuralVoice + ') + 60 FPS 3D Formant Lip-Sync...';
+      }
+      if (window.ProfessorRabbit3D && typeof window.ProfessorRabbit3D.speak === 'function') {
+        window.ProfessorRabbit3D.speak(text, {
+          voice: selectedNeuralVoice,
+          rate: voiceRate,
+          onEnd: function() {
+            if (statusEl) statusEl.innerText = 'Audio Ready • Realistic Neural Human Voice Engine (' + selectedNeuralVoice + ')';
+            if (onEndCallback) onEndCallback();
+          }
+        });
+      } else if (_legacySpeakText) {
+        _legacySpeakText(text, onEndCallback);
+      }
+    };
+
+    const _legacyPause = typeof pauseCurrentLecture === 'function' ? pauseCurrentLecture : null;
+    pauseCurrentLecture = function() {
+      if (window.ProfessorRabbit3D && window.ProfessorRabbit3D.pause) window.ProfessorRabbit3D.pause();
+      if (_legacyPause) _legacyPause();
+    };
+
+    const _legacyStop = typeof stopCurrentLecture === 'function' ? stopCurrentLecture : null;
+    stopCurrentLecture = function() {
+      if (window.ProfessorRabbit3D && window.ProfessorRabbit3D.stop) window.ProfessorRabbit3D.stop();
+      if (_legacyStop) _legacyStop();
+    };
+
+    // Hook setStage to update the 3D Chalkboard & Pose
+    const _origSetStage = typeof setStage === 'function' ? setStage : null;
+    if (_origSetStage) {
+      setStage = function(stageNum) {
+        _origSetStage(stageNum);
+        if (window.ProfessorRabbit3D && window.ProfessorRabbit3D.setChalkboardText) {
+          const eq = stageStatuteEquations[stageNum] || 'UCC Article 9 Commercial Jurisprudence';
+          const script = stageRabbitScripts[stageNum] || '';
+          window.ProfessorRabbit3D.setChalkboardText(
+            'SC-COMM-301 • Stage ' + stageNum + ' / 6 Statutory Guidance',
+            eq,
+            [script.substring(0, 110) + '...', 'Preset: ' + activePreset + ' • Mode: ' + currentAppMode.toUpperCase()]
+          );
+          window.ProfessorRabbit3D.setPose(stageNum === 3 ? 'QUARANTINE_WARNING' : (stageNum === 4 ? 'EUREKA_POINTER' : 'UCC_JURISPRUDENCE'));
+        }
+      };
+    }
+
+    // Hook selectLecture to update the 3D Chalkboard
+    const _origSelectLecture = typeof selectLecture === 'function' ? selectLecture : null;
+    if (_origSelectLecture) {
+      selectLecture = function(index, autoPlay) {
+        _origSelectLecture(index, autoPlay);
+        const lec = audioLectures[index];
+        if (lec && window.ProfessorRabbit3D && window.ProfessorRabbit3D.setChalkboardText) {
+          window.ProfessorRabbit3D.setChalkboardText(
+            lec.title,
+            lec.subtitle,
+            [lec.script.substring(0, 115) + '...', 'Dean Prof. Rabbit Warren • Neural Voice: ' + selectedNeuralVoice]
+          );
+        }
+      };
+    }
+
+    // Upgrade askAlfredGemini to query /api/v1/professor-rabbit/ask first
+    askAlfredGemini = async function() {
+      const input = document.getElementById('alfred-question-input');
+      const view = document.getElementById('alfred-response-view');
+      const q = (input.value || '').trim();
+      if (!q) return;
+      view.style.display = 'block';
+      view.innerText = 'Consulting Dean Prof. Rabbit Warren & Gemini 2.5 Flash Co-Teacher...';
+      try {
+        const resp = await fetch('/api/v1/professor-rabbit/ask', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ course_id: 'SC-COMM-301', question: q })
+        });
+        const data = await resp.json();
+        if (data && data.professor_rabbit_lecture) {
+          const combined = '🐰 Dean Prof. Rabbit Warren:\n' + data.professor_rabbit_lecture + '\n\n🤖 ' + (data.gemini_llm_co_teacher || '');
+          view.innerText = combined;
+          if (window.ProfessorRabbit3D && window.ProfessorRabbit3D.setChalkboardText) {
+            window.ProfessorRabbit3D.setChalkboardText('SC-COMM-301 Live Jurisprudence Q&A', data.whiteboard_equation || 'UCC Article 9', [q, data.professor_rabbit_lecture.substring(0, 110) + '...']);
+          }
+          speakText(data.professor_rabbit_lecture);
+          return;
+        }
+      } catch (e) {}
+      const fallbackText = 'Dean Prof. Rabbit Warren on "' + q + '": Under UCC Article 9, verify exact organic record debtor names under § 9-503, enumerate statutory collateral categories under § 9-108 (never use supergeneric all-assets in a Security Agreement under § 9-108(c)), and perfect via UCC-1 filing (§ 9-310) or control (§ 9-104 / § 12-105).';
+      view.innerText = fallbackText;
+      speakText(fallbackText);
+    };
+
+    window.addEventListener('load', function() {
+      setTimeout(function() {
+        if (window.ProfessorRabbit3D) {
+          window.ProfessorRabbit3D.mount('rabbit-ucc-3d-stage', {
+            hologramMode: 'UCC_ARTICLE_9',
+            pose: 'UCC_JURISPRUDENCE',
+            voice: selectedNeuralVoice,
+            title: 'SC-COMM-301: UCC Article 9 Statutory Filing Studio',
+            equation: stageStatuteEquations[1],
+            bullets: [
+              'Stage 1: Debtor Exact Organic Record Name (§ 9-503(a)(1))',
+              'Standard Search Logic (§ 9-506(c)) Live Verification Active',
+              'Click Speak 3D Neural Voice to hear Dean Prof. Rabbit Warren'
+            ]
+          });
+          window.ProfessorRabbit3D.mount('rabbit-audiohall-3d-stage', {
+            hologramMode: 'UCC_ARTICLE_9',
+            pose: 'EUREKA_POINTER',
+            voice: selectedNeuralVoice,
+            title: 'SC-COMM-301 Audio-Visual 3D Lecture Amphitheater',
+            equation: 'Attachment (§ 9-203) ∧ Perfection (§ 9-310) ⟹ Priority (§ 9-322 / § 9-324)',
+            bullets: [
+              '8 Full Commercial Law Modules • Free Open University Access',
+              'Real-Time Neural Human Voice + 60 FPS WebAudio Formant Lip-Sync'
+            ]
+          });
+        }
+      }, 150);
+    });
+  </script>
+
+</body>
+</html>

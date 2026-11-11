@@ -911,5 +911,42 @@
     }, 60);
 
   </script>
+
+<!-- === FULL 3D PROFESSOR RABBIT WARREN & UCC PROOF-OF-CONCEPT UPGRADE (v1.7.0) === -->
+<script src="/professor_rabbit_3d_engine.js"></script>
+<script>
+(function() {
+  function initVirtualUniversity3D() {
+    if (!window.ProfessorRabbit3D) return;
+    // Upgrade main campus & lecture hall stages to Full 3D WebGL
+    var stageTargets = ['rabbit-3d-main-viewport', 'rabbit-course-3d-viewport'];
+    stageTargets.forEach(function(id) {
+      var el = document.getElementById(id);
+      if (el && !el.dataset.mounted3d) {
+        el.dataset.mounted3d = '1';
+        window.ProfessorRabbit3D.mount(id, {
+          hologramMode: 'UCC_ARTICLE_9',
+          pose: 'EUREKA_POINTER',
+          voice: 'en-GB-RyanNeural',
+          title: 'SC-COMM-301: UCC Article 9 & Biophysics 3D Amphitheater',
+          equation: 'UCC § 9-203 Attachment ∧ § 9-310 Perfection ⟹ § 9-324 PMSI  |  ν₁ = 0.42338·(⟨z⟩/R_g)^1.1194',
+          bullets: [
+            'Proof-of-Concept Live: SC-COMM-301 Commercial Jurisprudence & UCC Article 9 Studio (/ucc)',
+            'Full 3D Articulated Prof. Rabbit Warren (60 FPS WebGL + 7-Viseme Formant Lip-Sync)',
+            'Realistic Neural Human Voice Engine (/api/v1/professor-rabbit/tts • en-GB-RyanNeural)',
+            '7 Courses Online (32.0 rATTN) • 9 DocMesh Documents IN_SYNC (driftScore = 0.0)'
+          ]
+        });
+      }
+    });
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function() { setTimeout(initVirtualUniversity3D, 150); });
+  } else {
+    setTimeout(initVirtualUniversity3D, 150);
+  }
+})();
+</script>
+
 </body>
 </html>

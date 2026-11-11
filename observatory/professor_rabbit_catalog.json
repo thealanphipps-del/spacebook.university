@@ -1,17 +1,19 @@
 {
   "series_id": "SPU-SERIES-RABBIT-GEMINI-2026",
   "docmesh_rfc": "RFC-VI-0005 / SPU-0013",
-  "series_title": "Professor Rabbit's Sovereign Biophysics, Bio-Acoustics & Chain-of-Custody Curriculum Series",
+  "series_title": "Professor Rabbit's Sovereign Biophysics, Bio-Acoustics, Chain-of-Custody & Commercial Jurisprudence Curriculum Series",
+  "total_courses": 7,
+  "total_credits": "32.0 rATTN",
   "lead_instructor": {
-    "name": "Professor Rabbit (Real-Time 60 FPS Pre-Rendered Persona Engine)",
-    "title": "Chair of Macromolecular Topology & Epistemic Warren Auditing, Space.University (Divisions SPU-D5 & SPU-D6)",
+    "name": "Professor Rabbit Warren (Real-Time 60 FPS 3D WebGL & Pre-Rendered Persona Engine)",
+    "title": "Dean of Commercial Jurisprudence & Chair of Macromolecular Topology and Epistemic Warren Auditing, Space.University (Divisions SPU-D1, SPU-D5 & SPU-D6)",
     "avatar_url": "/rabbit_whiteboard.jpg",
-    "prerender_engine": "PROFESSOR-RABBIT-RT-PRERENDER-V2 (7-Viseme Lip-Sync + Inverse Kinematics Chalk Arm + 3D Kirchhoff Hologram)",
-    "pedagogy": "Intuitive physical analogies ('The Rabbit Warren'), step-by-step chalkboard derivations, and fearless negative-control falsification."
+    "prerender_engine": "PROFESSOR-RABBIT-3D-WEBGL-V3 + RT-PRERENDER-V2 (60 FPS WebAudio Lip-Sync + Inverse Kinematics Chalk Arm + 3D Kirchhoff & UCC Hypergraph)",
+    "pedagogy": "Intuitive physical and statutory analogies ('The Rabbit Warren'), step-by-step 3D chalkboard derivations, and fearless negative-control / Standard Search Logic falsification."
   },
   "co_teacher_llm": {
     "name": "Gemini LLM Co-Teacher (Gemini 2.5 Flash / Sovereign Cascade)",
-    "role": "Interactive Mathematical Co-Instructor, Live Code Verifier, Socratic Tutor & Lab Grader",
+    "role": "Interactive Mathematical & Statutory Co-Instructor, Live Code Verifier, Socratic Tutor & Lab Grader",
     "models": [
       "gemini-2.5-flash",
       "gemini-2.0-flash",
@@ -371,8 +373,87 @@
         "correct_index": 0,
         "explanation": "Exact match! INV-POLY-002 is the exact mathematical ([EM]) root invariant governing all symmetric zero-row-sum Kirchhoff Laplacians across biophysics and market microstructure."
       }
+    },
+    {
+      "course_id": "SC-COMM-301",
+      "code": "SC-COMM-301",
+      "division": "SPU-D1 / SPU-D6",
+      "level": "Proof-of-Concept Flagship Studio (300-Level)",
+      "credits": "6.0 rATTN",
+      "textbook_id": "TEXTBOOK_07_SC_COMM_301",
+      "default_pdb": "1AKI",
+      "default_pose": "CHALKBOARD_WRITING",
+      "hologram_mode": "UCC_ARTICLE_9",
+      "portal_url": "https://ucc.space.university",
+      "local_path": "/ucc.html",
+      "title": "Commercial Jurisprudence & UCC Article 9 Statutory Filing Studio (Flagship Proof-of-Concept)",
+      "subtitle": "Mastering the Sacred Triad of Attachment (§ 9-203), Multi-Lane Perfection (§ 9-310 / § 9-104), PMSI Superpriority (§ 9-324), Standard Search Logic (§ 9-506), MTSTA Tribal Compacts & Client-Side ISO 32000-1 Vector PDF Compilation",
+      "headline_formula": "Attachment (§ 9-203) ──► Perfection (§ 9-310 / Control § 9-104) ──► PMSI Superpriority (§ 9-324) ──► ISO 32000-1 SHA-256",
+      "rabbit_chalkboard_intro": "Welcome to our Flagship Proof-of-Concept Open University Course (SC-COMM-301) live at ucc.space.university! In Uniform Commercial Code Article 9, commercial law operates as an exact statutory state machine. First, your security interest must ATTACH under § 9-203(b) via Value, Debtor Rights, and an Authenticated Security Agreement specifying statutory collateral categories under § 9-108 (never write 'all assets' in a Security Agreement—§ 9-108(c) voids it!). Second, you PERFECT against the world under § 9-310 by filing Form UCC-1 under the debtor's exact public organic record name (§ 9-503 / § 9-506 Standard Search Logic) in the debtor's state of formation (§ 9-307), or by Control (§ 9-104 / § 9-105A). Third, you claim PMSI Superpriority under § 9-324 and compile a tamper-evident ISO 32000-1 Vector PDF!",
+      "gemini_co_teacher_note": "Gemini Co-Teacher Verification: The SC-COMM-301 Filing Studio integrates a 6-Stage Interactive Form Wizard across 6 commercial instruments (UCC-1, UCC-3, Security Agreement, Promissory Note, Article 2A Equipment Lease, and MTSTA Sovereign Tribal Compact), a live IACA Standard Search Logic (§ 9-506(c)) normalizer, 8 full neural-voice audio lectures, and a pure-JS ISO 32000-1 (%PDF-1.4) binary compiler anchored by WebCrypto SHA-256.",
+      "modules": [
+        {
+          "module_id": "M7.1",
+          "title": "The Statutory Commercial Matrix & Substance Over Form (§ 9-109 / § 1-203)",
+          "summary": "Distinguishing Article 2 sales, Article 2A true leases vs. disguised security interests (§ 1-203 bright-line economic life and nominal option tests), Article 3 negotiable notes, Article 9 security interests, and Article 12 Controllable Electronic Records.",
+          "equation": "Scope(§ 9-109) ∧ DisguisedSecurityInterest(§ 1-203(b)) ⟹ FilePrecautionaryUCC1(§ 9-505)"
+        },
+        {
+          "module_id": "M7.2",
+          "title": "The Sacred Triad of Attachment (§ 9-203) & Floating Liens (§ 9-204)",
+          "summary": "Coalescence of Value Given (§ 9-203(b)(1)), Debtor Rights in Collateral (§ 9-203(b)(2)), and Authenticated Security Agreement with Granting Clause (§ 9-203(b)(3)(A)), plus after-acquired property floating liens and identifiable proceeds (§ 9-315).",
+          "equation": "Attached(S) ⟺ Value(b)(1) ∧ DebtorRights(b)(2) ∧ AuthenticatedSA(b)(3)(A)"
+        },
+        {
+          "module_id": "M7.3",
+          "title": "Collateral Specificity & The Anti-Supergeneric Trap (§ 9-108 vs. § 9-504)",
+          "summary": "Why supergeneric 'all assets' is valid on a public Form UCC-1 financing statement (§ 9-504(2)) but strictly VOID in a private Security Agreement (§ 9-108(c)), plus heightened specificity for commercial tort claims (§ 9-108(e)(1)).",
+          "equation": "SA('All Assets') = VOID (§ 9-108(c))  ≠  UCC1('All Assets') = VALID (§ 9-504(2))"
+        },
+        {
+          "module_id": "M7.4",
+          "title": "Perfection Mechanics & Multi-Lane Constructive Notice (§ 9-310 / § 9-104 / § 9-105A)",
+          "summary": "Comparing the 5 statutory perfection lanes: Secretary of State UCC-1 filing (§ 9-310), Exclusive Control for Deposit Accounts (DACA § 9-104) and Electronic Money (§ 9-105A), Possession (§ 9-313), Automatic Consumer PMSI (§ 9-309(1)), and Title Notation (§ 9-311).",
+          "equation": "Perfected(DepositAccount) ⟺ Control_DACA(§ 9-104)   [Filing Ineffective § 9-312(b)(1)]"
+        },
+        {
+          "module_id": "M7.5",
+          "title": "Priority Battles & PMSI Superpriority Leapfrog (§ 9-322 / § 9-324)",
+          "summary": "Applying First-to-File-or-Perfect (§ 9-322(a)(1)) and executing the PMSI Superpriority leapfrog: 20-calendar-day possession grace period for Equipment (§ 9-324(a)) vs. pre-delivery authenticated notice + pre-possession filing for Inventory (§ 9-324(b)).",
+          "equation": "PMSI_Equip(t_file ≤ t_poss + 20d) ≻ BlanketLien(t_0)   [§ 9-324(a)]"
+        },
+        {
+          "module_id": "M7.6",
+          "title": "Debtor Location (§ 9-307) & Model Tribal Secured Transactions Act (MTSTA) Compacts",
+          "summary": "Filing in the State of Formation for registered organizations (§ 9-307(e)), tracking the 4-month post-relocation reperfection window (§ 9-316), and structuring cross-border sovereign compacts under MTSTA Title 9.",
+          "equation": "Jurisdiction(RegisteredOrg) = StateOfFormation(§ 9-307(e))"
+        },
+        {
+          "module_id": "M7.7",
+          "title": "Part 6 Default, Self-Help Repossession & Commercially Reasonable Disposition (§ 9-609 / § 9-610)",
+          "summary": "Enforcing security interests upon default without breach of the peace (§ 9-609), satisfying the 10-day commercial notification safe harbor (§ 9-612), and avoiding the § 9-626 rebuttable presumption deficiency bar.",
+          "equation": "SelfHelp(§ 9-609) ⟹ ¬BreachOfPeace ∧ CommerciallyReasonableSale(§ 9-610)"
+        },
+        {
+          "module_id": "M7.8",
+          "title": "Standard Search Logic (§ 9-503 / § 9-506), ISO 32000-1 Vector PDF & SHA-256 Custody",
+          "summary": "Validating exact public organic record debtor names against IACA Standard Search Logic normalization (§ 9-506(c)) and compiling zero-telemetry ISO 32000-1 (%PDF-1.4) vector instruments sealed with WebCrypto SHA-256.",
+          "equation": "SSL(Name_UCC1) == SSL(OrganicRecord_§9-503) ∧ SHA256(ISO_32000_1_PDF)"
+        }
+      ],
+      "quiz": {
+        "question": "Under UCC Article 9, what happens if a lender drafts a private Security Agreement describing the collateral solely as 'all of the Debtor's assets and personal property', and later seeks to leapfrog an existing blanket lender on newly financed Inventory under § 9-324(b)?",
+        "options": [
+          "The Security Agreement is completely VOID under § 9-108(c) because supergeneric 'all assets' descriptions are only valid on Form UCC-1 (§ 9-504), and Inventory PMSI under § 9-324(b) requires BOTH perfection before possession AND authenticated written notice to the prior blanket lender before delivery!",
+          "The 'all assets' description is valid in both the Security Agreement and the UCC-1, and Inventory PMSI has a 60-day grace period after delivery.",
+          "Filing a UCC-1 automatically perfects a security interest in a deposit account without a DACA.",
+          "A Delaware LLC must have its UCC-1 filed in every state where its trucks drive."
+        ],
+        "correct_index": 0,
+        "explanation": "Masterful statutory precision! As Dean Professor Rabbit Warren demonstrates on the 3D Chalkboard, § 9-108(c) strictly voids supergeneric 'all assets' descriptions in a Security Agreement (so attachment under § 9-203 never even occurs!), and § 9-324(b) grants zero grace period for Inventory PMSI—requiring both perfection and authenticated written notification before the debtor receives possession."
+      }
     }
   ],
-  "version": "v1.6.0-SPU0013-RABBIT-DOCMESH",
-  "mined_invariants_summary": "66 Leaves | 7 Trunks | 10 Orthogonal Polymorph Roots | 528 8NN Edges"
+  "version": "v1.7.0-SPU0013-RABBIT-3D-UCC-DOCMESH",
+  "mined_invariants_summary": "66 Leaves | 7 Trunks | 10 Orthogonal Polymorph Roots | 528 8NN Edges | 7 Flagship Courses (32.0 rATTN)"
 }
