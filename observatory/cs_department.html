@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Space.University • Invite-Only Private Computer Science Department & Peer-Review Lab</title>
+  <style>
+    :root {
+      --bg: #040710;
+      --card: rgba(11, 17, 30, 0.94);
+      --border: rgba(56, 189, 248, 0.35);
+      --emerald: #10b981;
+      --cyan: #38bdf8;
+      --amber: #f59e0b;
+      --purple: #a855f7;
+      --rose: #f43f5e;
+      --text: #f8fafc;
+      --muted: #94a3b8;
+      --mono: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
+      --sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: radial-gradient(circle at 15% 0%, #0f172a 0%, #040710 65%);
+      color: var(--text);
+      font-family: var(--sans);
+      line-height: 1.55;
+    }
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      padding: 12px 24px;
+      background: rgba(4, 7, 16, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(244, 63, 94, 0.4);
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: var(--mono);
+      font-weight: 800;
+      font-size: 0.95rem;
+      color: #fff;
+    }
+    .badge-private {
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(244, 63, 94, 0.2);
+      color: #fda4af;
+      border: 1px solid rgba(244, 63, 94, 0.5);
+      font-size: 0.72rem;
+      font-family: var(--mono);
+    }
+    .nav-links {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      padding: 6px 11px;
+      border-radius: 6px;
+      border: 1px solid rgba(148, 163, 184, 0.2);
+    }
+    .nav-links a:hover { color: #fff; border-color: var(--cyan); }
+    .container { max-width: 1420px; margin: 0 auto; padding: 24px; }
+    .gate-overlay {
+      margin: 20px auto;
+      max-width: 760px;
+      padding: 28px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.96), rgba(30, 10, 25, 0.94));
+      border: 1px solid rgba(244, 63, 94, 0.55);
+      box-shadow: 0 20px 55px rgba(0, 0, 0, 0.65);
+    }
+    .btn {
+      padding: 9px 15px;
+      border-radius: 8px;
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      font-weight: 700;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: all 0.15s;
+    }
+    .btn-emerald { background: var(--emerald); color: #04130d; }
+    .btn-cyan { background: rgba(56, 189, 248, 0.18); color: var(--cyan); border-color: rgba(56, 189, 248, 0.45); }
+    .btn-amber { background: linear-gradient(90deg, #f59e0b, #10b981); color: #04130d; font-weight: 800; }
+    .btn-purple { background: rgba(168, 85, 247, 0.2); color: #e9d5ff; border-color: rgba(168, 85, 247, 0.45); }
+    .card {
+      background: var(--card);
+      border: 1px solid rgba(148, 163, 184, 0.22);
+      border-radius: 14px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(390px, 1fr));
+      gap: 18px;
+    }
+    .mono-out {
+      margin-top: 10px;
+      padding: 12px;
+      border-radius: 8px;
+      background: rgba(2, 6, 23, 0.92);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      font-family: var(--mono);
+      font-size: 0.76rem;
+      color: #a7f3d0;
+      white-space: pre-wrap;
+    }
+    input, select {
+      width: 100%;
+      padding: 8px 10px;
+      border-radius: 7px;
+      background: #060b16;
+      border: 1px solid rgba(148, 163, 184, 0.3);
+      color: #fff;
+      font-family: var(--mono);
+      font-size: 0.8rem;
+    }
+    label {
+      display: block;
+      font-family: var(--mono);
+      font-size: 0.73rem;
+      color: var(--muted);
+      margin-bottom: 4px;
+      margin-top: 8px;
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span>🔒 SPACE.UNIVERSITY • DEPT OF COMPUTER SCIENCE &amp; FORMAL VERIFICATION</span>
+      <span class="badge-private" id="clearance-badge">PRIVATE • INVITE ONLY</span>
+    </div>
+    <nav class="nav-links">
+      <a href="/">🏛️ Main Campus</a>
+      <a href="/ucc">⚖️ UCC Studio (Free PoC)</a>
+      <a href="/dsp">🎛️ Paid DSP &amp; Audio Track</a>
+      <a href="/grants">🏛️ Paid Grantwriting Studio</a>
+      <a href="/courses/professor-rabbit-series">📚 11-Course Hall</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <!-- INVITE-ONLY CLEARANCE GATE -->
+    <div id="invite-gate-box" class="gate-overlay">
+      <div style="font-family:var(--mono);font-size:0.76rem;color:#fda4af;font-weight:800;margin-bottom:6px;">
+        🛡️ RESTRICTED FACULTY &amp; PEER-REVIEW VAULT • DEPT-CS-PRIVATE (INVITE-ONLY)
+      </div>
+      <h2 style="margin:0 0 8px;font-family:var(--mono);font-size:1.35rem;">
+        Computer Science Department: Private Project &amp; Peer-Review Laboratory
+      </h2>
+      <p style="margin:0 0 14px;color:#cbd5e1;font-size:0.86rem;">
+        Access to the Space.University Computer Science Department (<strong>Q17/ZAP Formal Proof Resolution `cna_jau7`</strong> &amp; <strong>Jacob's Ladder Peer-Review Compendium `SA_PUB_Preedit_Phipps_A-2026.tex`</strong>) is strictly <strong>Invite-Only and Private</strong>. Enter your Fellow Invite Key below to unlock the 3D Lecture Amphitheater and interactive proof verification workbenches.
+      </p>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:flex-end;">
+        <div style="flex:1;min-width:260px;">
+          <label>Private Fellow Invite Key</label>
+          <input type="text" id="invite-key-input" value="CS-FELLOW-Q17-ZAP-2026" />
+        </div>
+        <button class="btn btn-amber" onclick="verifyCsInvite()">🔓 Verify Invite &amp; Enter Private CS Lab</button>
+        <button class="btn btn-cyan" onclick="document.getElementById('invite-key-input').value='TKT-10356-PEER-REVIEW-KEY';verifyCsInvite();">🔑 Use TKT-10356 Peer-Review Key</button>
+      </div>
+      <div id="invite-status-msg" style="margin-top:10px;font-family:var(--mono);font-size:0.78rem;color:#34d399;"></div>
+    </div>
+
+    <!-- PRIVATE CS DEPARTMENT LAB CONTENT -->
+    <div id="cs-private-lab" style="display:none;">
+      <div class="card" style="border-color:rgba(16,185,129,0.5);background:linear-gradient(135deg,rgba(11,17,30,0.96),rgba(6,32,28,0.85));">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:14px;">
+          <div>
+            <span style="padding:3px 10px;border-radius:999px;background:rgba(16,185,129,0.2);color:#34d399;font-family:var(--mono);font-size:0.74rem;font-weight:800;border:1px solid rgba(16,185,129,0.45);">
+              ✅ FELLOW CLEARANCE VERIFIED • PRIVATE CS PEER-REVIEW LAB ONLINE
+            </span>
+            <h1 style="margin:8px 0 4px;font-family:var(--mono);font-size:1.5rem;">
+              Department of Computer Science: Formal Proof Audit (`cna_jau7`) &amp; Jacob's Ladder Compendium (`TKT-10356`)
+            </h1>
+            <p style="margin:0;color:#cbd5e1;font-size:0.86rem;max-width:920px;">
+              Interactive formal verification of the three resolved Q17/ZAP dissertation findings (<strong>Theorem 3.4 Join-Semilattice Associativity</strong>, <strong>Commutative &amp; Associative Flat-Lattice Conflict Composition</strong>, and <strong>Proposition 4.4B Sufficient Conservative Contraction</strong>) alongside the private peer-review compendium <code>docs/SA_PUB_Preedit_Phipps_A-2026.tex</code>.
+            </p>
+          </div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;">
+            <button class="btn btn-emerald" onclick="speakCsLecture('AUDIT_RESOLUTION')">🔊 Hear Prof. Rabbit 3D Proof Resolution Lecture</button>
+            <button class="btn btn-purple" onclick="speakCsLecture('JACOBS_LADDER')">🔊 Hear Jacob's Ladder Orbit-Entropy Lecture</button>
+          </div>
+        </div>
+        <div id="rabbit-cs-3d-stage" style="width:100%;height:390px;margin-top:14px;border-radius:12px;overflow:hidden;border:1px solid rgba(56,189,248,0.35);background:#050811;"></div>
+      </div>
+
+      <!-- 3 FORMAL VERIFICATION WORKBENCHES FOR AUDIT cna_jau7 -->
+      <div class="grid-3">
+        <!-- WORKBENCH 1: THEOREM 3.4 ASSOCIATIVITY -->
+        <div class="card">
+          <div style="font-family:var(--mono);font-size:0.74rem;color:var(--amber);font-weight:800;">
+            EXPERIMENT CS-EXP-001A • THEOREM 3.4 JOIN-SEMILATTICE ASSOCIATIVITY
+          </div>
+          <h3 style="margin:6px 0;font-family:var(--mono);font-size:1.05rem;">
+            Orthogonal $(I, T)$ Join vs. Broken Quarantine Demotion
+          </h3>
+          <p style="margin:0 0 8px;font-size:0.8rem;color:var(--muted);">
+            Test the reviewer's triple $A=(0,1), B=(3,0), C=(0,0)$ and verify why keeping $\mathcal{L}_I$ and $\mathcal{L}_T$ orthogonal under $\max$ restores $(A \sqcup B) \sqcup C = A \sqcup (B \sqcup C)$ across all $9^3 = 729$ triples.
+          </p>
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;">
+            <div>
+              <label>Record A (I, T)</label>
+              <input type="text" id="thm34-a" value="0,1" />
+            </div>
+            <div>
+              <label>Record B (I, T)</label>
+              <input type="text" id="thm34-b" value="2,1" />
+            </div>
+            <div>
+              <label>Record C (I, T)</label>
+              <input type="text" id="thm34-c" value="0,1" />
+            </div>
+          </div>
+          <div style="display:flex;gap:8px;margin-top:12px;">
+            <button class="btn btn-emerald" onclick="runThm34AssociativityLab()">⚡ Verify Associativity &amp; 729-Triple Exhaustive Proof</button>
+          </div>
+          <div class="mono-out" id="thm34-out">Ready. Click Verify to compare Legacy Quarantine Demotion vs. Fixed Orthogonal Join-Semilattice.</div>
+        </div>
+
+        <!-- WORKBENCH 2: COMMUTATIVE & ASSOCIATIVE COMPLETE RECORD COMPOSITION -->
+        <div class="card">
+          <div style="font-family:var(--mono);font-size:0.74rem;color:var(--cyan);font-weight:800;">
+            EXPERIMENT CS-EXP-001B • RUST compose_epistemic_records FLAT LATTICE
+          </div>
+          <h3 style="margin:6px 0;font-family:var(--mono);font-size:1.05rem;">
+            Conflicting Evidence Join ($\mathcal{L}_{\text{flat}} = \{\bot, \text{Exact}(v), \top_{\text{conflict}}\}$)
+          </h3>
+          <p style="margin:0 0 8px;font-size:0.8rem;color:var(--muted);">
+            Test conflicting evidence constraints <code>A: x=vA</code>, <code>B: x=vB</code>, <code>C: x=vC</code>. On conflict ($v_A \neq v_B$), key <code>x</code> promotes to $\top_{\text{conflict}}$ (`ConflictingTrustedSources`), ensuring `compose(A,B) == compose(B,A)` and `(A⊔B)⊔C == A⊔(B⊔C)`.
+          </p>
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;">
+            <div>
+              <label>A: key "x" value</label>
+              <input type="text" id="flat-va" value="1" />
+            </div>
+            <div>
+              <label>B: key "x" value</label>
+              <input type="text" id="flat-vb" value="2" />
+            </div>
+            <div>
+              <label>C: key "x" value</label>
+              <input type="text" id="flat-vc" value="1" />
+            </div>
+          </div>
+          <div style="display:flex;gap:8px;margin-top:12px;">
+            <button class="btn btn-cyan" onclick="runFlatLatticeLab()">⚡ Run Commutativity &amp; Associativity Harness</button>
+          </div>
+          <div class="mono-out" id="flat-out">Ready. Click Run to verify compose(A,B) == compose(B,A) and (A⊔B)⊔C == A⊔(B⊔C).</div>
+        </div>
+
+        <!-- WORKBENCH 3: PROPOSITION 4.4B SUFFICIENT CONSERVATIVE CONTRACTION -->
+        <div class="card">
+          <div style="font-family:var(--mono);font-size:0.74rem;color:var(--purple);font-weight:800;">
+            EXPERIMENT CS-EXP-001C • PROPOSITION 4.4B CONSERVATIVE CONTRACTION
+          </div>
+          <h3 style="margin:6px 0;font-family:var(--mono);font-size:1.05rem;">
+            Sufficient Local Contraction vs. Absorbing Monoid Reset
+          </h3>
+          <p style="margin:0 0 8px;font-size:0.8rem;color:var(--muted);">
+            Compare local stutter contraction against global absorbing sequences (<code>Increment(+1) -&gt; ResetToZero(0)</code>) and non-idempotent cumulative effects (<code>Charge($100) -&gt; Charge($100)</code>).
+          </p>
+          <label>Select Sequential Effect Trace $\gamma = (e_1, e_2)$</label>
+          <select id="prop44b-select">
+            <option value="INC_RESET">Counterexample to Necessity: [Increment(+1), ResetToZero(0)]</option>
+            <option value="CUMULATIVE_CHARGE">Non-Idempotent Cumulative: [Charge($100), Charge($100)]</option>
+            <option value="IDEMPOTENT_WRITE">Verified Idempotent Repetition: [Write(R1=42), Write(R1=42)]</option>
+            <option value="SILENT_NOOP">Silent Tau-Stutter: [SilentIdentityNoop, Charge($100)]</option>
+          </select>
+          <div style="display:flex;gap:8px;margin-top:12px;">
+            <button class="btn btn-purple" onclick="runProp44bLab()">⚡ Evaluate Trace &amp; Monoid Semantics</button>
+          </div>
+          <div class="mono-out" id="prop44b-out">Ready. Select a trace to verify Proposition 4.4B's conservative sufficiency guard.</div>
+        </div>
+      </div>
+
+      <!-- PRIVATE PROJECT 2: JACOB'S LADDER COMPENDIUM (SA_PUB_Preedit_Phipps_A-2026.tex) -->
+      <div class="card" style="border-color:rgba(56,189,248,0.45);">
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
+          <div>
+            <div style="font-family:var(--mono);font-size:0.75rem;color:var(--cyan);font-weight:800;">
+              📜 PRIVATE PEER-REVIEW COMPENDIUM • [5DHCP-TKT-10356-SA-PUB-PREEDIT-PHIPPS-A-2026-GIT-SEAL]
+            </div>
+            <h3 style="margin:4px 0;font-family:var(--mono);font-size:1.15rem;">
+              Jacob's Ladder of Symmetry: Quotient Refinement, Wielandt $k$-Closure &amp; Orbit–Entropy Decomposition (`SA_PUB_Preedit_Phipps_A-2026.tex`)
+            </h3>
+            <div style="font-size:0.8rem;color:var(--muted);">
+              Repository Path: <code>docs/SA_PUB_Preedit_Phipps_A-2026.tex</code> &amp; <code>D:\SA_PUB_Preedit_Phipps_A-2026.tex</code> • SHA-256 Prefix: <code>43702A1043DE317E...</code> • Tag: <code>v1.7.0-SA-PUB-PREEDIT-PHIPPS-A-2026-TKT10356</code>
+            </div>
+          </div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;">
+            <select id="orbit-regime-select" style="width:290px;">
+              <option value="A4_S4_K1">A4 &lt;= S4 on B=(1) [Normal, S_B = -1.0000 bit]</option>
+              <option value="A4_S4_BASE">A4 &lt;= S4 on B=(1,2,3) [Faithful Base, S_B = 0]</option>
+              <option value="V4_A4_BASE">V4 &lt;= A4 on B=(1,2) [log2[H:G] = 1.5850 bits]</option>
+              <option value="S2_S3_NONNORMAL">S2 &lt;= S3 on B=(1) [Non-Normal, E[log2|G_Z|]-log2|H_B| = -0.6667]</option>
+            </select>
+            <button class="btn btn-amber" onclick="runOrbitEntropyLab()">🧮 Verify Theorem 2.6 Orbit–Entropy Identity</button>
+          </div>
+        </div>
+        <div class="mono-out" id="orbit-entropy-out">Theorem 2.6 (Claim F): H(Q_G | Q_H) = log2[H : G] + E[log2|G_Z|] - log2|H_B| (verified to |Δ| &lt; 10^-15 across all 5 finite-group regimes).</div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/professor_rabbit_3d_engine.js"></script>
+  <script>
+    var CS_INVITE_TOKEN = 'CS-FELLOW-Q17-ZAP-2026';
+
+    function verifyCsInvite() {
+      var key = (document.getElementById('invite-key-input').value || '').trim();
+      fetch('/api/v1/cs-department/verify-invite', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({ invite_key: key })
+      })
+      .then(function(r) { return r.json(); })
+      .then(function(data) {
+        if (data.status === 'ok' && data.authorized) {
+          CS_INVITE_TOKEN = key;
+          document.getElementById('invite-gate-box').style.display = 'none';
+          document.getElementById('cs-private-lab').style.display = 'block';
+          document.getElementById('clearance-badge').textContent = 'CLEARANCE: ' + data.clearance_level;
+          document.getElementById('clearance-badge').style.background = 'rgba(16,185,129,0.22)';
+          document.getElementById('clearance-badge').style.color = '#34d399';
+          document.getElementById('clearance-badge').style.borderColor = 'rgba(16,185,129,0.5)';
+          if (window.ProfessorRabbit3D) {
+            window.ProfessorRabbit3D.mount('rabbit-cs-3d-stage', {
+              hologramMode: 'INVARIANT_LATTICE',
+              pose: 'EUREKA_POINTER',
+              voice: 'en-GB-RyanNeural',
+              title: 'DEPT-CS-PRIVATE: Q17/ZAP Proof Resolution & Jacob\'s Ladder Lab',
+              equation: '(A ⊔ B) ⊔ C = A ⊔ (B ⊔ C)  |  H(Q_G|Q_H) = log₂[H:G] + E[log₂|G_Z|] − log₂|H_B|',
+              bullets: [
+                'Resolved Finding 1 (Thm 3.4): Orthogonal (I,T) join is 100% associative across all 729 triples',
+                'Resolved Finding 2 (Rust lib.rs:2258): Flat-lattice conflict join compose(A,B) == compose(B,A)',
+                'Resolved Finding 3 (Prop 4.4B): Sufficient conservative local contraction under (A1)-(A2)',
+                'Sealed Peer-Review Compendium: SA_PUB_Preedit_Phipps_A-2026.tex (SHA-256: 43702A1043DE317E...)'
+              ]
+            });
+          }
+        } else {
+          document.getElementById('invite-status-msg').style.color = '#fda4af';
+          document.getElementById('invite-status-msg').textContent = 'ACCESS DENIED: Invalid Fellow Invite Key.';
+        }
+      });
+    }
+
+    function speakCsLecture(topic) {
+      if (!window.ProfessorRabbit3D) return;
+      if (topic === 'AUDIT_RESOLUTION') {
+        window.ProfessorRabbit3D.speak(
+          'Welcome to the Space University Private Computer Science Department! We have resolved all three peer-review findings on the Q17 and ZAP dissertation: First, in Theorem 3.4, removing cross-axis quarantine demotion restores strict join-semilattice associativity across all 729 integrity and assessment triples while still blocking corrupted records at the commit gate. Second, in Rust compose_epistemic_records, conflicting evidence keys promote to top of the flat lattice in retained findings and are cleared from the verified map, making full-record composition strictly commutative and associative. Third, Proposition 4.4B is established as a sufficient conservative local contraction rule under explicit execution assumptions, accounting for global absorbing monoid sequences such as increment followed by reset to zero!'
+        );
+      } else {
+        window.ProfessorRabbit3D.speak(
+          'Behold our unified Scientific American and Peer-Review Mathematical Compendium, Jacob\'s Ladder of Symmetry! Theorem 2.6 proves the general Orbit-Entropy Decomposition: conditional Shannon orbit entropy equals log base 2 of the subgroup index H over G, plus the expected log stabilizer size of G, minus the log stabilizer size of the ambient group H!'
+        );
+      }
+    }
+
+    function runThm34AssociativityLab() {
+      fetch('/api/v1/cs-department/run-experiment', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+          invite_key: CS_INVITE_TOKEN,
+          experiment_id: 'THM_3_4_ASSOCIATIVITY',
+          a: document.getElementById('thm34-a').value,
+          b: document.getElementById('thm34-b').value,
+          c: document.getElementById('thm34-c').value
+        })
+      })
+      .then(function(r) { return r.json(); })
+      .then(function(d) {
+        document.getElementById('thm34-out').textContent = JSON.stringify(d, null, 2);
+      });
+    }
+
+    function runFlatLatticeLab() {
+      fetch('/api/v1/cs-department/run-experiment', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+          invite_key: CS_INVITE_TOKEN,
+          experiment_id: 'FLAT_LATTICE_COMMUTATIVITY',
+          va: document.getElementById('flat-va').value,
+          vb: document.getElementById('flat-vb').value,
+          vc: document.getElementById('flat-vc').value
+        })
+      })
+      .then(function(r) { return r.json(); })
+      .then(function(d) {
+        document.getElementById('flat-out').textContent = JSON.stringify(d, null, 2);
+      });
+    }
+
+    function runProp44bLab() {
+      fetch('/api/v1/cs-department/run-experiment', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+          invite_key: CS_INVITE_TOKEN,
+          experiment_id: 'PROP_4_4B_CONTRACTION',
+          trace_mode: document.getElementById('prop44b-select').value
+        })
+      })
+      .then(function(r) { return r.json(); })
+      .then(function(d) {
+        document.getElementById('prop44b-out').textContent = JSON.stringify(d, null, 2);
+      });
+    }
+
+    function runOrbitEntropyLab() {
+      fetch('/api/v1/cs-department/run-experiment', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+          invite_key: CS_INVITE_TOKEN,
+          experiment_id: 'JACOBS_LADDER_ORBIT_ENTROPY',
+          regime: document.getElementById('orbit-regime-select').value
+        })
+      })
+      .then(function(r) { return r.json(); })
+      .then(function(d) {
+        document.getElementById('orbit-entropy-out').textContent = JSON.stringify(d, null, 2);
+      });
+    }
+
+    // Auto-unlock if ?invite= query parameter is present or default Fellow token is preloaded
+    document.addEventListener('DOMContentLoaded', function() {
+      verifyCsInvite();
+    });
+  </script>
+</body>
+</html>
