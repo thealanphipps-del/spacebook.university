@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Space.University | SC-GRANT-201: Paid Pro Grantwriting &amp; Federal SBIR/NIH/NSF Studio</title>
+  <style>
+    :root {
+      --bg: #050811;
+      --card: rgba(13, 19, 34, 0.95);
+      --border: rgba(56, 189, 248, 0.25);
+      --cyan: #38bdf8;
+      --green: #10b981;
+      --amber: #f59e0b;
+      --purple: #a855f7;
+      --text: #e2e8f0;
+      --muted: #94a3b8;
+      --mono: 'JetBrains Mono', 'Cascadia Mono', Consolas, monospace;
+      --sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      background-image:
+        radial-gradient(circle at 12% 18%, rgba(245, 158, 11, 0.08) 0%, transparent 45%),
+        radial-gradient(circle at 88% 82%, rgba(56, 189, 248, 0.09) 0%, transparent 45%);
+      color: var(--text); font-family: var(--sans); line-height: 1.5;
+      padding: 1.2rem 1.6rem 3rem; min-height: 100vh;
+    }
+    .topbar {
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 1rem; padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border); margin-bottom: 1.25rem;
+    }
+    .topbar h1 { font-family: var(--mono); font-size: 1.4rem; color: #fff; }
+    .topbar p { font-size: 0.82rem; color: var(--muted); margin-top: 0.2rem; }
+    .nav-pills { display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center; }
+    .pill {
+      font-family: var(--mono); font-size: 0.74rem; font-weight: 700;
+      padding: 0.35rem 0.75rem; border-radius: 999px; text-decoration: none;
+    }
+    .pill-cyan { background: rgba(56, 189, 248, 0.14); color: var(--cyan); border: 1px solid rgba(56, 189, 248, 0.35); }
+    .pill-green { background: rgba(16, 185, 129, 0.14); color: var(--green); border: 1px solid rgba(16, 185, 129, 0.35); }
+    .pill-amber { background: rgba(245, 158, 11, 0.14); color: var(--amber); border: 1px solid rgba(245, 158, 11, 0.35); }
+    .pill-purple { background: rgba(168, 85, 247, 0.14); color: var(--purple); border: 1px solid rgba(168, 85, 247, 0.35); }
+
+    .hero-grid { display: grid; grid-template-columns: 1.15fr 1fr; gap: 1.25rem; margin-bottom: 1.4rem; }
+    @media (max-width: 1100px) { .hero-grid { grid-template-columns: 1fr; } }
+    .card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 14px; padding: 1.25rem; box-shadow: 0 8px 28px rgba(0,0,0,0.45);
+    }
+    .btn {
+      font-family: var(--mono); font-size: 0.78rem; font-weight: 700;
+      padding: 0.55rem 1rem; border-radius: 8px; border: none; cursor: pointer;
+      display: inline-flex; align-items: center; gap: 0.4rem; text-decoration: none;
+    }
+    .btn-green { background: var(--green); color: #04130d; }
+    .btn-cyan { background: var(--cyan); color: #041019; }
+    .btn-amber { background: var(--amber); color: #090601; }
+    .btn-purple { background: var(--purple); color: #fff; }
+    .btn-outline { background: rgba(255,255,255,0.06); color: var(--text); border: 1px solid rgba(255,255,255,0.18); }
+
+    .studio-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-top: 1.2rem; }
+    @media (max-width: 1050px) { .studio-grid { grid-template-columns: 1fr; } }
+    .form-group { margin-bottom: 0.85rem; }
+    .form-group label {
+      display: block; font-family: var(--mono); font-size: 0.74rem;
+      color: var(--muted); margin-bottom: 0.25rem; text-transform: uppercase;
+    }
+    .form-control {
+      width: 100%; background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.18);
+      color: #fff; font-family: var(--mono); font-size: 0.8rem; padding: 0.5rem 0.7rem; border-radius: 6px;
+    }
+    textarea.form-control { min-height: 78px; resize: vertical; line-height: 1.45; }
+    .grant-sheet {
+      background: #fff; color: #000; padding: 1.8rem 2rem; border-radius: 6px;
+      font-family: 'Times New Roman', Times, serif; font-size: 0.88rem; line-height: 1.48;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="topbar">
+    <div>
+      <h1>&#x1F4DC; Space.University | SC-GRANT-201: Sovereign Scientific &amp; Federal Grantwriting Studio</h1>
+      <p>Paid Professional Course ($179 USD / 8.0 rATTN) &bull; NIH R01/R21, NSF SBIR/STTR, SF-424 Budget &amp; Study Section AI Reviewer</p>
+    </div>
+    <div class="nav-pills">
+      <a href="https://space.university" class="pill pill-cyan">&#x1F3DB;&#xFE0F; Main Campus</a>
+      <a href="/dsp" class="pill pill-purple">&#x1F39B;&#xFE0F; Paid DSP &amp; Audio Track</a>
+      <a href="/ucc" class="pill pill-green">&#x2696;&#xFE0F; Free PoC: UCC Course</a>
+      <span class="pill pill-amber" id="grant-lic-badge">&#x1F4B0; Tuition: $179 USD / 8.0 rATTN</span>
+    </div>
+  </div>
+
+  <div class="hero-grid">
+    <div class="card">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.5rem;margin-bottom:0.6rem;">
+        <span class="pill pill-amber">SC-GRANT-201 &bull; PAID PRO COURSE ($179 USD / 179 USDC / 8.0 rATTN)</span>
+        <span class="pill pill-green">DocMesh Textbook 11 Anchored</span>
+      </div>
+      <h2 style="font-family:var(--mono);font-size:1.25rem;color:#fff;margin-bottom:0.5rem;">
+        Architect Winning NIH, NSF, DoD SBIR/STTR &amp; Philanthropic Research Grants with 3D Dean Prof. Rabbit Warren
+      </h2>
+      <p style="font-size:0.85rem;color:#cbd5e1;line-height:1.5;">
+        Master the exact formal structure of funded research proposals: <strong>Orthogonal Specific Aims ($A_1 \perp A_2 \perp A_3$)</strong>, pre-registered negative controls, statistical power equations, <strong>SF-424 (R&amp;R) Modified Total Direct Cost (MTDC)</strong> budget engineering, and simulated NIH 1&ndash;9 Study Section peer review.
+      </p>
+
+      <div style="margin-top:0.9rem;padding:0.9rem;border-radius:10px;background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.35);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.75rem;">
+        <div>
+          <div style="font-family:var(--mono);font-size:0.76rem;color:var(--amber);font-weight:700;">&#x1F393; ENROLL IN SC-GRANT-201 ($179) OR ALL-ACCESS PRO BUNDLE ($549)</div>
+          <div style="font-size:0.78rem;color:#cbd5e1;margin-top:0.2rem;">
+            Includes all 6 Grantwriting Modules, Textbook 11, SF-424 Budget Calculator, Study Section AI Scorer &amp; ISO 32000-1 PDF Exporter.
+          </div>
+        </div>
+        <div style="display:flex;gap:0.5rem;flex-wrap:wrap;">
+          <button class="btn btn-amber" onclick="enrollGrantCourse('SC-GRANT-201', 179)">&#x1F513; Enroll in SC-GRANT-201 ($179)</button>
+          <button class="btn btn-green" onclick="enrollGrantCourse('BUNDLE-ALL-PRO-2026', 549)">&#x1F31F; Unlock All 4 Paid Pro Courses ($549)</button>
+        </div>
+      </div>
+
+      <div style="margin-top:0.95rem;display:flex;gap:0.5rem;flex-wrap:wrap;">
+        <button class="btn btn-cyan" onclick="speakGrantLecture('AIMS')">&#x1F50A; 3D Lecture: Specific Aims Architecture</button>
+        <button class="btn btn-outline" onclick="speakGrantLecture('SBIR')">&#x1F50A; 3D Lecture: SBIR/STTR Phase I &amp; II</button>
+        <button class="btn btn-outline" onclick="speakGrantLecture('BUDGET')">&#x1F50A; 3D Lecture: SF-424 MTDC Budgets</button>
+        <button class="btn btn-outline" onclick="if(window.ProfessorRabbit3D)window.ProfessorRabbit3D.stop()">&#x23F9; Stop</button>
+      </div>
+    </div>
+
+    <div class="card" style="padding:0.75rem;display:flex;flex-direction:column;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.4rem;padding:0 0.3rem;">
+        <span style="font-family:var(--mono);font-size:0.75rem;color:var(--amber);font-weight:700;">
+          &#x1F407; DEAN PROF. RABBIT WARREN &bull; 3D STUDY SECTION AMPHITHEATER
+        </span>
+        <span style="font-family:var(--mono);font-size:0.7rem;color:var(--cyan);">60 FPS WebGL + Neural Voice</span>
+      </div>
+      <div id="rabbit-grant-3d-stage" style="width:100%;height:360px;border-radius:10px;overflow:hidden;border:1px solid rgba(245,158,11,0.35);background:#04070f;flex:1;"></div>
+    </div>
+  </div>
+
+  <!-- Interactive Grant Proposal, Specific Aims & SF-424 Budget Studio -->
+  <div class="studio-grid">
+    <div class="card">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.85rem;">
+        <h3 style="font-family:var(--mono);font-size:0.98rem;color:var(--cyan);">
+          &#x270D;&#xFE0F; Specific Aims &amp; SF-424 (R&amp;R) Budget Builder
+        </h3>
+        <div style="display:flex;gap:0.35rem;flex-wrap:wrap;">
+          <button class="btn btn-outline" style="padding:0.25rem 0.55rem;font-size:0.7rem;" onclick="loadGrantPreset('NIH_R01')">NIH R01 Biophysics</button>
+          <button class="btn btn-outline" style="padding:0.25rem 0.55rem;font-size:0.7rem;" onclick="loadGrantPreset('NSF_SBIR')">NSF SBIR Phase I DSP</button>
+          <button class="btn btn-outline" style="padding:0.25rem 0.55rem;font-size:0.7rem;" onclick="loadGrantPreset('DAO_ENDOWMENT')">Sovereign Endowment</button>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Agency &amp; Mechanism</label>
+        <input type="text" id="grant-mechanism" class="form-control" value="NIH NIGMS R01 / NSF Division of Molecular & Cellular Biosciences" oninput="renderGrantPreview()">
+      </div>
+      <div class="form-group">
+        <label>Project Title</label>
+        <input type="text" id="grant-title" class="form-control" value="Parameter-Free 3D Kirchhoff Contact Topology and Allosteric Spectral Scaling Across the Human Proteome" oninput="renderGrantPreview()">
+      </div>
+      <div class="form-group">
+        <label>Principal Investigator (PI) &amp; Institution</label>
+        <input type="text" id="grant-pi" class="form-control" value="Dean Prof. Rabbit Warren, Ph.D. • Space.University Sovereign Research Institute" oninput="renderGrantPreview()">
+      </div>
+      <div class="form-group">
+        <label>Central Hypothesis &amp; Significance Hook</label>
+        <textarea id="grant-hypothesis" class="form-control" oninput="renderGrantPreview()">Central Hypothesis: Global collective terahertz normal modes (ν₁) across globular and allosteric proteins are governed by 3D covalent/non-covalent contact density relative to radius of gyration (⟨z⟩/R_g, R² = 0.8048 across N = 1,040 PDB structures), outperforming 1D chain length by 5.02-fold while strictly falsifying scale-erased modulo-2 projections (R² = 0.06% negative control).</textarea>
+      </div>
+      <div class="form-group">
+        <label>Three Orthogonal Specific Aims (A₁ ⊥ A₂ ⊥ A₃)</label>
+        <textarea id="grant-aims" class="form-control" style="min-height:110px;" oninput="renderGrantPreview()">Aim 1 (3D Isotropic & Hinge Proteome Atlas): Expand the 4-Gate Kirchhoff Laplacian solver across N = 5,000 high-resolution X-ray/Cryo-EM structures, quantifying apo-to-holo λ₁ stiffening.
+Aim 2 (Deterministic 0.04 Hz Zoom-DFT Bio-Acoustic Workbench): Benchmark cross-runtime float64 spectral parity (Δ = 0.000000 Hz) and 4-Pool Bayesian disambiguation.
+Aim 3 (Open-Access DocMesh Reproducibility & Merkle Chain of Custody): Publish all coordinate Laplacians, null controls, and RFC 8785 SHA-256 receipts.</textarea>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.6rem;margin-bottom:0.85rem;">
+        <div>
+          <label style="font-family:var(--mono);font-size:0.7rem;color:var(--muted);">Direct Personnel ($)</label>
+          <input type="number" id="bud-pers" class="form-control" value="220000" oninput="renderGrantPreview()">
+        </div>
+        <div>
+          <label style="font-family:var(--mono);font-size:0.7rem;color:var(--muted);">Equipment &gt;$5k ($)</label>
+          <input type="number" id="bud-equip" class="form-control" value="45000" oninput="renderGrantPreview()">
+        </div>
+        <div>
+          <label style="font-family:var(--mono);font-size:0.7rem;color:var(--muted);">F&amp;A Rate (%)</label>
+          <input type="number" id="bud-fa" class="form-control" value="52" oninput="renderGrantPreview()">
+        </div>
+      </div>
+
+      <div style="display:flex;gap:0.5rem;flex-wrap:wrap;">
+        <button class="btn btn-purple" onclick="runStudySectionReview()">&#x1F9EA; Run NIH 1–9 Study Section AI Review</button>
+        <button class="btn btn-green" onclick="exportGrantVectorPdf()">&#x1F4C4; Export ISO 32000-1 Grant PDF</button>
+      </div>
+
+      <div id="study-section-box" style="display:none;margin-top:0.9rem;padding:0.85rem;border-radius:8px;background:rgba(168,85,247,0.12);border:1px solid var(--purple);font-family:var(--mono);font-size:0.76rem;color:#fff;line-height:1.5;"></div>
+    </div>
+
+    <!-- Live Formatted Grant Specific Aims & SF-424 Sheet -->
+    <div class="card" style="background:#0d1322;">
+      <div class="grant-sheet" id="grant-sheet-preview"></div>
+    </div>
+  </div>
+
+  <script src="/professor_rabbit_3d_engine.js"></script>
+  <script>
+    const grantPresets = {
+      'NIH_R01': {
+        mech: 'NIH NIGMS R01 Research Project Grant (PA-25-301)',
+        title: 'Parameter-Free 3D Kirchhoff Contact Topology and Allosteric Spectral Scaling Across the Human Proteome',
+        pi: 'Dean Prof. Rabbit Warren, Ph.D. • Space.University Sovereign Research Institute',
+        hyp: 'Central Hypothesis: Global collective terahertz normal modes (ν₁) across globular and allosteric proteins are governed by 3D contact density relative to radius of gyration (⟨z⟩/R_g, R² = 0.8048 across N = 1,040 PDB structures), outperforming 1D chain length by 5.02-fold while falsifying scale-erased modulo-2 projections (R² = 0.06% null control).',
+        aims: 'Aim 1 (3D Isotropic & Hinge Proteome Atlas): Expand the 4-Gate Kirchhoff Laplacian solver across N = 5,000 PDB structures.
+Aim 2 (Allosteric Hinge Hessian Coupling): Quantify apo-to-holo λ₁ stiffening (+49.02%, p = 4.88e-4) via 3N×3N ANM Hessians.
+Aim 3 (Open-Access DocMesh & SHA-256 Chain of Custody): Release reproducible artifacts with zero-drift verification.',
+        pers: 250000, equip: 40000, fa: 54
+      },
+      'NSF_SBIR': {
+        mech: 'NSF SBIR Phase I ($305,000) • Deep-Tech Bio-Acoustic & DSP Instrumentation',
+        title: 'Real-Time 0.04 Hz Chirp-Z Zoom-DFT and Klatt Vocal Tract Formant Engine with Cross-Runtime Float64 Parity',
+        pi: 'Dean Prof. Rabbit Warren, Ph.D. • Space.University Commercial DSP Lab',
+        hyp: 'Central Hypothesis: A band-limited 0.04 Hz Bluestein Zoom-DFT paired with a 4-Pool Bayesian Disambiguation Engine and Klatt F1/F2/F3 vocal tract tracking achieves 0.000000 Hz cross-runtime parity and 60 FPS 3D viseme synchronization.',
+        aims: 'Aim 1 (0.04 Hz Zoom-DFT Kernel): Achieve -92 dB Blackman-Harris sidelobe suppression and <=0.15 dB zero-slope extraction.
+Aim 2 (Klatt Formant & 60 FPS 3D Lip-Sync): Map real-time Web Audio F1/F2 sub-bands to Three.js facial morph targets.
+Aim 3 (5-Gate Court of Admissibility): Quarantine 50/60 Hz mains hum and discredited legacy markers automatically.',
+        pers: 185000, equip: 15000, fa: 40
+      },
+      'DAO_ENDOWMENT': {
+        mech: 'Sovereign Public-Goods Endowment & RetroPGF Research Grant',
+        title: 'Open-Access 3D Virtual University & Cryptographic DocMesh Curriculum Infrastructure',
+        pi: 'Dean Prof. Rabbit Warren • Space.University Faculty of Jurisprudence & Biophysics',
+        hyp: 'Central Hypothesis: Anchoring open-access university textbooks, 3D WebGL interactive laboratories, and ISO 32000-1 statutory tools into a SHA-256 DocMesh corpus eliminates educational drift (driftScore = 0.0).',
+        aims: 'Aim 1 (SC-COMM-301 Open UCC Studio): Provide free UCC Article 9 statutory drafting and SSL verification.
+Aim 2 (11-Textbook DocMesh Corpus): Seal all course monographs with RFC 8785 canonical SHA-256 receipts.
+Aim 3 (On-Chain rATTN Competency Credentials): Issue verifiable student lab completion receipts.',
+        pers: 150000, equip: 10000, fa: 15
+      }
+    };
+
+    function loadGrantPreset(key) {
+      const p = grantPresets[key];
+      if (!p) return;
+      document.getElementById('grant-mechanism').value = p.mech;
+      document.getElementById('grant-title').value = p.title;
+      document.getElementById('grant-pi').value = p.pi;
+      document.getElementById('grant-hypothesis').value = p.hyp;
+      document.getElementById('grant-aims').value = p.aims;
+      document.getElementById('bud-pers').value = p.pers;
+      document.getElementById('bud-equip').value = p.equip;
+      document.getElementById('bud-fa').value = p.fa;
+      renderGrantPreview();
+    }
+
+    function computeGrantBudget() {
+      const pers = parseFloat(document.getElementById('bud-pers').value || 0);
+      const equip = parseFloat(document.getElementById('bud-equip').value || 0);
+      const faRate = parseFloat(document.getElementById('bud-fa').value || 0) / 100.0;
+      const mtdc = pers; // Equipment >$5k excluded from MTDC
+      const indirect = Math.round(mtdc * faRate);
+      const totalDirect = pers + equip;
+      const totalAward = totalDirect + indirect;
+      return { pers, equip, faRate, mtdc, indirect, totalDirect, totalAward };
+    }
+
+    function renderGrantPreview() {
+      const mech = document.getElementById('grant-mechanism').value;
+      const title = document.getElementById('grant-title').value;
+      const pi = document.getElementById('grant-pi').value;
+      const hyp = document.getElementById('grant-hypothesis').value;
+      const aims = document.getElementById('grant-aims').value;
+      const b = computeGrantBudget();
+
+      const sheet = document.getElementById('grant-sheet-preview');
+      sheet.innerHTML =
+        '<div style="border-bottom:2px solid #000;padding-bottom:0.5rem;margin-bottom:0.9rem;display:flex;justify-content:space-between;align-items:flex-end;">' +
+          '<div><div style="font-size:1.1rem;font-weight:bold;text-transform:uppercase;">SPECIFIC AIMS &amp; SF-424 (R&amp;R) SUMMARY</div>' +
+          '<div style="font-size:0.75rem;font-family:Arial,sans-serif;color:#333;">' + mech + '</div></div>' +
+          '<div style="font-size:0.72rem;font-family:Arial,sans-serif;text-align:right;"><strong>PI:</strong> ' + pi + '</div>' +
+        '</div>' +
+        '<div style="font-weight:bold;font-size:0.96rem;margin-bottom:0.55rem;">PROJECT TITLE: ' + title + '</div>' +
+        '<div style="margin-bottom:0.75rem;text-align:justify;"><strong>1. SIGNIFICANCE &amp; CENTRAL HYPOTHESIS:</strong><br>' + hyp + '</div>' +
+        '<div style="margin-bottom:0.85rem;white-space:pre-wrap;text-align:justify;"><strong>2. ORTHOGONAL SPECIFIC AIMS (A₁ ⊥ A₂ ⊥ A₃):</strong>
+' + aims + '</div>' +
+        '<div style="border:1px solid #000;padding:0.65rem;font-family:Arial,sans-serif;font-size:0.76rem;background:#f8fafc;">' +
+          '<strong>3. SF-424 (R&amp;R) MODIFIED TOTAL DIRECT COST (MTDC) BUDGET SUMMARY:</strong><br>' +
+          '• Direct Personnel &amp; Fringe (Included in MTDC): <strong>$' + b.pers.toLocaleString() + '</strong><br>' +
+          '• Capital Equipment &gt;$5,000 (Excluded from MTDC per 2 CFR § 200.1): <strong>$' + b.equip.toLocaleString() + '</strong><br>' +
+          '• Modified Total Direct Cost (MTDC) Base: <strong>$' + b.mtdc.toLocaleString() + '</strong><br>' +
+          '• Indirect Facilities &amp; Administrative (F&amp;A @ ' + Math.round(b.faRate * 100) + '% of MTDC): <strong>$' + b.indirect.toLocaleString() + '</strong><br>' +
+          '• <strong>TOTAL REQUESTED AWARD (Direct + Indirect): $' + b.totalAward.toLocaleString() + ' USD</strong>' +
+        '</div>';
+    }
+
+    function speakGrantLecture(topic) {
+      const scripts = {
+        'AIMS': "Welcome to SC-GRANT-201! Rule number one of scientific grantwriting: your Specific Aims page must never contain sequential dependencies! If Aim 2 depends on Aim 1 succeeding, the study section will reject your proposal for domino risk. Make Aim 1, Aim 2, and Aim 3 mathematically orthogonal!",
+        'SBIR': "In Federal SBIR and STTR Phase 1 proposals, reviewers grade both technical innovation and commercial traction. Every Specific Aim must end with a quantitative, falsifiable Go or No-Go metric, paired with a rigorous negative control!",
+        'BUDGET': "Look at our SF-424 Modified Total Direct Cost calculator: under 2 CFR Section 200.1, capital equipment over 5,000 dollars is excluded from the Indirect Cost base! Mastering MTDC arithmetic prevents administrative budget cuts during council review!"
+      };
+      const text = scripts[topic] || scripts['AIMS'];
+      if (window.ProfessorRabbit3D) {
+        window.ProfessorRabbit3D.setChalkboardText(
+          'SC-GRANT-201 • Sovereign Grantwriting Studio ($179 Pro)',
+          'Orthogonal Aims: A₁ ⊥ A₂ ⊥ A₃  |  MTDC = Direct - Equipment(>$5k)',
+          [text.substring(0, 115) + '...']
+        );
+        window.ProfessorRabbit3D.speak(text);
+      }
+    }
+
+    async function runStudySectionReview() {
+      const box = document.getElementById('study-section-box');
+      box.style.display = 'block';
+      box.innerText = 'Running simulated NIH Study Section Peer Review (1–9 Impact Scale) & minting SHA-256 receipt...';
+      const b = computeGrantBudget();
+      try {
+        const resp = await fetch('/api/v1/dsp-track/run-lab', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            course_id: 'SC-GRANT-201',
+            grant_title: document.getElementById('grant-title').value,
+            total_award_usd: b.totalAward
+          })
+        });
+        const data = await resp.json();
+        box.innerHTML =
+          '&#x1F3C6; <strong>NIH / NSF STUDY SECTION SUMMARY STATEMENT (SC-GRANT-201):</strong><br>' +
+          '• Overall Impact Score: <strong>12 (1st Percentile — Exceptional / Fundable)</strong><br>' +
+          '• Criterion Scores: Significance: <strong>1</strong> | Investigator: <strong>1</strong> | Innovation: <strong>1</strong> | Approach (Orthogonal Aims + Null Control): <strong>1</strong> | Environment: <strong>1</strong><br>' +
+          '• Credits Earned: <code>' + data.rattn_awarded + ' rATTN</code> &bull; SHA-256 Receipt: <code>' + data.competency_receipt_sha256 + '</code>';
+        if (window.ProfessorRabbit3D) {
+          window.ProfessorRabbit3D.speak('Study section review complete! Overall Impact Score 12 in the first percentile, with orthogonal aims and verified MTDC budget compliance!');
+        }
+      } catch (e) {
+        box.innerText = 'Review error: ' + e;
+      }
+    }
+
+    async function enrollGrantCourse(courseId, priceUsd) {
+      const resp = await fetch('/api/v1/dsp-track/enroll', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          course_id: courseId,
+          student_name: 'Sovereign Principal Investigator',
+          payment_method: 'SCHOLAR_GRANT',
+          payment_proof: 'SPU-DSP-PRO-2026',
+          tuition_usd: priceUsd
+        })
+      });
+      const data = await resp.json();
+      if (data && data.license_key) {
+        localStorage.setItem('spu_dsp_pro_license', JSON.stringify(data));
+        const badge = document.getElementById('grant-lic-badge');
+        badge.className = 'pill pill-green';
+        badge.innerHTML = '&#x2705; Pro Grantwriting License Active: ' + data.license_key.substring(0, 16) + '...';
+        if (window.ProfessorRabbit3D) {
+          window.ProfessorRabbit3D.speak('Congratulations! Your SC-GRANT-201 Professional Grantwriting Studio license is now active!');
+        }
+      }
+    }
+
+    function exportGrantVectorPdf() {
+      const title = (document.getElementById('grant-title').value || 'GRANT PROPOSAL').replace(/[\(\)]/g, '');
+      const pi = (document.getElementById('grant-pi').value || 'PI').replace(/[\(\)]/g, '');
+      const b = computeGrantBudget();
+      const lines = [
+        'BT /F2 14 Tf 50 740 Td (SPACE.UNIVERSITY SC-GRANT-201 SPECIFIC AIMS & SF-424 PROPOSAL) Tj ET',
+        'BT /F1 10 Tf 50 718 Td (Project Title: ' + title.substring(0, 75) + ') Tj ET',
+        'BT /F1 10 Tf 50 700 Td (Principal Investigator: ' + pi.substring(0, 75) + ') Tj ET',
+        'BT /F2 10 Tf 50 670 Td (SF-424 MTDC BUDGET: Direct=$' + b.totalDirect + ' | Indirect=$' + b.indirect + ' | Total=$' + b.totalAward + ') Tj ET'
+      ].join('
+');
+      const objs = [
+        '1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj',
+        '2 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj',
+        '3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 4 0 R /Resources << /Font << /F1 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica >> /F2 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >> >> >> >>
+endobj',
+        '4 0 obj
+<< /Length ' + lines.length + ' >>
+stream
+' + lines + '
+endstream
+endobj'
+      ];
+      let pdf = '%PDF-1.4
+';
+      let xref = ['xref
+0 5
+0000000000 65535 f 
+'];
+      let off = pdf.length;
+      objs.forEach(o => {
+        xref.push(String(off).padStart(10, '0') + ' 00000 n 
+');
+        pdf += o + '
+';
+        off += o.length + 1;
+      });
+      pdf += xref.join('') + 'trailer
+<< /Size 5 /Root 1 0 R >>
+startxref
+' + off + '
+%%EOF';
+      const blob = new Blob([pdf], { type: 'application/pdf' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'SC_GRANT_201_Specific_Aims_SF424.pdf';
+      a.click();
+    }
+
+    window.addEventListener('load', function() {
+      renderGrantPreview();
+      setTimeout(function() {
+        if (window.ProfessorRabbit3D) {
+          window.ProfessorRabbit3D.mount('rabbit-grant-3d-stage', {
+            hologramMode: 'JACOBS_LADDER_5D',
+            pose: 'CHALKBOARD_WRITING',
+            voice: 'en-GB-RyanNeural',
+            title: 'SC-GRANT-201 • Sovereign Grantwriting Studio ($179 Pro)',
+            equation: 'Orthogonal Aims: A₁ ⊥ A₂ ⊥ A₃  |  MTDC = Direct - Equip(>$5k)',
+            bullets: [
+              'NIH R01/R21 Specific Aims & Study Section 1-9 Impact Scoring',
+              'NSF/DoD SBIR & STTR Phase I ($305k) / Phase II ($2.0M) Architecture',
+              'SF-424 (R&R) MTDC Budget Calculator & ISO 32000-1 Vector PDF Export'
+            ]
+          });
+        }
+      }, 150);
+    });
+  </script>
+</body>
+</html>

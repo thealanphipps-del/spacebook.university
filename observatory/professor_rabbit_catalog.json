@@ -2,8 +2,8 @@
   "series_id": "SPU-SERIES-RABBIT-GEMINI-2026",
   "docmesh_rfc": "RFC-VI-0005 / SPU-0013",
   "series_title": "Professor Rabbit's Sovereign Biophysics, Bio-Acoustics, Chain-of-Custody & Commercial Jurisprudence Curriculum Series",
-  "total_courses": 7,
-  "total_credits": "32.0 rATTN",
+  "total_courses": 11,
+  "total_credits": "64.0 rATTN",
   "lead_instructor": {
     "name": "Professor Rabbit Warren (Real-Time 60 FPS 3D WebGL & Pre-Rendered Persona Engine)",
     "title": "Dean of Commercial Jurisprudence & Chair of Macromolecular Topology and Epistemic Warren Auditing, Space.University (Divisions SPU-D1, SPU-D5 & SPU-D6)",
@@ -452,8 +452,288 @@
         "correct_index": 0,
         "explanation": "Masterful statutory precision! As Dean Professor Rabbit Warren demonstrates on the 3D Chalkboard, § 9-108(c) strictly voids supergeneric 'all assets' descriptions in a Security Agreement (so attachment under § 9-203 never even occurs!), and § 9-324(b) grants zero grace period for Inventory PMSI—requiring both perfection and authenticated written notification before the debtor receives possession."
       }
+    },
+    {
+      "course_id": "SC-DSP-201",
+      "code": "SC-DSP-201",
+      "division": "SPU-D5 / SPU-D6",
+      "track": "DSP & Audio Engineering Track (Paid Pro)",
+      "access_tier": "PAID_PRO_COURSE",
+      "tuition_usd": 149,
+      "tuition_usdc_arb": "149.00 USDC",
+      "portal_url": "/dsp",
+      "level": "Professional (200-Level Paid Track)",
+      "credits": "6.0 rATTN",
+      "textbook_id": "TEXTBOOK_08_SC_DSP_201",
+      "default_pdb": "1AKI",
+      "default_pose": "CHALKBOARD_WRITING",
+      "title": "Deterministic Bio-Acoustic DSP, 0.04 Hz Zoom-DFT & Zero-Slope Spectral Peak Extraction",
+      "subtitle": "Paid Pro Track Course 1 ($149 USD / 6.0 rATTN): Chirp-Z Zoom-DFT, Blackman-Harris -92 dB Sidelobe Suppression, <=0.15 dB Zero-Slope Plateaus & RULE-VI-26 Parity",
+      "rabbit_opening_lecture": "Welcome to SC-DSP-201 in our Paid Professional DSP and Audio Track! Today we engineer a true 0.04 Hertz Zoom-DFT spectrum analyzer, apply the 4-term Blackman-Harris window, extract zero-slope stationary plateaus within 0.15 decibels, and prove 0.000000 Hertz cross-runtime float64 parity!",
+      "gemini_co_teacher_role": "Verifies Bluestein Chirp-Z complexity, parabolic log-magnitude sub-bin interpolation, and IEEE-754 float64 parity.",
+      "modules": [
+        {
+          "module_id": "M8.1",
+          "title": "[FREE PREVIEW] Vickie A. Dean Prior Art & 48 kHz / 24-Bit Red-Zone Enclave Acquisition",
+          "summary": "Why standard 4096-point FFTs fail in the [16, 32] Hz basal octave (11.72 Hz bin width) and how band-limited Zoom-DFT achieves 0.04 Hz resolution.",
+          "equation": "Δf_FFT = 48000 / 4096 = 11.72 Hz  vs.  δf_ZoomDFT = 0.04 Hz (293× Finer)"
+        },
+        {
+          "module_id": "M8.2",
+          "title": "[PRO] High-Resolution 0.04 Hz Chirp-Z / Zoom-DFT & 4-Term Blackman-Harris Windowing",
+          "summary": "Achieving -92 dB sidelobe suppression and O((N+M) log(N+M)) Bluestein circular convolution.",
+          "equation": "X(f_k) = Σ w[n] x[n] exp(-j 2π f_k n / f_s),   f_k = f_min + k · 0.04 Hz"
+        },
+        {
+          "module_id": "M8.3",
+          "title": "[PRO] Zero-Slope Plateau Detection (<= 0.15 dB) & Parabolic Sub-Bin Interpolation",
+          "summary": "Isolating stationary vocal resonances from transient speech pitch glides.",
+          "equation": "ΔL_slope(k*) = (|L₀ - L₋₁| + |L₀ - L₊₁|) / 2 ≤ 0.15 dB,   SNR ≥ 6.0 dB"
+        },
+        {
+          "module_id": "M8.4",
+          "title": "[PRO] Six-Octave Harmonic Cascade Matrix [f..32f] & RULE-VI-26 Float64 Parity",
+          "summary": "Constructing the 6-octave truth table and enforcing 0.000000 Hz cross-runtime parity.",
+          "equation": "h(f₀) = [f₀, 2f₀, 4f₀, 8f₀, 16f₀, 32f₀],   Max Δ_runtime = 0.000000 Hz"
+        }
+      ],
+      "quiz": {
+        "question": "Why does SC-DSP-201 use a band-limited 0.04 Hz Zoom-DFT instead of a standard 4096-point radix-2 FFT at f_s = 48,000 Hz?",
+        "options": [
+          "Because a 4096-point FFT at 48 kHz has an 11.72 Hz bin spacing (<2 bins across [16, 32] Hz), whereas Zoom-DFT evaluates exact 0.04 Hz steps (400 bins across [16, 32] Hz).",
+          "Because FFTs cannot process audio signals.",
+          "Because 48 kHz audio has no frequencies below 100 Hz.",
+          "To add random noise to the spectrum."
+        ],
+        "correct_index": 0,
+        "explanation": "Exact match! At 48 kHz, a 4096-point FFT has Δf = 11.71875 Hz, which is 293× too coarse to resolve 0.04 Hz basal octave steps."
+      }
+    },
+    {
+      "course_id": "SC-AUDIO-301",
+      "code": "SC-AUDIO-301",
+      "division": "SPU-D5 / SPU-D6",
+      "track": "DSP & Audio Engineering Track (Paid Pro)",
+      "access_tier": "PAID_PRO_COURSE",
+      "tuition_usd": 199,
+      "tuition_usdc_arb": "199.00 USDC",
+      "portal_url": "/audio",
+      "level": "Advanced (300-Level Paid Track)",
+      "credits": "8.0 rATTN",
+      "textbook_id": "TEXTBOOK_09_SC_AUDIO_301",
+      "default_pdb": "4AKE",
+      "default_pose": "EUREKA_POINTER",
+      "title": "Vocal Tract Formant Synthesis, Klatt Glottal Dynamics & 3D 60 FPS Viseme Lip-Sync Engineering",
+      "subtitle": "Paid Pro Track Course 2 ($199 USD / 8.0 rATTN): Source-Filter Acoustics, F1/F2/F3 Klatt Resonators, Web Audio AnalyserNode FFT & Three.js 3D Facial Rigging",
+      "rabbit_opening_lecture": "Welcome to SC-AUDIO-301! In this Pro Audio course, you will build the exact Klatt vocal-tract formant synthesizer and Web Audio AnalyserNode lip-sync pipeline that drives my 3D jaw, lips, and ears at 60 frames per second!",
+      "gemini_co_teacher_role": "Derives all-pole digital resonator transfer functions V(z) and maps F1/F2/F3 formants to 3D morph weights.",
+      "modules": [
+        {
+          "module_id": "M9.1",
+          "title": "[FREE PREVIEW] Acoustic Source-Filter Theory of the Human Vocal Tract: S(z) = G(z)·V(z)·R(z)",
+          "summary": "Rosenberg glottal volume-velocity pulses, all-pole pharyngeal/oral tube resonators, and +6 dB/oct lip radiation.",
+          "equation": "V(z) = Π_{k=1..3} [1 - 2 r_k cos(2π F_k / f_s) z⁻¹ + r_k² z⁻²]⁻¹"
+        },
+        {
+          "module_id": "M9.2",
+          "title": "[PRO] Klatt Formant Synthesis: Mapping F1 (Jaw), F2 (Tongue), and F3 (Lip Rounding)",
+          "summary": "Synthesizing canonical vowels (/a/, /e/, /i/, /o/, /u/) and bilabial closures (/m/) with continuous formant trajectories.",
+          "equation": "F₁ ∈ [200, 900] Hz ⟹ θ_jaw,   F₂ ∈ [800, 2600] Hz ⟹ LipSpread/Round"
+        },
+        {
+          "module_id": "M9.3",
+          "title": "[PRO] Real-Time Web Audio AnalyserNode (512-FFT) Sub-Band Integration & 60 FPS 3D Rigging",
+          "summary": "Extracting F1 and F2 band energies every 16.67 ms to drive Three.js jaw pivots and 7-viseme mouth morph targets.",
+          "equation": "E_F1 = (1/9) Σ_{b=2..10} M_b / 255,   E_F2 = (1/20) Σ_{b=11..30} M_b / 255"
+        }
+      ],
+      "quiz": {
+        "question": "In articulatory-acoustic vocal tract physics (SC-AUDIO-301), which formant frequency primarily governs 3D jaw opening (inverse to tongue height)?",
+        "options": [
+          "The First Formant F1 (200–900 Hz, pharyngeal cavity & jaw opening).",
+          "Ultrasonic frequencies above 40 kHz.",
+          "The 60 Hz AC power line hum.",
+          "DC offset (0 Hz)."
+        ],
+        "correct_index": 0,
+        "explanation": "Correct! F1 (200–900 Hz) rises as the jaw opens (reaching ~760 Hz on open vowel /a/) and falls when the jaw closes (~310 Hz on /i/)."
+      }
+    },
+    {
+      "course_id": "SC-AUDIO-401",
+      "code": "SC-AUDIO-401",
+      "division": "SPU-D5 / SPU-D6",
+      "track": "DSP & Audio Engineering Track (Paid Pro)",
+      "access_tier": "PAID_PRO_COURSE",
+      "tuition_usd": 249,
+      "tuition_usdc_arb": "249.00 USDC",
+      "portal_url": "/dsp",
+      "level": "Doctoral / Forensic Capstone (400-Level Paid Track)",
+      "credits": "10.0 rATTN",
+      "textbook_id": "TEXTBOOK_10_SC_AUDIO_401",
+      "default_pdb": "5O3L",
+      "default_pose": "QUARANTINE_WARNING",
+      "title": "Forensic Voice Biometrics, 4-Pool Bayesian Disambiguation & 7-Layer Acoustic Chain of Custody",
+      "subtitle": "Paid Pro Track Course 3 ($249 USD / 10.0 rATTN): Clinical Jitter/Shimmer/HNR vs. Exploratory Octave Projections, 56-Marker Audit & 5-Gate Court of Admissibility",
+      "rabbit_opening_lecture": "Welcome to SC-AUDIO-401, the doctoral capstone of our Paid DSP and Audio Track! Here we combine forensic voice biometrics with our 4-Pool Bayesian Disambiguation Engine and the 5-Gate Court of Admissibility on n1.pqr.info!",
+      "gemini_co_teacher_role": "Computes 4-Pool Bayesian posteriors, enforces RULE-VI-27 hypothesis tagging, and seals RFC 8785 Merkle receipts.",
+      "modules": [
+        {
+          "module_id": "M10.1",
+          "title": "[FREE PREVIEW] Clinical Voice Biomarkers (F0, Jitter, Shimmer, HNR) vs. Exploratory Octave Folding",
+          "summary": "Distinguishing direct glottal biomechanics (Pool A) from modulo-2 octave-folded molecular projections (Pool B, R²=0.06% null).",
+          "equation": "J_loc = (1/(N-1) Σ |T_i - T_{i+1}|) / T̄,   R²_folded = 0.06% (p = 0.4371 NS)"
+        },
+        {
+          "module_id": "M10.2",
+          "title": "[PRO] 4-Pool Bayesian Disambiguation & 56-Marker Scientific Credibility Audit",
+          "summary": "Evaluating candidate hits across Pool A (Biomarkers), Pool B (Kirchhoff), Pool C (Harmonics), and Pool D (Mains Hum).",
+          "equation": "P(Pool_i | D) = P(D | Pool_i) P(Pool_i) / Σ_j P(D | Pool_j) P(Pool_j)"
+        },
+        {
+          "module_id": "M10.3",
+          "title": "[PRO] The 5-Gate Court of Admissibility & 7-Layer Merkle Chain of Custody on n1.pqr.info",
+          "summary": "Enforcing G1 (Parity) ∧ G2 (SNR>=6dB) ∧ G3 (Non-Discredited) ∧ G4 (Non-Mains) ∧ G5 (RULE-VI-27 Tag).",
+          "equation": "Admissible(e) ⟺ G₁ ∧ G₂ ∧ G₃ ∧ G₄ ∧ G₅ ⟹ SHA-256 Merkle Seal"
+        }
+      ],
+      "quiz": {
+        "question": "Under the 5-Gate Court of Admissibility in SC-AUDIO-401, what happens when a legacy marker rated DISCREDITED_BY_PRESENT_RESEARCH (such as COND-008) is submitted?",
+        "options": [
+          "Gate G3 immediately blocks and quarantines the marker from entering the live diagnostic report.",
+          "It is promoted to an FDA-cleared diagnostic claim.",
+          "It bypasses all SNR checks.",
+          "It deletes the audio file."
+        ],
+        "correct_index": 0,
+        "explanation": "Exact match! Gate G3 enforces strict quarantine of all 9 discredited markers while admitting verified and exploratory markers with proper RULE-VI-27 tags."
+      }
+    },
+    {
+      "course_id": "SC-GRANT-201",
+      "code": "SC-GRANT-201",
+      "division": "SPU-D1 / SPU-D5 / SPU-D6",
+      "track": "Sovereign Research Funding & Grantwriting Track (Paid Pro)",
+      "access_tier": "PAID_PRO_COURSE",
+      "tuition_usd": 179,
+      "tuition_usdc_arb": "179.00 USDC",
+      "portal_url": "/grants",
+      "level": "Professional (200-Level Paid Track)",
+      "credits": "8.0 rATTN",
+      "textbook_id": "TEXTBOOK_11_SC_GRANT_201",
+      "default_pdb": "1AKI",
+      "default_pose": "CHALKBOARD_WRITING",
+      "title": "Sovereign Scientific, Federal SBIR/STTR, NIH/NSF & Endowment Grantwriting Studio",
+      "subtitle": "Paid Pro Course ($179 USD / 8.0 rATTN): Orthogonal Specific Aims (A1 ⊥ A2 ⊥ A3), SBIR/STTR Phase I/II, SF-424 MTDC Budgets & NIH 1-9 Study Section Reviewer",
+      "rabbit_opening_lecture": "Welcome to SC-GRANT-201: our Paid Professional Grantwriting Studio! Here we architect winning NIH R01, NSF, and SBIR/STTR proposals with orthogonal Specific Aims, pre-registered negative controls, exact SF-424 Modified Total Direct Cost budgets, and ISO 32000-1 vector PDF compilation!",
+      "gemini_co_teacher_role": "Simulates NIH 1-9 Study Section peer review, verifies SF-424 MTDC F&A exclusions, and audits statistical power.",
+      "modules": [
+        {
+          "module_id": "M11.1",
+          "title": "[FREE PREVIEW] The Anatomy of a Winning Specific Aims Page & Orthogonal Aims (A1 ⊥ A2 ⊥ A3)",
+          "summary": "Why sequential aim dependencies fail in Study Section and how to structure 3 orthogonal aims.",
+          "equation": "Success(A_i | ¬Success(A_j)) = Independent,   ∀ i ≠ j ∈ {1, 2, 3}"
+        },
+        {
+          "module_id": "M11.2",
+          "title": "[PRO] Federal SBIR/STTR Phase I ($305k) & Phase II ($2.0M) Commercialization Architecture",
+          "summary": "SBC vs. research institution allocation rules and quantitative Go/No-Go technical milestones.",
+          "equation": "SBIR Phase I: ≥67% SBC Effort  |  STTR Phase I: ≥40% SBC ∧ ≥30% Research Inst."
+        },
+        {
+          "module_id": "M11.3",
+          "title": "[PRO] Statistical Power, Rigor & Reproducibility, and Pre-Registered Negative Controls",
+          "summary": "Sample size power calculations and embedding falsifiable null controls (Modulo-2 R²=0.06%).",
+          "equation": "N = ((z_{1-α/2} + z_{1-β})·σ / δ)²"
+        },
+        {
+          "module_id": "M11.4",
+          "title": "[PRO] SF-424 (R&R) Federal Budget Engineering & MTDC Indirect Cost (F&A) Exclusions",
+          "summary": "Computing Modified Total Direct Costs excluding capital equipment >$5,000 and subawards >$25,000.",
+          "equation": "MTDC = D_pers + D_mat + D_trv + Σ min(S_k, $25,000),   Total = Direct + r_FA · MTDC"
+        }
+      ],
+      "quiz": {
+        "question": "In an NIH R01 or NSF Specific Aims page (SC-GRANT-201), why must Specific Aims 1, 2, and 3 be designed to be orthogonal (A1 ⊥ A2 ⊥ A3) rather than sequentially dependent?",
+        "options": [
+          "Because if Aim 2 depends on Aim 1 succeeding, any technical setback in Aim 1 collapses the entire grant ('domino risk' fatal critique in Study Section).",
+          "Because federal agencies forbid having more than one aim.",
+          "Because orthogonal aims do not require a budget.",
+          "To make the font size smaller."
+        ],
+        "correct_index": 0,
+        "explanation": "Exact match! Study sections heavily penalize 'domino dependency' where Aim 2 cannot proceed if Aim 1 encounters technical difficulties."
+      }
     }
   ],
-  "version": "v1.7.0-SPU0013-RABBIT-3D-UCC-DOCMESH",
-  "mined_invariants_summary": "66 Leaves | 7 Trunks | 10 Orthogonal Polymorph Roots | 528 8NN Edges | 7 Flagship Courses (32.0 rATTN)"
+  "version": "v1.8.0-PAID-DSP-AUDIO-AND-GRANTWRITING",
+  "mined_invariants_summary": "66 Leaves | 7 Trunks | 10 Orthogonal Polymorph Roots | 528 8NN Edges | 7 Flagship Courses (32.0 rATTN)",
+  "dsp_audio_paid_track": {
+    "track_id": "SPU-TRACK-DSP-AUDIO-PRO",
+    "title": "Space.University Professional DSP & Vocal Tract Audio Engineering Track",
+    "bundle_id": "BUNDLE-DSP-AUDIO-PRO",
+    "bundle_tuition_usd": 449,
+    "bundle_savings_usd": 148,
+    "bundle_tuition_usdc_arb": "449.00 USDC",
+    "bundle_rattn_scholar_pass": "20.0 rATTN",
+    "settlement_treasury_arbitrum": "0xE8d4a669c81E6dCEE82d15cB6b600B0127d7DfC7",
+    "scholar_grant_demo_code": "SPU-DSP-PRO-2026",
+    "courses": [
+      "SC-DSP-201 ($149)",
+      "SC-AUDIO-301 ($199)",
+      "SC-AUDIO-401 ($249)"
+    ],
+    "portal_urls": [
+      "/dsp",
+      "/audio",
+      "/courses/dsp-audio-track"
+    ]
+  },
+  "paid_pro_tracks": {
+    "dsp_audio_track": {
+      "track_id": "SPU-TRACK-DSP-AUDIO-PRO",
+      "title": "Space.University Professional DSP & Vocal Tract Audio Engineering Track",
+      "bundle_id": "BUNDLE-DSP-AUDIO-PRO",
+      "bundle_tuition_usd": 449,
+      "bundle_savings_usd": 148,
+      "bundle_tuition_usdc_arb": "449.00 USDC",
+      "bundle_rattn_scholar_pass": "20.0 rATTN",
+      "settlement_treasury_arbitrum": "0xE8d4a669c81E6dCEE82d15cB6b600B0127d7DfC7",
+      "scholar_grant_demo_code": "SPU-DSP-PRO-2026",
+      "courses": [
+        "SC-DSP-201 ($149)",
+        "SC-AUDIO-301 ($199)",
+        "SC-AUDIO-401 ($249)"
+      ],
+      "portal_urls": [
+        "/dsp",
+        "/audio",
+        "/courses/dsp-audio-track"
+      ]
+    },
+    "grantwriting_course": {
+      "course_id": "SC-GRANT-201",
+      "title": "Sovereign Scientific, Federal SBIR/STTR, NIH/NSF & Endowment Grantwriting Studio",
+      "tuition_usd": 179,
+      "tuition_usdc_arb": "179.00 USDC",
+      "rattn_scholar_pass": "8.0 rATTN",
+      "portal_urls": [
+        "/grants",
+        "/grantwriting",
+        "/courses/grantwriting"
+      ]
+    },
+    "all_access_pro_bundle": {
+      "bundle_id": "BUNDLE-ALL-PRO-2026",
+      "title": "All-Access Sovereign Pro Academy Pass (3 DSP/Audio Courses + Grantwriting Studio)",
+      "tuition_usd": 549,
+      "savings_usd": 227,
+      "included_courses": [
+        "SC-DSP-201 ($149)",
+        "SC-AUDIO-301 ($199)",
+        "SC-AUDIO-401 ($249)",
+        "SC-GRANT-201 ($179)"
+      ]
+    }
+  }
 }

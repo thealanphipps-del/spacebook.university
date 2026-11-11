@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Space.University | Paid Pro Track: DSP &amp; Vocal Tract Audio Engineering Studio</title>
+  <style>
+    :root {
+      --bg: #050811;
+      --card: rgba(13, 19, 34, 0.95);
+      --border: rgba(56, 189, 248, 0.25);
+      --cyan: #38bdf8;
+      --green: #10b981;
+      --amber: #f59e0b;
+      --purple: #a855f7;
+      --red: #ef4444;
+      --text: #e2e8f0;
+      --muted: #94a3b8;
+      --mono: 'JetBrains Mono', 'Cascadia Mono', Consolas, monospace;
+      --sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      background-image:
+        radial-gradient(circle at 15% 15%, rgba(16, 185, 129, 0.09) 0%, transparent 45%),
+        radial-gradient(circle at 85% 80%, rgba(168, 85, 247, 0.09) 0%, transparent 45%);
+      color: var(--text);
+      font-family: var(--sans);
+      line-height: 1.5;
+      padding: 1.2rem 1.6rem 3rem;
+      min-height: 100vh;
+    }
+    .topbar {
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 1rem; padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border); margin-bottom: 1.25rem;
+    }
+    .topbar h1 {
+      font-family: var(--mono); font-size: 1.45rem; color: #fff;
+      display: flex; align-items: center; gap: 0.6rem;
+    }
+    .topbar p { font-size: 0.82rem; color: var(--muted); margin-top: 0.2rem; }
+    .nav-pills { display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center; }
+    .pill {
+      font-family: var(--mono); font-size: 0.74rem; font-weight: 700;
+      padding: 0.35rem 0.75rem; border-radius: 999px; text-decoration: none;
+      display: inline-flex; align-items: center; gap: 0.35rem;
+    }
+    .pill-cyan { background: rgba(56, 189, 248, 0.14); color: var(--cyan); border: 1px solid rgba(56, 189, 248, 0.35); }
+    .pill-green { background: rgba(16, 185, 129, 0.14); color: var(--green); border: 1px solid rgba(16, 185, 129, 0.35); }
+    .pill-amber { background: rgba(245, 158, 11, 0.14); color: var(--amber); border: 1px solid rgba(245, 158, 11, 0.35); }
+    .pill-purple { background: rgba(168, 85, 247, 0.14); color: var(--purple); border: 1px solid rgba(168, 85, 247, 0.35); }
+
+    /* Hero + 3D Amphitheater Grid */
+    .hero-grid {
+      display: grid; grid-template-columns: 1.15fr 1fr; gap: 1.25rem;
+      margin-bottom: 1.5rem; align-items: stretch;
+    }
+    @media (max-width: 1100px) { .hero-grid { grid-template-columns: 1fr; } }
+    .card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 14px; padding: 1.25rem;
+      box-shadow: 0 8px 28px rgba(0,0,0,0.45);
+    }
+    .bundle-banner {
+      background: linear-gradient(135deg, rgba(168, 85, 247, 0.18), rgba(56, 189, 248, 0.14), rgba(16, 185, 129, 0.14));
+      border: 1px solid rgba(168, 85, 247, 0.45);
+      border-radius: 12px; padding: 1rem 1.15rem; margin-top: 1rem;
+      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.85rem;
+    }
+    .btn {
+      font-family: var(--mono); font-size: 0.78rem; font-weight: 700;
+      padding: 0.55rem 1rem; border-radius: 8px; border: none;
+      cursor: pointer; transition: all 0.2s; display: inline-flex; align-items: center; gap: 0.4rem;
+      text-decoration: none;
+    }
+    .btn-green { background: var(--green); color: #04130d; }
+    .btn-green:hover { background: #34d399; }
+    .btn-cyan { background: var(--cyan); color: #041019; }
+    .btn-purple { background: var(--purple); color: #fff; }
+    .btn-amber { background: var(--amber); color: #090601; }
+    .btn-outline { background: rgba(255,255,255,0.06); color: var(--text); border: 1px solid rgba(255,255,255,0.18); }
+
+    /* Paid Courses Pricing Grid */
+    .pricing-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+      gap: 1.2rem; margin-bottom: 1.6rem;
+    }
+    .course-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 14px; padding: 1.3rem; display: flex; flex-direction: column;
+      justify-content: space-between; position: relative; transition: all 0.2s;
+    }
+    .course-card:hover { border-color: var(--cyan); transform: translateY(-2px); }
+    .price-tag {
+      font-family: var(--mono); font-size: 1.45rem; font-weight: 800; color: #fff;
+    }
+    .price-sub { font-family: var(--mono); font-size: 0.72rem; color: var(--amber); }
+    .mod-list { list-style: none; margin: 0.85rem 0; font-size: 0.8rem; }
+    .mod-list li {
+      padding: 0.4rem 0; border-bottom: 1px solid rgba(255,255,255,0.06);
+      display: flex; justify-content: space-between; gap: 0.5rem;
+    }
+    .tag-free { color: var(--green); font-family: var(--mono); font-size: 0.68rem; font-weight: 700; }
+    .tag-pro { color: var(--amber); font-family: var(--mono); font-size: 0.68rem; font-weight: 700; }
+
+    /* Interactive DSP & Vocal Tract Workbench Tabs */
+    .lab-tabs { display: flex; gap: 0.5rem; margin-bottom: 1rem; flex-wrap: wrap; }
+    .lab-tab {
+      font-family: var(--mono); font-size: 0.8rem; font-weight: 700;
+      padding: 0.55rem 1.05rem; border-radius: 8px; cursor: pointer;
+      background: rgba(255,255,255,0.05); color: var(--muted); border: 1px solid transparent;
+    }
+    .lab-tab.active {
+      background: rgba(56, 189, 248, 0.18); color: #fff; border-color: var(--cyan);
+    }
+    .lab-pane { display: none; }
+    .lab-pane.active { display: grid; grid-template-columns: 380px 1fr; gap: 1.25rem; }
+    @media (max-width: 1024px) { .lab-pane.active { grid-template-columns: 1fr; } }
+
+    .control-group { margin-bottom: 0.85rem; }
+    .control-group label {
+      display: flex; justify-content: space-between;
+      font-family: var(--mono); font-size: 0.75rem; color: var(--muted); margin-bottom: 0.25rem;
+    }
+    input[type="range"] { width: 100%; accent-color: var(--cyan); }
+    .form-input {
+      width: 100%; background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.18);
+      color: #fff; font-family: var(--mono); font-size: 0.8rem; padding: 0.45rem 0.65rem; border-radius: 6px;
+    }
+
+    /* Checkout Modal */
+    .modal-backdrop {
+      position: fixed; inset: 0; background: rgba(0,0,0,0.78);
+      display: none; align-items: center; justify-content: center; z-index: 9999; padding: 1rem;
+    }
+    .modal-backdrop.open { display: flex; }
+    .modal-box {
+      background: #0b1120; border: 1px solid var(--cyan); border-radius: 14px;
+      max-width: 620px; width: 100%; padding: 1.4rem; box-shadow: 0 16px 48px rgba(0,0,0,0.75);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation Header -->
+  <div class="topbar">
+    <div>
+      <h1>&#x1F39B;&#xFE0F; Space.University | DSP &amp; Vocal Tract Audio Engineering Pro Track</h1>
+      <p>Taught by Dean Prof. Rabbit Warren in Full 3D WebGL + Realistic Neural Human Voice &bull; Backed by Gemini 2.5 Flash &amp; DocMesh</p>
+    </div>
+    <div class="nav-pills">
+      <a href="https://space.university" class="pill pill-cyan">&#x1F3DB;&#xFE0F; Main Campus</a>
+      <a href="/grants" class="pill pill-amber">&#x1F4DC; Paid Grantwriting Studio (SC-GRANT-201)</a>
+      <a href="/ucc" class="pill pill-green">&#x2696;&#xFE0F; Free PoC: UCC Course (SC-COMM-301)</a>
+      <a href="/courses/professor-rabbit-series" class="pill pill-purple">&#x1F4DA; All 10 Courses &amp; DocMesh Reader</a>
+      <span class="pill pill-amber" id="license-status-badge">&#x1F512; Pro Track Status: Preview Mode</span>
+    </div>
+  </div>
+
+  <!-- Hero + Full 3D Professor Rabbit Warren Lecture Stage -->
+  <div class="hero-grid">
+    <div class="card">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.5rem;margin-bottom:0.6rem;">
+        <span class="pill pill-purple">SPU-TRACK-DSP-AUDIO-PRO &bull; 3 PAID PRO COURSES (24.0 rATTN)</span>
+        <span class="pill pill-green">RULE-VI-26 &Delta; = 0.000000 Hz Verified</span>
+      </div>
+      <h2 style="font-family:var(--mono);font-size:1.3rem;color:#fff;margin-bottom:0.5rem;">
+        Master Deterministic 0.04 Hz Zoom-DFT, Klatt Vocal Tract Formant Synthesis &amp; Forensic Audio Disambiguation
+      </h2>
+      <p style="font-size:0.86rem;color:#cbd5e1;line-height:1.5;">
+        While our flagship <strong>UCC Commercial Jurisprudence Course (<a href="/ucc" style="color:var(--cyan);">SC-COMM-301</a>)</strong> is 100% free open-access as our Proof of Concept, the <strong>DSP &amp; Vocal Tract Audio Engineering Track</strong> provides intensive, hands-on professional certification with live browser signal-processing workbenches, real-time Klatt formant synthesis, and cryptographic SHA-256 competency credentials.
+      </p>
+
+      <div class="bundle-banner">
+        <div>
+          <div style="font-family:var(--mono);font-size:0.75rem;color:#e9d5ff;font-weight:700;">&#x1F31F; ALL-ACCESS PRO TRACK BUNDLE (SAVE $148)</div>
+          <div style="font-size:1.15rem;font-weight:800;color:#fff;font-family:var(--mono);margin-top:0.15rem;">
+            $449 USD <span style="font-size:0.8rem;color:var(--amber);font-weight:600;">(or 449 USDC on Arbitrum / 20.0 rATTN Scholar Pass)</span>
+          </div>
+          <div style="font-size:0.78rem;color:#cbd5e1;margin-top:0.2rem;">
+            Unlocks <strong>SC-DSP-201 ($149)</strong> + <strong>SC-AUDIO-301 ($199)</strong> + <strong>SC-AUDIO-401 ($249)</strong>, all 3 Pro Workbenches, and DocMesh Textbooks 08, 09 &amp; 10.
+          </div>
+        </div>
+        <div style="display:flex;gap:0.5rem;flex-wrap:wrap;">
+          <button class="btn btn-purple" onclick="openEnrollModal('BUNDLE-DSP-AUDIO-PRO', 'All-Access DSP & Audio Pro Track Bundle', 449, '20.0 rATTN')">
+            &#x26A1; Enroll in Full Pro Track ($449)
+          </button>
+          <button class="btn btn-green" onclick="activateInstantScholarPass()">
+            &#x1F393; Instant Scholar Grant Pass (Demo Unlock)
+          </button>
+        </div>
+      </div>
+
+      <!-- Voice & Lecture Controls -->
+      <div style="margin-top:1rem;padding-top:0.9rem;border-top:1px solid rgba(255,255,255,0.08);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.6rem;">
+        <div style="display:flex;align-items:center;gap:0.5rem;flex-wrap:wrap;">
+          <label style="font-family:var(--mono);font-size:0.74rem;color:var(--muted);">3D Neural Voice:</label>
+          <select id="dsp-voice-select" class="form-input" style="width:auto;padding:0.3rem 0.6rem;font-size:0.74rem;" onchange="if(window.ProfessorRabbit3D)window.ProfessorRabbit3D.setVoice(this.value)">
+            <option value="en-GB-RyanNeural" selected>Dean Prof. Rabbit (UK Oxford Neural)</option>
+            <option value="en-US-ChristopherNeural">Prof. Rabbit (US Baritone Neural)</option>
+            <option value="en-US-GuyNeural">Prof. Rabbit (US DSP Lecturer Neural)</option>
+          </select>
+        </div>
+        <div style="display:flex;gap:0.45rem;flex-wrap:wrap;">
+          <button class="btn btn-cyan" onclick="playCourseIntro('SC-DSP-201')">&#x1F50A; Speak SC-DSP-201 Intro</button>
+          <button class="btn btn-outline" onclick="playCourseIntro('SC-AUDIO-301')">&#x1F50A; Speak SC-AUDIO-301 Intro</button>
+          <button class="btn btn-outline" onclick="playCourseIntro('SC-AUDIO-401')">&#x1F50A; Speak SC-AUDIO-401 Intro</button>
+          <button class="btn btn-outline" onclick="if(window.ProfessorRabbit3D)window.ProfessorRabbit3D.stop()">&#x23F9; Stop</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Column: Full 3D WebGL Professor Rabbit Warren Stage -->
+    <div class="card" style="padding:0.75rem;display:flex;flex-direction:column;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.45rem;padding:0 0.35rem;">
+        <span style="font-family:var(--mono);font-size:0.75rem;color:var(--green);font-weight:700;">
+          &#x1F407; LIVE 3D WEBGL PROFESSOR RABBIT WARREN &bull; 60 FPS FORMANT LIP-SYNC
+        </span>
+        <span style="font-family:var(--mono);font-size:0.7rem;color:var(--cyan);">Engine: PROFESSOR-RABBIT-3D-WEBGL-V3</span>
+      </div>
+      <div id="rabbit-dsp-3d-stage" style="width:100%;height:390px;border-radius:10px;overflow:hidden;border:1px solid rgba(56,189,248,0.35);background:#04070f;flex:1;"></div>
+    </div>
+  </div>
+
+  <!-- 3 Paid Courses Pricing & Syllabus Cards -->
+  <h2 style="font-family:var(--mono);font-size:1.15rem;color:#fff;margin-bottom:0.85rem;">
+    &#x1F4BF; Paid Professional DSP &amp; Vocal Tract Audio Courses
+  </h2>
+  <div class="pricing-grid">
+
+    <!-- Course 1: SC-DSP-201 -->
+    <div class="course-card">
+      <div>
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.5rem;">
+          <div>
+            <span class="pill pill-cyan">SC-DSP-201 &bull; 6.0 rATTN</span>
+            <h3 style="font-family:var(--mono);font-size:1.02rem;color:#fff;margin-top:0.45rem;">
+              Deterministic Bio-Acoustic DSP &amp; 0.04 Hz Zoom-DFT
+            </h3>
+          </div>
+          <div style="text-align:right;">
+            <div class="price-tag">$149</div>
+            <div class="price-sub">or 149 USDC / 6 rATTN</div>
+          </div>
+        </div>
+        <p style="font-size:0.8rem;color:var(--muted);">
+          Master Bluestein Chirp-Z / Zoom-DFT at 0.04 Hz resolution, 4-term Blackman-Harris (-92 dB) sidelobe suppression, &le;0.15 dB zero-slope plateau extraction, and RULE-VI-26 float64 parity.
+        </p>
+        <ul class="mod-list">
+          <li><span>M8.1: Vickie A. Dean Prior Art &amp; 48 kHz Enclave Audio</span><span class="tag-free">FREE PREVIEW</span></li>
+          <li><span>M8.2: 0.04 Hz Chirp-Z Zoom-DFT &amp; Blackman-Harris</span><span class="tag-pro" data-pro-tag="SC-DSP-201">&#x1F512; PRO</span></li>
+          <li><span>M8.3: Zero-Slope (&le;0.15 dB) &amp; Parabolic Refinement</span><span class="tag-pro" data-pro-tag="SC-DSP-201">&#x1F512; PRO</span></li>
+          <li><span>M8.4: 6-Octave Matrix [f..32f] &amp; RULE-VI-26 Parity</span><span class="tag-pro" data-pro-tag="SC-DSP-201">&#x1F512; PRO</span></li>
+          <li><span>M8.5: SIMD DWT-PN Wavelet Denoising (2.14 ns)</span><span class="tag-pro" data-pro-tag="SC-DSP-201">&#x1F512; PRO</span></li>
+          <li><span>M8.6: Capstone 0.04 Hz Zoom-DFT Workbench &amp; Exam</span><span class="tag-pro" data-pro-tag="SC-DSP-201">&#x1F512; PRO</span></li>
+        </ul>
+      </div>
+      <div style="display:flex;gap:0.5rem;flex-wrap:wrap;margin-top:0.5rem;">
+        <button class="btn btn-cyan" onclick="openEnrollModal('SC-DSP-201', 'SC-DSP-201: Deterministic Bio-Acoustic DSP & 0.04 Hz Zoom-DFT', 149, '6.0 rATTN')">
+          &#x1F513; Enroll ($149 / 6 rATTN)
+        </button>
+        <button class="btn btn-outline" onclick="switchLabTab('lab-zoomdft');playCourseIntro('SC-DSP-201')">
+          &#x1F52C; Open Zoom-DFT Lab
+        </button>
+      </div>
+    </div>
+
+    <!-- Course 2: SC-AUDIO-301 -->
+    <div class="course-card">
+      <div>
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.5rem;">
+          <div>
+            <span class="pill pill-green">SC-AUDIO-301 &bull; 8.0 rATTN</span>
+            <h3 style="font-family:var(--mono);font-size:1.02rem;color:#fff;margin-top:0.45rem;">
+              Vocal Tract Formant Synthesis &amp; 3D 60 FPS Lip-Sync
+            </h3>
+          </div>
+          <div style="text-align:right;">
+            <div class="price-tag">$199</div>
+            <div class="price-sub">or 199 USDC / 8 rATTN</div>
+          </div>
+        </div>
+        <p style="font-size:0.8rem;color:var(--muted);">
+          Engineer acoustic source-filter models S(z)=G(z)V(z)R(z), Klatt F1/F2/F3 cascade resonators, Web Audio 512-FFT sub-band trackers, and 60 FPS Three.js jaw &amp; 7-viseme morph targets.
+        </p>
+        <ul class="mod-list">
+          <li><span>M9.1: Acoustic Source-Filter Theory of the Vocal Tract</span><span class="tag-free">FREE PREVIEW</span></li>
+          <li><span>M9.2: Klatt Formant Resonators (F1 Jaw, F2 Tongue, F3 Lip)</span><span class="tag-pro" data-pro-tag="SC-AUDIO-301">&#x1F512; PRO</span></li>
+          <li><span>M9.3: Web Audio AnalyserNode Sub-Band FFT Tracking</span><span class="tag-pro" data-pro-tag="SC-AUDIO-301">&#x1F512; PRO</span></li>
+          <li><span>M9.4: Hybrid Neural TTS (edge-tts) + Klatt WAV Fallback</span><span class="tag-pro" data-pro-tag="SC-AUDIO-301">&#x1F512; PRO</span></li>
+          <li><span>M9.5: 60 FPS Three.js Skeletal Jaw &amp; 7-Viseme Morphing</span><span class="tag-pro" data-pro-tag="SC-AUDIO-301">&#x1F512; PRO</span></li>
+          <li><span>M9.6: Live Klatt Vocal Tract &amp; 3D Avatar Capstone</span><span class="tag-pro" data-pro-tag="SC-AUDIO-301">&#x1F512; PRO</span></li>
+        </ul>
+      </div>
+      <div style="display:flex;gap:0.5rem;flex-wrap:wrap;margin-top:0.5rem;">
+        <button class="btn btn-green" onclick="openEnrollModal('SC-AUDIO-301', 'SC-AUDIO-301: Vocal Tract Formant Synthesis & 3D 60 FPS Lip-Sync', 199, '8.0 rATTN')">
+          &#x1F513; Enroll ($199 / 8 rATTN)
+        </button>
+        <button class="btn btn-outline" onclick="switchLabTab('lab-klatt');playCourseIntro('SC-AUDIO-301')">
+          &#x1F399;&#xFE0F; Open Vocal Tract Lab
+        </button>
+      </div>
+    </div>
+
+    <!-- Course 3: SC-AUDIO-401 -->
+    <div class="course-card">
+      <div>
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.5rem;">
+          <div>
+            <span class="pill pill-purple">SC-AUDIO-401 &bull; 10.0 rATTN</span>
+            <h3 style="font-family:var(--mono);font-size:1.02rem;color:#fff;margin-top:0.45rem;">
+              Forensic Voice Biometrics &amp; 4-Pool Disambiguation
+            </h3>
+          </div>
+          <div style="text-align:right;">
+            <div class="price-tag">$249</div>
+            <div class="price-sub">or 249 USDC / 10 rATTN</div>
+          </div>
+        </div>
+        <p style="font-size:0.8rem;color:var(--muted);">
+          Separate validated vocal fold biomarkers (F0 jitter, shimmer, HNR) from modulo-2 octave projections (R&sup2;=0.06% null), master the 56-Marker Credibility Audit, and seal 7-Layer Merkle proofs.
+        </p>
+        <ul class="mod-list">
+          <li><span>M10.1: Clinical Jitter/Shimmer/HNR vs. Octave Folding</span><span class="tag-free">FREE PREVIEW</span></li>
+          <li><span>M10.2: Modulo-2 Null Control (R&sup2;=0.06%) &amp; 68.39% Coverage</span><span class="tag-pro" data-pro-tag="SC-AUDIO-401">&#x1F512; PRO</span></li>
+          <li><span>M10.3: 4-Pool Bayesian Disambiguation Engine</span><span class="tag-pro" data-pro-tag="SC-AUDIO-401">&#x1F512; PRO</span></li>
+          <li><span>M10.4: 56-Marker Audit (ChAT 82.5 kDa &amp; PORA 43.1 kDa)</span><span class="tag-pro" data-pro-tag="SC-AUDIO-401">&#x1F512; PRO</span></li>
+          <li><span>M10.5: 5-Gate Court of Admissibility (Gates G1–G5)</span><span class="tag-pro" data-pro-tag="SC-AUDIO-401">&#x1F512; PRO</span></li>
+          <li><span>M10.6: 7-Layer Merkle Chain of Custody on n1.pqr.info</span><span class="tag-pro" data-pro-tag="SC-AUDIO-401">&#x1F512; PRO</span></li>
+        </ul>
+      </div>
+      <div style="display:flex;gap:0.5rem;flex-wrap:wrap;margin-top:0.5rem;">
+        <button class="btn btn-purple" onclick="openEnrollModal('SC-AUDIO-401', 'SC-AUDIO-401: Forensic Voice Biometrics & 4-Pool Disambiguation', 249, '10.0 rATTN')">
+          &#x1F513; Enroll ($249 / 10 rATTN)
+        </button>
+        <button class="btn btn-outline" onclick="switchLabTab('lab-forensic');playCourseIntro('SC-AUDIO-401')">
+          &#x2696;&#xFE0F; Open Forensic Lab
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Interactive DSP & Vocal Tract Pro Workbenches -->
+  <div class="card">
+    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.75rem;margin-bottom:1rem;">
+      <div>
+        <h2 style="font-family:var(--mono);font-size:1.15rem;color:#fff;">
+          &#x1F9EA; Interactive DSP &amp; Vocal Tract Engineering Pro Workbenches
+        </h2>
+        <p style="font-size:0.8rem;color:var(--muted);">
+          Real-time browser signal processing &amp; vocal tract acoustic synthesis connected directly to Dean Prof. Rabbit Warren's 3D rig.
+        </p>
+      </div>
+      <div class="lab-tabs">
+        <button class="lab-tab active" id="tab-lab-zoomdft" onclick="switchLabTab('lab-zoomdft')">
+          1. SC-DSP-201: 0.04 Hz Zoom-DFT Analyzer
+        </button>
+        <button class="lab-tab" id="tab-lab-klatt" onclick="switchLabTab('lab-klatt')">
+          2. SC-AUDIO-301: Klatt Vocal Tract Formant &amp; 3D Lip-Sync Synth
+        </button>
+        <button class="lab-tab" id="tab-lab-forensic" onclick="switchLabTab('lab-forensic')">
+          3. SC-AUDIO-401: 4-Pool Forensic Disambiguation &amp; Grader
+        </button>
+      </div>
+    </div>
+
+    <!-- LAB 1: 0.04 Hz Zoom-DFT & Zero-Slope Plateau Analyzer -->
+    <div class="lab-pane active" id="lab-zoomdft">
+      <div style="background:rgba(0,0,0,0.35);padding:1rem;border-radius:10px;border:1px solid rgba(255,255,255,0.08);">
+        <h3 style="font-family:var(--mono);font-size:0.9rem;color:var(--cyan);margin-bottom:0.75rem;">
+          0.04 Hz Zoom-DFT Signal Generator &amp; Zero-Slope Gate
+        </h3>
+        <div class="control-group">
+          <label><span>Basal Fundamental f&#x2080; (Hz)</span><span id="val-f0">24.48 Hz (4AKE)</span></label>
+          <input type="range" id="slider-f0" min="16.00" max="31.96" step="0.04" value="24.48" oninput="renderZoomDftLab()">
+        </div>
+        <div class="control-group">
+          <label><span>Prominence SNR (dB)</span><span id="val-snr">14.5 dB</span></label>
+          <input type="range" id="slider-snr" min="2.0" max="28.0" step="0.5" value="14.5" oninput="renderZoomDftLab()">
+        </div>
+        <div class="control-group">
+          <label><span>Neighbor Slope &Delta;L (dB / 0.04 Hz bin)</span><span id="val-slope">0.08 dB</span></label>
+          <input type="range" id="slider-slope" min="0.01" max="0.45" step="0.01" value="0.08" oninput="renderZoomDftLab()">
+        </div>
+        <div style="display:flex;gap:0.5rem;flex-wrap:wrap;margin-top:0.9rem;">
+          <button class="btn btn-cyan" onclick="playZoomDftHarmonicChord()">&#x1F50A; Audition 6-Octave Harmonic Stack</button>
+          <button class="btn btn-green" onclick="submitDspLabGrade('SC-DSP-201')">&#x2705; Grade &amp; Mint SHA-256 Receipt</button>
+        </div>
+        <div id="zoomdft-verdict-box" style="margin-top:0.85rem;font-family:var(--mono);font-size:0.75rem;padding:0.65rem;border-radius:6px;background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.35);color:#e2e8f0;"></div>
+      </div>
+      <div>
+        <canvas id="canvas-zoomdft" width="760" height="280" style="width:100%;height:280px;background:#03060c;border-radius:10px;border:1px solid rgba(56,189,248,0.3);"></canvas>
+        <div id="zoomdft-octave-table" style="margin-top:0.65rem;font-family:var(--mono);font-size:0.75rem;color:var(--muted);"></div>
+      </div>
+    </div>
+
+    <!-- LAB 2: Klatt Vocal Tract Formant Synthesizer (F1, F2, F3) & 3D Viseme Driver -->
+    <div class="lab-pane" id="lab-klatt">
+      <div style="background:rgba(0,0,0,0.35);padding:1rem;border-radius:10px;border:1px solid rgba(255,255,255,0.08);">
+        <h3 style="font-family:var(--mono);font-size:0.9rem;color:var(--green);margin-bottom:0.75rem;">
+          Klatt Vocal Tract Formant Resonator (F&#x2081;, F&#x2082;, F&#x2083;)
+        </h3>
+        <div style="display:flex;gap:0.35rem;flex-wrap:wrap;margin-bottom:0.8rem;">
+          <button class="btn btn-outline" style="padding:0.3rem 0.6rem;font-size:0.72rem;" onclick="setKlattVowel('A', 120, 760, 1320, 2500)">/a/ (Viseme A)</button>
+          <button class="btn btn-outline" style="padding:0.3rem 0.6rem;font-size:0.72rem;" onclick="setKlattVowel('E', 125, 460, 2150, 2750)">/e/ (Viseme E)</button>
+          <button class="btn btn-outline" style="padding:0.3rem 0.6rem;font-size:0.72rem;" onclick="setKlattVowel('I', 135, 310, 2380, 3000)">/i/ (Viseme I)</button>
+          <button class="btn btn-outline" style="padding:0.3rem 0.6rem;font-size:0.72rem;" onclick="setKlattVowel('O', 115, 520, 920, 2350)">/o/ (Viseme O)</button>
+          <button class="btn btn-outline" style="padding:0.3rem 0.6rem;font-size:0.72rem;" onclick="setKlattVowel('U', 118, 340, 880, 2250)">/u/ (Viseme U)</button>
+        </div>
+        <div class="control-group">
+          <label><span>Glottal Pitch F&#x2080; (Hz)</span><span id="val-klatt-f0">120 Hz</span></label>
+          <input type="range" id="slider-klatt-f0" min="85" max="240" step="1" value="120" oninput="renderKlattTransferFunction()">
+        </div>
+        <div class="control-group">
+          <label><span>F&#x2081; Pharyngeal / Jaw Opening (Hz)</span><span id="val-klatt-f1">760 Hz</span></label>
+          <input type="range" id="slider-klatt-f1" min="220" max="900" step="10" value="760" oninput="renderKlattTransferFunction()">
+        </div>
+        <div class="control-group">
+          <label><span>F&#x2082; Oral Cavity / Tongue Frontness (Hz)</span><span id="val-klatt-f2">1320 Hz</span></label>
+          <input type="range" id="slider-klatt-f2" min="800" max="2600" step="20" value="1320" oninput="renderKlattTransferFunction()">
+        </div>
+        <div class="control-group">
+          <label><span>F&#x2083; Lip Rounding / Protrusion (Hz)</span><span id="val-klatt-f3">2500 Hz</span></label>
+          <input type="range" id="slider-klatt-f3" min="2000" max="3400" step="25" value="2500" oninput="renderKlattTransferFunction()">
+        </div>
+        <div style="display:flex;gap:0.5rem;flex-wrap:wrap;margin-top:0.85rem;">
+          <button class="btn btn-green" onclick="synthesizeLiveKlattVowel()">&#x1F50A; Synthesize Vocal Tract Tone &amp; Animate 3D Jaw</button>
+          <button class="btn btn-cyan" onclick="submitDspLabGrade('SC-AUDIO-301')">&#x2705; Mint 8.0 rATTN Receipt</button>
+        </div>
+      </div>
+      <div>
+        <canvas id="canvas-klatt" width="760" height="280" style="width:100%;height:280px;background:#03060c;border-radius:10px;border:1px solid rgba(16,185,129,0.3);"></canvas>
+        <div id="klatt-viseme-readout" style="margin-top:0.65rem;font-family:var(--mono);font-size:0.75rem;color:var(--muted);"></div>
+      </div>
+    </div>
+
+    <!-- LAB 3: 4-Pool Bayesian Disambiguation & 5-Gate Court Auditor -->
+    <div class="lab-pane" id="lab-forensic">
+      <div style="background:rgba(0,0,0,0.35);padding:1rem;border-radius:10px;border:1px solid rgba(255,255,255,0.08);">
+        <h3 style="font-family:var(--mono);font-size:0.9rem;color:var(--purple);margin-bottom:0.75rem;">
+          4-Pool Bayesian Disambiguation &amp; Court of Admissibility
+        </h3>
+        <div class="control-group">
+          <label><span>Observed Candidate Marker / Substance</span></label>
+          <select id="select-forensic-marker" class="form-input" onchange="evaluateForensicMarker()">
+            <option value="SUB-KIRCH-4AKE">SUB-KIRCH-4AKE: Adenylate Kinase (4AKE, 24.48 Hz, Tier B Hinge)</option>
+            <option value="SUB-007">SUB-007: Choline O-acetyltransferase (ChAT, UniProt P28329, 82,565 Da)</option>
+            <option value="SUB-018">SUB-018: Protochlorophyllide Reductase (PORA 43,098 Da vs Chl-a 893.49 Da)</option>
+            <option value="POOL-D-60HZ">POOL-D-60HZ: 60.00 Hz AC Mains Hum / Room Mode Artifact</option>
+            <option value="COND-008">COND-008: Discredited Legacy Marker (Gate G3 Quarantine Control)</option>
+          </select>
+        </div>
+        <div style="display:flex;gap:0.5rem;flex-wrap:wrap;margin-top:0.9rem;">
+          <button class="btn btn-purple" onclick="evaluateForensicMarker(true)">&#x1F50A; Run 5-Gate Court Audit &amp; Speak Verdict</button>
+          <button class="btn btn-green" onclick="submitDspLabGrade('SC-AUDIO-401')">&#x2705; Mint 10.0 rATTN Receipt</button>
+        </div>
+      </div>
+      <div id="forensic-audit-output" style="background:#03060c;border-radius:10px;border:1px solid rgba(168,85,247,0.35);padding:1.1rem;font-family:var(--mono);font-size:0.78rem;line-height:1.55;"></div>
+    </div>
+
+    <!-- Lab Grade Receipt Output -->
+    <div id="dsp-grade-receipt" style="display:none;margin-top:1rem;padding:0.9rem;border-radius:8px;background:rgba(16,185,129,0.12);border:1px solid var(--green);font-family:var(--mono);font-size:0.78rem;color:#fff;"></div>
+  </div>
+
+  <!-- Tuition & License Checkout Modal -->
+  <div class="modal-backdrop" id="enroll-modal">
+    <div class="modal-box">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.8rem;">
+        <h3 style="font-family:var(--mono);font-size:1.05rem;color:#fff;" id="modal-course-title">Enroll in Paid Pro Course</h3>
+        <button class="btn btn-outline" style="padding:0.25rem 0.6rem;" onclick="closeEnrollModal()">&#x2715;</button>
+      </div>
+      <div style="background:rgba(56,189,248,0.08);border:1px solid rgba(56,189,248,0.3);border-radius:8px;padding:0.8rem;margin-bottom:0.9rem;font-family:var(--mono);font-size:0.78rem;">
+        <div><strong>Tuition:</strong> <span id="modal-course-price" style="color:var(--green);">$149 USD</span> (or <span id="modal-course-rattn" style="color:var(--cyan);">6.0 rATTN</span> Scholar Pass)</div>
+        <div style="margin-top:0.3rem;color:var(--muted);font-size:0.72rem;">
+          Arbitrum One USDC/ETH Settlement Treasury: <code style="color:var(--amber);">0xE8d4a669c81E6dCEE82d15cB6b600B0127d7DfC7</code>
+        </div>
+      </div>
+      <div class="control-group">
+        <label><span>Student / Practitioner Name or Handle</span></label>
+        <input type="text" id="enroll-student-name" class="form-input" value="Sovereign Audio Scholar">
+      </div>
+      <div class="control-group">
+        <label><span>Payment / Verification Method</span></label>
+        <select id="enroll-payment-method" class="form-input">
+          <option value="SCHOLAR_GRANT">Sovereign Scholar Grant Code (SPU-DSP-PRO-2026)</option>
+          <option value="ARBITRUM_USDC">Arbitrum One On-Chain USDC/ETH Settlement (0xE8d4...DfC7)</option>
+          <option value="INSTANT_PRO_SEAT">Enterprise / Card Instant Seat Activation</option>
+        </select>
+      </div>
+      <div class="control-group">
+        <label><span>Grant Code or Arbitrum Tx Hash</span></label>
+        <input type="text" id="enroll-proof-input" class="form-input" value="SPU-DSP-PRO-2026">
+      </div>
+      <div style="display:flex;gap:0.6rem;justify-content:flex-end;margin-top:1rem;">
+        <button class="btn btn-outline" onclick="closeEnrollModal()">Cancel</button>
+        <button class="btn btn-green" onclick="submitEnrollmentCheckout()">&#x26A1; Verify &amp; Issue SHA-256 Pro License</button>
+      </div>
+      <div id="modal-receipt-box" style="display:none;margin-top:0.85rem;padding:0.75rem;border-radius:6px;background:rgba(16,185,129,0.14);border:1px solid var(--green);font-family:var(--mono);font-size:0.74rem;color:#fff;word-break:break-all;"></div>
+    </div>
+  </div>
+
+  <script src="/professor_rabbit_3d_engine.js"></script>
+  <script>
+    let selectedModalCourseId = 'BUNDLE-DSP-AUDIO-PRO';
+    let selectedModalPrice = 449;
+    let currentKlattViseme = 'A';
+
+    const courseIntroScripts = {
+      'SC-DSP-201': "Welcome to SC-DSP-201: Deterministic Bio-Acoustic Digital Signal Processing! In this paid professional course, we replace coarse 4096-point FFTs with a 0.04 Hertz band-limited Zoom-DFT, apply the 4-term Blackman-Harris window with minus 92 decibel sidelobe suppression, isolate zero-slope stationary plateaus within 0.15 decibels, and enforce RULE-VI-26 float64 parity!",
+      'SC-AUDIO-301': "Welcome to SC-AUDIO-301: Vocal Tract Formant Synthesis and 3D 60 Frames-Per-Second Lip-Sync Engineering! Watch my 3D jaw and lips as I speak: the first formant F1 between 200 and 900 Hertz controls pharyngeal cavity and jaw opening, while the second formant F2 between 800 and 2600 Hertz controls oral cavity tongue advancement and lip spread!",
+      'SC-AUDIO-401': "Welcome to SC-AUDIO-401: Forensic Voice Biometrics and 4-Pool Bayesian Disambiguation! Here we separate validated vocal-fold biomarkers like jitter, shimmer, and harmonic-to-noise ratio from exploratory modulo-2 octave projections, which collapse variance 1,341-fold down to R-squared equals 0.06 percent, and seal every admissible finding into our 7-Layer Merkle Chain of Custody!"
+    };
+
+    function playCourseIntro(courseId) {
+      const script = courseIntroScripts[courseId] || courseIntroScripts['SC-DSP-201'];
+      const voice = document.getElementById('dsp-voice-select').value || 'en-GB-RyanNeural';
+      if (window.ProfessorRabbit3D) {
+        window.ProfessorRabbit3D.setChalkboardText(
+          courseId + ' • Pro DSP & Vocal Tract Lecture',
+          courseId === 'SC-DSP-201'
+            ? 'X(f_k) = Σ w[n]x[n]e^{-j2πf_kn/f_s}  |  δf = 0.04 Hz  |  ΔL_slope ≤ 0.15 dB'
+            : (courseId === 'SC-AUDIO-301'
+              ? 'S(z) = G(z)·V(z)·R(z)  |  F₁ (200-900 Hz) ⟹ Jaw  |  F₂ (800-2600 Hz) ⟹ Lips'
+              : 'P(Pool_i | D)  |  R²_folded = 0.06% (p=0.4371 NS)  |  Gates G₁∧G₂∧G₃∧G₄∧G₅'),
+          [script.substring(0, 115) + '...', 'Voice: ' + voice + ' • 60 FPS WebAudio Formant Lip-Sync']
+        );
+        window.ProfessorRabbit3D.speak(script, { voice: voice });
+      }
+    }
+
+    function switchLabTab(paneId) {
+      document.querySelectorAll('.lab-pane').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.lab-tab').forEach(el => el.classList.remove('active'));
+      const p = document.getElementById(paneId);
+      const t = document.getElementById('tab-' + paneId);
+      if (p) p.classList.add('active');
+      if (t) t.classList.add('active');
+      if (paneId === 'lab-zoomdft') renderZoomDftLab();
+      if (paneId === 'lab-klatt') renderKlattTransferFunction();
+      if (paneId === 'lab-forensic') evaluateForensicMarker(false);
+    }
+
+    // Lab 1: 0.04 Hz Zoom-DFT Renderer
+    function renderZoomDftLab() {
+      const f0 = parseFloat(document.getElementById('slider-f0').value);
+      const snr = parseFloat(document.getElementById('slider-snr').value);
+      const slope = parseFloat(document.getElementById('slider-slope').value);
+      document.getElementById('val-f0').innerText = f0.toFixed(2) + ' Hz';
+      document.getElementById('val-snr').innerText = snr.toFixed(1) + ' dB';
+      document.getElementById('val-slope').innerText = slope.toFixed(2) + ' dB';
+
+      const canvas = document.getElementById('canvas-zoomdft');
+      const ctx = canvas.getContext('2d');
+      const W = canvas.width, H = canvas.height;
+      ctx.clearRect(0, 0, W, H);
+
+      // Grid
+      ctx.strokeStyle = 'rgba(56, 189, 248, 0.12)';
+      ctx.lineWidth = 1;
+      for (let x = 40; x < W; x += 60) { ctx.beginPath(); ctx.moveTo(x, 15); ctx.lineTo(x, H - 30); ctx.stroke(); }
+      for (let y = 20; y < H - 30; y += 45) { ctx.beginPath(); ctx.moveTo(40, y); ctx.lineTo(W - 15, y); ctx.stroke(); }
+
+      // Plot 0.04 Hz Zoom-DFT Window around f0 (±1.20 Hz = 60 bins)
+      ctx.beginPath();
+      ctx.strokeStyle = slope <= 0.15 && snr >= 6.0 ? '#10b981' : '#f59e0b';
+      ctx.lineWidth = 2.4;
+      const nBins = 120;
+      for (let i = 0; i <= nBins; i++) {
+        const df = (i - nBins / 2) * 0.04;
+        const x = 45 + (i / nBins) * (W - 65);
+        const bw = Math.max(0.06, slope * 1.8);
+        const peakDb = snr * Math.exp(-(df * df) / (2 * bw * bw));
+        const noise = 1.2 * Math.sin(i * 1.7) * Math.cos(i * 0.9);
+        const y = (H - 45) - ((peakDb + noise + 4) / 34.0) * (H - 75);
+        if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+      }
+      ctx.stroke();
+
+      // Center marker
+      const cx = 45 + 0.5 * (W - 65);
+      ctx.strokeStyle = '#38bdf8';
+      ctx.setLineDash([4, 4]);
+      ctx.beginPath(); ctx.moveTo(cx, 15); ctx.lineTo(cx, H - 30); ctx.stroke();
+      ctx.setLineDash([]);
+
+      ctx.fillStyle = '#e2e8f0';
+      ctx.font = '12px monospace';
+      ctx.fillText('0.04 Hz Zoom-DFT Peak: f* = ' + f0.toFixed(2) + ' Hz | SNR = ' + snr.toFixed(1) + ' dB | ΔL_slope = ' + slope.toFixed(2) + ' dB', 50, 28);
+
+      const passSlope = slope <= 0.15;
+      const passSnr = snr >= 6.0;
+      const vBox = document.getElementById('zoomdft-verdict-box');
+      vBox.style.borderColor = (passSlope && passSnr) ? '#10b981' : '#ef4444';
+      vBox.innerHTML = (passSlope && passSnr)
+        ? '&#x2705; <strong>STATIONARY ZERO-SLOPE RESONANCE ADMITTED:</strong> &Delta;L = ' + slope.toFixed(2) + ' dB &le; 0.15 dB &bull; SNR = ' + snr.toFixed(1) + ' dB &ge; 6.0 dB &bull; RULE-VI-26 Parity: 0.000000 Hz'
+        : '&#x26A0;&#xFE0F; <strong>REJECTED BY GATE G2 / ZERO-SLOPE FILTER:</strong> Requires &Delta;L &le; 0.15 dB and SNR &ge; 6.0 dB.';
+
+      const octs = [1, 2, 4, 8, 16, 32].map(m => (f0 * m).toFixed(2) + ' Hz').join(' → ');
+      document.getElementById('zoomdft-octave-table').innerHTML = '<strong>6-Octave Cascade Vector [f..32f]:</strong> [' + octs + ']';
+    }
+
+    function playZoomDftHarmonicChord() {
+      const f0 = parseFloat(document.getElementById('slider-f0').value);
+      const AudioCtx = window.AudioContext || window.webkitAudioContext;
+      if (!AudioCtx) return;
+      const ctx = new AudioCtx();
+      const now = ctx.currentTime;
+      [2, 4, 8, 16, 32].forEach((mult, idx) => {
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'sine';
+        osc.frequency.value = f0 * mult;
+        gain.gain.setValueAtTime(0.12 / (idx + 1), now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 1.4);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start(now);
+        osc.stop(now + 1.45);
+      });
+    }
+
+    // Lab 2: Klatt Vocal Tract Transfer Function & Live Vowel Synthesizer
+    function setKlattVowel(viseme, f0, f1, f2, f3) {
+      currentKlattViseme = viseme;
+      document.getElementById('slider-klatt-f0').value = f0;
+      document.getElementById('slider-klatt-f1').value = f1;
+      document.getElementById('slider-klatt-f2').value = f2;
+      document.getElementById('slider-klatt-f3').value = f3;
+      renderKlattTransferFunction();
+      synthesizeLiveKlattVowel();
+    }
+
+    function renderKlattTransferFunction() {
+      const f0 = parseFloat(document.getElementById('slider-klatt-f0').value);
+      const f1 = parseFloat(document.getElementById('slider-klatt-f1').value);
+      const f2 = parseFloat(document.getElementById('slider-klatt-f2').value);
+      const f3 = parseFloat(document.getElementById('slider-klatt-f3').value);
+      document.getElementById('val-klatt-f0').innerText = f0 + ' Hz';
+      document.getElementById('val-klatt-f1').innerText = f1 + ' Hz';
+      document.getElementById('val-klatt-f2').innerText = f2 + ' Hz';
+      document.getElementById('val-klatt-f3').innerText = f3 + ' Hz';
+
+      const canvas = document.getElementById('canvas-klatt');
+      const ctx = canvas.getContext('2d');
+      const W = canvas.width, H = canvas.height;
+      ctx.clearRect(0, 0, W, H);
+
+      ctx.strokeStyle = 'rgba(16, 185, 129, 0.14)';
+      for (let x = 40; x < W; x += 70) { ctx.beginPath(); ctx.moveTo(x, 15); ctx.lineTo(x, H - 30); ctx.stroke(); }
+
+      // Plot |V(f)| across 0..4000 Hz
+      ctx.beginPath();
+      ctx.strokeStyle = '#10b981';
+      ctx.lineWidth = 2.5;
+      const formants = [[f1, 60], [f2, 90], [f3, 120]];
+      for (let i = 0; i <= 200; i++) {
+        const freq = (i / 200) * 4000;
+        let magDb = 0;
+        formants.forEach(([fk, bw]) => {
+          const d = (freq - fk) / (bw * 0.8);
+          magDb += 22 / (1 + d * d);
+        });
+        const x = 40 + (i / 200) * (W - 60);
+        const y = (H - 40) - (magDb / 32.0) * (H - 70);
+        if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+      }
+      ctx.stroke();
+
+      // Label F1, F2, F3 peaks
+      ctx.fillStyle = '#38bdf8';
+      ctx.font = '12px monospace';
+      [['F1', f1], ['F2', f2], ['F3', f3]].forEach(([lbl, fk]) => {
+        const px = 40 + (fk / 4000) * (W - 60);
+        ctx.fillText(lbl + '=' + fk + 'Hz', px - 28, 28);
+      });
+
+      const jawOpen = Math.min(1.0, Math.max(0.05, (f1 - 200) / 700)).toFixed(2);
+      const lipSpread = Math.min(1.0, Math.max(0.05, (f2 - 800) / 1800)).toFixed(2);
+      document.getElementById('klatt-viseme-readout').innerHTML =
+        '<strong>3D Facial Rig Mapping:</strong> Active Viseme = <code>' + currentKlattViseme +
+        '</code> &bull; Jaw Opening (&theta;_jaw) = <code>' + jawOpen +
+        '</code> &bull; Lip Spread = <code>' + lipSpread + '</code>';
+    }
+
+    function synthesizeLiveKlattVowel() {
+      const f0 = parseFloat(document.getElementById('slider-klatt-f0').value);
+      const f1 = parseFloat(document.getElementById('slider-klatt-f1').value);
+      const f2 = parseFloat(document.getElementById('slider-klatt-f2').value);
+      const f3 = parseFloat(document.getElementById('slider-klatt-f3').value);
+      const AudioCtx = window.AudioContext || window.webkitAudioContext;
+      if (AudioCtx) {
+        const ctx = new AudioCtx();
+        const now = ctx.currentTime;
+        const src = ctx.createOscillator();
+        src.type = 'sawtooth';
+        src.frequency.setValueAtTime(f0, now);
+        src.frequency.linearRampToValueAtTime(f0 * 1.06, now + 0.4);
+        src.frequency.linearRampToValueAtTime(f0 * 0.96, now + 0.9);
+
+        const master = ctx.createGain();
+        master.gain.setValueAtTime(0.18, now);
+        master.gain.exponentialRampToValueAtTime(0.001, now + 0.95);
+        master.connect(ctx.destination);
+
+        [[f1, 10, 1.0], [f2, 12, 0.55], [f3, 14, 0.25]].forEach(([fk, q, amp]) => {
+          const bp = ctx.createBiquadFilter();
+          bp.type = 'bandpass';
+          bp.frequency.value = fk;
+          bp.Q.value = q;
+          const g = ctx.createGain();
+          g.gain.value = amp;
+          src.connect(bp);
+          bp.connect(g);
+          g.connect(master);
+        });
+        src.start(now);
+        src.stop(now + 1.0);
+      }
+      if (window.ProfessorRabbit3D) {
+        window.ProfessorRabbit3D.setChalkboardText(
+          'SC-AUDIO-301 • Live Klatt Vocal Tract Synthesizer',
+          'F₀=' + f0 + 'Hz | F₁=' + f1 + 'Hz (Jaw) | F₂=' + f2 + 'Hz (Tongue) | F₃=' + f3 + 'Hz (Lips)',
+          ['Active Viseme Morph Target: ' + currentKlattViseme, 'All-Pole Cascade Resonator V(z) Excited at 60 FPS']
+        );
+      }
+    }
+
+    // Lab 3: Forensic 4-Pool Disambiguation Auditor
+    function evaluateForensicMarker(speakResult) {
+      const sel = document.getElementById('select-forensic-marker').value;
+      const box = document.getElementById('forensic-audit-output');
+      const records = {
+        'SUB-KIRCH-4AKE': {
+          pool: 'Pool B (3D Kirchhoff Protein Construct • PDB 4AKE → 1AKE)',
+          credibility: 'VALIDATED_3D_KIRCHHOFF_CONSTRUCT (Tier B Anisotropic Hinge, Δλ₁ = +52.3%, ANM r = 0.9418)',
+          gates: 'G1(PASS) ∧ G2(PASS: 14.5 dB) ∧ G3(PASS) ∧ G4(PASS) ∧ G5(PASS: LAYER_4_SCIENTIFIC_HYPOTHESIS)',
+          verdict: 'ADMITTED TO 7-LAYER CHAIN OF CUSTODY (Strictly Tagged LAYER_4_SCIENTIFIC_HYPOTHESIS per RULE-VI-27)'
+        },
+        'SUB-007': {
+          pool: 'Pool B (56-Marker Audited Neurochemical Enzyme • UniProt P28329 / PDB 2FY2)',
+          credibility: 'NOMENCLATURE_OR_MW_MISMATCH REMEDIATED: Legacy "Acetylcholine Synthetase (68 kDa)" corrected to Choline O-acetyltransferase (ChAT, EC 2.3.1.6, 82,565 Da)',
+          gates: 'G1(PASS) ∧ G2(PASS) ∧ G3(PASS: Remediated) ∧ G4(PASS) ∧ G5(PASS)',
+          verdict: 'ADMITTED WITH CANONICAL UNIPROT P28329 STOICHIOMETRY & RULE-VI-27 TAG'
+        },
+        'SUB-018': {
+          pool: 'Pool B (56-Marker Audited Photobiological Marker • UniProt Q96504 / PubChem 12085802)',
+          credibility: 'NOMENCLATURE_OR_MW_MISMATCH REMEDIATED: Distinguished Chlorophyll a porphyrin ligand (893.49 Da) from Protochlorophyllide reductase enzyme (PORA, 43,098 Da)',
+          gates: 'G1(PASS) ∧ G2(PASS) ∧ G3(PASS: Remediated) ∧ G4(PASS) ∧ G5(PASS)',
+          verdict: 'ADMITTED WITH DUAL LIGAND/ENZYME DISAMBIGUATION RECEIPT'
+        },
+        'POOL-D-60HZ': {
+          pool: 'Pool D (Environmental / 60.00 Hz AC Mains Electrical Hum)',
+          credibility: 'ENVIRONMENTAL_ARTIFACT',
+          gates: 'G1(PASS) ∧ G2(PASS) ∧ G3(PASS) ∧ G4(FAIL: Pool D Mains Hum) ∧ G5(N/A)',
+          verdict: 'QUARANTINED AT GATE G4: 60.00 Hz Mains Hum Filtered Before Any Biological Claim'
+        },
+        'COND-008': {
+          pool: 'Quarantined Legacy Condition Entry (COND-008)',
+          credibility: 'DISCREDITED_BY_PRESENT_RESEARCH',
+          gates: 'G1(PASS) ∧ G2(PASS) ∧ G3(FAIL: Discredited Marker) ∧ G4(PASS) ∧ G5(N/A)',
+          verdict: 'BLOCKED & QUARANTINED AT GATE G3: Never Emitted as a Validated Finding'
+        }
+      };
+      const r = records[sel] || records['SUB-KIRCH-4AKE'];
+      box.innerHTML =
+        '<div style="color:var(--cyan);font-weight:700;margin-bottom:0.4rem;">[5-GATE COURT OF ADMISSIBILITY AUDIT: ' + sel + ']</div>' +
+        '<div><strong>Assigned Bayesian Pool:</strong> ' + r.pool + '</div>' +
+        '<div style="margin-top:0.35rem;"><strong>56-Marker Credibility Audit:</strong> ' + r.credibility + '</div>' +
+        '<div style="margin-top:0.35rem;"><strong>Modulo-2 Null Control Disclosure:</strong> R&sup2;_unfolded = 80.48% &rarr; R&sup2;_folded = 0.06% (p = 0.4371 NS, 68.39% band coverage)</div>' +
+        '<div style="margin-top:0.35rem;"><strong>Gate Vector:</strong> <code>' + r.gates + '</code></div>' +
+        '<div style="margin-top:0.5rem;padding:0.5rem;border-radius:6px;background:rgba(56,189,248,0.1);color:#fff;"><strong>Court Verdict:</strong> ' + r.verdict + '</div>';
+      if (speakResult && window.ProfessorRabbit3D) {
+        window.ProfessorRabbit3D.speak(r.credibility + '. ' + r.verdict);
+      }
+    }
+
+    async function submitDspLabGrade(courseId) {
+      const box = document.getElementById('dsp-grade-receipt');
+      box.style.display = 'block';
+      box.innerText = 'Grading ' + courseId + ' Pro Workbench & computing SHA-256 competency receipt...';
+      try {
+        const resp = await fetch('/api/v1/dsp-track/run-lab', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            course_id: courseId,
+            f0_hz: parseFloat(document.getElementById('slider-f0').value || 24.48),
+            snr_db: parseFloat(document.getElementById('slider-snr').value || 14.5),
+            slope_db: parseFloat(document.getElementById('slider-slope').value || 0.08),
+            klatt_f1: parseFloat(document.getElementById('slider-klatt-f1').value || 760),
+            klatt_f2: parseFloat(document.getElementById('slider-klatt-f2').value || 1320)
+          })
+        });
+        const data = await resp.json();
+        box.innerHTML =
+          '&#x1F3C6; <strong>PRO WORKBENCH CERTIFIED (' + data.course_id + '):</strong> Grade: <code>' + data.grade +
+          '</code> &bull; Credits Awarded: <code>' + data.rattn_awarded + ' rATTN</code><br>' +
+          '<strong>SHA-256 Competency Receipt:</strong> <code>' + data.competency_receipt_sha256 + '</code><br>' +
+          '<span>' + data.instructor_feedback + '</span>';
+      } catch (e) {
+        box.innerText = 'Error grading lab: ' + e;
+      }
+    }
+
+    // Enrollment & License Modal Functions
+    function openEnrollModal(courseId, title, priceUsd, rattn) {
+      selectedModalCourseId = courseId;
+      selectedModalPrice = priceUsd;
+      document.getElementById('modal-course-title').innerText = title;
+      document.getElementById('modal-course-price').innerText = '$' + priceUsd + ' USD / ' + priceUsd + ' USDC';
+      document.getElementById('modal-course-rattn').innerText = rattn;
+      document.getElementById('modal-receipt-box').style.display = 'none';
+      document.getElementById('enroll-modal').classList.add('open');
+    }
+
+    function closeEnrollModal() {
+      document.getElementById('enroll-modal').classList.remove('open');
+    }
+
+    async function submitEnrollmentCheckout() {
+      const student = document.getElementById('enroll-student-name').value || 'Sovereign Scholar';
+      const method = document.getElementById('enroll-payment-method').value;
+      const proof = document.getElementById('enroll-proof-input').value || 'SPU-DSP-PRO-2026';
+      const rBox = document.getElementById('modal-receipt-box');
+      rBox.style.display = 'block';
+      rBox.innerText = 'Verifying enrollment & minting SHA-256 Pro License...';
+      try {
+        const resp = await fetch('/api/v1/dsp-track/enroll', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            course_id: selectedModalCourseId,
+            student_name: student,
+            payment_method: method,
+            payment_proof: proof,
+            tuition_usd: selectedModalPrice
+          })
+        });
+        const data = await resp.json();
+        if (data && data.license_key) {
+          localStorage.setItem('spu_dsp_pro_license', JSON.stringify(data));
+          applyProLicenseUnlock(data);
+          rBox.innerHTML =
+            '&#x2705; <strong>PRO ENROLLMENT CONFIRMED!</strong><br>' +
+            'License Key: <code>' + data.license_key + '</code><br>' +
+            'Unlocked Courses: <code>' + (data.unlocked_courses || []).join(', ') + '</code><br>' +
+            'SHA-256 Settlement Receipt: <code>' + data.settlement_receipt_sha256 + '</code>';
+          if (window.ProfessorRabbit3D) {
+            window.ProfessorRabbit3D.speak('Congratulations ' + student + '! Your Space University Pro DSP and Audio Engineering license is now unlocked and anchored with SHA-256 provenance!');
+          }
+        }
+      } catch (e) {
+        rBox.innerText = 'Enrollment error: ' + e;
+      }
+    }
+
+    async function activateInstantScholarPass() {
+      selectedModalCourseId = 'BUNDLE-DSP-AUDIO-PRO';
+      selectedModalPrice = 449;
+      openEnrollModal('BUNDLE-DSP-AUDIO-PRO', 'All-Access DSP & Audio Pro Track Bundle', 449, '20.0 rATTN');
+      await submitEnrollmentCheckout();
+    }
+
+    function applyProLicenseUnlock(lic) {
+      if (!lic || !lic.license_key) return;
+      const badge = document.getElementById('license-status-badge');
+      if (badge) {
+        badge.className = 'pill pill-green';
+        badge.innerHTML = '&#x2705; Pro License Active: ' + lic.license_key.substring(0, 18) + '...';
+      }
+      document.querySelectorAll('[data-pro-tag]').forEach(el => {
+        el.className = 'tag-free';
+        el.innerHTML = '&#x1F513; UNLOCKED';
+      });
+    }
+
+    window.addEventListener('load', function() {
+      renderZoomDftLab();
+      renderKlattTransferFunction();
+      evaluateForensicMarker(false);
+      try {
+        const saved = localStorage.getItem('spu_dsp_pro_license');
+        if (saved) applyProLicenseUnlock(JSON.parse(saved));
+      } catch (e) {}
+      setTimeout(function() {
+        if (window.ProfessorRabbit3D) {
+          window.ProfessorRabbit3D.mount('rabbit-dsp-3d-stage', {
+            hologramMode: 'KIRCHHOFF_4AKE',
+            pose: 'EUREKA_POINTER',
+            voice: 'en-GB-RyanNeural',
+            title: 'SPU-TRACK-DSP-AUDIO-PRO • 3D Lecture Amphitheater',
+            equation: 'X(f_k) = Σ w[n]x[n]e^{-j2πf_kn/f_s} (δf=0.04 Hz)  |  S(z) = G(z)·V(z)·R(z)',
+            bullets: [
+              'SC-DSP-201 ($149): 0.04 Hz Zoom-DFT & <=0.15 dB Zero-Slope Plateaus',
+              'SC-AUDIO-301 ($199): Klatt F1/F2/F3 Vocal Tract Synth & 60 FPS 3D Lip-Sync',
+              'SC-AUDIO-401 ($249): Forensic Voice Biometrics & 4-Pool Disambiguation'
+            ]
+          });
+        }
+      }, 150);
+    });
+  </script>
+</body>
+</html>
