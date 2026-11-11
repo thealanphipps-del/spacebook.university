@@ -1,0 +1,68 @@
+apiVersion: kontextkube.io/v1alpha1
+kind: DocumentationArtifact
+metadata:
+  name: rfc-vi-0005-space-university-professor-rabbit-curriculum
+  namespace: apex-cortex
+  labels:
+    releaseTag: v4.1.0-spu-0013-docmesh
+    ticketId: TKT-0276
+    curriculumId: SPU-0013
+    governanceRule: RULE-VI-27
+spec:
+  ticketId: "TKT-0276"
+  kind: "GovernanceSpec"
+  schemaVersion: "4.1.0"
+  sourceOfTruth: "spec"
+  specPath: "C:/Users/theal/.gemini/antigravity/scratch/apex1.predator.run/wiki_docs/RFC-VI-0005_space_university_professor_rabbit_curriculum_docmesh_spec.md"
+  specSha256: "672F970963F990B5EDF629A2F393DC447D26A71FFB626323133A904675173F26"
+  invariants:
+    RULE_VI_26: "Deterministic Reconstruction from L1 to L7 within <= 1e-12 tolerance and 0.000000 Hz cross-runtime Zoom-DFT parity."
+    RULE_VI_27: "No computational result may be promoted from Layer 4 (Scientific Hypothesis) to Layer 5 (Biological Conclusion) without externally referenced empirical evidence."
+    RULE_VI_28: "Passing integration tests demonstrates conformance to the implementation specification, but does not by itself establish continuous production operability."
+  bindings:
+    - targetType: "filepath"
+      targetUri: "C:/Users/theal/.gemini/antigravity/scratch/spacebook.university/docmesh/SYLLABUS_SPU_0013_MASTER.md"
+      checksum: "132AB1A4279452A4CF9E3BCD232A72C2A91B33C6F85D43425E5C6F13D4BDE16F"
+    - targetType: "filepath"
+      targetUri: "C:/Users/theal/.gemini/antigravity/scratch/spacebook.university/docmesh/TEXTBOOK_01_SC_BIOPHYS_101_Kirchhoff_Contact_Topology.md"
+      checksum: "9B21B7E13E081327B0CB8F1CA9A996772A9FD0E4CD4EAC783B9ACFDD41293608"
+    - targetType: "filepath"
+      targetUri: "C:/Users/theal/.gemini/antigravity/scratch/spacebook.university/docmesh/TEXTBOOK_02_SC_BIOPHYS_201_Proteome_Integrity_Boundaries_N3191.md"
+      checksum: "2D501D7A55C8B7D39BE8B3179064A471975745EFB6B7A429E7BB82D002D8966B"
+    - targetType: "filepath"
+      targetUri: "C:/Users/theal/.gemini/antigravity/scratch/spacebook.university/docmesh/TEXTBOOK_03_SC_ACOUSTIC_101_Deterministic_Zoom_DFT_and_Prior_Art.md"
+      checksum: "ACF811E44A72162009063EDFF5F61DF469ADE7A11C9CC4A2D9185895B8CBDBA8"
+    - targetType: "filepath"
+      targetUri: "C:/Users/theal/.gemini/antigravity/scratch/spacebook.university/docmesh/TEXTBOOK_04_SC_EPISTEMIC_301_Modulo2_Null_Controls_and_4Pool_Engine.md"
+      checksum: "017AE498BFD0D91A7A55AAD31A280C83A670E9D96B821CAA76014891E620FE4E"
+    - targetType: "filepath"
+      targetUri: "C:/Users/theal/.gemini/antigravity/scratch/spacebook.university/docmesh/TEXTBOOK_05_SC_COC_401_Seven_Layer_Chain_of_Custody_and_Court_of_Admissibility.md"
+      checksum: "6FBCCEF91F5E8CC88DE65106389551AC0EE085B9C5D56CB8D0E9B68FC47365A8"
+    - targetType: "filepath"
+      targetUri: "C:/Users/theal/.gemini/antigravity/scratch/spacebook.university/observatory/docmesh_corpus_bundle.json"
+      checksum: "D42A0E24E144DC1F7FBED09AFB3E49ACC7C3B07AFFDDBC527887AC2E19829E0A"
+    - targetType: "filepath"
+      targetUri: "C:/Users/theal/.gemini/antigravity/scratch/spacebook.university/docs/spu/SPU-0013-Professor-Rabbit-Gemini-Course-Series.md"
+      checksum: "9643085ABBE61AC7289FE0FD167B0DAD92428FA5131B379F50615EF0615856CC"
+    - targetType: "filepath"
+      targetUri: "C:/Users/theal/.gemini/antigravity/scratch/spacebook.university/docs/spu/SPU-0011-Computational-Biophysics-Contact-Topology-Scaling.md"
+      checksum: "21549F320C82ACB07077A75E6F1FA8D5D3049EA28A8DE1B9314B2EA5CE9FF5EB"
+    - targetType: "filepath"
+      targetUri: "C:/Users/theal/.gemini/antigravity/scratch/spacebook.university/docs/spu/SPU-0012-BioAcoustic-Signal-Processing-and-ATFH-Hypergraphs.md"
+      checksum: "B2C7BAEB5D10CFF9BDA78A359F19AACE312A26B38046A41FE063F15D28737EA0"
+    - targetType: "filepath"
+      targetUri: "C:/Users/theal/.gemini/antigravity/scratch/spacebook.university/observatory/university.html"
+      checksum: "04011C057E21AA38AB3D828A72744F6FB78505C626F49727FC145A413FD31846"
+    - targetType: "filepath"
+      targetUri: "C:/Users/theal/.gemini/config/skills/space-uni-kirchhoff-biophysics-series/SKILL.md"
+      checksum: "0F3AB73A1C32A7830E44155CCDC68DDDA87E6FA794F72ED1529A8626C570546E"
+    - targetType: "filepath"
+      targetUri: "C:/Users/theal/.gemini/config/skills/space-uni-professor-rabbit-chain-of-custody/SKILL.md"
+      checksum: "E49ACFC968905E5205F578F901467399CB15840FBBD93374124385298219A920"
+    - targetType: "filepath"
+      targetUri: "C:/Users/theal/.gemini/antigravity/scratch/apex1.predator.run/wiki_docs/RFC-VI-0004_spectral_governance_and_rule_vi_27_spec.md"
+      checksum: "66EC19668841D6301975F0E9FAAB073E3F2832CA6303CF74217215A21B4DEA59"
+status:
+  driftStatus: "IN_SYNC"
+  driftScore: 0.0
+  lastReconciledAt: "2026-10-22T09:58:00Z"

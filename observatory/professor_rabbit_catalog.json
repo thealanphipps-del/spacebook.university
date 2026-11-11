@@ -1,0 +1,378 @@
+{
+  "series_id": "SPU-SERIES-RABBIT-GEMINI-2026",
+  "docmesh_rfc": "RFC-VI-0005 / SPU-0013",
+  "series_title": "Professor Rabbit's Sovereign Biophysics, Bio-Acoustics & Chain-of-Custody Curriculum Series",
+  "lead_instructor": {
+    "name": "Professor Rabbit (Real-Time 60 FPS Pre-Rendered Persona Engine)",
+    "title": "Chair of Macromolecular Topology & Epistemic Warren Auditing, Space.University (Divisions SPU-D5 & SPU-D6)",
+    "avatar_url": "/rabbit_whiteboard.jpg",
+    "prerender_engine": "PROFESSOR-RABBIT-RT-PRERENDER-V2 (7-Viseme Lip-Sync + Inverse Kinematics Chalk Arm + 3D Kirchhoff Hologram)",
+    "pedagogy": "Intuitive physical analogies ('The Rabbit Warren'), step-by-step chalkboard derivations, and fearless negative-control falsification."
+  },
+  "co_teacher_llm": {
+    "name": "Gemini LLM Co-Teacher (Gemini 2.5 Flash / Sovereign Cascade)",
+    "role": "Interactive Mathematical Co-Instructor, Live Code Verifier, Socratic Tutor & Lab Grader",
+    "models": [
+      "gemini-2.5-flash",
+      "gemini-2.0-flash",
+      "n1-sovereign-cascade"
+    ]
+  },
+  "epistemic_governance": {
+    "rule_vi_26": "Deterministic float64 reconstruction (Max Delta = 0.0 <= 1e-12 Hz)",
+    "rule_vi_27": "Mandatory LAYER_4_SCIENTIFIC_HYPOTHESIS tagging on octave-folded candidate matches",
+    "rule_vi_28": "Dual-Track separation between Track 1 (v4.0.0 Software/DSP) and Track 2 (Biophysical Journal RC2 Manuscript)"
+  },
+  "courses": [
+    {
+      "course_id": "SC-BIOPHYS-101",
+      "code": "SC-BIOPHYS-101",
+      "division": "SPU-D5",
+      "level": "Foundational (100-Level)",
+      "credits": "4.0 rATTN",
+      "textbook_id": "TEXTBOOK_01_SC_BIOPHYS_101",
+      "default_pdb": "1AKI",
+      "default_pose": "CHALKBOARD_WRITING",
+      "title": "Foundations of 3D Macromolecular Kirchhoff Contact Topology",
+      "subtitle": "From RCSB PDB Atomic Coordinates to Gaussian Network Models, Kirchhoff Laplacians & the N = 1,040 Scaling Law",
+      "headline_formula": "ν₁(THz) = 0.42338 · (⟨z⟩ / R_g)^1.1194   [R² = 0.8048, r = 0.8971, p = 1.98×10⁻³⁶⁹]",
+      "rabbit_chalkboard_intro": "Welcome to Course 101! Watch my chalk on the blackboard: for decades, people tried to guess a protein's fundamental vibrational frequency from its 1D chain length N_Cα alone—and failed (R² = 16.02%). Why? Because a protein is not a loose string; it is a 3D elastic lattice! When we build the N×N Kirchhoff Laplacian matrix Γ at a 7.5 Å cutoff with inverse-square spring weights w_ij = (R_0/d_ij)², the packing-to-size ratio ⟨z⟩/R_g explains 80.48% of the variance across 1,040 non-redundant structures!",
+      "gemini_co_teacher_note": "Gemini Co-Teacher Verification: Using Moore-Penrose pseudoinversion Γ⁺, the diagonal entries (Γ⁺)_ii reproduce crystallographic Debye-Waller B-factors via B_i = (8π² k_B T / 3γ)(Γ⁺)_ii, while the smallest non-zero Fiedler eigenvalue λ₁ > 0 sets the global collective mode ν₁(THz) = (1/2π)√(γ_eff λ₁ / m_Cα).",
+      "modules": [
+        {
+          "module_id": "M1.1",
+          "title": "Parsing 3D Coordinates (.cif / .pdb) & Radius of Gyration R_g",
+          "summary": "Extracting backbone Cα (protein) and P/C4' (nucleic acid) coordinates, center-of-mass centering, and computing R_g = √( (1/N) Σ ||r_i - r_com||² ).",
+          "equation": "R_g = √( (1/N) Σ ||r_i - r_com||² )"
+        },
+        {
+          "module_id": "M1.2",
+          "title": "Distance-Weighted Kirchhoff Laplacian Matrix Γ",
+          "summary": "Constructing off-diagonal spring weights Γ_ij = -(R_0 / d_ij)² for d_ij <= 7.5 Å (R_0 = 3.8 Å) and diagonal coordination degrees Γ_ii = -Σ_{j≠i} Γ_ij.",
+          "equation": "Γ_ij = -(R_0 / d_ij)² · I(d_ij ≤ 7.5 Å),  Γ_ii = -Σ_{j≠i} Γ_ij"
+        },
+        {
+          "module_id": "M1.3",
+          "title": "Fiedler Algebraic Connectivity λ₁ & Collective Frequency ν₁(THz)",
+          "summary": "Eliminating the trivial translational zero mode (λ_0 = 0, v_0 = 1/√N) and converting Fiedler eigenvalue λ₁ to physical terahertz frequency.",
+          "equation": "ν₁(THz) = (1 / 2π) √(γ_eff λ₁ / m_Cα) × 10⁻¹²"
+        },
+        {
+          "module_id": "M1.4",
+          "title": "The N = 1,040 Scaling Law & 5× Dominance Over 1D Chain Length",
+          "summary": "Log-log OLS regression across N = 1,040 structures: 3D contact density ⟨z⟩/R_g achieves R² = 0.8048 vs. 1D chain length 1/√N (R² = 0.1602).",
+          "equation": "ν₁(THz) = 0.42338 · (⟨z⟩ / R_g)^1.1194   (R² = 0.8048)"
+        },
+        {
+          "module_id": "M1.5",
+          "title": "Cross-Kingdom Universality (R²_OOS = 0.8612) & B-Factor Validation",
+          "summary": "Zero-retraining transfer from Mammalian (N=619) to Microbial/Plant/Viral (N=421) structures and crystallographic B-factor correlation.",
+          "equation": "B_i^pred = (8π² k_B T / 3γ)(Γ⁺)_ii,   R²_OOS = 0.8612"
+        }
+      ],
+      "quiz": {
+        "question": "Why does 3D contact topology (⟨z⟩/R_g) explain 5.02× more variance in fundamental frequency ν₁ than 1D chain length (1/√N_Cα)?",
+        "options": [
+          "Because collective normal modes are governed by the 3D cross-linked coordination network and spatial compactness, not merely residue count.",
+          "Because 1D chain length only applies to RNA molecules.",
+          "Because modulo-2 octave folding amplifies 1D chain length.",
+          "Because crystallographic resolution is always 1.0 Å."
+        ],
+        "correct_index": 0,
+        "explanation": "Correct! As Professor Rabbit shows on the live chalkboard, two proteins of identical chain length N can have vastly different 3D packing densities ⟨z⟩ and radii of gyration R_g, which directly determine algebraic connectivity λ₁."
+      }
+    },
+    {
+      "course_id": "SC-BIOPHYS-201",
+      "code": "SC-BIOPHYS-201",
+      "division": "SPU-D5",
+      "level": "Intermediate (200-Level)",
+      "credits": "4.0 rATTN",
+      "textbook_id": "TEXTBOOK_02_SC_BIOPHYS_201",
+      "default_pdb": "4AKE",
+      "default_pose": "EUREKA_POINTER",
+      "title": "Proteome-Scale Integrity Boundaries & Anisotropic Mechanics (N = 3,191 Constructs)",
+      "subtitle": "Expanding the Protein Frequency Database as Far as Structural & Spectral Integrity Lasts",
+      "headline_formula": "Tier A Isotropic (N=1,295): R² = 0.8199, ⟨r_B⟩ = 0.5027  |  Tier C Fibrillar (κ > 4.0): R² = 0.2259",
+      "rabbit_chalkboard_intro": "In Course 201, we ask: How far can we expand the 3D Kirchhoff Protein Frequency Database before the isotropic scaling law breaks down? We audited 3,329 structural constructs from 490 PDB entries through our 4-Gate Integrity Protocol! 3,191 constructs passed into the production index, while 138 disconnected or low-resolution constructs were quarantined. And when aspect ratio κ > 4.0 in amyloid fibrils (like Tau PHF 5O3L), isotropic R² drops to 0.2259—proving why anisotropic 3N×3N Hessian mechanics are essential!",
+      "gemini_co_teacher_note": "Gemini Co-Teacher Verification: Across 12 paired apo→holo hinge-bending enzymes (Adenylate Kinase 4AKE→1AKE, Calmodulin 1CFD→1CLL, Hexokinase, Maltodextrin BP), ligand-induced domain closure increases λ₁ by +49.02% (Wilcoxon p = 4.88×10⁻⁴), and the 3N×3N Anisotropic Network Model (ANM) Hessian correlates with GNM at r = 0.9418.",
+      "modules": [
+        {
+          "module_id": "M2.1",
+          "title": "Gate 1 & Gate 2: Algebraic Connectivity (λ₁ ≥ 10⁻⁴) & Resolution (≤ 3.5 Å)",
+          "summary": "Detecting disconnected multi-chain fragments (λ₁ → 0), unmodeled internal loops (> 15 residues), and low-resolution (> 3.5 Å) artifacts across 138 quarantined constructs.",
+          "equation": "λ₁(Γ) ≥ 10⁻⁴  ∧  max(Δres) ≤ 15  ∧  Res ≤ 3.5 Å"
+        },
+        {
+          "module_id": "M2.2",
+          "title": "Gate 3: Principal-Inertia Aspect Ratio κ = √(I₁/I₃) & Tier Stratification",
+          "summary": "Computing the 3×3 inertia tensor eigenvalues I₁ ≥ I₂ ≥ I₃ to separate Tier A Gold Isotropic (κ ≤ 2.5, N=1,295, R²=0.8199) from Tier B Hinge (N=668) and Tier C Fibrillar (κ > 4.0, N=98).",
+          "equation": "κ = √(I₁ / I₃):   Tier A (κ ≤ 2.5) ⟹ R² = 0.8199"
+        },
+        {
+          "module_id": "M2.3",
+          "title": "Gate 4: Experimental B-Factor Fidelity (⟨r_B⟩ = 0.5027) & Multi-Mode Spectral Span",
+          "summary": "Validating Kirchhoff inverse diagonal fluctuations against crystallographic Debye-Waller B-factors and computing the mode-1-to-3 span [f_λ1, f_λ3].",
+          "equation": "r_B = corr(B_i^exp, (Γ⁺)_ii),   ⟨r_B⟩_TierA = 0.5027"
+        },
+        {
+          "module_id": "M2.4",
+          "title": "Apo-to-Holo Allosteric Hinge Transitions & 3N×3N ANM Hessian Validation",
+          "summary": "Analyzing 12 canonical open-to-closed ligand-binding transitions (+49.02% λ₁ stiffening, p = 4.88×10⁻⁴) and full directional 3N×3N ANM Hessians (r = 0.9418).",
+          "equation": "H_ij^ANM = -(γ_ij / d_ij²)(r_i - r_j)(r_i - r_j)ᵀ   (r = 0.9418)"
+        },
+        {
+          "module_id": "M2.5",
+          "title": "Fibrillar & Amyloid Boundary Breakdown (Tau PHF 5O3L, Collagen, Tropomyosin)",
+          "summary": "Why quasi-1D filamentous assemblies (κ > 4.0) violate single-parameter isotropic scaling (R² = 0.2259) and require explicit anisotropic wave-dispersion treatment.",
+          "equation": "κ > 4.0 ⟹ R²_iso = 0.2259   (Tier C Boundary Limit)"
+        }
+      ],
+      "quiz": {
+        "question": "What happens to a protein construct in our expansion pipeline if its Fiedler eigenvalue is λ₁ < 10⁻⁴ or its crystallographic resolution is 4.2 Å?",
+        "options": [
+          "It is rejected by Gates 1/2 and logged in pdb_integrity_quarantine_audit.json so corrupted topologies never pollute the live index.",
+          "It is automatically promoted to Tier A Gold Isotropic.",
+          "Its frequency is multiplied by 32.",
+          "Its coordinates are randomized."
+        ],
+        "correct_index": 0,
+        "explanation": "Spot on! Integrity means knowing when to stop: 138 constructs failing Gate 1 (disconnected/gapped) or Gate 2 (resolution > 3.5 Å) are quarantined with full audit provenance."
+      }
+    },
+    {
+      "course_id": "SC-ACOUSTIC-101",
+      "code": "SC-ACOUSTIC-101",
+      "division": "SPU-D6",
+      "level": "Foundational (100-Level)",
+      "credits": "4.0 rATTN",
+      "textbook_id": "TEXTBOOK_03_SC_ACOUSTIC_101",
+      "default_pdb": "1AKI",
+      "default_pose": "CHALKBOARD_WRITING",
+      "title": "Deterministic Bio-Acoustic Zoom-DFT & Patent Prior-Art Engineering",
+      "subtitle": "Vickie A. Dean Patent Lineage (US 8,346,559 B2 & 9,223,863 B2), 0.04 Hz Zoom-DFT, Zero-Slope Plateaus & 6-Octave Harmonic Truth Tables",
+      "headline_formula": "Δf_Zoom = 0.04 Hz  |  Zero-Slope ≤ 0.15 dB over 0.33 Hz  |  Python ↔ TypeScript Parity = 0.000000 Hz",
+      "rabbit_chalkboard_intro": "Welcome to Division 6 (Bio-Acoustics)! Before writing a single line of DSP code, a rigorous scientist honors prior art: Vickie A. Dean's landmark U.S. Patents 8,346,559 B2 and 9,223,863 B2 established the engineering parameters for detecting bio-acoustic conditions from voice recordings—specifically a 0.04 Hz Zoom-DFT step, a 0.33 Hz zero-slope stability plateau (≤ 0.15 dB variation), prominence SNR ≥ 1.4, and 6-octave harmonic truth tables (f, 2f, 4f, 8f, 16f, 32f).",
+      "gemini_co_teacher_note": "Gemini Co-Teacher Verification: Under specification SPEC-SOV-RC1-2026-0001 and RULE-VI-26, our IEEE-754 float64 4-term Blackman-Harris window (-92 dB side-lobe floor) and parabolic log-magnitude peak interpolator achieve 0.000000 Hz maximum divergence between Python (NumPy/SciPy) and TypeScript (WebAudio).",
+      "modules": [
+        {
+          "module_id": "M3.1",
+          "title": "Prior-Art Attribution: Vickie A. Dean (US Patents 8,346,559 B2 & 9,223,863 B2)",
+          "summary": "Detailed architectural study of U.S. Patent 8,346,559 B2 (Jan 1, 2013), U.S. Patent 9,223,863 B2 (Dec 29, 2015), and US 2013/0096844 A1.",
+          "equation": "Prior Art: US 8,346,559 B2 ∧ US 9,223,863 B2 (Vickie A. Dean)"
+        },
+        {
+          "module_id": "M3.2",
+          "title": "0.04 Hz Zoom-DFT & 0.33 Hz Zero-Slope Plateau Detection (≤ 0.15 dB)",
+          "summary": "Evaluating high-resolution spectral bins across [16.0, 80.0] Hz and verifying flat-top vocal stability plateaus across 0.33 Hz windows.",
+          "equation": "max_{|f - f₀| ≤ 0.165 Hz} |S_dB(f) - S_dB(f₀)| ≤ 0.15 dB,  SNR ≥ 1.40"
+        },
+        {
+          "module_id": "M3.3",
+          "title": "6-Octave Harmonic Truth Tables (f, 2f, 4f, 8f, 16f, 32f)",
+          "summary": "Constructing the 6-octave tensor [O1..O6] from fundamental frequencies (e.g., Dopamine 19.25 Hz → 616.00 Hz; Tau PHF 5O3L 22.92 Hz → 733.44 Hz).",
+          "equation": "v_6D(f₀) = [f₀, 2f₀, 4f₀, 8f₀, 16f₀, 32f₀]"
+        },
+        {
+          "module_id": "M3.4",
+          "title": "4-Term Blackman-Harris Windowing & Parabolic Sub-Bin Interpolation",
+          "summary": "Suppressing spectral leakage (-92 dB) and computing sub-bin vertex offsets δ = 0.5(α - γ)/(α - 2β + γ) in IEEE-754 float64.",
+          "equation": "f_peak = (k + (α - γ) / [2(α - 2β + γ)]) · (f_s / N_FFT)"
+        },
+        {
+          "module_id": "M3.5",
+          "title": "Dolby THX Reference Calibration Sweep & RULE-VI-26 Cross-Runtime Parity",
+          "summary": "Closed-loop acoustic calibration (20 Hz–20 kHz logarithmic sweep + 440/1000 Hz reference lock) and verifying Δ = 0.000000 Hz parity.",
+          "equation": "max_k |f_k^Python - f_k^TypeScript| = 0.000000 Hz ≤ 10⁻¹²"
+        }
+      ],
+      "quiz": {
+        "question": "In the VocalImaging DSP specification derived from U.S. Patents 8,346,559 B2 & 9,223,863 B2, what are the exact Zoom-DFT step size and zero-slope plateau tolerance?",
+        "options": [
+          "0.04 Hz Zoom-DFT step size and ≤ 0.15 dB variation across a 0.33 Hz plateau (with SNR ≥ 1.4).",
+          "5.0 Hz FFT step size and 10 dB variation.",
+          "100 Hz step size with no windowing.",
+          "Random bin sampling."
+        ],
+        "correct_index": 0,
+        "explanation": "Exactly right! The 0.04 Hz Zoom-DFT resolution, ≤ 0.15 dB plateau stability over 0.33 Hz, and SNR ≥ 1.4 gate ensure deterministic, reproducible peak extraction."
+      }
+    },
+    {
+      "course_id": "SC-EPISTEMIC-301",
+      "code": "SC-EPISTEMIC-301",
+      "division": "SPU-D5 / SPU-D6",
+      "level": "Advanced (300-Level)",
+      "credits": "4.0 rATTN",
+      "textbook_id": "TEXTBOOK_04_SC_EPISTEMIC_301",
+      "default_pdb": "4AKE",
+      "default_pose": "QUARANTINE_WARNING",
+      "title": "Modulo-2 Scale-Erasure Null Controls & 4-Pool Unknown Spectral Hit Resolution",
+      "subtitle": "Why 35-Octave Folding Collapses Variance 1,341× (R² = 0.06%), 68.39% Window Saturation, 4-Pool Bayesian Disambiguation & the 56-Marker Credibility Audit",
+      "headline_formula": "Unfolded 3D R² = 80.48%  ──(mod-2 × 35 octaves)──►  Folded R² = 0.06% (p = 0.4371 NS)",
+      "rabbit_chalkboard_intro": "Here is the most important lesson in my entire Rabbit Warren! Suppose someone takes a terahertz protein vibration (~10¹² Hz) or a molecular weight and divides it by 2 thirty-five times to land in the [16, 32] Hz human vocal octave. What happens mathematically? The integer octave index k = ⌊log₂(ν₁)⌋—which carries 99.9% of the physical scale—is thrown away! Only the fractional mantissa {log₂(ν₁)} mod 1 survives, collapsing R² from 80.48% down to 0.06% (a 1,341-fold collapse, p = 0.4371 NS)! And when 20 markers with ±0.25 Hz tolerance windows sit in a 16 Hz octave, they cover 68.39% of the entire band by chance! That is why we built the 4-Pool Unknown Spectral Hit Engine and audited all 56 legacy catalog markers!",
+      "gemini_co_teacher_note": "Gemini Co-Teacher Verification: When an unknown voiceprint peak passes DSP gates, our 4-Pool Engine queries Pool 1 (3,191 3D Kirchhoff constructs), Pool 2 (UniProt/PubChem/HPA 50-tissue expression priors), Pool 3 (Harmonic/Intermodulation derivatives), and Pool 4 (Patent Prior Art), attaching mandatory RULE-VI-27 scale-erasure disclaimers and auditing all 56 legacy markers (15 Validated, 15 Mismatch, 17 Prior-Art, 9 Discredited).",
+      "modules": [
+        {
+          "module_id": "M4.1",
+          "title": "Mathematical Proof of Modulo-2 Scale Erasure (1,341× Variance Collapse)",
+          "summary": "Decomposing log₂(ν₁) = ⌊log₂(ν₁)⌋ + {log₂(ν₁)} and proving why discarding the integer characteristic erases biophysical scale across N = 1,040 structures.",
+          "equation": "φ_oct = log₂(ν₁ / f₀) mod 1 ⟹ R² = 0.0006 (0.06%, p = 0.4371 NS)"
+        },
+        {
+          "module_id": "M4.2",
+          "title": "Meyer Single-Octave Window Saturation (68.39%) & N = 11 Exact Permutation Null",
+          "summary": "Computing the union coverage of 20 markers × [f, 2f] × ±0.25 Hz in [16, 32] Hz (10.942 / 16.0 Hz = 68.39%) and testing the N = 11 bridge cohort (r = 0.2364, p = 0.4858 NS).",
+          "equation": "P_hit^null = 10.942 Hz / 16.0 Hz = 68.39%,   p_perm(N=11) = 0.4858 NS"
+        },
+        {
+          "module_id": "M4.3",
+          "title": "The 4-Pool Unknown Spectral Hit Identification Engine",
+          "summary": "Multi-tier Bayesian disambiguation across Pool 1 (3,191 PDB Kirchhoff spectra), Pool 2 (HPA Tissue & Pathway Co-Occurrence), Pool 3 (Harmonics/IMD), and Pool 4 (Patent Prior Art).",
+          "equation": "S(cand | f_hit, C, T) = w₁ S_Kirchhoff + w₂ S_HPA + w₃ S_Harmonic + w₄ S_Patent"
+        },
+        {
+          "module_id": "M4.4",
+          "title": "Tissue-Prior & Co-Occurring Marker Re-Ranking Lab",
+          "summary": "Demonstrating how supplying tissue priors (e.g., Cerebral Cortex vs. Liver) or co-occurring markers (e.g., SUB-001 Dopamine + SUB-007 ChAT) dynamically re-ranks colliding frequency candidates.",
+          "equation": "Rank(c_i | Cortex, SUB-001) ≠ Rank(c_i | ∅)"
+        },
+        {
+          "module_id": "M4.5",
+          "title": "The 56-Marker Scientific Credibility Audit",
+          "summary": "Auditing 20 canonical substances, 26 extended entries, and 10 conditions: correcting 'Acetylcholine Synthetase' → ChAT (P28329, 82,565 Da), 'Chlorophyll Synthesis Enzyme' 893.5 Da → PORA (Q96504, 43,098 Da), and quarantining 9 discredited placeholders.",
+          "equation": "56 Markers = 15 Validated + 15 Mismatch + 17 Prior-Art + 9 Discredited"
+        }
+      ],
+      "quiz": {
+        "question": "What did our 56-Marker Scientific Credibility Audit discover about legacy marker SUB-018 ('Chlorophyll Synthesis Enzyme', listed at 893.5 Da)?",
+        "options": [
+          "893.5 Da is the molecular weight of the small-molecule Chlorophyll a porphyrin (PubChem CID 12085802), whereas the actual enzyme Protochlorophyllide reductase (PORA, UniProt Q96504) has a mass of 43,098 Da!",
+          "Chlorophyll is synthesized in the human cerebral cortex.",
+          "893.5 Da is the exact mass of a ribosome.",
+          "SUB-018 was never in the catalog."
+        ],
+        "correct_index": 0,
+        "explanation": "Bullseye! Legacy tables conflated the small molecule Chlorophyll a (893.49 Da) with its biosynthetic enzyme PORA (43,098 Da). Our Credibility Audit flags this as NOMENCLATURE_OR_MW_MISMATCH with exact UniProt/PubChem citations."
+      }
+    },
+    {
+      "course_id": "SC-COC-401",
+      "code": "SC-COC-401",
+      "division": "SPU-D5 / SPU-D6",
+      "level": "Capstone Graduate Seminar (400-Level)",
+      "credits": "6.0 rATTN",
+      "textbook_id": "TEXTBOOK_05_SC_COC_401",
+      "default_pdb": "5O3L",
+      "default_pose": "SOCRATIC_THINKING",
+      "title": "The 7-Layer Substance-to-Frequency Chain of Custody, Court of Admissibility & HomeTree ATFH",
+      "subtitle": "Walking the Rabbit Warren Across 24 Audited Substances on n1.pqr.info, 5-Gate Court Enforcement, RFC 8785 Canonical JSON & RULE-VI-27/28 Governance",
+      "headline_formula": "L1 Observed ──► L2 Zoom-DFT ──► L3 6-Octave/Kirchhoff ──► L4 4-Pool ──► L5 Null ──► L6 5-Gate Court ──► L7 SHA-256 CAS",
+      "rabbit_chalkboard_intro": "Welcome to the 400-Level Capstone! How do we connect acoustic signal processing, 3D Kirchhoff protein biophysics, negative controls, and cryptographic auditability into a single unbreakable architecture? We walk the 7-Layer Substance-to-Frequency Chain of Custody ('The Rabbit Warren') live on n1.pqr.info! Every single one of our 24 cataloged substances—from Dopamine (SUB-001) and ChAT (SUB-007) to the 12 newly integrated 3D Kirchhoff & audited markers like Adenylate Kinase (4AKE), Calmodulin (1CLL), Lysozyme (1AKI), Catalase (1DGF), Tau PHF (5O3L), and quarantined control COND-008—must pass through all 7 layers and the 5-Gate Court of Admissibility before receiving its RFC 8785 Canonical JSON & SHA-256 Merkle CAS seal!",
+      "gemini_co_teacher_note": "Gemini Co-Teacher Verification: On n1.pqr.info (/api/chain-of-custody/substances), students can inspect all 24 substances across Layers L1–L7, verify that Tier A/B/C and Validated/Mismatch/Prior-Art entries remain strictly tagged under RULE-VI-27 (LAYER_4_SCIENTIFIC_HYPOTHESIS), and see how Gate G3 blocks COND-008 (DISCREDITED_BY_PRESENT_RESEARCH) from promotion.",
+      "modules": [
+        {
+          "module_id": "M5.1",
+          "title": "Layers L1 to L3: Raw Enclave Capture, Deterministic Zoom-DFT & 6-Octave / 3D Kirchhoff Vectors",
+          "summary": "Tracing a substance from Red-Zone StrongBox audio capture (L1) through 0.04 Hz Zoom-DFT extraction (L2) to 6-octave truth tables [O1..O6] and 3D Kirchhoff eigenspectra (L3).",
+          "equation": "L1_Enclave → L2_ZoomDFT(Δ=0) → L3_Kirchhoff(λ₁, ν₁, κ, r_B)"
+        },
+        {
+          "module_id": "M5.2",
+          "title": "Layers L4 & L5: 4-Pool Candidate Disambiguation & Proven Null Controls",
+          "summary": "Attaching 4-Pool confidence scores and UniProt/PDB/PubChem/Patent citations (L4) alongside the mandatory modulo-2 variance collapse (R²=0.06%) and 68.39% saturation baseline (L5).",
+          "equation": "L4_4Pool(Tier 1..4) ⊕ L5_Null(R²_mod2 = 0.06%, P_sat = 68.39%)"
+        },
+        {
+          "module_id": "M5.3",
+          "title": "Layer L6: The 5-Gate Court of Admissibility (G1–G5)",
+          "summary": "Enforcing G1 (Canonical Identity), G2 (DSP Parity Δ ≤ 10⁻¹²), G3 (Credibility Quarantine Filter blocking COND-008), G4 (4-Gate Structural Integrity Tier A/B/C), and G5 (RULE-VI-27 Hypothesis Tagging).",
+          "equation": "Admissible(x) ⟺ G₁(x) ∧ G₂(x) ∧ G₃(x) ∧ G₄(x) ∧ G₅(x)"
+        },
+        {
+          "module_id": "M5.4",
+          "title": "Layer L7: RFC 8785 Canonical JSON, Pairwise SHA-256 Merkle Root & HomeTree ATFH",
+          "summary": "Computing deterministic RFC 8785 canonical JSON digests, pairwise SHA-256 Merkle trees, and Neo4j HomeTree ClaimCluster trust distances d_trust(e) = -ln(τ·c·f).",
+          "equation": "h_n = SHA256(RFC8785(S_n) || h_{n-1}),   d_trust(e) = -ln(τ·c·f)"
+        },
+        {
+          "module_id": "M5.5",
+          "title": "RULE-VI-28 Dual-Track Release Governance: Track 1 (v4.0.0 Software) vs. Track 2 (Biophysical Journal RC2)",
+          "summary": "How Dual-Track Governance keeps the locked Biophysical Journal manuscript (N=1,040 scaling + negative controls) 100% isolated from exploratory acoustic candidate matching.",
+          "equation": "Track 1 (v4.0.0 Court Authority) ⊥ Track 2 (Biophysical Journal RC2 Locked SHA-256)"
+        }
+      ],
+      "quiz": {
+        "question": "In Layer L6 (The 5-Gate Court of Admissibility) on n1.pqr.info, what happens when marker COND-008 ('High-Frequency Remote Dysregulation') is evaluated?",
+        "options": [
+          "Gate G3 (Credibility Quarantine Filter) blocks COND-008 because its status is DISCREDITED_BY_PRESENT_RESEARCH, preventing it from ever entering clinical or biophysical truth claims.",
+          "It is promoted to Tier A Gold Isotropic.",
+          "It bypasses all 5 gates.",
+          "It overwrites the Biophysical Journal manuscript."
+        ],
+        "correct_index": 0,
+        "explanation": "100% correct! COND-008 is retained in the registry solely as an epistemic negative-control quarantine example so students and auditors can see Gate G3 actively block discredited markers."
+      }
+    },
+    {
+      "course_id": "SC-INVARIANT-501",
+      "code": "SC-INVARIANT-501",
+      "division": "SPU-D2 / SPU-D5 / SPU-D6",
+      "level": "Post-Doctoral Synthesis (500-Level)",
+      "credits": "4.0 rATTN",
+      "textbook_id": "TEXTBOOK_06_SC_INVARIANT_501",
+      "default_pdb": "1AKI",
+      "default_pose": "EUREKA_POINTER",
+      "title": "Sovereign Mined Invariants, 10 Orthogonal Polymorph Roots & Q17 ZetaFolding Topology",
+      "subtitle": "Uniting 66 Mined Leaf Invariants, 7 Trunks, 10 Orthogonal Polymorph Roots (INV-POLY-001..010), and Lemma 4.1 (27²⁷ = (27⁹)³)",
+      "headline_formula": "Γ·1 = 0 (INV-BIOPHYS-001) ⊂ INV-POLY-002  |  66 Leaves → 7 Trunks → 10 Orthogonal Roots  |  27²⁷ = (27⁹)³",
+      "rabbit_chalkboard_intro": "Welcome to our 500-Level Upgrade Seminar (SC-INVARIANT-501)! Look at the top of my chalkboard: why do our 3D Kirchhoff protein Laplacian Γ, our 7-Layer Substance-to-Frequency Chain of Custody, and our Sovereign Context Cube all obey the exact same mathematical laws? Because across 66 mined leaf invariants and 7 domain trunks, everything projects onto 10 mutually orthogonal Polymorph Root Invariants (INV-POLY-001 through INV-POLY-010) connected by 528 8NN graph edges!",
+      "gemini_co_teacher_note": "Gemini Co-Teacher Verification: Under INV-BIOPHYS-001 ([EM] Exact Math) and INV-POLY-002, row-sum conservation Γ·1 = 0 guarantees translational invariance, while INV-POLY-009 formalizes empirical power-law scaling guarded by falsifiable null controls (R² = 80.48% unfolded vs R² = 0.06% modulo-2 folded).",
+      "modules": [
+        {
+          "module_id": "M6.1",
+          "title": "The 66-Leaf / 7-Trunk / 10-Orthogonal-Root Mined Invariant Substrate",
+          "summary": "Classifying [EM]=45 Exact Math identities, [FD]=1 Formal Definition, and [MP]=20 Empirical Laws across 528 8NN edges.",
+          "equation": "K_total = ⊕_{m=1..10} K_m   (66 Leaves, 7 Trunks, 10 Orthogonal Roots)"
+        },
+        {
+          "module_id": "M6.2",
+          "title": "INV-BIOPHYS-001 & INV-POLY-002: Symmetric Graph Laplacian Conservation",
+          "summary": "Proving L = D - W, L·1 = 0, and quadratic form non-negativity xᵀLx = ½ Σ w_ij(x_i - x_j)² ≥ 0 across proteins and markets.",
+          "equation": "Γ·1 = 0,   xᵀΓx = ½ Σ_{i,j} w_ij (x_i - x_j)² ≥ 0"
+        },
+        {
+          "module_id": "M6.3",
+          "title": "INV-POLY-003 & INV-POLY-007: Merkle Lineage & Pre-Execution Court Gates",
+          "summary": "Linking RFC 8785 SHA-256 hash-chaining and the 5-Gate Court of Admissibility (RULE-VI-27) to formal polymorph closure.",
+          "equation": "h_t = SHA256(RFC8785(S_t) || h_{t-1}),   P(A_t) ∈ {ALLOW, QUARANTINE}"
+        },
+        {
+          "module_id": "M6.4",
+          "title": "Lemma 4.1 Triadic ZetaFolding Identity: 27²⁷ = (27⁹)³ & Q17 Commit-Sufficiency",
+          "summary": "Decomposing 27-trit state space into three 9-trit triadic words with 100% BehavioralEquivalenceOracle preservation (RFC-0002).",
+          "equation": "27²⁷ = (27⁹)³ = 3⁸¹   |   Decode(Encode(W_128)) = W_128"
+        },
+        {
+          "module_id": "M6.5",
+          "title": "INV-20261030-10: Observatory Live Metric Provenance & Epistemic Honesty",
+          "summary": "Enforcing DISPLAYED_METRIC(m) ⟹ LIVE_PROVENANCE(value, source, sha256) across space.university, vi.pqr.info, and n1.pqr.info.",
+          "equation": "DISPLAYED_METRIC(m) ⟹ LIVE_PROVENANCE(m.value, m.source, m.sha256)"
+        }
+      ],
+      "quiz": {
+        "question": "In the 66-Leaf / 10-Root Sovereign Mined Invariant Substrate, which orthogonal root governs both the 3D Kirchhoff protein Laplacian (INV-BIOPHYS-001) and cross-asset diffusion Laplacians?",
+        "options": [
+          "INV-POLY-002 ([EM]: Symmetric Graph Laplacian Conservation L = D - W, L·1 = 0, xᵀLx ≥ 0).",
+          "Random walk noise without row-sum conservation.",
+          "Unbounded leverage.",
+          "Modulo-2 scale erasure."
+        ],
+        "correct_index": 0,
+        "explanation": "Exact match! INV-POLY-002 is the exact mathematical ([EM]) root invariant governing all symmetric zero-row-sum Kirchhoff Laplacians across biophysics and market microstructure."
+      }
+    }
+  ],
+  "version": "v1.6.0-SPU0013-RABBIT-DOCMESH",
+  "mined_invariants_summary": "66 Leaves | 7 Trunks | 10 Orthogonal Polymorph Roots | 528 8NN Edges"
+}

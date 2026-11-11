@@ -1,0 +1,27 @@
+{
+  "docmesh_artifact_name": "rfc-vi-0005-space-university-professor-rabbit-curriculum",
+  "ticket_id": "TKT-10350",
+  "release_tag": "v1.6.0-SPU0013-RABBIT-DOCMESH",
+  "wiki_spec_path": "C:/Users/theal/.gemini/antigravity/scratch/apex1.predator.run/wiki_docs/RFC-VI-0005_space_university_professor_rabbit_curriculum_docmesh_spec.md",
+  "crd_manifest_path": "C:/Users/theal/.gemini/antigravity/scratch/spacebook.university/docmesh/docmesh_artifact_spu_0013.yaml",
+  "bound_targets_count": 14,
+  "drift_status": "IN_SYNC",
+  "drift_score": 0.0,
+  "mined_invariants_anchored": "66 Leaves | 7 Trunks | 10 Orthogonal Roots | 528 8NN Edges",
+  "active_binding_hashes": {
+    "SYLLABUS_SPU_0013_MASTER.md": "132AB1A4279452A4CF9E3BCD232A72C2A91B33C6F85D43425E5C6F13D4BDE16F",
+    "TEXTBOOK_01_SC_BIOPHYS_101_Kirchhoff_Contact_Topology.md": "9B21B7E13E081327B0CB8F1CA9A996772A9FD0E4CD4EAC783B9ACFDD41293608",
+    "TEXTBOOK_02_SC_BIOPHYS_201_Proteome_Integrity_Boundaries_N3191.md": "2D501D7A55C8B7D39BE8B3179064A471975745EFB6B7A429E7BB82D002D8966B",
+    "TEXTBOOK_03_SC_ACOUSTIC_101_Deterministic_Zoom_DFT_and_Prior_Art.md": "ACF811E44A72162009063EDFF5F61DF469ADE7A11C9CC4A2D9185895B8CBDBA8",
+    "TEXTBOOK_04_SC_EPISTEMIC_301_Modulo2_Null_Controls_and_4Pool_Engine.md": "017AE498BFD0D91A7A55AAD31A280C83A670E9D96B821CAA76014891E620FE4E",
+    "TEXTBOOK_05_SC_COC_401_Seven_Layer_Chain_of_Custody_and_Court_of_Admissibility.md": "6FBCCEF91F5E8CC88DE65106389551AC0EE085B9C5D56CB8D0E9B68FC47365A8",
+    "TEXTBOOK_06_SC_INVARIANT_501_Mined_Invariants_and_Polymorph_Roots.md": "CC3916C0DDC368BA386A91C2761D415737A2DECBBE157CDA25A525B9BFF10A10",
+    "university.html": "3DC44A6B6BDC80B4957D1856FA9E80102A8FFF52E7C7EC4C06FFD3C6C52484E9",
+    "courses.html": "F7CC565A254663C31FC3D055F0143527D6D70B39F6A1F1DABCC7A9172137917D",
+    "spacebook_university_server.py": "1D997B62F93DD48797ABE9197CB44349F45547136E96C9F1C0394CCE4E638C14",
+    "professor_rabbit_catalog.json": "E6766ADD9AA7810DCBDF6D159612FEABFD9BC5B66CAEB1D970985B63D803A984",
+    "professor_rabbit_prerender_atlas.json": "A78743BA128EE243FBCFECE3472933C2BC924DD5DC1BD0E86850D690F2B533ED",
+    "mined_invariants_substrate.json": "3C8C19A42D4C6C3B3E9AFD3C0848D3E324C1BA60669074330C2DAFA7DED7C5D3",
+    "docmesh_corpus_bundle.json": "D42A0E24E144DC1F7FBED09AFB3E49ACC7C3B07AFFDDBC527887AC2E19829E0A"
+  }
+}

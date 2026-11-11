@@ -1,0 +1,118 @@
+{
+  "substrate_version": "v1.6.0-SPU0013-RABBIT-DOCMESH",
+  "summary": "66 Leaves | 7 Trunks | 10 Orthogonal Polymorph Roots | 528 8NN Edges",
+  "epistemic_strata": {
+    "EM_Exact_Math": 45,
+    "FD_Formal_Def": 1,
+    "MP_Empirical_Law": 20
+  },
+  "orthogonal_polymorph_roots": [
+    {
+      "id": "INV-POLY-001",
+      "stratum": "EM",
+      "domain": "biophysical_gnm, clue_os, thesis",
+      "formula": "A(s) >= 0 && (A(s) == 0 <=> Valid(s))",
+      "title": "Non-Negative Diagnostic Energy & Zero-Defect Equilibrium"
+    },
+    {
+      "id": "INV-POLY-002",
+      "stratum": "EM",
+      "domain": "biophysical_gnm, clue_os, equity_laplacian",
+      "formula": "L = D - W, L * 1 = 0, x^T L x = 1/2 sum w_ij (x_i - x_j)^2 >= 0",
+      "title": "Symmetric Graph Laplacian Conservation & Positive Semi-Definiteness"
+    },
+    {
+      "id": "INV-POLY-003",
+      "stratum": "EM",
+      "domain": "clue_os, thesis",
+      "formula": "h_t = SHA256(RFC8785(payload_t) || h_{t-1})",
+      "title": "Cryptographic Hash-Chain & Pairwise Merkle Lineage"
+    },
+    {
+      "id": "INV-POLY-004",
+      "stratum": "EM",
+      "domain": "biophysical_gnm, clue_os, context_8nn",
+      "formula": "Spec(M) = {lambda_0 <= lambda_1 <= ... <= lambda_{n-1}}",
+      "title": "Rayleigh-Ritz Spectral Eigen-Decomposition & Fiedler Gap"
+    },
+    {
+      "id": "INV-POLY-005",
+      "stratum": "EM",
+      "domain": "clue_os, deeplob_z2, thesis",
+      "formula": "tau(J(x)) = -J(tau(x)), P_+ + P_- = I, P_+ P_- = 0",
+      "title": "Z2 Involution Symmetry & Orthogonal Parity Projectors"
+    },
+    {
+      "id": "INV-POLY-006",
+      "stratum": "EM",
+      "domain": "clue_os, context_8nn, thesis",
+      "formula": "F(g o f) = F(g) o F(f), Decode(Encode(x)) = x",
+      "title": "Structure-Preserving Functoriality & Lossless Bijection"
+    },
+    {
+      "id": "INV-POLY-007",
+      "stratum": "EM",
+      "domain": "clue_os, context_8nn",
+      "formula": "P(A_t) in {ALLOW, THROTTLE, QUARANTINE, KILL} prior to side-effect",
+      "title": "Pre-Execution Constitutional Gate & Fail-Closed Circuit Breaker"
+    },
+    {
+      "id": "INV-POLY-008",
+      "stratum": "MP",
+      "domain": "clue_os, equity_laplacian",
+      "formula": "|Delta E_t| <= E_cap && |w_i| <= w_max",
+      "title": "Bounded Exposure, Slippage & Resource Conservation"
+    },
+    {
+      "id": "INV-POLY-009",
+      "stratum": "MP",
+      "domain": "biophysical_gnm, clue_os, context_8nn",
+      "formula": "y = a * x^b (R^2 >= R^2_min) vs Null Control",
+      "title": "Empirical Power-Law Scaling with Falsifiable Null Control"
+    },
+    {
+      "id": "INV-POLY-010",
+      "stratum": "EM",
+      "domain": "clue_os, context_8nn",
+      "formula": "K_total = K_1 (+) K_2 (+) ... (+) K_m, <K_a, K_b> = 0 (a != b)",
+      "title": "Direct-Sum Orthogonal Domain Decomposition"
+    }
+  ],
+  "leaf_defined_trunks": [
+    {
+      "trunk": "BIOPHYSICAL-CIF-DW-GNM",
+      "leaves": 7,
+      "anchor": "INV-BIOPHYS-001 ([EM] Γ·1=0) -> INV-POLY-002 / INV-POLY-004 / INV-POLY-009"
+    },
+    {
+      "trunk": "CLUEOS-POLYMORPHIC-CLOSURE",
+      "leaves": 10,
+      "anchor": "INV-POLY-001..010 Canonical Basis"
+    },
+    {
+      "trunk": "CLUEOS_UNIFIED",
+      "leaves": 17,
+      "anchor": "INV-20261030-09 & INV-20261030-10 Live Provenance"
+    },
+    {
+      "trunk": "DEEPLOB-Z2-MICROSTRUCTURE",
+      "leaves": 12,
+      "anchor": "INV-POLY-005 Z2 Parity Projectors"
+    },
+    {
+      "trunk": "DOCTORAL-THESIS-JACOBS-LADDER",
+      "leaves": 7,
+      "anchor": "v1.5.1-DISSERTATION-SEAL Lemma 4.1 27^27 = (27^9)^3"
+    },
+    {
+      "trunk": "EQUITY-KIRCHHOFF-LAPLACIAN",
+      "leaves": 6,
+      "anchor": "Cross-Asset Kirchhoff Diffusion Laplacian"
+    },
+    {
+      "trunk": "UNIVERSAL-CONTEXT-GRAPH-8NN",
+      "leaves": 7,
+      "anchor": "528 8NN Edges & INV-CUBE-SOVEREIGN-001"
+    }
+  ]
+}
